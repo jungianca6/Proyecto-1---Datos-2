@@ -1,4 +1,4 @@
-/snap/clion/265/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/dell/Escritorio/Proyecto-1-Datos-2 -B /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug
+/snap/clion/265/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S "/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2" -B "/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug"
 CMake Deprecation Warning:
   Support for "Extra Generators" like
 
@@ -8,18 +8,7 @@ CMake Deprecation Warning:
   use the cmake-file-api(7) to view CMake-generated project build trees.
 
 
--- The C compiler identification is GNU 11.4.0
--- The CXX compiler identification is GNU 11.4.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/bin/cc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Configuring done (0.6s)
--- Generating done (0.0s)
--- Build files have been written to: /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug
+CMake Error: CMake was unable to find a build program corresponding to "Unix Makefiles".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.
+CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
+CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
+-- Configuring incomplete, errors occurred!
