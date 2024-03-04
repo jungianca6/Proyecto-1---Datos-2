@@ -95,4 +95,7 @@ int main()
     return 0;
 }
 
-{"nombre": "Juan","edad": 30,"ciudad": "Buenos Aires"}
+{"command": "Get-Playlist","edad": 30}
+{"command": "Vote-up","edad": 30}
+{"command": "Vote-down","edad": 30}
+{"command": "a","edad": 30}

@@ -35,7 +35,7 @@ public:
 
         // Escuchar por conexiones entrantes
         if (listen(serverSocket, 5) == -1) {
-            std::cerr << "Error al escuchar por conexiones entrantes" << std::endl;
+            cerr << "Error al escuchar por conexiones entrantes" << endl;
             exit(1);
         }
     }
@@ -57,6 +57,32 @@ public:
 
         // Recibir el JSON del cliente
         json receivedJsonData = receiveJsonData(clientSocket);
+        string command = receivedJsonData["command"];
+
+
+        // Acciones del servidor segun el comando que ingrese
+        if(command == "Get-Playlist"){
+            cout << "Obtener el playlist" << endl;
+            //Envia la respuesta al cliente
+            send_response(command, "OK", clientSocket);
+            close(clientSocket);
+
+        }
+        if(command == "Vote-up"){
+            //Es necesario el ID
+            cout << "Votar por una cancion +1" << endl;
+            //Envia la respuesta al cliente
+            send_response(command, "OK", clientSocket);
+            close(clientSocket);
+        }
+        if(command == "Vote-down"){
+            //Es necesario el ID
+            cout << "Votar por una cancion -1" << endl;
+            //Envia la respuesta al cliente
+            send_response(command, "OK", clientSocket);
+            close(clientSocket);
+        }
+
         cout << receivedJsonData << endl;
         // Cerrar el socket del cliente
         close(clientSocket);
@@ -67,7 +93,7 @@ public:
         char buffer[1024]; // Buffer para almacenar los datos recibidos
         int bytesRead = recv(clientSocket, buffer, sizeof(buffer), 0);
         if (bytesRead == -1) {
-            std::cerr << "Error al recibir datos del cliente" << std::endl;
+            cerr << "Error al recibir datos del cliente" << endl;
             exit(1);
         }
         // Convertir los datos recibidos en una cadena de texto JSON
@@ -78,15 +104,24 @@ public:
 
         return jsonData;
     }
-
+    void send_response(string command, string status, int clientsocket){
+        json response = {
+                {"command", command},
+                {"status", status}
+        };
+        // Serializar el objeto JSON a una cadena de texto
+        string jsonString = response.dump();
+        // Enviar la cadena JSON al cliente
+        send(clientsocket, jsonString.c_str(), jsonString.length(), 0);
+    }
 
 };
 
 int main() {
     int portNumber = 12346; // Puerto en el que escuchará el servidor
-    ServerSocket server(portNumber);
+    ServerSocket servidor = ServerSocket(portNumber);
     // Aceptar conexiones continuamente
-    server.acceptConnections();
+    servidor.acceptConnections();
 
     return 0;
 }
