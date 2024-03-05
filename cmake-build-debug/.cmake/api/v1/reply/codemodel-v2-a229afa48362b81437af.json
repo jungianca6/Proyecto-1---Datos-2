@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/spaceba/CLionProjects/Server/cmake-build-debug",
-		"source" : "/home/spaceba/CLionProjects/Server"
+		"build" : "/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug",
+		"source" : "/home/dell/Escritorio/Proyecto-1-Datos-2"
 	},
 	"version" : 
 	{
