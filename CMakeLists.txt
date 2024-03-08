@@ -7,6 +7,8 @@ add_executable(
         main.cpp
         main.cpp
         main.cpp
+        ServerSocket.cpp
+        ServerSocket.h
 
 
 )

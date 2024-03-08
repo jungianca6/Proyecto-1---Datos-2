@@ -55,6 +55,12 @@ build CMakeFiles/main.cpp.dir/main.cpp.o: CXX_COMPILER__main.2ecpp_unscanned_Deb
   OBJECT_DIR = CMakeFiles/main.cpp.dir
   OBJECT_FILE_DIR = CMakeFiles/main.cpp.dir
 
+build CMakeFiles/main.cpp.dir/ServerSocket.cpp.o: CXX_COMPILER__main.2ecpp_unscanned_Debug /home/spaceba/CLionProjects/Server/ServerSocket.cpp || cmake_object_order_depends_target_main.cpp
+  DEP_FILE = CMakeFiles/main.cpp.dir/ServerSocket.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/main.cpp.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.cpp.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target main.cpp
@@ -63,7 +69,7 @@ build CMakeFiles/main.cpp.dir/main.cpp.o: CXX_COMPILER__main.2ecpp_unscanned_Deb
 #############################################
 # Link the executable main.cpp
 
-build main.cpp: CXX_EXECUTABLE_LINKER__main.2ecpp_Debug CMakeFiles/main.cpp.dir/main.cpp.o
+build main.cpp: CXX_EXECUTABLE_LINKER__main.2ecpp_Debug CMakeFiles/main.cpp.dir/main.cpp.o CMakeFiles/main.cpp.dir/ServerSocket.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/main.cpp.dir
   POST_BUILD = :
