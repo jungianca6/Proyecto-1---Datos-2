@@ -144,7 +144,7 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
-			"path" : "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPkgConfig.cmake"
+			"path" : "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindwxWidgets.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -155,6 +155,11 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/UsewxWidgets.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",

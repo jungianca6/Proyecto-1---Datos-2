@@ -1,78 +1,51 @@
 #include <iostream>
-#include <gtk/gtk.h>
+
+#include <wx/wx.h>
+
+enum IDs{
+    botonID =2,textoID=3
+};
+
 using namespace std;
+class MainFrame : public wxFrame {
+public:
+    MainFrame(const wxString &title)
+            : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition,
+                      wxSize(800, 600)) {
 
-static void button_clicked(GtkWidget *widget, gpointer data) {
-    cout << "¡Botón clickeado!" << endl;
-}
+        wxPanel *panel = new wxPanel(this, wxID_ANY);
 
-//Funcion que activa la ventana de la aplicacion
-static void activate(GtkApplication *app){
-    // Crea una ventana
-    GtkWidget *window;
-    window = gtk_window_new();
-    //Titulo de la ventana
-    gtk_window_set_title(GTK_WINDOW(window),"Ventana");
-    //Tamaño de la ventana
-    gtk_window_set_default_size(GTK_WINDOW(window), 700, 500);
-    //gtk_window_set_resizable(GTK_WINDOW(window),false);
+        wxButton *button = new wxButton(panel, botonID, "Presione",
+                                        wxPoint(150, 50), wxSize(100, 40));
+        button->Bind(wxEVT_BUTTON, &MainFrame::OnButtonClick, this);
 
-    GtkWidget *button = gtk_button_new_with_label("Mi botón");
-    GtkWidget *button2 = gtk_button_new_with_label("Mi botón2");
-    GtkWidget *entry;
+        wxStaticText *text = new wxStaticText(panel, wxID_ANY, "Pruebas",
+                                              wxPoint(450, 150));
+        text->SetForegroundColour(wxColour(0, 0, 0));
 
-    g_signal_connect(button, "clicked", G_CALLBACK(button_clicked),NULL);
-    g_signal_connect(button2, "clicked", G_CALLBACK(button_clicked),NULL);
+        caja = new wxTextCtrl(panel, textoID, "",
+                                          wxPoint(350, 50), wxSize(200, -1));
+    }
 
-    entry = gtk_entry_new();
-    gtk_entry_set_max_length(GTK_ENTRY(entry),FALSE);
+private:
+    void OnButtonClick(wxCommandEvent &event) {
+        caja->SetValue("Hola");
+        cout<<"Presionado"<<endl;
+    }
+    wxTextCtrl *caja;
+    wxDECLARE_EVENT_TABLE();
+};
 
+wxBEGIN_EVENT_TABLE(MainFrame,wxFrame)
+                EVT_BUTTON(botonID,MainFrame::OnButtonClick)
+wxEND_EVENT_TABLE()
 
-    //algo como los paneles de java swing
-    GtkWidget *box = gtk_box_new(GTK_ORIENTATION_VERTICAL,10);
-    GtkWidget *button_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 50);
-
-    // Añade el botón al contenedor
-    gtk_box_append(GTK_BOX(button_box), button);
-    gtk_box_append(GTK_BOX(button_box), button2);
-
-    gtk_widget_set_size_request(button, 150, 50);
-    gtk_widget_set_size_request(button2, 150, 50);
-
-    // Agrega el contenedor de botones al contenedor principal de la ventana
-    gtk_box_append(GTK_BOX(box), button_box);
-    gtk_box_append(GTK_BOX(box),entry);
-
-    // Añade el contenedor a la ventana
-    gtk_window_set_child(GTK_WINDOW(window), box);
-
-    //Muestra la ventana
-    gtk_widget_show(window);
-    // Se agrega la ventana a la aplicación
-    gtk_application_add_window(app, GTK_WINDOW(window));
-
-    //Detiene la funcion al destruit la ventana
-    g_signal_connect(window, "destroy", G_CALLBACK(g_application_quit),NULL);
-
-}
-
-int main(int argc, char **argv) {
-    // Se inicializa GTK
-    gtk_init();
-
-    // Se crea una nueva instancia de GtkApplication, creando la aplicacion
-    GtkApplication *app = gtk_application_new("in.GVM",
-                                              G_APPLICATION_FLAGS_NONE);
-
-    // Llama a la funcion que crea la ventana
-    g_signal_connect(app, "activate", G_CALLBACK(activate),NULL);
-
-    // Se ejecuta la aplicación
-    int status = g_application_run(G_APPLICATION(app), argc, argv);
-
-    // Se libera la memoria de la aplicación
-    g_object_unref(app);
-
-    return status;
-}
-
+class MyApp: public wxApp{
+public:
+    virtual bool OnInit() override{
+        MainFrame *frame = new MainFrame("Ventana sencilla");
+        frame->Show(true);
+        return true;
+    }
+};
+wxIMPLEMENT_APP(MyApp);

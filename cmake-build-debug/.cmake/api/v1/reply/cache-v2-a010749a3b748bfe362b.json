@@ -1242,6 +1242,18 @@
 			"value" : "[/usr/bin/pkg-config][v0.29.2()]"
 		},
 		{
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_wxWidgets",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Details about finding wxWidgets"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "[-L/usr/lib/x86_64-linux-gnu;-pthread;;;-lwx_gtk3u_core-3.0;-lwx_baseu-3.0][/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0;/usr/include/wx-3.0][v3.0.5()]"
+		},
+		{
 			"name" : "GTK4_CFLAGS",
 			"properties" : 
 			[
@@ -1810,6 +1822,18 @@
 			"value" : "/home/dell/Escritorio/Proyecto-1-Datos-2"
 		},
 		{
+			"name" : "Tk_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Tk."
+				}
+			],
+			"type" : "PATH",
+			"value" : "Tk_DIR-NOTFOUND"
+		},
+		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
 			"properties" : 
 			[
@@ -2032,6 +2056,42 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "/usr/lib/x86_64-linux-gnu"
+		},
+		{
+			"name" : "wxWidgets_CONFIG_EXECUTABLE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Location of wxWidgets library configuration provider binary (wx-config)."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/usr/bin/wx-config"
+		},
+		{
+			"name" : "wxWidgets_USE_DEBUG",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Use debug build?"
+				}
+			],
+			"type" : "BOOL",
+			"value" : "OFF"
+		},
+		{
+			"name" : "wxWidgets_wxrc_EXECUTABLE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Location of wxWidgets resource file compiler binary (wxrc)"
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/usr/bin/wxrc"
 		}
 	],
 	"kind" : "cache",

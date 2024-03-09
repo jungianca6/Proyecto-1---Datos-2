@@ -5,11 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Proyecto_1 main.cpp)
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(GTK4 REQUIRED gtk4)
+find_package(wxWidgets REQUIRED COMPONENTS core base)
+include(${wxWidgets_USE_FILE})
 
-include_directories(${GTK4_INCLUDE_DIRS})
-link_directories(${GTK4_LIBRARY_DIRS})
-add_definitions(${GTK4_CFLAGS_OTHER})
+# Agregar la biblioteca de wxWidgets a tu objetivo
+target_link_libraries(Proyecto_1 ${wxWidgets_LIBRARIES})
 
-target_link_libraries(Proyecto_1 ${GTK4_LIBRARIES})
+
