@@ -9,8 +9,7 @@ struct Nodo{
 }*primero, *ultimo;
 
 void printLista(){
-    Nodo *actual = new Nodo();
-    actual = primero;
+    Nodo *actual = primero;
     if(primero!=NULL){
         do{
             cout << actual->nombreCancion <<endl;
@@ -64,8 +63,7 @@ void insert_first(){
 }
 
 void buscarNodo(){
-    Nodo *actual = new Nodo();
-    actual = primero;
+    Nodo *actual = primero;
     bool encontrado = false;
     string nodoBuscado;
     cout << "Ingrese el dato que quiere" <<endl;
@@ -90,10 +88,8 @@ void buscarNodo(){
 }
 
 void eliminarNodo(){
-    Nodo *actual = new Nodo();
-    actual = primero;
-    Nodo *anterior = new Nodo();
-    anterior = NULL;
+    Nodo *actual = primero;
+    Nodo *anterior = NULL;
     bool encontrado = false;
     string nodoBuscado;
     cout << "Ingrese el dato que quiere eliminar: " <<endl;
@@ -127,5 +123,30 @@ void eliminarNodo(){
 
     } else {
         cout << "nel";
+    }
+}
+
+int findlength(){
+    Nodo *actual = primero;
+    int cnt = 0;
+    while (actual != NULL) {
+        cnt++;
+        actual = actual->siguiente;
+    }
+    return cnt;
+}
+
+void convertArray(){
+    int len = findlength();
+    string arr[len];
+    int index = 0;
+    Nodo *actual = primero;
+
+    while(actual != NULL){
+        arr[index++] = actual->nombreCancion;
+        actual = actual->siguiente;
+    }
+    for (int i = 0; i < len; i++) {
+        cout << arr[i] << " ";
     }
 }

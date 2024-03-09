@@ -9,11 +9,13 @@ void insert_first();
 void printLista();
 void buscarNodo();
 void eliminarNodo();
+void convertArray();
 void insert_lastdouble();
 void insert_firstdouble();
 void printListadouble();
 void buscarNododouble();
 void eliminarNododouble();
+void convertArraydouble();
 
 int main() {
     int opcion_menu=0;
@@ -22,7 +24,7 @@ int main() {
         cout << "\n|---------------------------------------|";
         cout << "\n|        ° LISTA CIRCULAR DOBLE °       |";
         cout << "\n|--------------------|------------------|";
-        cout << "\n| 1. Insertar final  | 5. Printear      |";
+        cout << "\n| 1. Insertar final  | 5. Array         |";
         cout << "\n| 2. Insertar inicio | 6. Salir         |";
         cout << "\n| 3. Buscar          |                  |";
         cout << "\n| 4. Eliminar        |                  |";
@@ -50,15 +52,14 @@ int main() {
                 printListadouble();
                 break;
             case 6:
-                cout << "\n\n Programa finalizado...";
+                cout << "\n\n CONVERTIDO EN ARRAY \n\n";
+                convertArraydouble();
                 break;
             default:
                 cout << "\n\n Opcion No Valida \n\n";
                 break;
         }
     } while (opcion_menu != 6);
-
-
 
     return 0;
 }

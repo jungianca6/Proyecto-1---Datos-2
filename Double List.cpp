@@ -115,3 +115,28 @@ void eliminarNododouble(){
         cout << "nel";
     }
 }
+
+int findlengthdouble(){
+    Node *actual = primerod;
+    int cnt = 0;
+    while (actual != NULL) {
+        cnt++;
+        actual = actual->siguiente;
+    }
+    return cnt;
+}
+
+void convertArraydouble(){
+    int len = findlengthdouble();
+    string arr[len];
+    int index = 0;
+    Node *actual = primerod;
+
+    while(actual != NULL){
+        arr[index++] = actual->nombreCancion;
+        actual = actual->siguiente;
+    }
+    for (int i = 0; i < len; i++) {
+        cout << arr[i] << " ";
+    }
+}
