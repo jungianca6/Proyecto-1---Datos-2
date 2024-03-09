@@ -9,7 +9,7 @@ using namespace std;
 int hola(){
     for(int i=0; i<100; i++){
         sleep(1);
-        cout << "hola desde la otra funcion" + i << endl;
+        cout << "hola desde la otra funcion" << i << endl;
     };
     return 0;
 }
