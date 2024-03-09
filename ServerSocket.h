@@ -50,6 +50,8 @@ public:
     void send_response(string command, string status, int clientsocket);
 
     void acceptConnections();
+
+    void send_response(string command, string status, int clientsocket, string list);
 };
 
 
