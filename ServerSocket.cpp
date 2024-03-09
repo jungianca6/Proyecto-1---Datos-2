@@ -47,14 +47,15 @@ void ServerSocket::acceptConnections() {
             }
             if(command == "Vote-up"){
                 //Es necesario el ID
-                cout << "Votar por una cancion +1" << endl;
+                string id = receivedJsonData["id"];
+                cout << "Votar por una cancion +1" << "id:" << id << endl;
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket);
                 close(clientSocket);
             }
             if(command == "Vote-down"){
-                //Es necesario el ID
-                cout << "Votar por una cancion -1" << endl;
+                string id = receivedJsonData["id"];
+                cout << "Votar por una cancion -1" << "id:" << id << endl;
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket);
                 close(clientSocket);
@@ -67,7 +68,7 @@ void ServerSocket::acceptConnections() {
 
     }
 json ServerSocket::receiveJsonData(int clientSocket) {
-        char buffer[1024]; // Buffer para almacenar los datos recibidos
+        char buffer[4096]; // Buffer para almacenar los datos recibidos
         int bytesRead = recv(clientSocket, buffer, sizeof(buffer), 0);
         if (bytesRead == -1) {
             cerr << "Error al recibir datos del cliente" << endl;

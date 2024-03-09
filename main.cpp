@@ -18,7 +18,6 @@ int main() {
     int portNumber = 12346; // Puerto en el que escuchará el servidor
     ServerSocket servidor = ServerSocket(portNumber);
     thread hilo(&ServerSocket::acceptConnections, &servidor);
-    hola();
 
     hilo.join();
     return 0;
