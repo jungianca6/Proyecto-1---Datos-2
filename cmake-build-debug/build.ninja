@@ -41,6 +41,37 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/spaceba/CLionProjects/Server/cmake-build-debug/
 # =============================================================================
+# Object build statements for EXECUTABLE target Proyecto_1
+
+
+#############################################
+# Order-only phony target for Proyecto_1
+
+build cmake_object_order_depends_target_Proyecto_1: phony || CMakeFiles/Proyecto_1.dir
+
+build CMakeFiles/Proyecto_1.dir/main.cpp.o: CXX_COMPILER__Proyecto_1_unscanned_Debug /home/spaceba/CLionProjects/Server/main.cpp || cmake_object_order_depends_target_Proyecto_1
+  DEP_FILE = CMakeFiles/Proyecto_1.dir/main.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Proyecto_1.dir
+  OBJECT_FILE_DIR = CMakeFiles/Proyecto_1.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target Proyecto_1
+
+
+#############################################
+# Link the executable Proyecto_1
+
+build Proyecto_1: CXX_EXECUTABLE_LINKER__Proyecto_1_Debug CMakeFiles/Proyecto_1.dir/main.cpp.o
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/Proyecto_1.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Proyecto_1
+  TARGET_PDB = Proyecto_1.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target main.cpp
 
 
@@ -111,7 +142,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/spaceba/CLionProjects/Server/cmake-build-debug
 
-build all: phony main.cpp
+build all: phony Proyecto_1 main.cpp
 
 # =============================================================================
 # Built-in targets
