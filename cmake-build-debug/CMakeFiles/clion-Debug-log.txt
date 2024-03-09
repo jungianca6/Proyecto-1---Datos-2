@@ -8,7 +8,15 @@ CMake Deprecation Warning:
   use the cmake-file-api(7) to view CMake-generated project build trees.
 
 
-CMake Error: CMake was unable to find a build program corresponding to "Unix Makefiles".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.
-CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
-CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
--- Configuring incomplete, errors occurred!
+-- Configuring done (0.0s)
+CMake Error at CMakeLists.txt:6 (add_executable):
+  Cannot find source file:
+
+    cmake-build-debug/Lista circular.cpp
+
+
+CMake Error at CMakeLists.txt:6 (add_executable):
+  No SOURCES given to target: Proyecto_1
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
