@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include <wx/wx.h>
 
 enum IDs{
@@ -49,3 +48,4 @@ public:
     }
 };
 wxIMPLEMENT_APP(MyApp);
+
