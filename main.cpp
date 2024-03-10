@@ -1,64 +1,51 @@
 #include <iostream>
-#include "Circular List.cpp"
-#include "Double List.cpp"
+#include <wx/wx.h>
+
+enum IDs{
+    botonID =2,textoID=3
+};
 
 using namespace std;
+class MainFrame : public wxFrame {
+public:
+    MainFrame(const wxString &title)
+            : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition,
+                      wxSize(800, 600)) {
 
-void insert_last();
-void insert_first();
-void printLista();
-void buscarNodo();
-void eliminarNodo();
-void insert_lastdouble();
-void insert_firstdouble();
-void printListadouble();
-void buscarNododouble();
-void eliminarNododouble();
+        wxPanel *panel = new wxPanel(this, wxID_ANY);
 
-int main() {
-    int opcion_menu=0;
-    do
-    {
-        cout << "\n|---------------------------------------|";
-        cout << "\n|        ° LISTA CIRCULAR DOBLE °       |";
-        cout << "\n|--------------------|------------------|";
-        cout << "\n| 1. Insertar final  | 5. Printear      |";
-        cout << "\n| 2. Insertar inicio | 6. Salir         |";
-        cout << "\n| 3. Buscar          |                  |";
-        cout << "\n| 4. Eliminar        |                  |";
-        cout << "\n|--------------------|------------------|";
-        cout << "\n\n Escoja una Opcion: ";
-        cin >> opcion_menu;
-        switch(opcion_menu){
-            case 1:
-                cout << "\n\n INSERTA NODO EN LA LISTA \n\n";
-                insert_lastdouble();
-                break;
-            case 2:
-                cout << "\n\n BUSCAR UN NODO EN LA LISTA \n\n";
-                insert_firstdouble();
-                break;
-            case 3:
-                cout << "\n\n BUSCAR UN NODO EN LA LISTA \n\n";
-                buscarNododouble();
-                break;
-            case 4:
-                cout << "\n\n ELIMINAR UN NODO DE LA LISTA \n\n";
-                eliminarNododouble();
-                break;
-            case 5:
-                printListadouble();
-                break;
-            case 6:
-                cout << "\n\n Programa finalizado...";
-                break;
-            default:
-                cout << "\n\n Opcion No Valida \n\n";
-                break;
-        }
-    } while (opcion_menu != 6);
+        wxButton *button = new wxButton(panel, botonID, "Presione",
+                                        wxPoint(150, 50), wxSize(100, 40));
+        button->Bind(wxEVT_BUTTON, &MainFrame::OnButtonClick, this);
 
+        wxStaticText *text = new wxStaticText(panel, wxID_ANY, "Pruebas",
+                                              wxPoint(450, 150));
+        text->SetForegroundColour(wxColour(0, 0, 0));
 
+        caja = new wxTextCtrl(panel, textoID, "",
+                                          wxPoint(350, 50), wxSize(200, -1));
+    }
 
-    return 0;
-}
+private:
+    void OnButtonClick(wxCommandEvent &event) {
+        caja->SetValue("Hola");
+        cout<<"Presionado"<<endl;
+    }
+    wxTextCtrl *caja;
+    wxDECLARE_EVENT_TABLE();
+};
+
+wxBEGIN_EVENT_TABLE(MainFrame,wxFrame)
+                EVT_BUTTON(botonID,MainFrame::OnButtonClick)
+wxEND_EVENT_TABLE()
+
+class MyApp: public wxApp{
+public:
+    virtual bool OnInit() override{
+        MainFrame *frame = new MainFrame("Ventana sencilla");
+        frame->Show(true);
+        return true;
+    }
+};
+wxIMPLEMENT_APP(MyApp);
+
