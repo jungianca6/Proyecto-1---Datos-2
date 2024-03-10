@@ -125,17 +125,18 @@ int findlengthdouble(){
     return cnt;
 }
 
-void convertArraydouble(){
+void convertArraydouble() {
     int len = findlengthdouble();
     string arr[len];
     int index = 0;
     Node *actual = primerod;
 
-    while(actual != NULL){
+    while (actual != NULL) {
         arr[index++] = actual->nombreCancion;
         actual = actual->siguiente;
     }
-    for (int i = 0; i < len; i++) {
+    // print array
+    for (int i = 0; i < len; i++){
         cout << arr[i] << " ";
     }
 }

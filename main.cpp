@@ -4,19 +4,6 @@
 
 using namespace std;
 
-void insert_last();
-void insert_first();
-void printLista();
-void buscarNodo();
-void eliminarNodo();
-void convertArray();
-void insert_lastdouble();
-void insert_firstdouble();
-void printListadouble();
-void buscarNododouble();
-void eliminarNododouble();
-void convertArraydouble();
-
 int main() {
     int opcion_menu=0;
     string nombreCancion;
@@ -69,6 +56,5 @@ int main() {
     } while (opcion_menu != 6);
 
 
-    printListadouble();
     return 0;
 }
