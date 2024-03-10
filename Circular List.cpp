@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -22,10 +23,10 @@ void printLista(){
 
 }
 
-void insert_last() {
+void insert_last(string nombreCancion) {
     Nodo *nuevo = new Nodo();
-    cout << " Ingrese el nombre de la canción: ";
-    cin >> nuevo -> nombreCancion;
+    nuevo -> nombreCancion = nombreCancion;
+    cout << "Dato insertado (ultimo): " << nombreCancion <<endl;
 
     if (primero == NULL) {
         primero = nuevo;
@@ -43,10 +44,10 @@ void insert_last() {
 
 }
 //          (3)<-4-> <-6-> <-7-> <-8-> <-9-> <-10-> <-15-> <-3->(4)
-void insert_first(){
+void insert_first(string nombreCancion) {
     Nodo *nuevo = new Nodo();
-    cout << " Ingrese el dato que quiere introducir: ";
-    cin >> nuevo->nombreCancion;
+    nuevo -> nombreCancion = nombreCancion;
+    cout << "Dato insertado (primero): " << nombreCancion <<endl;
 
     if (primero == NULL){
         primero = nuevo;
@@ -62,12 +63,10 @@ void insert_first(){
     }
 }
 
-void buscarNodo(){
+void buscarNodo(string nodoBuscado){
     Nodo *actual = primero;
     bool encontrado = false;
-    string nodoBuscado;
-    cout << "Ingrese el dato que quiere" <<endl;
-    cin >> nodoBuscado;
+    cout << "Dato buscado: " << nodoBuscado <<endl;
 
     if(primero!=NULL){
         do{
@@ -87,13 +86,11 @@ void buscarNodo(){
 
 }
 
-void eliminarNodo(){
+void eliminarNodo(string nodoBuscado){
     Nodo *actual = primero;
     Nodo *anterior = NULL;
     bool encontrado = false;
-    string nodoBuscado;
-    cout << "Ingrese el dato que quiere eliminar: " <<endl;
-    cin >> nodoBuscado;
+    cout << "Dato eliminado: " << nodoBuscado <<endl;
 
     if(primero!=NULL){
         do{

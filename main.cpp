@@ -19,13 +19,15 @@ void convertArraydouble();
 
 int main() {
     int opcion_menu=0;
+    string nombreCancion;
+    string nodoBuscado;
     do
     {
         cout << "\n|---------------------------------------|";
         cout << "\n|        ° LISTA CIRCULAR DOBLE °       |";
         cout << "\n|--------------------|------------------|";
-        cout << "\n| 1. Insertar final  | 5. Array         |";
-        cout << "\n| 2. Insertar inicio | 6. Salir         |";
+        cout << "\n| 1. Insertar final  | 5. Print         |";
+        cout << "\n| 2. Insertar inicio | 6. Array         |";
         cout << "\n| 3. Buscar          |                  |";
         cout << "\n| 4. Eliminar        |                  |";
         cout << "\n|--------------------|------------------|";
@@ -33,33 +35,40 @@ int main() {
         cin >> opcion_menu;
         switch(opcion_menu){
             case 1:
-                cout << "\n\n INSERTA NODO EN LA LISTA \n\n";
-                insert_lastdouble();
+                cout << "\n Inserta un nodo en la lista (ultimo): ";
+                cin >> nombreCancion;
+                insert_lastdouble(nombreCancion);
                 break;
             case 2:
-                cout << "\n\n BUSCAR UN NODO EN LA LISTA \n\n";
-                insert_firstdouble();
+                cout << "\n Inserta un nodo en la lista (primero): ";
+                cin >> nombreCancion;
+                insert_firstdouble(nombreCancion);
                 break;
             case 3:
-                cout << "\n\n BUSCAR UN NODO EN LA LISTA \n\n";
-                buscarNododouble();
+                cout << "\n Inserta el nodo que quieras buscar: ";
+                cin >> nodoBuscado;
+                buscarNododouble(nodoBuscado);
                 break;
             case 4:
-                cout << "\n\n ELIMINAR UN NODO DE LA LISTA \n\n";
-                eliminarNododouble();
+                cout << "\n Inserta el nodo que quieras eliminar: ";
+                cin >> nodoBuscado;
+                eliminarNododouble(nodoBuscado);
                 break;
             case 5:
+                cout << "\n Lista printeada:\n";
                 printListadouble();
                 break;
             case 6:
-                cout << "\n\n CONVERTIDO EN ARRAY \n\n";
+                cout << "\n Convertido en array:\n";
                 convertArraydouble();
                 break;
             default:
-                cout << "\n\n Opcion No Valida \n\n";
+                cout << "\n Opcion no valida\n";
                 break;
         }
     } while (opcion_menu != 6);
 
+
+    printListadouble();
     return 0;
 }
