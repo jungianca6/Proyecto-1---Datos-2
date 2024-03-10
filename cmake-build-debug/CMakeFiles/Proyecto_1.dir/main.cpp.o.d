@@ -352,4 +352,6 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/wx-3.0/wx/valtext.h /usr/include/wx-3.0/wx/filedlg.h \
  /usr/include/wx-3.0/wx/gtk/filedlg.h \
  /usr/include/wx-3.0/wx/gtk/filectrl.h /usr/include/wx-3.0/wx/filectrl.h \
- /usr/include/wx-3.0/wx/mdi.h /usr/include/wx-3.0/wx/gtk/mdi.h
+ /usr/include/wx-3.0/wx/mdi.h /usr/include/wx-3.0/wx/gtk/mdi.h \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/Circular\ List.cpp \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/Double\ List.cpp
