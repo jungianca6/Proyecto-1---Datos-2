@@ -263,6 +263,15 @@ pkgcfg_lib_GTK4_pango-1.0:FILEPATH=/usr/lib/x86_64-linux-gnu/libpango-1.0.so
 //Path to a library.
 pkgcfg_lib_GTK4_pangocairo-1.0:FILEPATH=/usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so
 
+//Location of wxWidgets library configuration provider binary (wx-config).
+wxWidgets_CONFIG_EXECUTABLE:FILEPATH=/usr/local/bin/wx-config
+
+//Use debug build?
+wxWidgets_USE_DEBUG:BOOL=OFF
+
+//Location of wxWidgets resource file compiler binary (wxrc)
+wxWidgets_wxrc_EXECUTABLE:FILEPATH=/usr/local/bin/wxrc
+
 
 ########################
 # INTERNAL cache entries
@@ -411,6 +420,8 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v1.8.1()]
+//Details about finding wxWidgets
+FIND_PACKAGE_MESSAGE_DETAILS_wxWidgets:INTERNAL=[-L/usr/local/lib;-pthread;;;-lwx_gtk3u_core-3.2;-lwx_baseu-3.2][/usr/local/lib/wx/include/gtk3-unicode-3.2;/usr/local/include/wx-3.2][v3.2.4()]
 GTK4_CFLAGS:INTERNAL=-I/usr/include/gtk-4.0;-I/usr/include/pango-1.0;-I/usr/include/glib-2.0;-I/usr/lib/x86_64-linux-gnu/glib-2.0/include;-I/usr/include/harfbuzz;-I/usr/include/freetype2;-I/usr/include/libpng16;-I/usr/include/libmount;-I/usr/include/blkid;-I/usr/include/fribidi;-I/usr/include/cairo;-I/usr/include/pixman-1;-I/usr/include/gdk-pixbuf-2.0;-I/usr/include/x86_64-linux-gnu;-I/usr/include/graphene-1.0;-I/usr/lib/x86_64-linux-gnu/graphene-1.0/include;-mfpmath=sse;-msse;-msse2;-pthread
 GTK4_CFLAGS_I:INTERNAL=
 GTK4_CFLAGS_OTHER:INTERNAL=-mfpmath=sse;-msse;-msse2;-pthread
