@@ -69,7 +69,40 @@ Cancion* get_songs(string filename, Cancion* canciones){
     return canciones;
 }
 
-//Obtiene la cancion mediante un indice
+//ELiminar cancion segun el ID
+void delete_song(string filename, int song_id){
+    Cancion canciones[100];
+    ifstream archivo(filename, ios::binary);
+
+    // Variable para contar el número de personas leídas del archivo
+    int num_personas = 0;
+
+    // Leer el archivo hasta el final y almacenar cada persona en el array
+    while (archivo.read(reinterpret_cast<char*>(&canciones[num_personas]), sizeof(Cancion))) {
+        // Incrementar el contador de personas
+        num_personas++;
+
+        // Verificar si se excede el tamaño máximo del array
+        if (num_personas >= 100) {
+            cerr << "Se ha alcanzado el límite máximo de personas" << endl;
+            break;
+        }
+    }
+    // Cerrar el archivo al finalizar la lectura
+    archivo.close();
+
+    ofstream escritura(filename, ios::binary);
+
+    for(int i = 0; i < 100; i++){
+        if (canciones[i].id != song_id){
+            // Escribir los datos en el archivo binario
+            escritura.write(reinterpret_cast<const char *>(&canciones[i]), sizeof(Cancion));
+        }
+    }
+    escritura.close();
+}
+
+//Obtiene la canci;on mediante un indice
 Cancion search_by_index(int index, string filename){
     ifstream archivo(filename, ios::binary);
 
