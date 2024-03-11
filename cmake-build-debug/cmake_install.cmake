@@ -1,4 +1,4 @@
-# Install script for directory: /home/spaceba/CLionProjects/Server
+# Install script for directory: /home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/spaceba/CLionProjects/Server/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
