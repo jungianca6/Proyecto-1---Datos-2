@@ -50,16 +50,15 @@ Cancion* get_songs(string filename, Cancion* canciones){
     ifstream archivo(filename, ios::binary);
 
     // Variable para contar el número de personas leídas del archivo
-    int num_personas = 0;
+    int visited_songs = 0;
 
     // Leer el archivo hasta el final y almacenar cada persona en el array
-    while (archivo.read(reinterpret_cast<char*>(&canciones[num_personas]), sizeof(Cancion))) {
+    while (archivo.read(reinterpret_cast<char*>(&canciones[visited_songs]), sizeof(Cancion))) {
         // Incrementar el contador de personas
-        num_personas++;
+        visited_songs++;
 
         // Verificar si se excede el tamaño máximo del array
-        if (num_personas >= 100) {
-            cerr << "Se ha alcanzado el límite máximo de personas" << endl;
+        if (canciones->id == '\0') {
             break;
         }
     }
@@ -75,15 +74,15 @@ void delete_song(string filename, int song_id){
     ifstream archivo(filename, ios::binary);
 
     // Variable para contar el número de personas leídas del archivo
-    int num_personas = 0;
+    int number_of_songs = 0;
 
     // Leer el archivo hasta el final y almacenar cada persona en el array
-    while (archivo.read(reinterpret_cast<char*>(&canciones[num_personas]), sizeof(Cancion))) {
+    while (archivo.read(reinterpret_cast<char*>(&canciones[number_of_songs]), sizeof(Cancion))) {
         // Incrementar el contador de personas
-        num_personas++;
+        number_of_songs++;
 
         // Verificar si se excede el tamaño máximo del array
-        if (num_personas >= 100) {
+        if (number_of_songs >= 100) {
             cerr << "Se ha alcanzado el límite máximo de personas" << endl;
             break;
         }
@@ -93,7 +92,7 @@ void delete_song(string filename, int song_id){
 
     ofstream escritura(filename, ios::binary);
 
-    for(int i = 0; i < 100; i++){
+    for(int i = 0; i < number_of_songs; i++){
         if (canciones[i].id != song_id){
             // Escribir los datos en el archivo binario
             escritura.write(reinterpret_cast<const char *>(&canciones[i]), sizeof(Cancion));

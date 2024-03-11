@@ -28,7 +28,7 @@ int main() {
     Cancion busqueda = search_by_index(3, filename);
 
     // Array para almacenar todas las personas del archivo, es static para que permanezca
-    Cancion canciones[100];
+    Cancion canciones[10];
     Cancion* lista = get_songs(filename, canciones);
 
     // Mostrar los datos de todas las personas almacenadas
