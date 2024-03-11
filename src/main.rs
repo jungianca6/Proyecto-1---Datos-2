@@ -1,48 +1,24 @@
-use iced::{Element, Sandbox, Settings, Theme};
-use iced::widget::{container, text_editor};
-use iced::widget::Button;
 
-fn main() ->iced::Result{
-    Editor::run(Settings::default())
-}
-
-struct Editor{
-    content: text_editor::Content
-}
+use fltk::{app, button, input, prelude::{WidgetBase, WidgetExt, GroupExt}, window};
+use fltk::prelude::InputExt;
+use fltk_theme::{ColorTheme, color_themes};
 
 
-#[derive(Debug,Clone)]
-enum Message{
-    Edit(text_editor::Action)
-}
+fn main() {
+    let a = app::App::default().with_scheme(app::Scheme::Gtk);
+    let theme = ColorTheme::new(color_themes::BLACK_THEME);
+    theme.apply();
+    let mut win = window::Window::default().with_size(600, 400)
+        .with_label("prueba");
+    let mut btn = button::Button::new(160, 200, 80, 40, "Presione");
+    let mut text = input::Input::new(160, 100, 200, 50, "");
+    btn.set_color(btn.color().lighter());
+    win.end();
+    win.show();
 
+    btn.set_callback(move |b| {
+        text.set_value("Hola");
+    });
 
-impl Sandbox for Editor{
-    type Message = Message;
-
-    fn new() -> Self {
-        Self{
-            content: text_editor::Content::new(),
-        }
-    }
-    //titulo ventana
-    fn title(&self) -> String {
-        String::from("Prueba")
-    }
-    //actualizacion de la interfaz
-    fn update(&mut self, message: Message) {
-        match message{
-            Message::Edit(action) =>{
-                self.content.edit(action)
-            }
-        }
-    }
-    //widgets
-    fn view(&self) -> Element<'_, Message> {
-        let input = text_editor(&self.content).on_edit(Message::Edit);
-        container(input).padding(200).into()
-    }
-    fn theme(&self) -> Theme {
-        Theme::Dark
-    }
+    a.run().unwrap();
 }

@@ -13,4 +13,7 @@ accesskit = "0.12.3"
 ahash = "0.8.11"
 backtrace = "0.3.69"
 document-features = "0.2.8"
+fltk = "^1.4.26"
+fltk-theme = "0.7.2"
+fltk-flex = "0.2.1"
 

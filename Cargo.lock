@@ -11,6 +11,9 @@ dependencies = [
  "backtrace",
  "document-features",
  "egui",
+ "fltk",
+ "fltk-flex",
+ "fltk-theme",
  "iced",
 ]
 
@@ -336,6 +339,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "cmake"
+version = "0.1.50"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a31c789563b815f77f4250caee12365734369f942439b7defd71e18a48197130"
+dependencies = [
+ "cc",
+]
+
+[[package]]
 name = "cocoa"
 version = "0.24.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -457,6 +469,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b3855a8a784b474f333699ef2bbca9db2c4a1f6d9088a90a2d25b1eb53111eaa"
 dependencies = [
  "cfg-if",
+]
+
+[[package]]
+name = "crossbeam-channel"
+version = "0.5.12"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ab3db02a9c5b5121e1e42fbdb1aeb65f5e02624cc58c43f2884c6ccac0b82f95"
+dependencies = [
+ "crossbeam-utils",
 ]
 
 [[package]]
@@ -632,6 +653,46 @@ checksum = "46303f565772937ffe1d394a4fac6f411c6013172fadde9dcdb1e147a086940e"
 dependencies = [
  "crc32fast",
  "miniz_oxide",
+]
+
+[[package]]
+name = "fltk"
+version = "1.4.26"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c8be71e3609a579ca4d917323ceb78325a8b5516db4aa6c365ff9e870e38f2da"
+dependencies = [
+ "bitflags 2.4.2",
+ "crossbeam-channel",
+ "fltk-sys",
+ "paste",
+ "ttf-parser 0.20.0",
+]
+
+[[package]]
+name = "fltk-flex"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "58c935b6cbf53a3681beef6339ca0edbfdd091c0f00a275d886107ed1a66caca"
+dependencies = [
+ "fltk",
+]
+
+[[package]]
+name = "fltk-sys"
+version = "1.4.26"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "da6332e318d10fbb52213cfd78e934b608bff8450cbb63ee512ccc3d4efcdefe"
+dependencies = [
+ "cmake",
+]
+
+[[package]]
+name = "fltk-theme"
+version = "0.7.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3539d27a815514b56af2afa6b8e7c6d6b9274a103239487d5a60daa6340a4868"
+dependencies = [
+ "fltk",
 ]
 
 [[package]]
@@ -1251,7 +1312,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0c2a198fb6b0eada2a8df47933734e6d35d350665a33a3593d7164fa52c75c19"
 dependencies = [
  "cfg-if",
- "windows-targets 0.48.5",
+ "windows-targets 0.52.4",
 ]
 
 [[package]]
@@ -2357,9 +2418,9 @@ dependencies = [
 
 [[package]]
 name = "toml_datetime"
-version = "0.6.5"
+version = "0.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3550f4e9685620ac18a50ed434eb3aec30db8ba93b0287467bca5826ea25baf1"
+checksum = "7cda73e2f1397b1262d6dfdcef8aafae14d1de7748d66822d3bfeeb6d03e5e4b"
 
 [[package]]
 name = "toml_edit"
