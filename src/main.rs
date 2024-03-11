@@ -5,13 +5,17 @@ use iced::widget::Button;
 fn main() ->iced::Result{
     Editor::run(Settings::default())
 }
+
 struct Editor{
     content: text_editor::Content
 }
+
+
 #[derive(Debug,Clone)]
 enum Message{
     Edit(text_editor::Action)
 }
+
 
 impl Sandbox for Editor{
     type Message = Message;
