@@ -4,81 +4,12 @@
 #include "thread"
 #include "chrono"
 #include <stdio.h>
-#include <fstream>
-
 #include "Circular List.cpp"
 #include "Double List.cpp"
-#include <string>
-#include "ServerSocket.h"
-#include "thread"
-#include "chrono"
-#include <stdio.h>
-#include <fstream>
+#include "BinaryListOperations.cpp"
+
 
 using namespace std;
-
-struct Cancion{
-    char nombre[30];
-    char artista[30];
-    int duracion;
-    int id;
-};
-
-void add_to_end(Cancion data, string filename){
-    // Abrir el archivo en modo binario para escritura
-    ofstream archivo(filename, ios::binary | ios::app);
-
-    // Verificar si el archivo se abrió correctamente
-    if (!archivo.is_open()) {
-        std::cerr << "Error al abrir el archivo " << filename << std::endl;
-    }
-
-    // Escribir los datos en el archivo binario
-    archivo.write(reinterpret_cast<const char *>(&data), sizeof(data));
-
-    // Cerrar el archivo al finalizar
-    archivo.close();
-}
-
-Cancion search_id(int id, string filename){
-    ifstream archivo(filename, ios::binary);
-
-    // Nombre a buscar
-    int id_a_encontrar = id;
-
-    // Variable para almacenar el struct leído del archivo
-    Cancion cancion;
-
-    // Leer el archivo hasta el final
-    while (archivo.read(reinterpret_cast<char*>(&cancion), sizeof(cancion))) {
-        // Verificar si el nombre coincide con el nombre buscado
-        if (cancion.id == id_a_encontrar) {
-            // Cerrar el archivo al finalizar
-            archivo.close();
-            return cancion;
-        }
-    }
-
-}
-
-Cancion search_by_artists(string artist, string filename){
-
-}
-
-Cancion search_by_index(int index, string filename){
-    ifstream archivo(filename, ios::binary);
-
-    // Variable para almacenar el struct leído del archivo
-    Cancion cancion;
-
-    //Mover el puntero hasta la posision deseada
-    archivo.seekg((index-1)*sizeof(cancion));
-
-    // Leer el archivo hasta el final
-    archivo.read(reinterpret_cast<char*>(&cancion), sizeof(cancion));
-    return cancion;
-
-}
 
 
 int main() {
@@ -96,10 +27,19 @@ int main() {
     //add_to_end(cancion, filename);
     Cancion busqueda = search_by_index(3, filename);
 
-    cout << busqueda.nombre << endl;
-    cout << busqueda.artista << endl;
-    cout << busqueda.id << endl;
-    cout << busqueda.duracion << endl;
+    // Array para almacenar todas las personas del archivo, es static para que permanezca
+    Cancion canciones[100];
+    Cancion* lista = get_songs(filename, canciones);
+
+    // Mostrar los datos de todas las personas almacenadas
+    for (int i = 0; i < 10; ++i) {
+        cout << "Persona " << i+1 << ":" << endl;
+        cout << "Nombre: " << lista[i].nombre << endl;
+        cout << "Edad: " << lista[i].artista << endl;
+        cout << "Altura: " << lista[i].id << endl;
+        cout << "Altura: " << lista[i].duracion << endl;
+        cout << endl;
+    }
 
 
     /*
