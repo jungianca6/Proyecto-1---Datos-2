@@ -10,7 +10,7 @@ class MainFrame : public wxFrame {
 public:
     MainFrame(const wxString &title)
             : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition,
-                      wxSize(800, 600)) {
+                      wxSize(1200, 900)) {
 
         wxPanel *panel = new wxPanel(this, wxID_ANY);
 
