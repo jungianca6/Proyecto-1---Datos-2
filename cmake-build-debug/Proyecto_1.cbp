@@ -92,15 +92,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/BinaryListOperations.cpp">
-			<Option target="Proyecto_1"/>
-		</Unit>
-		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Circular List.cpp">
-			<Option target="Proyecto_1"/>
-		</Unit>
-		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Double List.cpp">
-			<Option target="Proyecto_1"/>
-		</Unit>
 		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp">
 			<Option target="Proyecto_1"/>
 		</Unit>
