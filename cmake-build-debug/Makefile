@@ -57,10 +57,10 @@ RM = /snap/clion/265/bin/cmake/linux/x64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2"
+CMAKE_SOURCE_DIR = /home/dell/Escritorio/Proyecto-1-Datos-2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug"
+CMAKE_BINARY_DIR = /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles" "/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,24 +117,120 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main.cpp
+# Target rules for targets named Proyecto_1
 
 # Build rule for target.
-main.cpp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main.cpp
-.PHONY : main.cpp
+Proyecto_1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Proyecto_1
+.PHONY : Proyecto_1
 
 # fast build rule for target.
-main.cpp/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.cpp.dir/build.make CMakeFiles/main.cpp.dir/build
-.PHONY : main.cpp/fast
+Proyecto_1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/build
+.PHONY : Proyecto_1/fast
+
+BinaryListOperations.o: BinaryListOperations.cpp.o
+.PHONY : BinaryListOperations.o
+
+# target to build an object file
+BinaryListOperations.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o
+.PHONY : BinaryListOperations.cpp.o
+
+BinaryListOperations.i: BinaryListOperations.cpp.i
+.PHONY : BinaryListOperations.i
+
+# target to preprocess a source file
+BinaryListOperations.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.i
+.PHONY : BinaryListOperations.cpp.i
+
+BinaryListOperations.s: BinaryListOperations.cpp.s
+.PHONY : BinaryListOperations.s
+
+# target to generate assembly for a file
+BinaryListOperations.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.s
+.PHONY : BinaryListOperations.cpp.s
+
+Circular_List.o: Circular_List.cpp.o
+.PHONY : Circular_List.o
+
+# target to build an object file
+Circular_List.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o
+.PHONY : Circular_List.cpp.o
+
+Circular_List.i: Circular_List.cpp.i
+.PHONY : Circular_List.i
+
+# target to preprocess a source file
+Circular_List.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Circular_List.cpp.i
+.PHONY : Circular_List.cpp.i
+
+Circular_List.s: Circular_List.cpp.s
+.PHONY : Circular_List.s
+
+# target to generate assembly for a file
+Circular_List.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Circular_List.cpp.s
+.PHONY : Circular_List.cpp.s
+
+Double_List.o: Double_List.cpp.o
+.PHONY : Double_List.o
+
+# target to build an object file
+Double_List.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Double_List.cpp.o
+.PHONY : Double_List.cpp.o
+
+Double_List.i: Double_List.cpp.i
+.PHONY : Double_List.i
+
+# target to preprocess a source file
+Double_List.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Double_List.cpp.i
+.PHONY : Double_List.cpp.i
+
+Double_List.s: Double_List.cpp.s
+.PHONY : Double_List.s
+
+# target to generate assembly for a file
+Double_List.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Double_List.cpp.s
+.PHONY : Double_List.cpp.s
+
+ServerSocket.o: ServerSocket.cpp.o
+.PHONY : ServerSocket.o
+
+# target to build an object file
+ServerSocket.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o
+.PHONY : ServerSocket.cpp.o
+
+ServerSocket.i: ServerSocket.cpp.i
+.PHONY : ServerSocket.i
+
+# target to preprocess a source file
+ServerSocket.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.i
+.PHONY : ServerSocket.cpp.i
+
+ServerSocket.s: ServerSocket.cpp.s
+.PHONY : ServerSocket.s
+
+# target to generate assembly for a file
+ServerSocket.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.s
+.PHONY : ServerSocket.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.cpp.dir/build.make CMakeFiles/main.cpp.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -142,7 +238,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.cpp.dir/build.make CMakeFiles/main.cpp.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -150,7 +246,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.cpp.dir/build.make CMakeFiles/main.cpp.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -161,7 +257,19 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... main.cpp"
+	@echo "... Proyecto_1"
+	@echo "... BinaryListOperations.o"
+	@echo "... BinaryListOperations.i"
+	@echo "... BinaryListOperations.s"
+	@echo "... Circular_List.o"
+	@echo "... Circular_List.i"
+	@echo "... Circular_List.s"
+	@echo "... Double_List.o"
+	@echo "... Double_List.i"
+	@echo "... Double_List.s"
+	@echo "... ServerSocket.o"
+	@echo "... ServerSocket.i"
+	@echo "... ServerSocket.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
