@@ -5,10 +5,8 @@ project(Proyecto_1)
 set(CMAKE_CXX_STANDARD 17 /)
 
 add_executable(Proyecto_1 main.cpp
-        "Circular List.cpp"
-        "Double List.cpp"
         ServerSocket.cpp
-        BinaryListOperations.cpp)
+)
 
 find_package(wxWidgets REQUIRED COMPONENTS core base)
 include(${wxWidgets_USE_FILE})

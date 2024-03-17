@@ -1,10 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o"
-  "CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o.d"
-  "CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o"
-  "CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o.d"
-  "CMakeFiles/Proyecto_1.dir/Double_List.cpp.o"
-  "CMakeFiles/Proyecto_1.dir/Double_List.cpp.o.d"
   "CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o"
   "CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o.d"
   "CMakeFiles/Proyecto_1.dir/main.cpp.o"

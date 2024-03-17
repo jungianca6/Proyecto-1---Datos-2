@@ -83,38 +83,10 @@ CMakeFiles/Proyecto_1.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proyecto_1.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dell/Escritorio/Proyecto-1-Datos-2/main.cpp -o CMakeFiles/Proyecto_1.dir/main.cpp.s
 
-CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o: CMakeFiles/Proyecto_1.dir/flags.make
-CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/Circular\ List.cpp
-CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o: CMakeFiles/Proyecto_1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o -MF CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o.d -o CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o -c "/home/dell/Escritorio/Proyecto-1-Datos-2/Circular List.cpp"
-
-CMakeFiles/Proyecto_1.dir/Circular_List.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Proyecto_1.dir/Circular_List.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/dell/Escritorio/Proyecto-1-Datos-2/Circular List.cpp" > CMakeFiles/Proyecto_1.dir/Circular_List.cpp.i
-
-CMakeFiles/Proyecto_1.dir/Circular_List.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proyecto_1.dir/Circular_List.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/dell/Escritorio/Proyecto-1-Datos-2/Circular List.cpp" -o CMakeFiles/Proyecto_1.dir/Circular_List.cpp.s
-
-CMakeFiles/Proyecto_1.dir/Double_List.cpp.o: CMakeFiles/Proyecto_1.dir/flags.make
-CMakeFiles/Proyecto_1.dir/Double_List.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/Double\ List.cpp
-CMakeFiles/Proyecto_1.dir/Double_List.cpp.o: CMakeFiles/Proyecto_1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Proyecto_1.dir/Double_List.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto_1.dir/Double_List.cpp.o -MF CMakeFiles/Proyecto_1.dir/Double_List.cpp.o.d -o CMakeFiles/Proyecto_1.dir/Double_List.cpp.o -c "/home/dell/Escritorio/Proyecto-1-Datos-2/Double List.cpp"
-
-CMakeFiles/Proyecto_1.dir/Double_List.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Proyecto_1.dir/Double_List.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/dell/Escritorio/Proyecto-1-Datos-2/Double List.cpp" > CMakeFiles/Proyecto_1.dir/Double_List.cpp.i
-
-CMakeFiles/Proyecto_1.dir/Double_List.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proyecto_1.dir/Double_List.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/dell/Escritorio/Proyecto-1-Datos-2/Double List.cpp" -o CMakeFiles/Proyecto_1.dir/Double_List.cpp.s
-
 CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o: CMakeFiles/Proyecto_1.dir/flags.make
 CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp
 CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o: CMakeFiles/Proyecto_1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o -MF CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o.d -o CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o -c /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp
 
 CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.i: cmake_force
@@ -125,39 +97,19 @@ CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp -o CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.s
 
-CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o: CMakeFiles/Proyecto_1.dir/flags.make
-CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/BinaryListOperations.cpp
-CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o: CMakeFiles/Proyecto_1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o -MF CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o.d -o CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o -c /home/dell/Escritorio/Proyecto-1-Datos-2/BinaryListOperations.cpp
-
-CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dell/Escritorio/Proyecto-1-Datos-2/BinaryListOperations.cpp > CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.i
-
-CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dell/Escritorio/Proyecto-1-Datos-2/BinaryListOperations.cpp -o CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.s
-
 # Object files for target Proyecto_1
 Proyecto_1_OBJECTS = \
 "CMakeFiles/Proyecto_1.dir/main.cpp.o" \
-"CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o" \
-"CMakeFiles/Proyecto_1.dir/Double_List.cpp.o" \
-"CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o" \
-"CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o"
+"CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o"
 
 # External object files for target Proyecto_1
 Proyecto_1_EXTERNAL_OBJECTS =
 
 Proyecto_1: CMakeFiles/Proyecto_1.dir/main.cpp.o
-Proyecto_1: CMakeFiles/Proyecto_1.dir/Circular_List.cpp.o
-Proyecto_1: CMakeFiles/Proyecto_1.dir/Double_List.cpp.o
 Proyecto_1: CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o
-Proyecto_1: CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o
 Proyecto_1: CMakeFiles/Proyecto_1.dir/build.make
 Proyecto_1: CMakeFiles/Proyecto_1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Proyecto_1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Proyecto_1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Proyecto_1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
