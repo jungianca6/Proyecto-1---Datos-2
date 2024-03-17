@@ -233,15 +233,6 @@ ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
 
 //Value Computed by CMake
-Proyecto-1-Datos-2_BINARY_DIR:STATIC=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug
-
-//Value Computed by CMake
-Proyecto-1-Datos-2_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Proyecto-1-Datos-2_SOURCE_DIR:STATIC=/home/dell/Escritorio/Proyecto-1-Datos-2
-
-//Value Computed by CMake
 Proyecto_1_BINARY_DIR:STATIC=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug
 
 //Value Computed by CMake

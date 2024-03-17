@@ -1,0 +1,101 @@
+#include <iostream>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <arpa/inet.h>
+#include <string.h>
+#include <string>
+#include <thread>
+
+using namespace std;
+
+class Server{
+public:
+    int listening = socket(AF_INET, SOCK_STREAM, 0);
+    Server(){
+        sockaddr_in ServerSocket;
+        ServerSocket.sin_family = AF_INET;
+        ServerSocket.sin_port = htons(8080);
+        ServerSocket.sin_addr.s_addr = INADDR_ANY;
+        inet_pton(AF_INET, "0.0.0.0", &ServerSocket.sin_addr);
+
+        bind(listening, (sockaddr*)&ServerSocket, sizeof(ServerSocket));
+
+        // Tell Winsock the socket is for listening
+        listen(listening, SOMAXCONN);
+    };
+
+    void escuchar(){
+
+        // Wait for a connection
+        sockaddr_in client;
+        socklen_t clientSize = sizeof(client);
+
+        int clientSocket = accept(listening, (sockaddr*)&client, &clientSize);
+
+        char host[NI_MAXHOST];      // Client's remote name
+        char service[NI_MAXSERV];   // Service (i.e. port) the client is connect on
+
+        memset(host, 0, NI_MAXHOST); // same as memset(host, 0, NI_MAXHOST);
+        memset(service, 0, NI_MAXSERV);
+
+        if (getnameinfo((sockaddr*)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, 0) == 0)
+        {
+            cout << host << " connected on port " << service << endl;
+        }
+        else
+        {
+            inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
+            cout << host << " connected on port " << ntohs(client.sin_port) << endl;
+        }
+
+        // Close listening socket
+        close(listening);
+
+        // While loop: accept and echo message back to client
+        char buf[128];
+
+        while (true)
+        {
+            memset(buf, 0, 128);
+
+            // Espera a que el cliente envie datos
+            int bytesReceived = recv(clientSocket, buf, 128, 0);
+
+            if (bytesReceived == -1)
+            {
+                cerr << "Error in recv(). Quitting" << endl;
+                break;
+            }
+            //Si el cliente no envia datos entonces el socket se desconecta
+            if (bytesReceived == 0)
+            {
+                cout << "Client disconnected " << endl;
+                break;
+            }
+
+            string mensaje = string(buf, 0, 128 - 1);
+
+            cout << "Recibido:" << mensaje << endl;
+
+            // Echo message back to client
+            send(clientSocket, buf, bytesReceived + 1, 0);
+        }
+        // Close the socket
+        close(clientSocket);
+    }
+
+};
+
+int main()
+{
+    Server servidor;
+    servidor.escuchar();
+    return 0;
+}
+
+{"command": "Get-Playlist","edad": 30}
+{"command": "Vote-up","edad": 30}
+{"command": "Vote-down","edad": 30}
+{"command": "a","edad": 30}

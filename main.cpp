@@ -5,6 +5,15 @@ enum IDs{
     botonID =2,textoID=3
 };
 
+#include <string>
+#include "ServerSocket.h"
+#include "thread"
+#include "chrono"
+#include <stdio.h>
+#include "Circular List.cpp"
+#include "Double List.cpp"
+#include "BinaryListOperations.cpp"
+
 using namespace std;
 class MainFrame : public wxFrame {
 public:
@@ -18,14 +27,14 @@ public:
         wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa;
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
-                                        wxPoint(150, 50), wxSize(150, 60));
+                                  wxPoint(150, 50), wxSize(150, 60));
         paginacion->Bind(wxEVT_BUTTON, &MainFrame::OnButtonClick, this);
 
         comunitario = new wxButton(panel, botonID, "Playlist comunitario",
                                    wxPoint(150, 250), wxSize(250, 60));
 
         buscarCancion = new wxButton(panel, botonID, "Buscar",
-                                   wxPoint(950, 110), wxSize(125, 30));
+                                     wxPoint(950, 110), wxSize(125, 30));
 
         reproduccion = new wxButton(panel, botonID, "Reproducir",
                                     wxPoint(300, 600), wxSize(125, 40));
@@ -39,20 +48,20 @@ public:
 
         wxStaticText *cancion, *busqueda;
         cancion = new wxStaticText(panel, wxID_ANY, "Cancion",
-                                              wxPoint(550, 20),wxSize(90,35),
-                                              wxALIGN_CENTER);
+                                   wxPoint(550, 20),wxSize(90,35),
+                                   wxALIGN_CENTER);
         cancion->SetForegroundColour(wxColour(255,255,255));
         cancion->SetFont(GetFont().Scale(1.5));
         cancion->SetBackgroundColour(wxColour(0,0,0));
 
         busqueda = new wxStaticText(panel, wxID_ANY, "Busqueda",
-                                   wxPoint(950, 20),wxSize(105,35),wxALIGN_CENTER);
+                                    wxPoint(950, 20),wxSize(105,35),wxALIGN_CENTER);
         busqueda->SetForegroundColour(wxColour(255,255,255));
         busqueda->SetFont(GetFont().Scale(1.5));
         busqueda->SetBackgroundColour(wxColour(0,0,0));
 
         caja = new wxTextCtrl(panel, textoID, "",
-                                          wxPoint(500, 60), wxSize(200, -1));
+                              wxPoint(500, 60), wxSize(200, -1));
 
         wxTextCtrl *buscar= new wxTextCtrl(panel, wxID_ANY, "",
                                            wxPoint(900, 60), wxSize(200, -1));
@@ -89,5 +98,92 @@ public:
         return true;
     }
 };
-wxIMPLEMENT_APP(MyApp);
 
+
+int main(int argc, char* argv[]) {
+    wxApp::SetInstance(new MyApp());
+    wxEntryStart(argc, argv);
+    wxTheApp->OnInit();
+    wxTheApp->OnRun();
+    wxTheApp->OnExit();
+    wxEntryCleanup();
+    int portNumber = 12346; // Puerto en el que escuchará el servidor
+    ServerSocket servidor = ServerSocket(portNumber);
+    thread hilo(&ServerSocket::acceptConnections, &servidor);
+
+    // Datos que deseas escribir en el archivo
+    Cancion cancion = {"Creo-B", "Mario", 300,3};
+
+    // Nombre del archivo binario en el que deseas escribir
+    string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
+
+    //add_to_end(cancion, filename);
+    Cancion busqueda = search_by_index(3, filename);
+
+    // Array para almacenar todas las personas del archivo, es static para que permanezca
+    Cancion canciones[10];
+    Cancion* lista = get_songs(filename, canciones);
+
+    // Mostrar los datos de todas las personas almacenadas
+    for (int i = 0; i < 10; ++i) {
+        cout << "Persona " << i+1 << ":" << endl;
+        cout << "Nombre: " << lista[i].nombre << endl;
+        cout << "Edad: " << lista[i].artista << endl;
+        cout << "Altura: " << lista[i].id << endl;
+        cout << "Altura: " << lista[i].duracion << endl;
+        cout << endl;
+    }
+    /*
+int opcion_menu=0;
+string nombreCancion;
+string nodoBuscado;
+do
+{
+    cout << "\n|---------------------------------------|";
+    cout << "\n|        ° LISTA CIRCULAR DOBLE °       |";
+    cout << "\n|--------------------|------------------|";
+    cout << "\n| 1. Insertar final  | 5. Print         |";
+    cout << "\n| 2. Insertar inicio | 6. Array         |";
+    cout << "\n| 3. Buscar          |                  |";
+    cout << "\n| 4. Eliminar        |                  |";
+    cout << "\n|--------------------|------------------|";
+    cout << "\n\n Escoja una Opcion: ";
+    cin >> opcion_menu;
+    switch(opcion_menu){
+        case 1:
+            cout << "\n Inserta un nodo en la lista (ultimo): ";
+            cin >> nombreCancion;
+            insert_lastdouble(nombreCancion);
+            break;
+        case 2:
+            cout << "\n Inserta un nodo en la lista (primero): ";
+            cin >> nombreCancion;
+            insert_firstdouble(nombreCancion);
+            break;
+        case 3:
+            cout << "\n Inserta el nodo que quieras buscar: ";
+            cin >> nodoBuscado;
+            buscarNododouble(nodoBuscado);
+            break;
+        case 4:
+            cout << "\n Inserta el nodo que quieras eliminar: ";
+            cin >> nodoBuscado;
+            eliminarNododouble(nodoBuscado);
+            break;
+        case 5:
+            cout << "\n Lista printeada:\n";
+            printListadouble();
+            break;
+        case 6:
+            cout << "\n Convertido en array:\n";
+            convertArraydouble();
+            break;
+        default:
+            cout << "\n Opcion no valida\n";
+            break;
+    }
+} while (opcion_menu != 6);
+*/
+    hilo.join();
+    return 0;
+}

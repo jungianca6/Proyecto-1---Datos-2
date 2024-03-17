@@ -129,6 +129,30 @@ Proyecto_1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/build
 .PHONY : Proyecto_1/fast
 
+BinaryListOperations.o: BinaryListOperations.cpp.o
+.PHONY : BinaryListOperations.o
+
+# target to build an object file
+BinaryListOperations.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.o
+.PHONY : BinaryListOperations.cpp.o
+
+BinaryListOperations.i: BinaryListOperations.cpp.i
+.PHONY : BinaryListOperations.i
+
+# target to preprocess a source file
+BinaryListOperations.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.i
+.PHONY : BinaryListOperations.cpp.i
+
+BinaryListOperations.s: BinaryListOperations.cpp.s
+.PHONY : BinaryListOperations.s
+
+# target to generate assembly for a file
+BinaryListOperations.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/BinaryListOperations.cpp.s
+.PHONY : BinaryListOperations.cpp.s
+
 Circular_List.o: Circular_List.cpp.o
 .PHONY : Circular_List.o
 
@@ -177,6 +201,30 @@ Double_List.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Double_List.cpp.s
 .PHONY : Double_List.cpp.s
 
+ServerSocket.o: ServerSocket.cpp.o
+.PHONY : ServerSocket.o
+
+# target to build an object file
+ServerSocket.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o
+.PHONY : ServerSocket.cpp.o
+
+ServerSocket.i: ServerSocket.cpp.i
+.PHONY : ServerSocket.i
+
+# target to preprocess a source file
+ServerSocket.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.i
+.PHONY : ServerSocket.cpp.i
+
+ServerSocket.s: ServerSocket.cpp.s
+.PHONY : ServerSocket.s
+
+# target to generate assembly for a file
+ServerSocket.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.s
+.PHONY : ServerSocket.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -210,12 +258,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Proyecto_1"
+	@echo "... BinaryListOperations.o"
+	@echo "... BinaryListOperations.i"
+	@echo "... BinaryListOperations.s"
 	@echo "... Circular_List.o"
 	@echo "... Circular_List.i"
 	@echo "... Circular_List.s"
 	@echo "... Double_List.o"
 	@echo "... Double_List.i"
 	@echo "... Double_List.s"
+	@echo "... ServerSocket.o"
+	@echo "... ServerSocket.i"
+	@echo "... ServerSocket.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

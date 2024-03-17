@@ -1,6 +1,8 @@
-CMakeFiles/Proyecto_1.dir/main.cpp.o: \
- /home/dell/Escritorio/Proyecto-1-Datos-2/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
+CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o: \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp \
+ /usr/include/stdc-predef.h \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.h \
+ /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -145,227 +147,33 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc /usr/include/wx-3.0/wx/wx.h \
- /usr/include/wx-3.0/wx/defs.h /usr/include/wx-3.0/wx/platform.h \
- /usr/include/wx-3.0/wx/compiler.h \
- /usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0/wx/setup.h \
- /usr/include/wx-3.0/wx/chkconf.h /usr/include/wx-3.0/wx/gtk/chkconf.h \
- /usr/include/wx-3.0/wx/unix/chkconf.h /usr/include/wx-3.0/wx/version.h \
- /usr/include/wx-3.0/wx/cpp.h /usr/include/wx-3.0/wx/dlimpexp.h \
- /usr/include/wx-3.0/wx/debug.h /usr/include/assert.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
- /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
- /usr/include/x86_64-linux-gnu/bits/local_lim.h \
- /usr/include/linux/limits.h \
- /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
- /usr/include/wx-3.0/wx/chartype.h /usr/include/wx-3.0/wx/windowid.h \
- /usr/include/wx-3.0/wx/features.h /usr/include/wx-3.0/wx/object.h \
- /usr/include/wx-3.0/wx/memory.h /usr/include/wx-3.0/wx/string.h \
- /usr/include/string.h /usr/include/strings.h \
- /usr/include/c++/11/stdlib.h /usr/include/wx-3.0/wx/wxcrtbase.h \
- /usr/include/wx-3.0/wx/strvararg.h /usr/include/wx-3.0/wx/strconv.h \
- /usr/include/wx-3.0/wx/buffer.h /usr/include/wx-3.0/wx/fontenc.h \
- /usr/include/wx-3.0/wx/unichar.h /usr/include/wx-3.0/wx/stringimpl.h \
- /usr/include/wx-3.0/wx/beforestd.h /usr/include/wx-3.0/wx/afterstd.h \
- /usr/include/wx-3.0/wx/stringops.h /usr/include/wx-3.0/wx/iosfwrap.h \
- /usr/include/wx-3.0/wx/crt.h /usr/include/wx-3.0/wx/wxcrt.h \
- /usr/include/wx-3.0/wx/wxcrtvararg.h /usr/include/wx-3.0/wx/msgout.h \
- /usr/include/wx-3.0/wx/xti.h /usr/include/wx-3.0/wx/rtti.h \
- /usr/include/wx-3.0/wx/flags.h /usr/include/wx-3.0/wx/xti2.h \
- /usr/include/wx-3.0/wx/dynarray.h /usr/include/wx-3.0/wx/list.h \
- /usr/include/wx-3.0/wx/vector.h /usr/include/wx-3.0/wx/scopeguard.h \
- /usr/include/wx-3.0/wx/except.h /usr/include/wx-3.0/wx/meta/movable.h \
- /usr/include/wx-3.0/wx/meta/pod.h /usr/include/wx-3.0/wx/meta/if.h \
- /usr/include/wx-3.0/wx/hash.h /usr/include/wx-3.0/wx/hashmap.h \
- /usr/include/wx-3.0/wx/arrstr.h /usr/include/c++/11/iterator \
- /usr/include/c++/11/bits/stream_iterator.h /usr/include/wx-3.0/wx/intl.h \
- /usr/include/wx-3.0/wx/translation.h /usr/include/wx-3.0/wx/language.h \
- /usr/include/wx-3.0/wx/scopedptr.h \
- /usr/include/wx-3.0/wx/checkeddelete.h /usr/include/wx-3.0/wx/log.h \
- /usr/include/wx-3.0/wx/thread.h /usr/include/wx-3.0/wx/generic/logg.h \
- /usr/include/wx-3.0/wx/event.h /usr/include/wx-3.0/wx/clntdata.h \
- /usr/include/wx-3.0/wx/gdicmn.h /usr/include/wx-3.0/wx/math.h \
- /usr/include/c++/11/math.h /usr/include/c++/11/cmath /usr/include/math.h \
- /usr/include/x86_64-linux-gnu/bits/math-vector.h \
- /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
- /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
- /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
- /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
- /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/11/bits/specfun.h /usr/include/c++/11/limits \
- /usr/include/c++/11/tr1/gamma.tcc \
- /usr/include/c++/11/tr1/special_function_util.h \
- /usr/include/c++/11/tr1/bessel_function.tcc \
- /usr/include/c++/11/tr1/beta_function.tcc \
- /usr/include/c++/11/tr1/ell_integral.tcc \
- /usr/include/c++/11/tr1/exp_integral.tcc \
- /usr/include/c++/11/tr1/hypergeometric.tcc \
- /usr/include/c++/11/tr1/legendre_function.tcc \
- /usr/include/c++/11/tr1/modified_bessel_func.tcc \
- /usr/include/c++/11/tr1/poly_hermite.tcc \
- /usr/include/c++/11/tr1/poly_laguerre.tcc \
- /usr/include/c++/11/tr1/riemann_zeta.tcc /usr/include/wx-3.0/wx/cursor.h \
- /usr/include/wx-3.0/wx/gtk/cursor.h /usr/include/wx-3.0/wx/gdiobj.h \
- /usr/include/wx-3.0/wx/utils.h /usr/include/wx-3.0/wx/filefn.h \
- /usr/include/x86_64-linux-gnu/sys/stat.h \
- /usr/include/x86_64-linux-gnu/bits/stat.h \
- /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
- /usr/include/x86_64-linux-gnu/bits/statx.h /usr/include/linux/stat.h \
- /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
- /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
- /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
- /usr/include/asm-generic/bitsperlong.h /usr/include/linux/posix_types.h \
+ /usr/include/c++/11/bits/istream.tcc \
+ /usr/include/x86_64-linux-gnu/sys/socket.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
+ /usr/include/x86_64-linux-gnu/bits/socket.h \
+ /usr/include/x86_64-linux-gnu/bits/socket_type.h \
+ /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
+ /usr/include/x86_64-linux-gnu/asm/socket.h \
+ /usr/include/asm-generic/socket.h /usr/include/linux/posix_types.h \
  /usr/include/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
  /usr/include/asm-generic/posix_types.h \
- /usr/include/x86_64-linux-gnu/bits/statx-generic.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_statx.h \
+ /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
+ /usr/include/asm-generic/bitsperlong.h \
+ /usr/include/x86_64-linux-gnu/asm/sockios.h \
+ /usr/include/asm-generic/sockios.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
+ /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h \
  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
- /usr/include/linux/close_range.h /usr/include/dirent.h \
- /usr/include/x86_64-linux-gnu/bits/dirent.h \
- /usr/include/x86_64-linux-gnu/bits/dirent_ext.h /usr/include/fcntl.h \
- /usr/include/x86_64-linux-gnu/bits/fcntl.h \
- /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
- /usr/include/linux/falloc.h /usr/include/wx-3.0/wx/versioninfo.h \
- /usr/include/wx-3.0/wx/meta/implicitconversion.h \
- /usr/include/wx-3.0/wx/mousestate.h /usr/include/wx-3.0/wx/kbdstate.h \
- /usr/include/wx-3.0/wx/longlong.h /usr/include/wx-3.0/wx/platinfo.h \
- /usr/include/wx-3.0/wx/tracker.h /usr/include/wx-3.0/wx/typeinfo.h \
- /usr/include/wx-3.0/wx/any.h /usr/include/wx-3.0/wx/datetime.h \
- /usr/include/wx-3.0/wx/anystr.h /usr/include/wx-3.0/wx/variant.h \
- /usr/include/wx-3.0/wx/meta/convertible.h \
- /usr/include/wx-3.0/wx/meta/removeref.h /usr/include/wx-3.0/wx/app.h \
- /usr/include/wx-3.0/wx/eventfilter.h /usr/include/wx-3.0/wx/build.h \
- /usr/include/wx-3.0/wx/cmdargs.h /usr/include/wx-3.0/wx/init.h \
- /usr/include/wx-3.0/wx/unix/app.h /usr/include/signal.h \
- /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
- /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
- /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h \
- /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
- /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h \
- /usr/include/x86_64-linux-gnu/bits/sigaction.h \
- /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
- /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
- /usr/include/x86_64-linux-gnu/sys/ucontext.h \
- /usr/include/x86_64-linux-gnu/bits/sigstack.h \
- /usr/include/x86_64-linux-gnu/bits/sigstksz.h \
- /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
- /usr/include/x86_64-linux-gnu/bits/sigthread.h \
- /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
- /usr/include/wx-3.0/wx/gtk/app.h /usr/include/wx-3.0/wx/stream.h \
- /usr/include/wx-3.0/wx/stopwatch.h /usr/include/wx-3.0/wx/time.h \
- /usr/include/wx-3.0/wx/timer.h /usr/include/wx-3.0/wx/module.h \
- /usr/include/wx-3.0/wx/window.h /usr/include/wx-3.0/wx/font.h \
- /usr/include/wx-3.0/wx/gtk/font.h /usr/include/wx-3.0/wx/colour.h \
- /usr/include/wx-3.0/wx/gtk/colour.h /usr/include/wx-3.0/wx/region.h \
- /usr/include/wx-3.0/wx/gtk/region.h /usr/include/wx-3.0/wx/validate.h \
- /usr/include/wx-3.0/wx/palette.h \
- /usr/include/wx-3.0/wx/generic/paletteg.h /usr/include/wx-3.0/wx/accel.h \
- /usr/include/wx-3.0/wx/gtk/accel.h \
- /usr/include/wx-3.0/wx/generic/accel.h \
- /usr/include/wx-3.0/wx/gtk/window.h /usr/include/wx-3.0/wx/containr.h \
- /usr/include/wx-3.0/wx/panel.h /usr/include/wx-3.0/wx/generic/panelg.h \
- /usr/include/wx-3.0/wx/bitmap.h /usr/include/wx-3.0/wx/image.h \
- /usr/include/wx-3.0/wx/imagbmp.h /usr/include/wx-3.0/wx/imagpng.h \
- /usr/include/wx-3.0/wx/imaggif.h /usr/include/wx-3.0/wx/imagpcx.h \
- /usr/include/wx-3.0/wx/imagjpeg.h /usr/include/wx-3.0/wx/imagtga.h \
- /usr/include/wx-3.0/wx/imagtiff.h /usr/include/wx-3.0/wx/imagpnm.h \
- /usr/include/wx-3.0/wx/imagxpm.h /usr/include/wx-3.0/wx/imagiff.h \
- /usr/include/wx-3.0/wx/gtk/bitmap.h /usr/include/wx-3.0/wx/toplevel.h \
- /usr/include/wx-3.0/wx/nonownedwnd.h \
- /usr/include/wx-3.0/wx/gtk/nonownedwnd.h \
- /usr/include/wx-3.0/wx/iconbndl.h /usr/include/wx-3.0/wx/icon.h \
- /usr/include/wx-3.0/wx/iconloc.h /usr/include/wx-3.0/wx/generic/icon.h \
- /usr/include/wx-3.0/wx/weakref.h /usr/include/wx-3.0/wx/meta/int2type.h \
- /usr/include/wx-3.0/wx/gtk/toplevel.h /usr/include/wx-3.0/wx/frame.h \
- /usr/include/wx-3.0/wx/statusbr.h /usr/include/wx-3.0/wx/control.h \
- /usr/include/wx-3.0/wx/gtk/control.h \
- /usr/include/wx-3.0/wx/generic/statusbr.h /usr/include/wx-3.0/wx/pen.h \
- /usr/include/wx-3.0/wx/gtk/pen.h /usr/include/wx-3.0/wx/gtk/frame.h \
- /usr/include/wx-3.0/wx/dc.h /usr/include/wx-3.0/wx/brush.h \
- /usr/include/wx-3.0/wx/gtk/brush.h \
- /usr/include/wx-3.0/wx/affinematrix2d.h \
- /usr/include/wx-3.0/wx/affinematrix2dbase.h \
- /usr/include/wx-3.0/wx/geometry.h /usr/include/wx-3.0/wx/dcclient.h \
- /usr/include/wx-3.0/wx/dcmemory.h /usr/include/wx-3.0/wx/dcprint.h \
- /usr/include/wx-3.0/wx/dcscreen.h /usr/include/wx-3.0/wx/button.h \
- /usr/include/wx-3.0/wx/anybutton.h \
- /usr/include/wx-3.0/wx/gtk/anybutton.h \
- /usr/include/wx-3.0/wx/gtk/button.h /usr/include/wx-3.0/wx/menuitem.h \
- /usr/include/wx-3.0/wx/gtk/menuitem.h /usr/include/wx-3.0/wx/menu.h \
- /usr/include/wx-3.0/wx/gtk/menu.h /usr/include/wx-3.0/wx/dialog.h \
- /usr/include/wx-3.0/wx/sharedptr.h /usr/include/wx-3.0/wx/atomic.h \
- /usr/include/wx-3.0/wx/gtk/dialog.h /usr/include/wx-3.0/wx/settings.h \
- /usr/include/wx-3.0/wx/msgdlg.h /usr/include/wx-3.0/wx/stockitem.h \
- /usr/include/wx-3.0/wx/generic/msgdlgg.h \
- /usr/include/wx-3.0/wx/gtk/msgdlg.h /usr/include/wx-3.0/wx/dataobj.h \
- /usr/include/wx-3.0/wx/gtk/dataform.h \
- /usr/include/wx-3.0/wx/gtk/dataobj.h \
- /usr/include/wx-3.0/wx/gtk/dataobj2.h /usr/include/wx-3.0/wx/ctrlsub.h \
- /usr/include/wx-3.0/wx/bmpbuttn.h /usr/include/wx-3.0/wx/gtk/bmpbuttn.h \
- /usr/include/wx-3.0/wx/checkbox.h /usr/include/wx-3.0/wx/gtk/checkbox.h \
- /usr/include/wx-3.0/wx/checklst.h /usr/include/wx-3.0/wx/listbox.h \
- /usr/include/wx-3.0/wx/gtk/listbox.h \
- /usr/include/wx-3.0/wx/gtk/checklst.h /usr/include/wx-3.0/wx/choice.h \
- /usr/include/wx-3.0/wx/gtk/choice.h /usr/include/wx-3.0/wx/scrolbar.h \
- /usr/include/wx-3.0/wx/gtk/scrolbar.h /usr/include/wx-3.0/wx/stattext.h \
- /usr/include/wx-3.0/wx/gtk/stattext.h /usr/include/wx-3.0/wx/statbmp.h \
- /usr/include/wx-3.0/wx/gtk/statbmp.h /usr/include/wx-3.0/wx/statbox.h \
- /usr/include/wx-3.0/wx/gtk/statbox.h /usr/include/wx-3.0/wx/radiobox.h \
- /usr/include/wx-3.0/wx/gtk/radiobox.h /usr/include/wx-3.0/wx/radiobut.h \
- /usr/include/wx-3.0/wx/gtk/radiobut.h /usr/include/wx-3.0/wx/textctrl.h \
- /usr/include/wx-3.0/wx/textentry.h \
- /usr/include/wx-3.0/wx/gtk/textentry.h /usr/include/wx-3.0/wx/ioswrap.h \
- /usr/include/wx-3.0/wx/gtk/textctrl.h /usr/include/wx-3.0/wx/slider.h \
- /usr/include/wx-3.0/wx/gtk/slider.h /usr/include/wx-3.0/wx/gauge.h \
- /usr/include/wx-3.0/wx/gtk/gauge.h /usr/include/wx-3.0/wx/scrolwin.h \
- /usr/include/wx-3.0/wx/gtk/scrolwin.h /usr/include/wx-3.0/wx/dirdlg.h \
- /usr/include/wx-3.0/wx/gtk/dirdlg.h /usr/include/wx-3.0/wx/toolbar.h \
- /usr/include/wx-3.0/wx/tbarbase.h /usr/include/wx-3.0/wx/gtk/toolbar.h \
- /usr/include/wx-3.0/wx/combobox.h /usr/include/wx-3.0/wx/gtk/combobox.h \
- /usr/include/wx-3.0/wx/layout.h /usr/include/wx-3.0/wx/sizer.h \
- /usr/include/wx-3.0/wx/choicdlg.h \
- /usr/include/wx-3.0/wx/generic/choicdgg.h \
- /usr/include/wx-3.0/wx/textdlg.h \
- /usr/include/wx-3.0/wx/generic/textdlgg.h \
- /usr/include/wx-3.0/wx/valtext.h /usr/include/wx-3.0/wx/filedlg.h \
- /usr/include/wx-3.0/wx/gtk/filedlg.h \
- /usr/include/wx-3.0/wx/gtk/filectrl.h /usr/include/wx-3.0/wx/filectrl.h \
- /usr/include/wx-3.0/wx/mdi.h /usr/include/wx-3.0/wx/gtk/mdi.h \
- /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.h \
- /usr/include/x86_64-linux-gnu/sys/socket.h \
- /usr/include/x86_64-linux-gnu/bits/socket.h \
- /usr/include/x86_64-linux-gnu/bits/socket_type.h \
- /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
- /usr/include/x86_64-linux-gnu/asm/socket.h \
- /usr/include/asm-generic/socket.h \
- /usr/include/x86_64-linux-gnu/asm/sockios.h \
- /usr/include/asm-generic/sockios.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h \
- /usr/include/nlohmann/json.hpp /usr/include/c++/11/algorithm \
- /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
+ /usr/include/linux/close_range.h /usr/include/nlohmann/json.hpp \
+ /usr/include/c++/11/algorithm /usr/include/c++/11/utility \
+ /usr/include/c++/11/bits/stl_relops.h \
  /usr/include/c++/11/bits/stl_algo.h \
  /usr/include/c++/11/bits/algorithmfwd.h \
  /usr/include/c++/11/bits/stl_heap.h \
@@ -389,6 +197,7 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
  /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/cstddef \
+ /usr/include/c++/11/iterator /usr/include/c++/11/bits/stream_iterator.h \
  /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
@@ -410,6 +219,29 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/c++/11/bits/forward_list.tcc /usr/include/c++/11/map \
  /usr/include/c++/11/bits/stl_tree.h /usr/include/c++/11/bits/stl_map.h \
  /usr/include/c++/11/bits/stl_multimap.h /usr/include/c++/11/valarray \
+ /usr/include/c++/11/cmath /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+ /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+ /usr/include/c++/11/bits/specfun.h /usr/include/c++/11/limits \
+ /usr/include/c++/11/tr1/gamma.tcc \
+ /usr/include/c++/11/tr1/special_function_util.h \
+ /usr/include/c++/11/tr1/bessel_function.tcc \
+ /usr/include/c++/11/tr1/beta_function.tcc \
+ /usr/include/c++/11/tr1/ell_integral.tcc \
+ /usr/include/c++/11/tr1/exp_integral.tcc \
+ /usr/include/c++/11/tr1/hypergeometric.tcc \
+ /usr/include/c++/11/tr1/legendre_function.tcc \
+ /usr/include/c++/11/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/11/tr1/poly_hermite.tcc \
+ /usr/include/c++/11/tr1/poly_laguerre.tcc \
+ /usr/include/c++/11/tr1/riemann_zeta.tcc \
  /usr/include/c++/11/bits/valarray_array.h \
  /usr/include/c++/11/bits/valarray_array.tcc \
  /usr/include/c++/11/bits/valarray_before.h \
@@ -426,7 +258,7 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/nlohmann/thirdparty/hedley/hedley.hpp \
  /usr/include/nlohmann/detail/meta/detected.hpp \
  /usr/include/nlohmann/detail/meta/void_t.hpp /usr/include/c++/11/cassert \
- /usr/include/nlohmann/detail/input/position_t.hpp \
+ /usr/include/assert.h /usr/include/nlohmann/detail/input/position_t.hpp \
  /usr/include/nlohmann/detail/meta/cpp_future.hpp \
  /usr/include/nlohmann/detail/meta/identity_tag.hpp \
  /usr/include/nlohmann/detail/meta/type_traits.hpp \
@@ -452,7 +284,7 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/nlohmann/byte_container_with_subtype.hpp \
  /usr/include/nlohmann/detail/hash.hpp \
  /usr/include/nlohmann/detail/input/binary_reader.hpp \
- /usr/include/c++/11/cstring \
+ /usr/include/c++/11/cstring /usr/include/string.h /usr/include/strings.h \
  /usr/include/nlohmann/detail/input/input_adapters.hpp \
  /usr/include/nlohmann/detail/input/json_sax.hpp \
  /usr/include/nlohmann/detail/input/lexer.hpp \
@@ -470,13 +302,4 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/nlohmann/detail/conversions/to_chars.hpp \
  /usr/include/nlohmann/ordered_map.hpp \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
- /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
- /usr/include/c++/11/thread /usr/include/c++/11/bits/std_thread.h \
- /usr/include/c++/11/bits/this_thread_sleep.h \
- /home/dell/Escritorio/Proyecto-1-Datos-2/Circular\ List.cpp \
- /home/dell/Escritorio/Proyecto-1-Datos-2/Double\ List.cpp \
- /home/dell/Escritorio/Proyecto-1-Datos-2/BinaryListOperations.cpp \
- /usr/include/c++/11/fstream \
- /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
- /usr/include/c++/11/bits/fstream.tcc
+ /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp

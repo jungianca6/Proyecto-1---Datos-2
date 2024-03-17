@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -23,10 +24,10 @@ void printListadouble(){
 
 }
 
-void insert_lastdouble() {
+void insert_lastdouble(string nombreCancion) {
     Node *nuevo = new Node();
-    cout << " Ingrese el nombre de la canción: ";
-    cin >> nuevo -> nombreCancion;
+    nuevo -> nombreCancion = nombreCancion;
+    cout << "Dato ingresado (ultimo): " << nombreCancion << endl;
 
     if (primerod == NULL) {
         primerod = nuevo;
@@ -39,10 +40,10 @@ void insert_lastdouble() {
     }
 }
 
-void insert_firstdouble(){
+void insert_firstdouble(string nombreCancion) {
     Node *nuevo = new Node();
-    cout << " Ingrese el dato que quiere introducir: ";
-    cin >> nuevo->nombreCancion;
+    nuevo -> nombreCancion = nombreCancion;
+    cout << "Dato ingresado (primero): " << nombreCancion << endl;
 
     if (primerod == NULL){
         primerod = nuevo;
@@ -54,13 +55,12 @@ void insert_firstdouble(){
     }
 }
 
-void buscarNododouble(){
-    Node *actual = new Node();
-    actual = primerod;
+void buscarNododouble(string nodoBuscado){
+    Node *actual = primerod;
     bool encontrado = false;
-    string nodoBuscado;
-    cout << "Ingrese el dato que quiere" <<endl;
-    cin >> nodoBuscado;
+    cout << "Dato buscado: " << nodoBuscado << endl;
+
+
 
     if(primerod!=NULL){
         do{
@@ -80,15 +80,14 @@ void buscarNododouble(){
 
 }
 
-void eliminarNododouble(){
+void eliminarNododouble(string nodoBuscado){
     Node *actual = new Node();
     actual = primerod;
     Node *anterior = new Node();
     anterior = NULL;
     bool encontrado = false;
-    string nodoBuscado;
-    cout << "Ingrese el dato que quiere eliminar: " <<endl;
-    cin >> nodoBuscado;
+    cout << "Dato eliminado: " << endl;
+
     if(primerod!=NULL){
         do{
             if(actual->nombreCancion == nodoBuscado){
@@ -113,5 +112,31 @@ void eliminarNododouble(){
 
     } else {
         cout << "nel";
+    }
+}
+
+int findlengthdouble(){
+    Node *actual = primerod;
+    int cnt = 0;
+    while (actual != NULL) {
+        cnt++;
+        actual = actual->siguiente;
+    }
+    return cnt;
+}
+
+void convertArraydouble() {
+    int len = findlengthdouble();
+    string arr[len];
+    int index = 0;
+    Node *actual = primerod;
+
+    while (actual != NULL) {
+        arr[index++] = actual->nombreCancion;
+        actual = actual->siguiente;
+    }
+    // print array
+    for (int i = 0; i < len; i++){
+        cout << arr[i] << " ";
     }
 }
