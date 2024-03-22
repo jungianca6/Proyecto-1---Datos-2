@@ -1,0 +1,22 @@
+
+
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_ASM_COMPILER
+    CMAKE_ASM_FLAGS
+    OpenGL_GL_PREFERENCE
+
+
+/home/dell/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fltk-sys-1.4.26/cfltk/src/cfl_prefs.cpp: In function ‘Fl_Preferences* Fl_Preferences_from_path(const char*, const char*, const char*)’:
+/home/dell/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fltk-sys-1.4.26/cfltk/src/cfl_prefs.cpp:25:56: warning: ‘Fl_Preferences::Fl_Preferences(const char*, const char*, const char*)’ is deprecated: in 1.4.0 - use Fl_Preferences(path, vendor, application, flags) instead [-Wdeprecated-declarations]
+   25 |     return new Fl_Preferences(path, vendor, application);
+      |                                                        ^
+In file included from /home/dell/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fltk-sys-1.4.26/cfltk/fltk/FL/Fl_Preferences.H:25,
+                 from /home/dell/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fltk-sys-1.4.26/cfltk/src/cfl_prefs.cpp:3:
+/home/dell/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fltk-sys-1.4.26/cfltk/fltk/FL/Fl_Preferences.H:206:17: note: declared here
+  206 |                 Fl_Preferences( const char *path, const char *vendor, const char *application ) );
+      |                 ^~~~~~~~~~~~~~
+/home/dell/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fltk-sys-1.4.26/cfltk/fltk/FL/fl_attr.h:123:54: note: in definition of macro ‘FL_DEPRECATED’
+  123 | #define FL_DEPRECATED(msg, func) [[deprecated(msg)]] func
+      |                                                      ^~~~
