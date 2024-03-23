@@ -28,10 +28,11 @@ public:
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
                                   wxPoint(150, 50), wxSize(150, 60));
-        paginacion->Bind(wxEVT_BUTTON, &MainFrame::OnButtonClick, this);
+        paginacion->Bind(wxEVT_BUTTON, &MainFrame::PaginacionActionButton, this);
 
         comunitario = new wxButton(panel, botonID, "Playlist comunitario",
                                    wxPoint(150, 250), wxSize(250, 60));
+        comunitario->Bind(wxEVT_BUTTON, &MainFrame::ComunitarioActionButton, this);
 
         buscarCancion = new wxButton(panel, botonID, "Buscar",
                                      wxPoint(950, 110), wxSize(125, 30));
@@ -78,9 +79,25 @@ public:
     }
 
 private:
-    void OnButtonClick(wxCommandEvent &event) {
+    void PaginacionActionButton(wxCommandEvent &event) {
         caja->SetValue("Hola");
         cout<<"Presionado"<<endl;
+    }
+    void ComunitarioActionButton(wxCommandEvent &event) {
+        // Crear un hilo que ejecute la función en segundo plano
+        thread workerThread(&MainFrame::activeServer, this);
+
+        // Hacer que el hilo sea independiente del hilo principal (no bloquear)
+        workerThread.detach();
+    }
+
+    void activeServer(){
+        int portNumber = 12346; // Puerto en el que escuchará el servidor
+        ServerSocket servidor = ServerSocket(portNumber);
+        thread hilo(&ServerSocket::acceptConnections, &servidor);
+        cout << "Servidor en escucha" << endl;
+        hilo.join();
+
     }
     wxTextCtrl *caja;
     //wxDECLARE_EVENT_TABLE();
@@ -107,9 +124,7 @@ int main(int argc, char* argv[]) {
     wxTheApp->OnRun();
     wxTheApp->OnExit();
     wxEntryCleanup();
-    int portNumber = 12346; // Puerto en el que escuchará el servidor
-    ServerSocket servidor = ServerSocket(portNumber);
-    thread hilo(&ServerSocket::acceptConnections, &servidor);
+
 
     // Datos que deseas escribir en el archivo
     Cancion cancion = {"Creo-B", "Mario", 300,3};
@@ -133,57 +148,5 @@ int main(int argc, char* argv[]) {
         cout << "Altura: " << lista[i].duracion << endl;
         cout << endl;
     }
-    /*
-int opcion_menu=0;
-string nombreCancion;
-string nodoBuscado;
-do
-{
-    cout << "\n|---------------------------------------|";
-    cout << "\n|        ° LISTA CIRCULAR DOBLE °       |";
-    cout << "\n|--------------------|------------------|";
-    cout << "\n| 1. Insertar final  | 5. Print         |";
-    cout << "\n| 2. Insertar inicio | 6. Array         |";
-    cout << "\n| 3. Buscar          |                  |";
-    cout << "\n| 4. Eliminar        |                  |";
-    cout << "\n|--------------------|------------------|";
-    cout << "\n\n Escoja una Opcion: ";
-    cin >> opcion_menu;
-    switch(opcion_menu){
-        case 1:
-            cout << "\n Inserta un nodo en la lista (ultimo): ";
-            cin >> nombreCancion;
-            insert_lastdouble(nombreCancion);
-            break;
-        case 2:
-            cout << "\n Inserta un nodo en la lista (primero): ";
-            cin >> nombreCancion;
-            insert_firstdouble(nombreCancion);
-            break;
-        case 3:
-            cout << "\n Inserta el nodo que quieras buscar: ";
-            cin >> nodoBuscado;
-            buscarNododouble(nodoBuscado);
-            break;
-        case 4:
-            cout << "\n Inserta el nodo que quieras eliminar: ";
-            cin >> nodoBuscado;
-            eliminarNododouble(nodoBuscado);
-            break;
-        case 5:
-            cout << "\n Lista printeada:\n";
-            printListadouble();
-            break;
-        case 6:
-            cout << "\n Convertido en array:\n";
-            convertArraydouble();
-            break;
-        default:
-            cout << "\n Opcion no valida\n";
-            break;
-    }
-} while (opcion_menu != 6);
-*/
-    hilo.join();
     return 0;
 }

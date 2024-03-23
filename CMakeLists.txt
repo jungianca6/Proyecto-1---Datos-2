@@ -1,9 +1,9 @@
 set(CMAKE_CXX_STANDARD 17)
 cmake_minimum_required(VERSION 3.27)
 project(Proyecto_1)
+include_directories(include)
 
 set(CMAKE_CXX_STANDARD 17 /)
-
 add_executable(Proyecto_1 main.cpp
         ServerSocket.cpp
 )
