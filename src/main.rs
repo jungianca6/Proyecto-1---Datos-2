@@ -77,14 +77,19 @@ fn vote_song(id: &str, command: &str){
         mem::drop(client);
 }
 
-fn request_songs(){
-    let delay = 1;
-    println!("Llego aqui");
-    //Crea una instancia del objeto cliente por la direccion especificada
+fn request_songs() {
     let hilo = thread::spawn(move || request_song_list());
-    let hilo2 = thread::spawn(move || vote_song("123456","Vote-down"));
     hilo.join();
-    hilo2.join();
+}
+
+fn vote_up(){
+    let vote_up_thread = thread::spawn(move || vote_song("123456","Vote-up"));
+    vote_up_thread.join();
+}
+
+fn vote_down(){
+    let vote_down_thread = thread::spawn(move || vote_song("123456","Vote-down"));
+    vote_down_thread.join();
 }
 
 fn main() {
@@ -93,16 +98,29 @@ fn main() {
     theme.apply();
     let mut win = window::Window::default().with_size(600, 400)
         .with_label("prueba");
-    let mut btn = button::Button::new(160, 200, 80, 40, "Presione");
+    let mut request_songs_button = button::Button::new(160, 200, 80, 40, "Canciones");
+    let mut vote_up_button = button::Button::new(250, 200, 80, 40, "Vote-up");
+    let mut vote_down_button = button::Button::new(340, 200, 80, 40, "Vote-down");
     let mut text = input::Input::new(160, 100, 200, 50, "");
-    btn.set_color(btn.color().lighter());
+    request_songs_button.set_color(request_songs_button.color().lighter());
+    vote_up_button.set_color(request_songs_button.color().lighter());
+    vote_down_button.set_color(request_songs_button.color().lighter());
+
     win.end();
     win.show();
 
-    btn.set_callback(move |b| {
-        request_songs();
-        text.set_value("Peticion enviada");
+    vote_down_button.set_callback(move |_| {
+        vote_down();
     });
+
+    vote_up_button.set_callback(move |_| {
+        vote_up();
+    });
+
+    request_songs_button.set_callback(move |_| {
+        request_songs();
+    });
+
 
     a.run().unwrap();
 }
