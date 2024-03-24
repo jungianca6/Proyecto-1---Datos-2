@@ -47,10 +47,8 @@ impl ClientSocket{
 }
 
 //Funcion que pide al servidor la lista de canciones
-fn request_song_list(delay: u64){
-    while true{
+fn request_song_list(){
         let mut client = ClientSocket::new("127.0.0.1:12346");
-        sleep(Duration::from_secs(delay));
         //Crea objeto JSON
         let data = json!({"command": "Get-Playlist"});
         //Envia JSON al servidor
@@ -62,13 +60,10 @@ fn request_song_list(delay: u64){
         client.stream.shutdown(Shutdown::Both).expect("Error al cerrar conexión");
         //Cerrar la conexión
         mem::drop(client);
-    }
 }
 
 //Funcion que envia la votacion al servidor
 fn vote_song(id: &str, command: &str){
-    while true {
-        sleep(Duration::from_secs(3));
         let mut client = ClientSocket::new("127.0.0.1:12346");
         let data = json!({"command": command, "id": id});
         //Envia JSON al servidor
@@ -80,17 +75,19 @@ fn vote_song(id: &str, command: &str){
         client.stream.shutdown(Shutdown::Both).expect("Error al cerrar conexión");
         //ELimina la instancia del objeto
         mem::drop(client);
-    }
 }
 
-fn main() {
+fn request_songs(){
     let delay = 1;
+    println!("Llego aqui");
     //Crea una instancia del objeto cliente por la direccion especificada
-    let hilo = thread::spawn(move || request_song_list(delay));
+    let hilo = thread::spawn(move || request_song_list());
     let hilo2 = thread::spawn(move || vote_song("123456","Vote-down"));
     hilo.join();
     hilo2.join();
+}
 
+fn main() {
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
     let theme = ColorTheme::new(color_themes::BLACK_THEME);
     theme.apply();
@@ -103,7 +100,8 @@ fn main() {
     win.show();
 
     btn.set_callback(move |b| {
-        text.set_value("Hola");
+        request_songs();
+        text.set_value("Peticion enviada");
     });
 
     a.run().unwrap();
