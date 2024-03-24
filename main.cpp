@@ -17,6 +17,8 @@ enum IDs{
 using namespace std;
 class MainFrame : public wxFrame {
 public:
+    bool active_playlist = false;
+
     MainFrame(const wxString &title)
             : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition,
                       wxSize(1200, 900)) {
@@ -84,11 +86,17 @@ private:
         cout<<"Presionado"<<endl;
     }
     void ComunitarioActionButton(wxCommandEvent &event) {
-        // Crear un hilo que ejecute la función en segundo plano
-        thread workerThread(&MainFrame::activeServer, this);
+        if (!active_playlist){
+            // Crear un hilo que ejecute la función en segundo plano
+            thread ServerThread(&MainFrame::activeServer, this);
+            // Hacer que el hilo sea independiente del hilo principal (no bloquear)
+            ServerThread.detach();
+            active_playlist = true;
+        }
+        else {
+            cout << "Servidor activo" << endl;
+        }
 
-        // Hacer que el hilo sea independiente del hilo principal (no bloquear)
-        workerThread.detach();
     }
 
     void activeServer(){
