@@ -14,6 +14,7 @@ enum IDs{
 #include "Double List.cpp"
 #include "BinaryListOperations.cpp"
 
+
 using namespace std;
 class MainFrame : public wxFrame {
 public:
@@ -132,10 +133,6 @@ int main(int argc, char* argv[]) {
     wxTheApp->OnRun();
     wxTheApp->OnExit();
     wxEntryCleanup();
-
-
-    // Datos que deseas escribir en el archivo
-    Cancion cancion = {"Creo-B", "Mario", 300,3};
 
     // Nombre del archivo binario en el que deseas escribir
     string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";

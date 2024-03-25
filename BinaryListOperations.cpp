@@ -101,7 +101,7 @@ void delete_song(string filename, int song_id){
     escritura.close();
 }
 
-//Obtiene la canci;on mediante un indice
+//Obtiene la cancion mediante un indice
 Cancion search_by_index(int index, string filename){
     ifstream archivo(filename, ios::binary);
 
