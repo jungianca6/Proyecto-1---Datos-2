@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Playlist_comunitario.iml" filepath="$PROJECT_DIR$/.idea/Playlist_comunitario.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/Proyecto 1.iml" filepath="$PROJECT_DIR$/.idea/Proyecto 1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/Server.iml" filepath="$PROJECT_DIR$/.idea/Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Proyecto_1_Rust.iml" filepath="$PROJECT_DIR$/.idea/Proyecto_1_Rust.iml" />
     </modules>
   </component>
 </project>

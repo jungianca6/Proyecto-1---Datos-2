@@ -13,6 +13,7 @@ dependencies = [
  "fltk",
  "fltk-flex",
  "fltk-theme",
+ "serde",
  "serde_json",
 ]
 
