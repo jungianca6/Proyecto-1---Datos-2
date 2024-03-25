@@ -24,7 +24,8 @@ public:
         wxPanel *panel = new wxPanel(this, wxID_ANY);
         panel->SetBackgroundColour(wxColour(9,129, 53));
 
-        wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa;
+        wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,
+        *anterior,*siguiente,*eliminar;
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
                                   wxPoint(150, 50), wxSize(150, 60));
