@@ -49,6 +49,7 @@ void ServerSocket::acceptConnections() {
                 :{"data":{"nombre":"C","artista":"Brayan","duracion":320,"id":3},"siguiente":null}}}})";
 
 
+
             //Envia la respuesta al cliente
             send_response(command, "OK", clientSocket, lista);
             close(clientSocket);
