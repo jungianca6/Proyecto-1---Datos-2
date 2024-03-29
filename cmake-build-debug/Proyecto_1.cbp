@@ -27,6 +27,7 @@
 					<Add option="-D_FILE_OFFSET_BITS=64"/>
 					<Add option="-DWXUSINGDLL"/>
 					<Add option="-D__WXGTK__"/>
+					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/include"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>
@@ -54,6 +55,7 @@
 					<Add option="-D_FILE_OFFSET_BITS=64"/>
 					<Add option="-DWXUSINGDLL"/>
 					<Add option="-D__WXGTK__"/>
+					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/include"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>
