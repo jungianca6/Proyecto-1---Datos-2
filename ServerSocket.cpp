@@ -44,9 +44,14 @@ void ServerSocket::acceptConnections() {
             //Insertar funcion para obtener los nodos de la lista y convertirlos en texto
             //
 
+            string lista = R"({"cabeza":{"data":{"nombre":"A","artista":"Brayan","duracion":320,"id":1},
+            "siguiente":{"data":{"nombre":"B","artista":"Brayan","duracion":320,"id":2},"siguiente"
+                :{"data":{"nombre":"C","artista":"Brayan","duracion":320,"id":3},"siguiente":null}}}})";
+
+
 
             //Envia la respuesta al cliente
-            send_response(command, "OK", clientSocket, "lista");
+            send_response(command, "OK", clientSocket, lista);
             close(clientSocket);
 
         }
