@@ -22,12 +22,12 @@ public:
 
     MainFrame(const wxString &title)
             : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition,
-                      wxSize(1200, 900)) {
+                      wxSize(1200, 1000)) {
 
         wxPanel *panel = new wxPanel(this, wxID_ANY);
         panel->SetBackgroundColour(wxColour(9,129, 53));
 
-        wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa;
+        wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,*atras,*adelante,*eliminar;
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
                                   wxPoint(150, 50), wxSize(150, 60));
@@ -44,13 +44,19 @@ public:
                                     wxPoint(300, 600), wxSize(125, 40));
         pausa= new wxButton(panel, botonID, "Pausar",
                             wxPoint(450, 600), wxSize(125, 40));
+        atras = new wxButton(panel, botonID, "Anterior",
+                             wxPoint(300, 700), wxSize(125, 40));
+        adelante= new wxButton(panel, botonID, "Siguiente",
+                               wxPoint(450, 700), wxSize(125, 40));
+        eliminar= new wxButton(panel, botonID, "Eliminar canciones",
+                               wxPoint(600, 700), wxSize(125, 40));
 
         wxSlider *volumen = new wxSlider(panel,wxID_ANY,50,0,100,
                                          wxPoint(650,600),wxSize(200,-1));
 
 
 
-        wxStaticText *cancion, *busqueda;
+        wxStaticText *cancion, *busqueda, *volumencancion;
         cancion = new wxStaticText(panel, wxID_ANY, "Cancion",
                                    wxPoint(550, 20),wxSize(90,35),
                                    wxALIGN_CENTER);
@@ -63,6 +69,13 @@ public:
         busqueda->SetForegroundColour(wxColour(255,255,255));
         busqueda->SetFont(GetFont().Scale(1.5));
         busqueda->SetBackgroundColour(wxColour(0,0,0));
+
+        volumencancion = new wxStaticText(panel, wxID_ANY, "Volumen",
+                                          wxPoint(675,550),wxSize(90,35),
+                                          wxALIGN_CENTER);
+        volumencancion->SetForegroundColour(wxColour(255,255,255));
+        volumencancion->SetFont(GetFont().Scale(1.5));
+        volumencancion->SetBackgroundColour(wxColour(0,0,0));
 
         caja = new wxTextCtrl(panel, textoID, "",
                               wxPoint(500, 60), wxSize(200, -1));
