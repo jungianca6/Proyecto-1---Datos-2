@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug"/>
+				<Option working_dir="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Proyecto_1">
-				<Option output="/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Proyecto_1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug"/>
+				<Option output="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug/Proyecto_1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -27,7 +27,6 @@
 					<Add option="-D_FILE_OFFSET_BITS=64"/>
 					<Add option="-DWXUSINGDLL"/>
 					<Add option="-D__WXGTK__"/>
-					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/include"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>
@@ -39,15 +38,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto_1"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto_1"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Proyecto_1/fast">
-				<Option output="/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Proyecto_1" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug"/>
+				<Option output="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug/Proyecto_1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -55,7 +54,6 @@
 					<Add option="-D_FILE_OFFSET_BITS=64"/>
 					<Add option="-DWXUSINGDLL"/>
 					<Add option="-D__WXGTK__"/>
-					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/include"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>
@@ -67,43 +65,46 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto_1/fast"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto_1/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug"/>
+				<Option working_dir="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug"/>
+				<Option working_dir="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/darga19/Documents/Tec/Algoritmos\ y\ Estructuras\ de\ Datos\ II/Proyecto-1-Datos-2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp">
+		<Unit filename="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/Metadata.cpp">
 			<Option target="Proyecto_1"/>
 		</Unit>
-		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.h">
+		<Unit filename="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/ServerSocket.cpp">
 			<Option target="Proyecto_1"/>
 		</Unit>
-		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/main.cpp">
+		<Unit filename="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/ServerSocket.h">
 			<Option target="Proyecto_1"/>
 		</Unit>
-		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/CMakeLists.txt">
+		<Unit filename="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/main.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Proyecto-1-Datos-2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

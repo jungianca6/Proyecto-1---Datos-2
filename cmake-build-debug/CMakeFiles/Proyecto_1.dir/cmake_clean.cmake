@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Proyecto_1.dir/Metadata.cpp.o"
+  "CMakeFiles/Proyecto_1.dir/Metadata.cpp.o.d"
   "CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o"
   "CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o.d"
   "CMakeFiles/Proyecto_1.dir/main.cpp.o"

@@ -129,6 +129,30 @@ Proyecto_1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/build
 .PHONY : Proyecto_1/fast
 
+Metadata.o: Metadata.cpp.o
+.PHONY : Metadata.o
+
+# target to build an object file
+Metadata.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Metadata.cpp.o
+.PHONY : Metadata.cpp.o
+
+Metadata.i: Metadata.cpp.i
+.PHONY : Metadata.i
+
+# target to preprocess a source file
+Metadata.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Metadata.cpp.i
+.PHONY : Metadata.cpp.i
+
+Metadata.s: Metadata.cpp.s
+.PHONY : Metadata.s
+
+# target to generate assembly for a file
+Metadata.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Metadata.cpp.s
+.PHONY : Metadata.cpp.s
+
 ServerSocket.o: ServerSocket.cpp.o
 .PHONY : ServerSocket.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Proyecto_1"
+	@echo "... Metadata.o"
+	@echo "... Metadata.i"
+	@echo "... Metadata.s"
 	@echo "... ServerSocket.o"
 	@echo "... ServerSocket.i"
 	@echo "... ServerSocket.s"
