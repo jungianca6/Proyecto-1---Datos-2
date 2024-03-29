@@ -39,11 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Proyecto_1::@6890427a1f51a3e7e1df",
-<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-1a7d5d93552df5e14691.json
-					"jsonFile" : "target-Proyecto_1-Debug-96f61c7f86a0e0910e02.json",
-========
-					"jsonFile" : "target-Proyecto_1-Debug-549af6db59d78f6122a1.json",
->>>>>>>> 070ba4165b0c8e80579433e5aa7e1c1e73c1679e:cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-cb6fc9030011ead444dd.json
+					"jsonFile" : "target-Proyecto_1-Debug-be4033b202408ec39c37.json",
 					"name" : "Proyecto_1",
 					"projectIndex" : 0
 				}
