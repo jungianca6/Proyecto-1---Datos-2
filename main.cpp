@@ -27,12 +27,10 @@ public:
         wxPanel *panel = new wxPanel(this, wxID_ANY);
         panel->SetBackgroundColour(wxColour(9,129, 53));
 
-<<<<<<< HEAD
+
         wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,
         *anterior,*siguiente,*eliminar;
-=======
-        wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,*atras,*adelante,*eliminar;
->>>>>>> 070ba4165b0c8e80579433e5aa7e1c1e73c1679e
+
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
                                   wxPoint(150, 50), wxSize(150, 60));
@@ -49,9 +47,9 @@ public:
                                     wxPoint(300, 600), wxSize(125, 40));
         pausa= new wxButton(panel, botonID, "Pausar",
                             wxPoint(450, 600), wxSize(125, 40));
-        atras = new wxButton(panel, botonID, "Anterior",
+        anterior = new wxButton(panel, botonID, "Anterior",
                              wxPoint(300, 700), wxSize(125, 40));
-        adelante= new wxButton(panel, botonID, "Siguiente",
+        siguiente= new wxButton(panel, botonID, "Siguiente",
                                wxPoint(450, 700), wxSize(125, 40));
         eliminar= new wxButton(panel, botonID, "Eliminar canciones",
                                wxPoint(600, 700), wxSize(125, 40));
