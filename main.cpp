@@ -154,8 +154,6 @@ int main(int argc, char* argv[]) {
     wxTheApp->OnExit();
     wxEntryCleanup();
 
-    /*
-
     // Datos que deseas escribir en el archivo
     Cancion cancion = {"Creo-B", "Mario", 300,3};
 
@@ -178,8 +176,5 @@ int main(int argc, char* argv[]) {
         cout << "Altura: " << lista[i].duracion << endl;
         cout << endl;
     }
-
-    */
-
     return 0;
 }
