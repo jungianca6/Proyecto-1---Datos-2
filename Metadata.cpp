@@ -21,6 +21,8 @@ struct Data {
 
     Data* siguiente;
 
+    Data(){}
+
     Data(const string& _nombre, const string& _artista, const string& _album, int _duracion_minutos, int _duracion_segundos)
             : nombre(_nombre), artista(_artista), album(_album), duracion_minutos(_duracion_minutos), duracion_segundos(_duracion_segundos), siguiente(nullptr) {}
 };

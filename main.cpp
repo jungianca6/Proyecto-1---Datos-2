@@ -1,32 +1,26 @@
 #include <iostream>
 #include <wx/wx.h>
+#include <string>
+#include "ServerSocket.h"
+#include "thread"
+#include "Circular List.cpp"
+#include "Double List.cpp"
+#include "BinaryListOperations.cpp"
 
 enum IDs{
     botonID =2,textoID=3
 };
 
-#include "ServerSocket.h"
-#include "thread"
-#include "chrono"
-#include <stdio.h>
-#include <filesystem>
-#include <taglib/taglib.h>
-#include <taglib/fileref.h>
-#include <taglib/tag.h>
-#include <taglib/mpegfile.h>
-#include <taglib/mpegheader.h>
-#include "Circular List.cpp"
-#include "Double List.cpp"
-#include "Metadata.cpp"
-#include "BinaryListOperations.cpp"
 
-// g++ obtener_metadatos_wav.cpp -o obtener_metadatos_wav -I/ruta/a/taglib/include/taglib -L/ruta/a/taglib/lib -ltag -Wl,-rpath=/ruta/a/taglib/lib
+
+// g++ obtener_metadatos_wav.cpp -o obtener_metadatos_wav -I/ruta/a/taglib/include/taglib -L/ruta/a/taglib/lib -ltag -Wl,-rpath=/ruta/a/tg++ main.cpp -o ps -I/ruta/a/taglib/include/taglib -L/ruta/a/taglib/lib -ltag -Wl,-rpath=/ruta/a/taglib/lib
+// g++ main.cpp -o ps -I/ruta/a/taglib/include/taglib -L/ruta/a/taglib/lib -ltag -I/ruta/a/wxWidgets/include -L/ruta/a/wxWidgets/lib -lwxWidgets -Wl,-rpath=/ruta/a/taglib/lib
+//g++ main.cpp -o ps -I/ruta/a/taglib/include/taglib -L/ruta/a/taglib/lib -ltag -Wl,-rpath=/ruta/a/taglib/lib
 
 using namespace std;
 using namespace TagLib;
 namespace fs = std::filesystem;namespace fs = std::filesystem;
 
-/*
 class MainFrame : public wxFrame {
 public:
     MainFrame(const wxString &title)
@@ -55,8 +49,6 @@ public:
 
         wxSlider *volumen = new wxSlider(panel,wxID_ANY,50,0,100,
                                          wxPoint(650,600),wxSize(200,-1));
-
-
 
         wxStaticText *cancion, *busqueda;
         cancion = new wxStaticText(panel, wxID_ANY, "Cancion",
@@ -87,9 +79,6 @@ public:
         wxBitmap bitmap(image);
         image.Rescale(100, 50);
         wxBitmapButton* boton = new wxBitmapButton(this,wxID_ANY,bitmap,wxPoint(150,750));*/
-
-/*
-
     }
 
 
@@ -106,7 +95,6 @@ private:
                 EVT_BUTTON(botonID,MainFrame::OnButtonClick)
 wxEND_EVENT_TABLE()*/
 
-/*
 
 class MyApp: public wxApp{
 public:
@@ -117,13 +105,11 @@ public:
     }
 };
 
-*/
-
 int main(int argc, char* argv[]) {
 
 
     Data* lista_canciones = nullptr;
-    string ruta_carpeta = "/home/darga19/Documents/Tec/Algoritmos y Estructuras de Datos II/Música proyecto I";
+    string ruta_carpeta = "/home/spaceba/Music";
     leerArchivosMP3(ruta_carpeta, lista_canciones);
 
     print_lista(lista_canciones);
@@ -171,59 +157,5 @@ int main(int argc, char* argv[]) {
         cout << endl;
     }
 
-
-/*
-//g++ main.cpp -o main -I/usr/include/taglib/include/taglib -L/usr/include/taglib/lib -ltag -Wl,-rpath=usr/include/taglib/lib
-    int opcion_menu=0;
-    ListaDoble lista;
-    string nombreCancion;
-    string nodoBuscado;
-    do{
-        cout << "\n|---------------------------------------|";
-        cout << "\n|        ° LISTA CIRCULAR DOBLE °       |";
-        cout << "\n|--------------------|------------------|";
-        cout << "\n| 1. Insertar final  | 5. Print         |";
-        cout << "\n| 2. Insertar inicio | 6. Array         |";
-        cout << "\n| 3. Buscar          |                  |";
-        cout << "\n| 4. Eliminar        |                  |";
-        cout << "\n|--------------------|------------------|";
-        cout << "\n\n Escoja una Opcion: ";
-        cin >> opcion_menu;
-        switch(opcion_menu){
-            case 1:
-                cout << "\n Inserta un nodo en la lista (ultimo): ";
-                cin >> nombreCancion;
-                lista.insert_lastdouble(nombreCancion);
-                break;
-            case 2:
-                cout << "\n Inserta un nodo en la lista (primero): ";
-                cin >> nombreCancion;
-                lista.insert_firstdouble(nombreCancion);
-                break;
-            case 3:
-                cout << "\n Inserta el nodo que quieras buscar: ";
-                cin >> nodoBuscado;
-                lista.buscarNododouble(nodoBuscado);
-                break;
-            case 4:
-                cout << "\n Inserta el nodo que quieras eliminar: ";
-                cin >> nodoBuscado;
-                lista.eliminarNododouble(nodoBuscado);
-                break;
-            case 5:
-                cout << "\n Lista printeada:\n";
-                lista.printListadouble();
-                break;
-            case 6:
-                cout << "\n Convertido en array:\n";
-                lista.convertArraydouble();
-                break;
-            default:
-                cout << "\n Opcion no valida\n";
-                break;
-        }
-    } while (opcion_menu != 7);
-        //hilo.join();
-*/
     return 0;
 }
