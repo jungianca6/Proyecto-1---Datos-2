@@ -9,7 +9,6 @@
 #include <unistd.h>
 #include <nlohmann/json.hpp>
 
-
 using namespace std;
 using namespace nlohmann;
 
@@ -48,8 +47,6 @@ void ServerSocket::acceptConnections() {
             string lista = R"({"cabeza":{"data":{"nombre":"A","artista":"Brayan","duracion":320,"id":1},
             "siguiente":{"data":{"nombre":"B","artista":"Brayan","duracion":320,"id":2},"siguiente"
                 :{"data":{"nombre":"C","artista":"Brayan","duracion":320,"id":3},"siguiente":null}}}})";
-
-
 
             //Envia la respuesta al cliente
             send_response(command, "OK", clientSocket, lista);
@@ -106,8 +103,8 @@ json ServerSocket::receiveJsonData(int clientSocket) {
 //Envia la respuesta al cliente (exitoso o no)
 void ServerSocket::send_response(string command, string status, int clientsocket){
     json response = {
-                {"command", command},
-                {"status", status}
+            {"command", command},
+            {"status", status}
     };
     // Serializar el objeto JSON a una cadena de texto
     string jsonString = response.dump();

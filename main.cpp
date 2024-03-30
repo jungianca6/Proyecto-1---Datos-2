@@ -23,6 +23,8 @@ namespace fs = std::filesystem;namespace fs = std::filesystem;
 
 class MainFrame : public wxFrame {
 public:
+    bool active_playlist = false;
+
     MainFrame(const wxString &title)
             : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition,
                       wxSize(1200, 900)) {
@@ -34,10 +36,11 @@ public:
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
                                   wxPoint(150, 50), wxSize(150, 60));
-        paginacion->Bind(wxEVT_BUTTON, &MainFrame::OnButtonClick, this);
+        paginacion->Bind(wxEVT_BUTTON, &MainFrame::PaginacionActionButton, this);
 
         comunitario = new wxButton(panel, botonID, "Playlist comunitario",
                                    wxPoint(150, 250), wxSize(250, 60));
+        comunitario->Bind(wxEVT_BUTTON, &MainFrame::ComunitarioActionButton, this);
 
         buscarCancion = new wxButton(panel, botonID, "Buscar",
                                      wxPoint(950, 110), wxSize(125, 30));
@@ -83,12 +86,33 @@ public:
 
 
 private:
-    void OnButtonClick(wxCommandEvent &event) {
+    void PaginacionActionButton(wxCommandEvent &event) {
         caja->SetValue("Hola");
         cout<<"Presionado"<<endl;
     }
+    void ComunitarioActionButton(wxCommandEvent &event) {
+        if (!active_playlist){
+            // Crear un hilo que ejecute la función en segundo plano
+            thread ServerThread(&MainFrame::activeServer, this);
+            // Hacer que el hilo sea independiente del hilo principal (no bloquear)
+            ServerThread.detach();
+            active_playlist = true;
+        }
+        else {
+            cout << "Servidor activo" << endl;
+        }
+
+    }
+
+    void activeServer(){
+        int portNumber = 12346; // Puerto en el que escuchará el servidor
+        ServerSocket servidor = ServerSocket(portNumber);
+        thread hilo(&ServerSocket::acceptConnections, &servidor);
+        cout << "Servidor en escucha" << endl;
+        hilo.join();
+
+    }
     wxTextCtrl *caja;
-    //wxDECLARE_EVENT_TABLE();
 };
 
 /*wxBEGIN_EVENT_TABLE(MainFrame,wxFrame)
@@ -106,6 +130,10 @@ public:
 };
 
 int main(int argc, char* argv[]) {
+
+    int portNumber = 12345; // Puerto en el que escuchará el servidor
+    ServerSocket servidor = ServerSocket(portNumber);
+    thread hilo(&ServerSocket::acceptConnections, &servidor);
 
 
     Data* lista_canciones = nullptr;
@@ -130,9 +158,8 @@ int main(int argc, char* argv[]) {
     wxTheApp->OnRun();
     wxTheApp->OnExit();
     wxEntryCleanup();
-    int portNumber = 12346; // Puerto en el que escuchará el servidor
-    ServerSocket servidor = ServerSocket(portNumber);
-    thread hilo(&ServerSocket::acceptConnections, &servidor);
+
+    /*
 
     // Datos que deseas escribir en el archivo
     Cancion cancion = {"Creo-B", "Mario", 300,3};
@@ -156,6 +183,8 @@ int main(int argc, char* argv[]) {
         cout << "Altura: " << lista[i].duracion << endl;
         cout << endl;
     }
+
+    */
 
     return 0;
 }
