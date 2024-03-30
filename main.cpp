@@ -1,17 +1,19 @@
 #include <iostream>
 #include <wx/wx.h>
-#include <string>
-#include "ServerSocket.h"
-#include "thread"
-#include "Circular List.cpp"
-#include "Double List.cpp"
-#include "BinaryListOperations.cpp"
 
 enum IDs{
     botonID =2,textoID=3
 };
 
-//g++ main.cpp -o ps -I/ruta/a/taglib/include/taglib -L/ruta/a/taglib/lib -ltag -Wl,-rpath=/ruta/a/taglib/lib
+#include <string>
+#include "ServerSocket.h"
+#include "thread"
+#include "chrono"
+#include <stdio.h>
+#include "Circular List.cpp"
+#include "Double List.cpp"
+#include "BinaryListOperations.cpp"
+
 
 using namespace std;
 using namespace TagLib;
@@ -28,7 +30,10 @@ public:
         wxPanel *panel = new wxPanel(this, wxID_ANY);
         panel->SetBackgroundColour(wxColour(9,129, 53));
 
-        wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa;
+
+        wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,
+        *anterior,*siguiente,*eliminar;
+
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
                                   wxPoint(150, 50), wxSize(150, 60));
@@ -42,14 +47,22 @@ public:
                                      wxPoint(950, 110), wxSize(125, 30));
 
         reproduccion = new wxButton(panel, botonID, "Reproducir",
-                                    wxPoint(300, 600), wxSize(125, 40));
+                                    wxPoint(300, 500), wxSize(125, 40));
         pausa= new wxButton(panel, botonID, "Pausar",
-                            wxPoint(450, 600), wxSize(125, 40));
+                            wxPoint(450, 500), wxSize(125, 40));
+        anterior = new wxButton(panel, botonID, "Anterior",
+                             wxPoint(300, 600), wxSize(125, 40));
+        siguiente= new wxButton(panel, botonID, "Siguiente",
+                               wxPoint(450, 600), wxSize(125, 40));
+        eliminar= new wxButton(panel, botonID, "Eliminar canciones",
+                               wxPoint(600, 600), wxSize(125, 40));
 
         wxSlider *volumen = new wxSlider(panel,wxID_ANY,50,0,100,
-                                         wxPoint(650,600),wxSize(200,-1));
+                                         wxPoint(650,500),wxSize(200,-1));
 
-        wxStaticText *cancion, *busqueda;
+
+
+        wxStaticText *cancion, *busqueda, *volumencancion;
         cancion = new wxStaticText(panel, wxID_ANY, "Cancion",
                                    wxPoint(550, 20),wxSize(90,35),
                                    wxALIGN_CENTER);
@@ -108,12 +121,12 @@ private:
 
     }
     wxTextCtrl *caja;
+    //wxDECLARE_EVENT_TABLE();
 };
 
 /*wxBEGIN_EVENT_TABLE(MainFrame,wxFrame)
                 EVT_BUTTON(botonID,MainFrame::OnButtonClick)
 wxEND_EVENT_TABLE()*/
-
 
 class MyApp: public wxApp{
 public:
@@ -125,37 +138,12 @@ public:
 };
 
 int main(int argc, char* argv[]) {
-
-    int portNumber = 12345; // Puerto en el que escuchará el servidor
-    ServerSocket servidor = ServerSocket(portNumber);
-    thread hilo(&ServerSocket::acceptConnections, &servidor);
-
-
-    Data* lista_canciones = nullptr;
-    string ruta_carpeta = "/home/spaceba/Music";
-    leerArchivosMP3(ruta_carpeta, lista_canciones);
-
-    print_lista(lista_canciones);
-
-    // Ejemplo para usar el buscar_nodo(), en la lista de canciones
-    /*
-    Data* cancion_buscada = buscar_nodo(lista_canciones, "Nombre de la Canción");
-    if (cancion_buscada) {
-        cout << "Canción encontrada: " << cancion_buscada->nombre << endl;
-    } else {
-        cout << "La canción no se encontró en la lista." << endl;
-    */
-
-
     wxApp::SetInstance(new MyApp());
     wxEntryStart(argc, argv);
     wxTheApp->OnInit();
     wxTheApp->OnRun();
     wxTheApp->OnExit();
     wxEntryCleanup();
-
-    // Datos que deseas escribir en el archivo
-    Cancion cancion = {"Creo-B", "Mario", 300,3};
 
     // Nombre del archivo binario en el que deseas escribir
     string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
