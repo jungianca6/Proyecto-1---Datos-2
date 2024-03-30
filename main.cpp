@@ -11,8 +11,6 @@ enum IDs{
     botonID =2,textoID=3
 };
 
-// g++ obtener_metadatos_wav.cpp -o obtener_metadatos_wav -I/ruta/a/taglib/include/taglib -L/ruta/a/taglib/lib -ltag -Wl,-rpath=/ruta/a/tg++ main.cpp -o ps -I/ruta/a/taglib/include/taglib -L/ruta/a/taglib/lib -ltag -Wl,-rpath=/ruta/a/taglib/lib
-// g++ main.cpp -o ps -I/ruta/a/taglib/include/taglib -L/ruta/a/taglib/lib -ltag -I/ruta/a/wxWidgets/include -L/ruta/a/wxWidgets/lib -lwxWidgets -Wl,-rpath=/ruta/a/taglib/lib
 //g++ main.cpp -o ps -I/ruta/a/taglib/include/taglib -L/ruta/a/taglib/lib -ltag -Wl,-rpath=/ruta/a/taglib/lib
 
 using namespace std;
@@ -81,7 +79,6 @@ public:
         image.Rescale(100, 50);
         wxBitmapButton* boton = new wxBitmapButton(this,wxID_ANY,bitmap,wxPoint(150,750));*/
     }
-
 
 private:
     void PaginacionActionButton(wxCommandEvent &event) {
