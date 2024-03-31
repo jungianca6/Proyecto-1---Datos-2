@@ -143,39 +143,32 @@ int main(int argc, char* argv[]) {
     wxTheApp->OnExit();
     wxEntryCleanup();
 
-    Cancion cancion1;
-    cancion1.nombre = "Nombre1";
-    cancion1.album = "1";
-    cancion1.artista = "Artista1";
-    cancion1.duracion_minutos = 1;
-    cancion1.duracion_segundos = 32;
+    Cancion cancion1 = {"Cancion 1", "Artista 1", "Album 1", 1, 30};
+    Cancion cancion2 = {"Cancion 2", "Artista 2", "Album 2", 2, 30};
+    Cancion cancion3 = {"Cancion 3", "Artista 3", "Album 3", 3, 30};
 
-    Cancion cancion2;
-    cancion2.nombre = "Nombre2";
-    cancion2.album = "2";
-    cancion2.artista = "Artista2";
-    cancion2.duracion_minutos = 2;
-    cancion2.duracion_segundos = 32;
-
-    Cancion cancion3;
-    cancion3.nombre = "Nombre3";
-    cancion3.album = "3";
-    cancion3.artista = "Artista3";
-    cancion3.duracion_minutos = 3;
-    cancion3.duracion_segundos = 32;
 
     // Nombre del archivo binario en el que deseas escribir
     string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
 
-    add_to_end(cancion1, filename);
-    add_to_end(cancion2, filename);
-    add_to_end(cancion3, filename);
+    //add_to_end(cancion1, filename);
+    //add_to_end(cancion2, filename);
+    //add_to_end(cancion3, filename);
 
     //Cancion busqueda = search_by_index(3, filename);
 
     // Array para almacenar todas las personas del archivo, es static para que permanezca
     Cancion canciones[10];
     Cancion* lista = get_songs(filename, canciones);
+
+    for (int i = 0; i < 3; ++i) {
+        cout << "Canción #" << i+1 << ":" << endl;
+        cout << "Nombre: " << lista[i].nombre << endl;
+        cout << "Artista: " << lista[i].artista << endl;
+        cout << "Duración Minutos: " << lista[i].duracion_minutos << " minutos" << endl;
+        cout << "Duración Segundos: " << lista[i].duracion_segundos << endl;
+        cout << endl;
+    }
 
     return 0;
 
