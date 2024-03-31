@@ -165,11 +165,11 @@ int main(int argc, char* argv[]) {
     cancion3.duracion_segundos = 32;
 
     // Nombre del archivo binario en el que deseas escribir
-    string filename = "/home/spaceba/CLionProjects/Proyecto_1/archivo.bin";
+    string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
 
-    //add_to_end(cancion1, filename);
-    //add_to_end(cancion2, filename);
-    //add_to_end(cancion3, filename);
+    add_to_end(cancion1, filename);
+    add_to_end(cancion2, filename);
+    add_to_end(cancion3, filename);
 
     //Cancion busqueda = search_by_index(3, filename);
 
