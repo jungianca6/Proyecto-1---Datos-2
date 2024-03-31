@@ -1,18 +1,16 @@
 #include <iostream>
 #include <wx/wx.h>
+#include <string>
+#include "ServerSocket.h"
+#include "thread"
+#include "Circular List.cpp"
+#include "Double List.cpp"
+#include "BinaryListOperations.cpp"
 
 enum IDs{
     botonID =2,textoID=3
 };
 
-#include <string>
-#include "ServerSocket.h"
-#include "thread"
-#include "chrono"
-#include <stdio.h>
-#include "Circular List.cpp"
-#include "Double List.cpp"
-#include "BinaryListOperations.cpp"
 
 
 using namespace std;
@@ -145,24 +143,40 @@ int main(int argc, char* argv[]) {
     wxTheApp->OnExit();
     wxEntryCleanup();
 
-    // Nombre del archivo binario en el que deseas escribir
-    string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
+    Cancion cancion1;
+    cancion1.nombre = "Nombre1";
+    cancion1.album = "1";
+    cancion1.artista = "Artista1";
+    cancion1.duracion_minutos = 1;
+    cancion1.duracion_segundos = 32;
 
-    //add_to_end(cancion, filename);
-    Cancion busqueda = search_by_index(3, filename);
+    Cancion cancion2;
+    cancion2.nombre = "Nombre2";
+    cancion2.album = "2";
+    cancion2.artista = "Artista2";
+    cancion2.duracion_minutos = 2;
+    cancion2.duracion_segundos = 32;
+
+    Cancion cancion3;
+    cancion3.nombre = "Nombre3";
+    cancion3.album = "3";
+    cancion3.artista = "Artista3";
+    cancion3.duracion_minutos = 3;
+    cancion3.duracion_segundos = 32;
+
+    // Nombre del archivo binario en el que deseas escribir
+    string filename = "/home/spaceba/CLionProjects/Proyecto_1/archivo.bin";
+
+    //add_to_end(cancion1, filename);
+    //add_to_end(cancion2, filename);
+    //add_to_end(cancion3, filename);
+
+    //Cancion busqueda = search_by_index(3, filename);
 
     // Array para almacenar todas las personas del archivo, es static para que permanezca
     Cancion canciones[10];
     Cancion* lista = get_songs(filename, canciones);
 
-    // Mostrar los datos de todas las personas almacenadas
-    for (int i = 0; i < 10; ++i) {
-        cout << "Persona " << i+1 << ":" << endl;
-        cout << "Nombre: " << lista[i].nombre << endl;
-        cout << "Edad: " << lista[i].artista << endl;
-        cout << "Altura: " << lista[i].id << endl;
-        cout << "Altura: " << lista[i].duracion << endl;
-        cout << endl;
-    }
     return 0;
+
 }
