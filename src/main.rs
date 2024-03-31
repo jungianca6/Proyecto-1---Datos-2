@@ -81,7 +81,6 @@ impl ListaDoblementeEnlazada {
 }
 
 
-
 struct ClientSocket {
     stream: TcpStream,
 }
@@ -124,7 +123,7 @@ impl ClientSocket{
 
 //Funcion que pide al servidor la lista de canciones
 fn request_song_list(){
-        let mut client = ClientSocket::new("127.0.0.1:12346");
+        let mut client = ClientSocket::new("127.0.0.1:12345");
         //Crea objeto JSON
         let data = json!({"command": "Get-Playlist"});
         //Envia JSON al servidor
