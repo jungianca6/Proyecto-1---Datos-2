@@ -152,7 +152,7 @@ int main(int argc, char* argv[]) {
         lista_de_canciones.insert_lastdouble(*temp);
             temp = temp->siguiente;
     }
-    lista_de_canciones.printListadouble();
+    //lista_de_canciones.printListadouble();
 
 
     wxApp::SetInstance(new MyApp());

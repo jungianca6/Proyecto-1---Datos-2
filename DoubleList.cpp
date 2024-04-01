@@ -12,11 +12,13 @@ void DoubleList::printListadouble() {
     actual = primerod;
     if (primerod != NULL) {
         do {
-            cout << actual->data.nombre << endl;
-            cout << actual->data.artista << endl;
-            cout << actual->data.duracion_minutos << endl;
-            cout << actual->data.duracion_segundos << endl;
-            cout << actual->data.album << endl;
+            cout << "Nombre: " << actual->data.nombre << endl;
+            cout << "Artista: " << actual->data.artista << endl;
+            cout << "Duracion_minutos: " << actual->data.duracion_minutos << endl;
+            cout << "Duracion_segundos: " << actual->data.duracion_segundos << endl;
+            cout << "Album: " << actual->data.album << endl;
+            cout << "Votes: " << actual->data.votes << endl;
+            cout << endl;
             actual = actual->siguiente;
         } while (actual != NULL);
     } else {
@@ -56,16 +58,14 @@ void DoubleList::insert_firstdouble(Data new_data) {
     }
 }
 
-void DoubleList::buscarNododouble(Data nodoBuscado) {
+void DoubleList::buscarNododouble(string cancionbuscada) {
     Node *actual = primerod;
     bool encontrado = false;
-    cout << "Dato buscado: " << nodoBuscado.nombre << endl;
-
-
+    cout << "Dato buscado: " << cancionbuscada << endl;
     if (primerod != NULL) {
         do {
-            if (actual->data.nombre == nodoBuscado.nombre) {
-                cout << "Nodo con el dato ( " << nodoBuscado.nombre << " ) Encontrado" << endl;
+            if (actual->data.nombre == cancionbuscada) {
+                cout << "Nodo con el dato ( " << cancionbuscada << " ) Encontrado" << endl;
                 encontrado = true;
             }
             actual = actual->siguiente;
@@ -79,6 +79,49 @@ void DoubleList::buscarNododouble(Data nodoBuscado) {
     }
 
 }
+
+void DoubleList::voteUp(string cancionbuscada) {
+    Node *actual = primerod;
+    bool encontrado = false;
+    cout << "Dato buscado: " << cancionbuscada << endl;
+    if (primerod != NULL) {
+        do {
+            if (actual->data.nombre == cancionbuscada) {
+                actual->data.votes = actual->data.votes + 1;
+                encontrado = true;
+            }
+            actual = actual->siguiente;
+        } while (actual != NULL && encontrado != true);
+        if (!encontrado) {
+            cout << "Nodo no encontrado";
+        }
+    } else {
+        cout << "nel";
+    }
+}
+
+void DoubleList::voteDown(string cancionbuscada) {
+    Node *actual = primerod;
+    bool encontrado = false;
+    cout << "Dato buscado: " << cancionbuscada << endl;
+    if (primerod != NULL) {
+        do {
+            if (actual->data.nombre == cancionbuscada) {
+                actual->data.votes = actual->data.votes - 1;
+                encontrado = true;
+            }
+            actual = actual->siguiente;
+        } while (actual != NULL && encontrado != true);
+        if (!encontrado) {
+            cout << "Nodo no encontrado";
+        }
+    } else {
+        cout << "nel";
+    }
+}
+
+
+
 
 void DoubleList::eliminarNododouble(Data nodoBuscado) {
     Node *actual = new Node();

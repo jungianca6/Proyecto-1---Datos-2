@@ -55,8 +55,11 @@ void ServerSocket::acceptConnections() {
         }
         if(command == "Vote-up"){
             //Obtiene el id de la cancion que se desea modificar
-            string id = receivedJsonData["id"];
-            cout << "Votar por una cancion +1" << "id:" << id << endl;
+            string nombre = receivedJsonData["nombre"];
+            lista->printListadouble();
+            cout << "Votar por una cancion +1" << "id:" << nombre << endl;
+            lista->voteUp(nombre);
+            lista->printListadouble();
 
             //
             //Insertar funcion para actualizar los datos de la cancion
@@ -68,9 +71,11 @@ void ServerSocket::acceptConnections() {
         }
         if(command == "Vote-down"){
             //Obtiene el id de la cancion que se desea modificar
-            string id = receivedJsonData["id"];
-            cout << "Votar por una cancion -1" << "id:" << id << endl;
-
+            string nombre = receivedJsonData["nombre"];
+            lista->printListadouble();
+            cout << "Votar por una cancion -1" << "nombre:" << nombre << endl;
+            lista->voteDown(nombre);
+            lista->printListadouble();
             //
             //Insertar funcion para actualizar los datos de la cancion
             //

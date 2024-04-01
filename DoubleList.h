@@ -28,12 +28,16 @@ public:
     void printListadouble();
     void insert_lastdouble(Data new_data);
     void insert_firstdouble(Data new_data);
-    void buscarNododouble(Data nodoBuscado);
     void eliminarNododouble(Data nodoBuscado);
+    void buscarNododouble(string cancionbuscada);
     int findlengthdouble();
     void convertArraydouble();
     // Método para convertir el objeto en formato JSON
     json toJson();
+
+    void voteUp(string cancionbuscada);
+
+    void voteDown(string cancionbuscada);
 };
 
 
