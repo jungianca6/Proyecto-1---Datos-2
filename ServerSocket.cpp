@@ -47,14 +47,9 @@ void ServerSocket::acceptConnections() {
             //
 
             json lista_json = lista.toJson();
-            cout << lista_json.dump(4) << endl;
-
-            string lista = R"({"cabeza":{"data":{"nombre":"A","artista":"Brayan","duracion":320,"id":1},
-            "siguiente":{"data":{"nombre":"B","artista":"Brayan","duracion":320,"id":2},"siguiente"
-                :{"data":{"nombre":"C","artista":"Brayan","duracion":320,"id":3},"siguiente":null}}}})";
 
             //Envia la respuesta al cliente
-            send_response(command, "OK", clientSocket, lista);
+            send_response(command, "OK", clientSocket, to_string(lista_json));
             close(clientSocket);
 
         }
