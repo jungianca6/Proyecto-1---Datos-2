@@ -13,6 +13,7 @@ struct Cancion{
     char album[64];
     int duracion_minutos;
     int duracion_segundos;
+    int votes;
 };
 
 //Annade una cancion al final

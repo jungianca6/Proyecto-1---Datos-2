@@ -13,28 +13,48 @@ using namespace std;
 namespace fs = std::filesystem;
 
 struct Data {
-    string nombre;
-    string artista;
-    string album;
+    char nombre[64];
+    char artista[64];
+    char album[64];
     int duracion_minutos;
     int duracion_segundos;
+    int votes;
 
     Data* siguiente;
 
-    Data(){}
+    Data(){};
 
-    Data(const string& _nombre, const string& _artista, const string& _album, int _duracion_minutos, int _duracion_segundos)
-            : nombre(_nombre), artista(_artista), album(_album), duracion_minutos(_duracion_minutos), duracion_segundos(_duracion_segundos), siguiente(nullptr) {}
+    Data(const char* _nombre, const char* _artista, const char* _album, int _duracion_minutos, int _duracion_segundos, int _votes)
+            : duracion_minutos(_duracion_minutos), duracion_segundos(_duracion_segundos), siguiente(nullptr), votes(_votes) {
+        strncpy(nombre, _nombre, sizeof(nombre));
+        strncpy(artista, _artista, sizeof(artista));
+        strncpy(album, _album, sizeof(album));
+    }
+
 };
+
+void vote_up(Data cancion){
+    cancion.votes = cancion.votes + 1;
+}
+
+void vote_down(Data cancion){
+    cancion.votes = cancion.votes + 1;
+}
 
 void obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista) {
     TagLib::FileRef archivo(ruta_archivo.c_str());
     if (!archivo.isNull() && archivo.tag()) {
         TagLib::Tag* tag = archivo.tag();
         if (tag) {
-            string nombre = tag->title().toCString(true);
-            string artista = tag->artist().toCString(true);
-            string album = tag->album().toCString(true);
+
+            char nombre[64];
+            char artista[64];
+            char album[64];
+
+            strncpy(nombre, tag->title().toCString(true), sizeof(nombre));
+            strncpy(artista, tag->artist().toCString(true), sizeof(artista));
+            strncpy(album, tag->album().toCString(true), sizeof(album));
+
 
             TagLib::MPEG::File mpegFile(ruta_archivo.c_str());
             int duracion_segundos = mpegFile.audioProperties()->length();
@@ -47,7 +67,7 @@ void obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista) {
             cout << "Duración: " << minutos << " minutos " << segundos << " segundos" << endl;
 
             // Crear un nuevo nodo para la canción
-            Data* nueva_cancion = new Data(nombre, artista, album, minutos, segundos);
+            Data* nueva_cancion = new Data(nombre, artista, album, minutos, segundos, 0);
             // Agregar el nodo a la lista
             if (!lista) {
                 lista = nueva_cancion;
@@ -74,15 +94,19 @@ void leerArchivosMP3(const string& ruta_carpeta, Data*& lista) {
     }
 }
 
-void print_lista(Data *lista_canciones){
 
+
+void print_lista(Data *lista_canciones){
     cout << "\nLista de Canciones:\n";
     Data* temp = lista_canciones;
     while (temp) {
-        cout << temp->nombre << ", " << temp->artista << ", " << temp->album << ", " << temp->duracion_minutos << " minutos " << temp->duracion_segundos << " segundos " << "\n";
+        cout << temp->nombre << ", " << temp->artista << ", " << temp->album << ", " << temp->duracion_minutos << " minutos " << temp->duracion_segundos << " segundos " <<
+        " votos " << temp->votes << "\n";
         temp = temp->siguiente;
     }
 }
+
+
 
 Data* buscar_nodo(Data* lista_canciones, const string& nombreCancion) {
     Data* temp = lista_canciones;

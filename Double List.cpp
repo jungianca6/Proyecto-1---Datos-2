@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include "Metadata.cpp"
-
 using namespace std;
 
 class Node {

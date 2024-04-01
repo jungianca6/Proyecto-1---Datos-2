@@ -11,8 +11,6 @@ enum IDs{
     botonID =2,textoID=3
 };
 
-
-
 using namespace std;
 using namespace TagLib;
 namespace fs = std::filesystem;namespace fs = std::filesystem;
@@ -135,7 +133,29 @@ public:
     }
 };
 
+
+Data* lista_canciones;
+
+
 int main(int argc, char* argv[]) {
+    //Crea la lista enlazada
+    ListaDoble lista;
+    //Lee las canciones de la carpeta y las guarda en la lista
+    leerArchivosMP3("/home/spaceba/Music", lista_canciones);
+
+    //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
+    Data* temp = lista_canciones;
+    while (temp) {
+            lista.insert_lastdouble(*temp);
+            temp = temp->siguiente;
+    }
+
+
+
+
+    lista.printListadouble();
+
+
     wxApp::SetInstance(new MyApp());
     wxEntryStart(argc, argv);
     wxTheApp->OnInit();
@@ -156,8 +176,7 @@ int main(int argc, char* argv[]) {
     //add_to_end(cancion3, filename);
 
     //Cancion busqueda = search_by_index(3, filename);
-
-    // Array para almacenar todas las personas del archivo, es static para que permanezca
+    /*
     Cancion canciones[10];
     Cancion* lista = get_songs(filename, canciones);
 
@@ -169,6 +188,7 @@ int main(int argc, char* argv[]) {
         cout << "Duración Segundos: " << lista[i].duracion_segundos << endl;
         cout << endl;
     }
+     */
 
     return 0;
 

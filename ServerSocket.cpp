@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <nlohmann/json.hpp>
 
+
 using namespace std;
 using namespace nlohmann;
 
@@ -16,6 +17,7 @@ using namespace nlohmann;
 int serverSocket;
 int port;
 struct sockaddr_in serverAddress;
+
 
 void ServerSocket::acceptConnections() {
     while (true){
