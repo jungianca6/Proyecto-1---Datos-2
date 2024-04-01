@@ -140,3 +140,19 @@ void DoubleList::convertArraydouble() {
         cout << arr[i] << " ";
     }
 }
+json DoubleList::toJson(){
+    json j;
+    Node *current = primerod;
+    while (current != nullptr) {
+        json dataJson;
+        dataJson["nombre"] = current->data.nombre;  // Suponiendo que Data tiene un miembro 'nombre'
+        dataJson["artista"] = current->data.artista;  // Suponiendo que Data tiene un miembro 'artista'
+        dataJson["album"] = current->data.album;  // Suponiendo que Data tiene un miembro 'artista'
+        dataJson["duracion_minutos"] = current->data.duracion_minutos;  // Suponiendo que Data tiene un miembro 'artista'
+        dataJson["duracion_segundos"] = current->data.duracion_segundos;  // Suponiendo que Data tiene un miembro 'artista'
+        dataJson["votes"] = current->data.votes;  // Suponiendo que Data tiene un miembro 'artista'
+        j.push_back(dataJson);
+        current = current->siguiente;
+    }
+    return j;
+}

@@ -5,9 +5,13 @@
 #include <iostream>
 #include <string>
 #include "Data.h"
+#include <nlohmann/json.hpp>
 #ifndef PROYECTO_1_DOUBLELIST_H
 #define PROYECTO_1_DOUBLELIST_H
+
 using namespace std;
+using namespace nlohmann;
+
 
 class Node {
 public:
@@ -28,6 +32,8 @@ public:
     void eliminarNododouble(Data nodoBuscado);
     int findlengthdouble();
     void convertArraydouble();
+    // Método para convertir el objeto en formato JSON
+    json toJson();
 };
 
 

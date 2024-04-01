@@ -46,6 +46,9 @@ void ServerSocket::acceptConnections() {
             //Insertar funcion para obtener los nodos de la lista y convertirlos en texto
             //
 
+            json lista_json = lista.toJson();
+            cout << lista_json.dump(4) << endl;
+
             string lista = R"({"cabeza":{"data":{"nombre":"A","artista":"Brayan","duracion":320,"id":1},
             "siguiente":{"data":{"nombre":"B","artista":"Brayan","duracion":320,"id":2},"siguiente"
                 :{"data":{"nombre":"C","artista":"Brayan","duracion":320,"id":3},"siguiente":null}}}})";
