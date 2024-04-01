@@ -144,7 +144,7 @@ public:
 
 int main(int argc, char* argv[]) {
     //Lee las canciones de la carpeta y las guarda en la lista
-    leerArchivosMP3("/home/spaceba/Music", lista_canciones);
+    leerArchivosMP3("/home/dell/Escritorio/Musica", lista_canciones);
 
     //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
     Data* temp = lista_canciones;
