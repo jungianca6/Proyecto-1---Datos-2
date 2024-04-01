@@ -10,75 +10,37 @@ use std::thread;
 use std::time::Duration;
 use serde::{Deserialize, Serialize};
 use std::fmt;
+use std::fs::File;
+use std::io::BufReader;
 
-#[derive(Serialize, Deserialize, Debug)]
-struct Data {
-    nombre: String,
+// Definir la estructura de datos para cada canción
+#[derive(Debug, Serialize, Deserialize)]
+struct Song {
+    album: String,
     artista: String,
-    duracion: i32,
-    id: i32,
-}
-#[derive(Serialize, Deserialize, Debug)]
-// Definición del nodo de la lista
-struct Nodo {
-    data: Data,
-    siguiente: Option<Box<Nodo>>,
+    duracion_minutos: u32,
+    duracion_segundos: u32,
+    nombre: String,
+    votes: u32,
 }
 
-impl Nodo {
-    fn nuevo(data: Data) -> Self {
-        Nodo {
-            data,
-            siguiente: None,
+// Definir la estructura del nodo de la lista enlazada
+#[derive(Debug)]
+struct ListNode {
+    song: Song,
+    next: Option<Box<ListNode>>,
+}
+
+impl ListNode {
+    fn new(song: Song) -> Self {
+        ListNode {
+            song: song,
+            next: None,
         }
     }
 }
-// Definición de la lista doblemente enlazada
-#[derive(Serialize, Deserialize, Debug)]
-struct ListaDoblementeEnlazada {
-    cabeza: Option<Nodo>,
-}
-
-impl ListaDoblementeEnlazada {
-    fn nueva() -> Self {
-        ListaDoblementeEnlazada {
-            cabeza: None,
-        }
-    }
-    fn insert_last(&mut self, data: Data) {
-        let mut nuevo_nodo = Box::new(Nodo::nuevo(data));
-
-        // Si la lista está vacía, el nuevo nodo será la cabeza
-        if self.cabeza.is_none() {
-            self.cabeza = Some(*nuevo_nodo);
-            return;
-        }
-        // Si no, buscamos el último nodo y lo enlazamos con el nuevo nodo
-        let mut actual = self.cabeza.as_mut().unwrap();
-        while let Some(ref mut siguiente) = actual.siguiente {
-            actual = siguiente;
-        }
-        actual.siguiente = Some(nuevo_nodo);
-    }
-
-    fn Print(&mut self){
-        // Si no, buscamos el último nodo y lo enlazamos con el nuevo nodo
-        let mut actual = self.cabeza.as_mut().unwrap();
-        while let Some(ref mut siguiente) = actual.siguiente {
-            println!("Nombre: {}", actual.data.nombre);
-            println!("Artista: {}", actual.data.artista);
-            println!("ID: {}", actual.data.id);
-            println!("Duracion: {}", actual.data.duracion);
-            actual = siguiente;
-        }
-        println!("Nombre: {}", actual.data.nombre);
-        println!("Artista: {}", actual.data.artista);
-        println!("ID: {}", actual.data.id);
-        println!("Duracion: {}", actual.data.duracion);
-    }
 
 
-}
 
 
 struct ClientSocket {
@@ -122,36 +84,32 @@ impl ClientSocket{
 }
 
 //Funcion que pide al servidor la lista de canciones
-fn request_song_list(){
-        let mut client = ClientSocket::new("127.0.0.1:12345");
+fn request_song_list() -> Vec<Song>{
+        let mut client = ClientSocket::new("127.0.0.1:12346");
         //Crea objeto JSON
         let data = json!({"command": "Get-Playlist"});
         //Envia JSON al servidor
         client.send_json(data).expect("Error al enviar JSON");
         //Recibir respuesta del servidor
         let received_message = client.receive_message().expect("Error al recibir mensaje");
-
-        let songs_list = received_message["list"].as_str().unwrap_or("Mensaje no encontrado");
-        let mut json_lista: crate::ListaDoblementeEnlazada = serde_json::from_str(&songs_list).expect("Error al deserializar JSON");
-        json_lista.Print();
-
-
-
-
-        println!("Mensaje recibido del servidor: {}", songs_list);
-
-
-
+        //Obtiene el mensaje contenido en la etiqueta lista
+        let songs_list_str = received_message["list"].as_str().unwrap_or("Mensaje no encontrado");
+        //Imprime el mensaje recibido
+        println!("lista de canciones: {}", songs_list_str);
+        // Analizar el JSON recibido
+        let songs: Vec<Song> = serde_json::from_str(&songs_list_str).unwrap();
         //Cerrar la conexión
         client.stream.shutdown(Shutdown::Both).expect("Error al cerrar conexión");
         //Cerrar la conexión
         mem::drop(client);
+        //Devuelve la lista de canciones
+        return songs
 }
 
 //Funcion que envia la votacion al servidor
-fn vote_song(id: &str, command: &str){
+fn vote_song(nombre: &str, command: &str){
         let mut client = ClientSocket::new("127.0.0.1:12346");
-        let data = json!({"command": command, "id": id});
+        let data = json!({"command": command, "nombre": nombre});
         //Envia JSON al servidor
         client.send_json(data).expect("Error al enviar JSON");
         //Recibir respuesta del servidor
@@ -163,30 +121,34 @@ fn vote_song(id: &str, command: &str){
         mem::drop(client);
 }
 
-fn request_songs() {
+fn request_songs() -> Vec<Song>{
     let hilo = thread::spawn(move || request_song_list());
-    hilo.join();
+    let canciones = hilo.join().unwrap(); // Espera a que el hilo termine y obtiene el resultado
+    return canciones;
 }
 
 fn vote_up(){
-    let vote_up_thread = thread::spawn(move || vote_song("123456","Vote-up"));
+    let vote_up_thread = thread::spawn(move || vote_song("Efecto","Vote-up"));
     vote_up_thread.join();
 }
 
 fn vote_down(){
-    let vote_down_thread = thread::spawn(move || vote_song("123456","Vote-down"));
+    let vote_down_thread = thread::spawn(move || vote_song("Efecto","Vote-down"));
     vote_down_thread.join();
 }
 
+
 fn main() {
+    let mut lista: Vec<Song> = Vec::new();
+
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
     let theme = ColorTheme::new(color_themes::BLACK_THEME);
     theme.apply();
     let mut win = window::Window::default().with_size(600, 400)
         .with_label("prueba");
-    let mut request_songs_button = button::Button::new(160, 200, 80, 40, "Canciones");
-    let mut vote_up_button = button::Button::new(250, 200, 80, 40, "Vote-up");
-    let mut vote_down_button = button::Button::new(340, 200, 80, 40, "Vote-down");
+    let mut request_songs_button = button::Button::new(120, 200, 80, 40, "Canciones");
+    let mut vote_up_button = button::Button::new(210, 200, 80, 40, "Vote-up");
+    let mut vote_down_button = button::Button::new(310, 200, 80, 40, "Vote-down");
     let mut text = input::Input::new(160, 100, 200, 50, "");
     request_songs_button.set_color(request_songs_button.color().lighter());
     vote_up_button.set_color(request_songs_button.color().lighter());
@@ -204,8 +166,13 @@ fn main() {
     });
 
     request_songs_button.set_callback(move |_| {
-        request_songs();
+        lista = request_songs();
     });
+
+
+
+
+
 
     a.run().unwrap();
 }
