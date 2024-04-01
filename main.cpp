@@ -8,6 +8,13 @@
 #include "Metadata.cpp"
 #include "DoubleList.h"
 
+//Lista de canciones recogidas de los archivos
+Data* lista_canciones;
+//Lista enlazada con los nodos
+DoubleList lista_de_canciones;
+
+
+
 enum IDs{
     botonID =2,textoID=3
 };
@@ -109,9 +116,9 @@ private:
 
     }
 
-    void activeServer(){
+    void activeServer() {
         int portNumber = 12346; // Puerto en el que escuchará el servidor
-        ServerSocket servidor = ServerSocket(portNumber);
+        ServerSocket servidor = ServerSocket(portNumber, lista_de_canciones);
         thread hilo(&ServerSocket::acceptConnections, &servidor);
         cout << "Servidor en escucha" << endl;
         hilo.join();
@@ -135,22 +142,17 @@ public:
 };
 
 
-Data* lista_canciones;
-
-
 int main(int argc, char* argv[]) {
-    //Crea la lista enlazada
-    DoubleList lista;
     //Lee las canciones de la carpeta y las guarda en la lista
     leerArchivosMP3("/home/spaceba/Music", lista_canciones);
 
     //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
     Data* temp = lista_canciones;
     while (temp) {
-            lista.insert_lastdouble(*temp);
+        lista_de_canciones.insert_lastdouble(*temp);
             temp = temp->siguiente;
     }
-    lista.printListadouble();
+    lista_de_canciones.printListadouble();
 
 
     wxApp::SetInstance(new MyApp());

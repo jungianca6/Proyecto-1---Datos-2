@@ -19,9 +19,9 @@ public:
     int serverSocket;
     int port;
     struct sockaddr_in serverAddress;
-    Data lista;
+    DoubleList lista;
 
-    ServerSocket(int portNumber) : port(portNumber){
+    ServerSocket(int portNumber, const DoubleList& _lista) : port(portNumber), lista(_lista){
         // Crear un socket
         serverSocket = socket(AF_INET, SOCK_STREAM, 0);
         if (serverSocket == -1) {
