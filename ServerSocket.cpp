@@ -8,7 +8,7 @@
 #include <netinet/in.h>
 #include <unistd.h>
 #include <nlohmann/json.hpp>
-
+#include "DoubleList.h"
 
 using namespace std;
 using namespace nlohmann;
@@ -17,7 +17,7 @@ using namespace nlohmann;
 int serverSocket;
 int port;
 struct sockaddr_in serverAddress;
-
+DoubleList lista;
 
 void ServerSocket::acceptConnections() {
     while (true){

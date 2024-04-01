@@ -4,8 +4,9 @@
 #include "ServerSocket.h"
 #include "thread"
 #include "Circular List.cpp"
-#include "Double List.cpp"
 #include "BinaryListOperations.cpp"
+#include "Metadata.cpp"
+#include "DoubleList.h"
 
 enum IDs{
     botonID =2,textoID=3
@@ -139,7 +140,7 @@ Data* lista_canciones;
 
 int main(int argc, char* argv[]) {
     //Crea la lista enlazada
-    ListaDoble lista;
+    DoubleList lista;
     //Lee las canciones de la carpeta y las guarda en la lista
     leerArchivosMP3("/home/spaceba/Music", lista_canciones);
 
@@ -149,10 +150,6 @@ int main(int argc, char* argv[]) {
             lista.insert_lastdouble(*temp);
             temp = temp->siguiente;
     }
-
-
-
-
     lista.printListadouble();
 
 
@@ -162,10 +159,6 @@ int main(int argc, char* argv[]) {
     wxTheApp->OnRun();
     wxTheApp->OnExit();
     wxEntryCleanup();
-
-    Cancion cancion1 = {"Cancion 1", "Artista 1", "Album 1", 1, 30};
-    Cancion cancion2 = {"Cancion 2", "Artista 2", "Album 2", 2, 30};
-    Cancion cancion3 = {"Cancion 3", "Artista 3", "Album 3", 3, 30};
 
 
     // Nombre del archivo binario en el que deseas escribir

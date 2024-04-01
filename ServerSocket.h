@@ -9,17 +9,19 @@
 #include <netinet/in.h>
 #include <unistd.h>
 #include <nlohmann/json.hpp>
+#include "DoubleList.h"
 using namespace std;
 using namespace nlohmann;
 
+
 class ServerSocket {
-private:
+public:
     int serverSocket;
     int port;
     struct sockaddr_in serverAddress;
+    Data lista;
 
-public:
-    ServerSocket(int portNumber) : port(portNumber) {
+    ServerSocket(int portNumber) : port(portNumber){
         // Crear un socket
         serverSocket = socket(AF_INET, SOCK_STREAM, 0);
         if (serverSocket == -1) {

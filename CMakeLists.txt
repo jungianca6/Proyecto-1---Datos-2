@@ -15,6 +15,10 @@ link_directories(/usr/lib/x86_64-linux-gnu)
 set(CMAKE_CXX_STANDARD 17 /)
 add_executable(Proyecto_1 main.cpp
         ServerSocket.cpp
+        Data.h
+        Cancion.h
+        DoubleList.cpp
+        DoubleList.h
 )
 
 

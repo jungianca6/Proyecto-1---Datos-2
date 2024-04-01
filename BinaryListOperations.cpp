@@ -4,17 +4,11 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "Cancion.h"
 
 using namespace std;
 
-struct Cancion{
-    char nombre[64];
-    char artista[64];
-    char album[64];
-    int duracion_minutos;
-    int duracion_segundos;
-    int votes;
-};
+
 
 //Annade una cancion al final
 void add_to_end(Cancion data, string filename){
