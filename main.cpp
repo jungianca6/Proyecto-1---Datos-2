@@ -118,7 +118,7 @@ private:
 
     void activeServer() {
         int portNumber = 12346; // Puerto en el que escuchará el servidor
-        ServerSocket servidor = ServerSocket(portNumber, lista_de_canciones);
+        ServerSocket servidor = ServerSocket(portNumber, &lista_de_canciones);
         thread hilo(&ServerSocket::acceptConnections, &servidor);
         cout << "Servidor en escucha" << endl;
         hilo.join();

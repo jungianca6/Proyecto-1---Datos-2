@@ -46,7 +46,7 @@ void ServerSocket::acceptConnections() {
             //Insertar funcion para obtener los nodos de la lista y convertirlos en texto
             //
 
-            json lista_json = lista.toJson();
+            json lista_json = lista->toJson();
 
             //Envia la respuesta al cliente
             send_response(command, "OK", clientSocket, to_string(lista_json));
