@@ -176,7 +176,7 @@ int main(int argc, char* argv[]) {
 
      */
 
-    Cancion* canciones = new Cancion[array_de_canciones.cantidad_de_canciones("/home/spaceba/Music")];
+    Cancion* canciones = new Cancion[array_de_canciones.largo];
 
     array_de_canciones.get_songs(canciones);
 
