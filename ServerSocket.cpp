@@ -46,35 +46,34 @@ void ServerSocket::acceptConnections() {
             //Insertar funcion para obtener los nodos de la lista y convertirlos en texto
             //
 
-            json lista_json = lista.toJson();
-            cout << lista_json.dump(4) << endl;
-
-            string lista = R"({"cabeza":{"data":{"nombre":"A","artista":"Brayan","duracion":320,"id":1},
-            "siguiente":{"data":{"nombre":"B","artista":"Brayan","duracion":320,"id":2},"siguiente"
-                :{"data":{"nombre":"C","artista":"Brayan","duracion":320,"id":3},"siguiente":null}}}})";
-
+            json lista_json = lista->toJson();
             //Envia la respuesta al cliente
-            send_response(command, "OK", clientSocket, lista);
+            send_response(command, "OK", clientSocket, to_string(lista_json));
             close(clientSocket);
 
         }
         if(command == "Vote-up"){
             //Obtiene el id de la cancion que se desea modificar
-            string id = receivedJsonData["id"];
-            cout << "Votar por una cancion +1" << "id:" << id << endl;
+            string nombre = receivedJsonData["nombre"];
+            lista->printListadouble();
+            cout << "Votar por una cancion +1" << "id:" << nombre << endl;
+            lista->voteUp(nombre);
+            lista->printListadouble();
 
             //
             //Insertar funcion para actualizar los datos de la cancion
             //
-
             //Envia la respuesta al cliente
             send_response(command, "OK", clientSocket);
             close(clientSocket);
         }
         if(command == "Vote-down"){
             //Obtiene el id de la cancion que se desea modificar
-            string id = receivedJsonData["id"];
-            cout << "Votar por una cancion -1" << "id:" << id << endl;
+            string nombre = receivedJsonData["nombre"];
+            lista->printListadouble();
+            cout << "Votar por una cancion -1" << "nombre:" << nombre << endl;
+            lista->voteDown(nombre);
+            lista->printListadouble();
 
             //
             //Insertar funcion para actualizar los datos de la cancion
