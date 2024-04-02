@@ -9,8 +9,7 @@
 #include "DoubleList.h"
 #include <sndfile.h>
 #include <ogg/ogg.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
+#include <gst/gst.h>
 
 //Lista de canciones recogidas de los archivos
 Data* lista_canciones;
@@ -140,7 +139,7 @@ public:
 int main(int argc, char* argv[]) {
 
     //Lee las canciones de la carpeta y las guarda en la lista
-    leerArchivosMP3("/home/dell/Escritorio/Musica", lista_canciones);
+    leerArchivosMP3("/home/curso/Desktop/Musica", lista_canciones);
 
     //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
     Data* temp = lista_canciones;
@@ -157,6 +156,41 @@ int main(int argc, char* argv[]) {
     wxTheApp->OnRun();
     wxTheApp->OnExit();
     wxEntryCleanup();
+
+    // Inicializar GStreamer
+    gst_init(&argc, &argv);
+
+    // Crear un nuevo pipeline
+    GstElement *pipeline = gst_pipeline_new("audio-player");
+
+    // Crear los elementos necesarios
+    GstElement *source = gst_element_factory_make("filesrc", "file-source");
+    GstElement *decoder = gst_element_factory_make("decodebin", "decoder");
+    GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
+
+    if (!pipeline || !source || !decoder || !sink) {
+        std::cerr << "Error al crear los elementos." << std::endl;
+        return -1;
+    }
+
+    // Establecer el archivo fuente
+    g_object_set(source, "location",
+                 "/home/curso/Desktop/Who Can It Be Now.mp3", NULL);
+
+    // Añadir los elementos al pipeline
+    gst_bin_add_many(GST_BIN(pipeline), source, decoder, sink, NULL);
+
+    // Conectar los elementos
+    gst_element_link(source, decoder);
+    gst_element_link(decoder, sink);
+
+    // Iniciar la reproducción
+    GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+    if (ret == GST_STATE_CHANGE_FAILURE) {
+        std::cerr << "Error al iniciar la reproducción." << std::endl;
+        return -1;
+    }
+
 
 
     // Nombre del archivo binario en el que deseas escribir

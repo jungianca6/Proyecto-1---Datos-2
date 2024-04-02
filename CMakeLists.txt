@@ -34,11 +34,14 @@ target_link_libraries(Proyecto_1 PRIVATE tag)
 include_directories(${SNDFILE_INCLUDE_DIRS})
 include_directories(${OGG_INCLUDE_DIRS})
 
-# Busca la librería SDL2
-find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
-include_directories(${SDL2_MIXER_INCLUDE_DIRS})
+# Encuentra e incluye las bibliotecas de GStreamer
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0)
 
-# Enlaza el ejecutable con la biblioteca SDL2
-target_link_libraries(Proyecto_1 PRIVATE ${SDL2_LIBRARIES}
-        ${SDL2_MIXER_LIBRARIES})
+include_directories(${GSTREAMER_INCLUDE_DIRS})
+link_directories(${GSTREAMER_LIBRARY_DIRS})
+
+# Enlaza el ejecutable con las bibliotecas de GStreamer
+target_link_libraries(Proyecto_1 PRIVATE ${GSTREAMER_LIBRARIES})
+
+add_definitions(${GSTREAMER_CFLAGS_OTHER})

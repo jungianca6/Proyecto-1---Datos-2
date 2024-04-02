@@ -7,7 +7,7 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/dell/Escritorio/Proyecto-1-Datos-2/CMakeLists.txt"
+  "/home/curso/Desktop/Proyecto-1-Datos-2/CMakeLists.txt"
   "CMakeFiles/3.27.8/CMakeCCompiler.cmake"
   "CMakeFiles/3.27.8/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.27.8/CMakeSystem.cmake"
@@ -27,6 +27,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageMessage.cmake"
+  "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPkgConfig.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindwxWidgets.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake"
@@ -36,8 +37,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/ProcessorCount.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/UsewxWidgets.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config-version.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config.cmake"
   )
 
 # The corresponding makefile is:
