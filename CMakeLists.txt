@@ -36,3 +36,9 @@ include_directories(Proyecto_1 PRIVATE /usr/include/taglib)
 
 # Enlaza el ejecutable con las bibliotecas de TagLib
 target_link_libraries(Proyecto_1 PRIVATE tag)
+
+
+include_directories(${SNDFILE_INCLUDE_DIRS})
+
+
+include_directories(${OGG_INCLUDE_DIRS})

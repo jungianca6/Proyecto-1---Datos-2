@@ -7,6 +7,8 @@
 #include "BinaryListOperations.cpp"
 #include "Metadata.cpp"
 #include "DoubleList.h"
+#include <sndfile.h>
+#include <ogg/ogg.h>
 
 //Lista de canciones recogidas de los archivos
 Data* lista_canciones;
@@ -23,6 +25,7 @@ using namespace std;
 using namespace TagLib;
 namespace fs = std::filesystem;namespace fs = std::filesystem;
 
+//clase que crea la ventana
 class MainFrame : public wxFrame {
 public:
     bool active_playlist = false;
@@ -85,16 +88,6 @@ public:
 
         wxTextCtrl *buscar= new wxTextCtrl(panel, wxID_ANY, "",
                                            wxPoint(900, 60), wxSize(200, -1));
-
-        /*wxImage image("/home/dell/Escritorio/play.png",wxBITMAP_TYPE_PNG);
-        if (!image.IsOk()){
-            wxMessageBox("mamaste");
-            return;
-        }
-
-        wxBitmap bitmap(image);
-        image.Rescale(100, 50);
-        wxBitmapButton* boton = new wxBitmapButton(this,wxID_ANY,bitmap,wxPoint(150,750));*/
     }
 
 private:
@@ -186,5 +179,4 @@ int main(int argc, char* argv[]) {
      */
 
     return 0;
-
 }
