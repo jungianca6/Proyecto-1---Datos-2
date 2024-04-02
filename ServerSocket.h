@@ -20,8 +20,10 @@ public:
     int port;
     struct sockaddr_in serverAddress;
     DoubleList *lista;
+    bool paginacion;
 
     ServerSocket(int portNumber, DoubleList *_lista) : port(portNumber), lista(_lista){
+        paginacion = false;
         // Crear un socket
         serverSocket = socket(AF_INET, SOCK_STREAM, 0);
         if (serverSocket == -1) {

@@ -15,14 +15,6 @@ namespace fs = std::filesystem;
 
 
 
-void vote_up(Data cancion){
-    cancion.votes = cancion.votes + 1;
-}
-
-void vote_down(Data cancion){
-    cancion.votes = cancion.votes + 1;
-}
-
 void obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista) {
     TagLib::FileRef archivo(ruta_archivo.c_str());
     if (!archivo.isNull() && archivo.tag()) {

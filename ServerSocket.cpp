@@ -18,6 +18,7 @@ int serverSocket;
 int port;
 struct sockaddr_in serverAddress;
 DoubleList lista;
+bool paginacion;
 
 void ServerSocket::acceptConnections() {
     while (true){
@@ -46,43 +47,51 @@ void ServerSocket::acceptConnections() {
             //Insertar funcion para obtener los nodos de la lista y convertirlos en texto
             //
 
-            json lista_json = lista->toJson();
+            //Verifica que la paginacion este desactivada
+            if (!paginacion){
+                json lista_json = lista->toJson();
 
-            //Envia la respuesta al cliente
-            send_response(command, "OK", clientSocket, to_string(lista_json));
-            close(clientSocket);
+                //Envia la respuesta al cliente
+                send_response(command, "OK", clientSocket, to_string(lista_json));
+                close(clientSocket);
+            }
 
         }
         if(command == "Vote-up"){
             //Obtiene el id de la cancion que se desea modificar
             string nombre = receivedJsonData["nombre"];
-            lista->printListadouble();
-            cout << "Votar por una cancion +1" << "id:" << nombre << endl;
-            lista->voteUp(nombre);
-            lista->printListadouble();
 
-            //
-            //Insertar funcion para actualizar los datos de la cancion
-            //
+            //Verifica si la paginacion esta desactivada
+            if (!paginacion) {
+                lista->printListadouble();
+                cout << "Votar por una cancion +1" << "id:" << nombre << endl;
+                //Vota a la cancion
+                lista->voteUp(nombre);
+                lista->printListadouble();
 
-            //Envia la respuesta al cliente
-            send_response(command, "OK", clientSocket);
-            close(clientSocket);
+
+                //Envia la respuesta al cliente
+                send_response(command, "OK", clientSocket);
+                close(clientSocket);
+            }
         }
+
         if(command == "Vote-down"){
             //Obtiene el id de la cancion que se desea modificar
             string nombre = receivedJsonData["nombre"];
-            lista->printListadouble();
-            cout << "Votar por una cancion -1" << "nombre:" << nombre << endl;
-            lista->voteDown(nombre);
-            lista->printListadouble();
-            //
-            //Insertar funcion para actualizar los datos de la cancion
-            //
 
-            //Envia la respuesta al cliente
-            send_response(command, "OK", clientSocket);
-            close(clientSocket);
+            //Verifica si la paginacion esta desactivada
+            if (!paginacion) {
+                lista->printListadouble();
+                cout << "Votar por una cancion -1" << "id:" << nombre << endl;
+                //Vota a la cancion
+                lista->voteDown(nombre);
+                lista->printListadouble();
+
+                //Envia la respuesta al cliente
+                send_response(command, "OK", clientSocket);
+                close(clientSocket);
+            }
         }
 
         cout << receivedJsonData << endl;

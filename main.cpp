@@ -12,8 +12,8 @@
 Data* lista_canciones;
 //Lista enlazada con los nodos
 DoubleList lista_de_canciones;
-
-
+int portNumber = 12346;
+ServerSocket servidor = ServerSocket(portNumber, &lista_de_canciones);
 
 enum IDs{
     botonID =2,textoID=3
@@ -99,8 +99,16 @@ public:
 
 private:
     void PaginacionActionButton(wxCommandEvent &event) {
-        caja->SetValue("Hola");
-        cout<<"Presionado"<<endl;
+        if (servidor.paginacion == true){
+            servidor.paginacion = false;
+            caja->SetValue("Paginacion desactivada");
+        }else{
+            servidor.paginacion = true;
+            caja->SetValue("Paginacion Activada");
+        }
+
+
+
     }
     void ComunitarioActionButton(wxCommandEvent &event) {
         if (!active_playlist){
@@ -117,8 +125,6 @@ private:
     }
 
     void activeServer() {
-        int portNumber = 12346; // Puerto en el que escuchará el servidor
-        ServerSocket servidor = ServerSocket(portNumber, &lista_de_canciones);
         thread hilo(&ServerSocket::acceptConnections, &servidor);
         cout << "Servidor en escucha" << endl;
         hilo.join();
@@ -140,7 +146,6 @@ public:
         return true;
     }
 };
-
 
 int main(int argc, char* argv[]) {
     //Lee las canciones de la carpeta y las guarda en la lista
