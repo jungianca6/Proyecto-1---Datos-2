@@ -121,8 +121,6 @@ void DoubleList::voteDown(string cancionbuscada) {
 }
 
 
-
-
 void DoubleList::eliminarNododouble(Data nodoBuscado) {
     Node *actual = new Node();
     actual = primerod;
@@ -168,21 +166,7 @@ int DoubleList::findlengthdouble() {
     return cnt;
 }
 
-void DoubleList::convertArraydouble() {
-    int len = findlengthdouble();
-    string arr[len];
-    int index = 0;
-    Node *actual = primerod;
 
-    while (actual != NULL) {
-        arr[index++] = actual->data.nombre;
-        actual = actual->siguiente;
-    }
-    // print array
-    for (int i = 0; i < len; i++) {
-        cout << arr[i] << " ";
-    }
-}
 json DoubleList::toJson(){
     json j;
     Node *current = primerod;

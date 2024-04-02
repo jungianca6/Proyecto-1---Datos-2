@@ -14,7 +14,6 @@ using namespace std;
 namespace fs = std::filesystem;
 
 
-
 void obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista) {
     TagLib::FileRef archivo(ruta_archivo.c_str());
     if (!archivo.isNull() && archivo.tag()) {
@@ -69,27 +68,4 @@ void leerArchivosMP3(const string& ruta_carpeta, Data*& lista) {
 }
 
 
-void print_lista(Data *lista_canciones){
-    cout << "\nLista de Canciones:\n";
-    Data* temp = lista_canciones;
-    while (temp) {
-        cout << temp->nombre << ", " << temp->artista << ", " << temp->album << ", " << temp->duracion_minutos << " minutos " << temp->duracion_segundos << " segundos " <<
-        " votos " << temp->votes << "\n";
-        temp = temp->siguiente;
-    }
-}
 
-
-
-Data* buscar_nodo(Data* lista_canciones, const string& nombreCancion) {
-    Data* temp = lista_canciones;
-    while (temp) {
-        if (temp->nombre == nombreCancion) {
-            // Si se encuentra la canción, se devuelve el nodo actual
-            return temp;
-        }
-        temp = temp->siguiente;
-    }
-    // Si no se encuentra la canción, se devuelve nullptr
-    return nullptr;
-}

@@ -9,6 +9,8 @@
 #include <unistd.h>
 #include <nlohmann/json.hpp>
 #include "DoubleList.h"
+#include "PagedArray.h"
+
 
 using namespace std;
 using namespace nlohmann;
@@ -17,8 +19,18 @@ using namespace nlohmann;
 int serverSocket;
 int port;
 struct sockaddr_in serverAddress;
-DoubleList lista;
+DoubleList lista_enlazada;
+PagedArray pagedlist;
 bool paginacion;
+
+
+void ServerSocket::List_to_Array(){
+
+}
+
+void Array_to_list(){
+
+}
 
 void ServerSocket::acceptConnections() {
     while (true){
@@ -49,7 +61,7 @@ void ServerSocket::acceptConnections() {
 
             //Verifica que la paginacion este desactivada
             if (!paginacion){
-                json lista_json = lista->toJson();
+                json lista_json = lista_enlazada->toJson();
 
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket, to_string(lista_json));
@@ -63,17 +75,20 @@ void ServerSocket::acceptConnections() {
 
             //Verifica si la paginacion esta desactivada
             if (!paginacion) {
-                lista->printListadouble();
+                lista_enlazada->printListadouble();
                 cout << "Votar por una cancion +1" << "id:" << nombre << endl;
                 //Vota a la cancion
-                lista->voteUp(nombre);
-                lista->printListadouble();
+                lista_enlazada->voteUp(nombre);
+                lista_enlazada->printListadouble();
 
 
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket);
                 close(clientSocket);
             }
+            if (paginacion){
+            }
+
         }
 
         if(command == "Vote-down"){
@@ -82,11 +97,11 @@ void ServerSocket::acceptConnections() {
 
             //Verifica si la paginacion esta desactivada
             if (!paginacion) {
-                lista->printListadouble();
+                lista_enlazada->printListadouble();
                 cout << "Votar por una cancion -1" << "id:" << nombre << endl;
                 //Vota a la cancion
-                lista->voteDown(nombre);
-                lista->printListadouble();
+                lista_enlazada->voteDown(nombre);
+                lista_enlazada->printListadouble();
 
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket);

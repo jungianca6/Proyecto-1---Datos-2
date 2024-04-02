@@ -19,10 +19,11 @@ public:
     int serverSocket;
     int port;
     struct sockaddr_in serverAddress;
-    DoubleList *lista;
+    DoubleList *lista_enlazada;
     bool paginacion;
+    Data * pagedlist;
 
-    ServerSocket(int portNumber, DoubleList *_lista) : port(portNumber), lista(_lista){
+    ServerSocket(int portNumber, DoubleList *_lista) : port(portNumber), lista_enlazada(_lista){
         paginacion = false;
         // Crear un socket
         serverSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -56,6 +57,8 @@ public:
     void acceptConnections();
 
     void send_response(string command, string status, int clientsocket, string list);
+
+    void List_to_Array();
 };
 
 

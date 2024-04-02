@@ -25,18 +25,23 @@ private:
     Node *primerod = nullptr;
     Node *ultimod = nullptr;
 public:
+    //Imprime la lista
     void printListadouble();
+    // Inserta un elemento al final
     void insert_lastdouble(Data new_data);
+    // Inserta un elemento al principio
     void insert_firstdouble(Data new_data);
+    // Elimina un nodo
     void eliminarNododouble(Data nodoBuscado);
+    // Busca un nodo
     void buscarNododouble(string cancionbuscada);
+    // Encuentra el largo de la lista
     int findlengthdouble();
-    void convertArraydouble();
     // Método para convertir el objeto en formato JSON
     json toJson();
-
+    //Vota por una cancion a favor
     void voteUp(string cancionbuscada);
-
+    //Vota por una cancion a favor
     void voteDown(string cancionbuscada);
 };
 

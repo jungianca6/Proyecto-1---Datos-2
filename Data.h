@@ -6,6 +6,8 @@
 #define PROYECTO_1_DATA_H
 #include <cstring>
 
+using namespace std;
+
 struct Data {
     char nombre[64];
     char artista[64];
@@ -23,6 +25,31 @@ struct Data {
         strncpy(nombre, _nombre, sizeof(nombre));
         strncpy(artista, _artista, sizeof(artista));
         strncpy(album, _album, sizeof(album));
+    }
+
+    void print_lista(Data *lista_canciones){
+        cout << "\nLista de Canciones:\n";
+        Data* temp = lista_canciones;
+        while (temp) {
+            cout << temp->nombre << ", " << temp->artista << ", " << temp->album << ", " << temp->duracion_minutos << " minutos " << temp->duracion_segundos << " segundos " <<
+                 " votos " << temp->votes << "\n";
+            temp = temp->siguiente;
+        }
+    }
+
+
+
+    Data* buscar_nodo(Data* lista_canciones, const string& nombreCancion) {
+        Data* temp = lista_canciones;
+        while (temp) {
+            if (temp->nombre == nombreCancion) {
+                // Si se encuentra la canción, se devuelve el nodo actual
+                return temp;
+            }
+            temp = temp->siguiente;
+        }
+        // Si no se encuentra la canción, se devuelve nullptr
+        return nullptr;
     }
 
 };

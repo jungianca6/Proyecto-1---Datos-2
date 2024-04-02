@@ -19,6 +19,8 @@ add_executable(Proyecto_1 main.cpp
         Cancion.h
         DoubleList.cpp
         DoubleList.h
+        PagedArray.cpp
+        PagedArray.h
 )
 
 

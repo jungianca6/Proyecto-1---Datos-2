@@ -4,16 +4,18 @@
 #include "ServerSocket.h"
 #include "thread"
 #include "Circular List.cpp"
-#include "BinaryListOperations.cpp"
 #include "Metadata.cpp"
 #include "DoubleList.h"
+#include "PagedArray.h"
+
 
 //Lista de canciones recogidas de los archivos
-Data* lista_canciones;
+Data* carpeta_de_canciones;
 //Lista enlazada con los nodos
 DoubleList lista_de_canciones;
 int portNumber = 12346;
 ServerSocket servidor = ServerSocket(portNumber, &lista_de_canciones);
+PagedArray array_de_canciones;
 
 enum IDs{
     botonID =2,textoID=3
@@ -102,16 +104,15 @@ private:
         if (servidor.paginacion == true){
             servidor.paginacion = false;
             caja->SetValue("Paginacion desactivada");
+
         }else{
             servidor.paginacion = true;
             caja->SetValue("Paginacion Activada");
         }
-
-
-
     }
     void ComunitarioActionButton(wxCommandEvent &event) {
         if (!active_playlist){
+            caja->SetValue("PLaylist Activada");
             // Crear un hilo que ejecute la función en segundo plano
             thread ServerThread(&MainFrame::activeServer, this);
             // Hacer que el hilo sea independiente del hilo principal (no bloquear)
@@ -147,17 +148,47 @@ public:
     }
 };
 
+
 int main(int argc, char* argv[]) {
     //Lee las canciones de la carpeta y las guarda en la lista
-    leerArchivosMP3("/home/spaceba/Music", lista_canciones);
+    leerArchivosMP3("/home/spaceba/Music", carpeta_de_canciones);
 
     //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
-    Data* temp = lista_canciones;
+    Data* temp = carpeta_de_canciones;
     while (temp) {
         lista_de_canciones.insert_lastdouble(*temp);
             temp = temp->siguiente;
     }
+
     //lista_de_canciones.printListadouble();
+
+    /*
+    Cancion *cancion1 = new Cancion("Nombre 1","Artista 1","Album 1",1,30,0);
+    Cancion *cancion2 = new Cancion("Nombre 2","Artista 2","Album 2",1,30,0);
+    Cancion *cancion3 = new Cancion("Nombre 3","Artista 3","Album 3",1,30,0);
+
+    array_de_canciones.add_to_end(*cancion1);
+    array_de_canciones.add_to_end(*cancion2);
+    array_de_canciones.add_to_end(*cancion3);
+     */
+
+    /*
+
+     */
+
+    Cancion* canciones = new Cancion[array_de_canciones.cantidad_de_canciones("/home/spaceba/Music")];
+
+    array_de_canciones.get_songs(canciones);
+
+    for (int i = 0; i < 3; ++i) {
+        cout << "Canción #" << i+1 << ":" << endl;
+        cout << "Nombre: " << canciones[i].nombre << endl;
+        cout << "Artista: " << canciones[i].artista << endl;
+        cout << "Duración Minutos: " << canciones[i].duracion_minutos << " minutos" << endl;
+        cout << "Duración Segundos: " << canciones[i].duracion_segundos << endl;
+        cout << "Votos: " << canciones[i].votes << endl;
+        cout << endl;
+    }
 
 
     wxApp::SetInstance(new MyApp());
@@ -168,27 +199,7 @@ int main(int argc, char* argv[]) {
     wxEntryCleanup();
 
 
-    // Nombre del archivo binario en el que deseas escribir
-    string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
 
-    //add_to_end(cancion1, filename);
-    //add_to_end(cancion2, filename);
-    //add_to_end(cancion3, filename);
-
-    //Cancion busqueda = search_by_index(3, filename);
-    /*
-    Cancion canciones[10];
-    Cancion* lista = get_songs(filename, canciones);
-
-    for (int i = 0; i < 3; ++i) {
-        cout << "Canción #" << i+1 << ":" << endl;
-        cout << "Nombre: " << lista[i].nombre << endl;
-        cout << "Artista: " << lista[i].artista << endl;
-        cout << "Duración Minutos: " << lista[i].duracion_minutos << " minutos" << endl;
-        cout << "Duración Segundos: " << lista[i].duracion_segundos << endl;
-        cout << endl;
-    }
-     */
 
     return 0;
 
