@@ -24,7 +24,6 @@ void DoubleList::printListadouble() {
     } else {
         cout << "Vacía" << endl;
     }
-
 }
 
 void DoubleList::insert_lastdouble(Data new_data) {
@@ -77,7 +76,48 @@ void DoubleList::buscarNododouble(string cancionbuscada) {
     } else {
         cout << "nel";
     }
+}
 
+
+void DoubleList::voteUp(string cancionbuscada) {
+    Node *actual = primerod;
+    bool encontrado = false;
+    cout << "Dato buscado: " << cancionbuscada << endl;
+    if (primerod != NULL) {
+        do {
+            if (actual->data.nombre == cancionbuscada) {
+                actual->data.votes = actual->data.votes + 1;
+                encontrado = true;
+            }
+            actual = actual->siguiente;
+        } while (actual != NULL && encontrado != true);
+        if (!encontrado) {
+            cout << "Nodo no encontrado";
+        }
+
+    } else {
+        cout << "nel";
+    }
+}
+
+void DoubleList::voteDown(string cancionbuscada) {
+    Node *actual = primerod;
+    bool encontrado = false;
+    cout << "Dato buscado: " << cancionbuscada << endl;
+    if (primerod != NULL) {
+        do {
+            if (actual->data.nombre == cancionbuscada) {
+                actual->data.votes = actual->data.votes - 1;
+                encontrado = true;
+            }
+            actual = actual->siguiente;
+        } while (actual != NULL && encontrado != true);
+        if (!encontrado) {
+            cout << "Nodo no encontrado";
+        }
+    } else {
+        cout << "nel";
+    }
 }
 
 void DoubleList::voteUp(string cancionbuscada) {
@@ -130,12 +170,10 @@ void DoubleList::eliminarNododouble(Data nodoBuscado) {
     anterior = NULL;
     bool encontrado = false;
     cout << "Dato eliminado: " << endl;
-
     if (primerod != NULL) {
         do {
             if (actual->data.nombre == nodoBuscado.nombre) {
                 cout << "Nodo con el dato ( " << nodoBuscado.nombre << " ) eliminado" << endl;
-
                 if (actual == primerod) {
                     primerod = primerod->siguiente;
                 } else if (actual == ultimod) {
@@ -152,7 +190,6 @@ void DoubleList::eliminarNododouble(Data nodoBuscado) {
         if (!encontrado) {
             cout << "Nodo encontrado";
         }
-
     } else {
         cout << "nel";
     }

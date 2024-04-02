@@ -115,7 +115,7 @@
 			[
 				{
 					"backtrace" : 7,
-					"path" : "/home/spaceba/CLionProjects/Server/include"
+					"path" : "/home/dell/Escritorio/Proyecto-1-Datos-2/include"
 				},
 				{
 					"backtrace" : 8,
@@ -123,21 +123,21 @@
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/home/spaceba/CLionProjects/Server/Proyecto_1"
+					"path" : "/home/dell/Escritorio/Proyecto-1-Datos-2/Proyecto_1"
 				},
 				{
 					"backtrace" : 9,
-					"path" : "/home/spaceba/CLionProjects/Server/PRIVATE"
+					"path" : "/home/dell/Escritorio/Proyecto-1-Datos-2/PRIVATE"
 				},
 				{
 					"backtrace" : 10,
 					"isSystem" : true,
-					"path" : "/usr/local/lib/wx/include/gtk3-unicode-3.2"
+					"path" : "/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"
 				},
 				{
 					"backtrace" : 10,
 					"isSystem" : true,
-					"path" : "/usr/local/include/wx-3.2"
+					"path" : "/usr/include/wx-3.0"
 				}
 			],
 			"language" : "CXX",
@@ -172,7 +172,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-L/usr/local/lib",
+				"fragment" : "-L/usr/lib/x86_64-linux-gnu",
 				"role" : "libraries"
 			},
 			{
@@ -182,12 +182,12 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-lwx_gtk3u_core-3.2",
+				"fragment" : "-lwx_gtk3u_core-3.0",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-lwx_baseu-3.2",
+				"fragment" : "-lwx_baseu-3.0",
 				"role" : "libraries"
 			},
 			{
