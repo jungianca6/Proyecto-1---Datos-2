@@ -244,6 +244,18 @@ Proyecto_1_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Proyecto_1_SOURCE_DIR:STATIC=/home/dell/Escritorio/Proyecto-1-Datos-2
 
+//The directory containing a CMake configuration file for SDL2.
+SDL2_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SDL2
+
+//The directory containing a CMake configuration file for SDL2_mixer.
+SDL2_mixer_DIR:PATH=SDL2_mixer_DIR-NOTFOUND
+
+//Path to a file.
+SDL_MIXER_INCLUDE_DIR:PATH=SDL_MIXER_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+SDL_MIXER_LIBRARY:FILEPATH=SDL_MIXER_LIBRARY-NOTFOUND
+
 //The directory containing a CMake configuration file for sndfile.
 sndfile_DIR:PATH=sndfile_DIR-NOTFOUND
 

@@ -5,7 +5,7 @@
 		<Option title="Proyecto_1"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SDL2\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug"/>
@@ -31,6 +31,7 @@
 					<Add directory="/usr/include/taglib"/>
 					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/Proyecto_1"/>
 					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/PRIVATE"/>
+					<Add directory="/usr/include/SDL2"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>
@@ -62,6 +63,7 @@
 					<Add directory="/usr/include/taglib"/>
 					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/Proyecto_1"/>
 					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/PRIVATE"/>
+					<Add directory="/usr/include/SDL2"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>
@@ -112,6 +114,9 @@
 		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/DoubleList.h">
 			<Option target="Proyecto_1"/>
 		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Pruebamusica.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
 		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp">
 			<Option target="Proyecto_1"/>
 		</Unit>
@@ -123,6 +128,12 @@
 		</Unit>
 		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/../../../../usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SDL2\"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/../../../../usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SDL2\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

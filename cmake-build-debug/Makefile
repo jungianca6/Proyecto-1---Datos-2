@@ -153,6 +153,30 @@ DoubleList.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/DoubleList.cpp.s
 .PHONY : DoubleList.cpp.s
 
+Pruebamusica.o: Pruebamusica.cpp.o
+.PHONY : Pruebamusica.o
+
+# target to build an object file
+Pruebamusica.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Pruebamusica.cpp.o
+.PHONY : Pruebamusica.cpp.o
+
+Pruebamusica.i: Pruebamusica.cpp.i
+.PHONY : Pruebamusica.i
+
+# target to preprocess a source file
+Pruebamusica.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Pruebamusica.cpp.i
+.PHONY : Pruebamusica.cpp.i
+
+Pruebamusica.s: Pruebamusica.cpp.s
+.PHONY : Pruebamusica.s
+
+# target to generate assembly for a file
+Pruebamusica.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Pruebamusica.cpp.s
+.PHONY : Pruebamusica.cpp.s
+
 ServerSocket.o: ServerSocket.cpp.o
 .PHONY : ServerSocket.o
 
@@ -213,6 +237,9 @@ help:
 	@echo "... DoubleList.o"
 	@echo "... DoubleList.i"
 	@echo "... DoubleList.s"
+	@echo "... Pruebamusica.o"
+	@echo "... Pruebamusica.i"
+	@echo "... Pruebamusica.s"
 	@echo "... ServerSocket.o"
 	@echo "... ServerSocket.i"
 	@echo "... ServerSocket.s"

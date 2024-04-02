@@ -9,6 +9,8 @@
 #include "DoubleList.h"
 #include <sndfile.h>
 #include <ogg/ogg.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 //Lista de canciones recogidas de los archivos
 Data* lista_canciones;
@@ -136,6 +138,7 @@ public:
 
 
 int main(int argc, char* argv[]) {
+
     //Lee las canciones de la carpeta y las guarda en la lista
     leerArchivosMP3("/home/dell/Escritorio/Musica", lista_canciones);
 
