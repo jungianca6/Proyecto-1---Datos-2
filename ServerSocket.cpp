@@ -47,6 +47,7 @@ void ServerSocket::acceptConnections() {
             //
 
             json lista_json = lista->toJson();
+
             //Envia la respuesta al cliente
             send_response(command, "OK", clientSocket, to_string(lista_json));
             close(clientSocket);
@@ -63,6 +64,7 @@ void ServerSocket::acceptConnections() {
             //
             //Insertar funcion para actualizar los datos de la cancion
             //
+
             //Envia la respuesta al cliente
             send_response(command, "OK", clientSocket);
             close(clientSocket);
@@ -74,7 +76,6 @@ void ServerSocket::acceptConnections() {
             cout << "Votar por una cancion -1" << "nombre:" << nombre << endl;
             lista->voteDown(nombre);
             lista->printListadouble();
-
             //
             //Insertar funcion para actualizar los datos de la cancion
             //

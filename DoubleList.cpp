@@ -120,6 +120,49 @@ void DoubleList::voteDown(string cancionbuscada) {
     }
 }
 
+void DoubleList::voteUp(string cancionbuscada) {
+    Node *actual = primerod;
+    bool encontrado = false;
+    cout << "Dato buscado: " << cancionbuscada << endl;
+    if (primerod != NULL) {
+        do {
+            if (actual->data.nombre == cancionbuscada) {
+                actual->data.votes = actual->data.votes + 1;
+                encontrado = true;
+            }
+            actual = actual->siguiente;
+        } while (actual != NULL && encontrado != true);
+        if (!encontrado) {
+            cout << "Nodo no encontrado";
+        }
+    } else {
+        cout << "nel";
+    }
+}
+
+void DoubleList::voteDown(string cancionbuscada) {
+    Node *actual = primerod;
+    bool encontrado = false;
+    cout << "Dato buscado: " << cancionbuscada << endl;
+    if (primerod != NULL) {
+        do {
+            if (actual->data.nombre == cancionbuscada) {
+                actual->data.votes = actual->data.votes - 1;
+                encontrado = true;
+            }
+            actual = actual->siguiente;
+        } while (actual != NULL && encontrado != true);
+        if (!encontrado) {
+            cout << "Nodo no encontrado";
+        }
+    } else {
+        cout << "nel";
+    }
+}
+
+
+
+
 void DoubleList::eliminarNododouble(Data nodoBuscado) {
     Node *actual = new Node();
     actual = primerod;
