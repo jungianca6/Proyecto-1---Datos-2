@@ -4,10 +4,11 @@
 #include "ServerSocket.h"
 #include "thread"
 #include "Circular List.cpp"
-#include "Metadata.cpp"
 #include "DoubleList.h"
 #include "PagedArray.h"
-
+#include <sndfile.h>
+#include <ogg/ogg.h>
+#include <gst/gst.h>
 
 //Lista de canciones recogidas de los archivos
 Data* carpeta_de_canciones;
@@ -22,9 +23,9 @@ enum IDs{
 };
 
 using namespace std;
-using namespace TagLib;
 namespace fs = std::filesystem;namespace fs = std::filesystem;
 
+//clase que crea la ventana
 class MainFrame : public wxFrame {
 public:
     bool active_playlist = false;
@@ -150,8 +151,9 @@ public:
 
 
 int main(int argc, char* argv[]) {
+
     //Lee las canciones de la carpeta y las guarda en la lista
-    leerArchivosMP3("/home/spaceba/Music", carpeta_de_canciones);
+    lista_de_canciones.leerArchivosMP3("/home/spaceba/Music", carpeta_de_canciones);
 
     //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
     Data* temp = carpeta_de_canciones;
@@ -198,8 +200,63 @@ int main(int argc, char* argv[]) {
     wxTheApp->OnExit();
     wxEntryCleanup();
 
+    // Inicializar GStreamer
+    gst_init(&argc, &argv);
+
+    // Crear un nuevo pipeline
+    GstElement *pipeline = gst_pipeline_new("audio-player");
+
+    // Crear los elementos necesarios
+    GstElement *source = gst_element_factory_make("filesrc", "file-source");
+    GstElement *decoder = gst_element_factory_make("decodebin", "decoder");
+    GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
+
+    if (!pipeline || !source || !decoder || !sink) {
+        std::cerr << "Error al crear los elementos." << std::endl;
+        return -1;
+    }
+
+    // Establecer el archivo fuente
+    g_object_set(source, "location",
+                 "/home/spaceba/Music/Bad Bunny - Moscow Mule.mp3", NULL);
+
+    // Añadir los elementos al pipeline
+    gst_bin_add_many(GST_BIN(pipeline), source, decoder, sink, NULL);
+
+    // Conectar los elementos
+    gst_element_link(source, decoder);
+    gst_element_link(decoder, sink);
+
+    // Iniciar la reproducción
+    GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+    if (ret == GST_STATE_CHANGE_FAILURE) {
+        std::cerr << "Error al iniciar la reproducción." << std::endl;
+        return -1;
+    }
 
 
+
+    // Nombre del archivo binario en el que deseas escribir
+    string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
+
+    //add_to_end(cancion1, filename);
+    //add_to_end(cancion2, filename);
+    //add_to_end(cancion3, filename);
+
+    //Cancion busqueda = search_by_index(3, filename);
+    /*
+    Cancion canciones[10];
+    Cancion* lista = get_songs(filename, canciones);
+
+    for (int i = 0; i < 3; ++i) {
+        cout << "Canción #" << i+1 << ":" << endl;
+        cout << "Nombre: " << lista[i].nombre << endl;
+        cout << "Artista: " << lista[i].artista << endl;
+        cout << "Duración Minutos: " << lista[i].duracion_minutos << " minutos" << endl;
+        cout << "Duración Segundos: " << lista[i].duracion_segundos << endl;
+        cout << endl;
+    }
+     */
 
     return 0;
 

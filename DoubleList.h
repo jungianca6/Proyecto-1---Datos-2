@@ -43,6 +43,10 @@ public:
     void voteUp(string cancionbuscada);
     //Vota por una cancion a favor
     void voteDown(string cancionbuscada);
+
+    void leerArchivosMP3(const string& ruta_carpeta, Data*& lista);
+
+    void obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista);
 };
 
 

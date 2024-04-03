@@ -8,14 +8,13 @@
 
 using namespace std;
 
-struct Data {
+struct Data{
     char nombre[64];
     char artista[64];
     char album[64];
     int duracion_minutos;
     int duracion_segundos;
     int votes;
-
     Data* siguiente;
 
     Data(){};

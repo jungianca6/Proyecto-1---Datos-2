@@ -57,10 +57,10 @@ RM = /snap/clion/265/bin/cmake/linux/x64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dell/Escritorio/Proyecto-1-Datos-2
+CMAKE_SOURCE_DIR = /home/curso/Desktop/Proyecto-1-Datos-2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug
+CMAKE_BINARY_DIR = /home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles /home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,29 +129,29 @@ Proyecto_1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/build
 .PHONY : Proyecto_1/fast
 
-Metadata.o: Metadata.cpp.o
-.PHONY : Metadata.o
+DoubleList.o: DoubleList.cpp.o
+.PHONY : DoubleList.o
 
 # target to build an object file
-Metadata.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Metadata.cpp.o
-.PHONY : Metadata.cpp.o
+DoubleList.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o
+.PHONY : DoubleList.cpp.o
 
-Metadata.i: Metadata.cpp.i
-.PHONY : Metadata.i
+DoubleList.i: DoubleList.cpp.i
+.PHONY : DoubleList.i
 
 # target to preprocess a source file
-Metadata.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Metadata.cpp.i
-.PHONY : Metadata.cpp.i
+DoubleList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/DoubleList.cpp.i
+.PHONY : DoubleList.cpp.i
 
-Metadata.s: Metadata.cpp.s
-.PHONY : Metadata.s
+DoubleList.s: DoubleList.cpp.s
+.PHONY : DoubleList.s
 
 # target to generate assembly for a file
-Metadata.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Metadata.cpp.s
-.PHONY : Metadata.cpp.s
+DoubleList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/DoubleList.cpp.s
+.PHONY : DoubleList.cpp.s
 
 ServerSocket.o: ServerSocket.cpp.o
 .PHONY : ServerSocket.o
@@ -210,9 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Proyecto_1"
-	@echo "... Metadata.o"
-	@echo "... Metadata.i"
-	@echo "... Metadata.s"
+	@echo "... DoubleList.o"
+	@echo "... DoubleList.i"
+	@echo "... DoubleList.s"
 	@echo "... ServerSocket.o"
 	@echo "... ServerSocket.i"
 	@echo "... ServerSocket.s"

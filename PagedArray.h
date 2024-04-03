@@ -7,11 +7,12 @@
 
 #include <string>
 #include "Cancion.h"
+#include "DoubleList.h"
 
 using namespace std;
 
 
-class PagedArray {
+class PagedArray : public DoubleList{
 public:
     Cancion * canciones;
     string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
