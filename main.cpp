@@ -139,7 +139,7 @@ public:
 int main(int argc, char* argv[]) {
 
     //Lee las canciones de la carpeta y las guarda en la lista
-    leerArchivosMP3("/home/curso/Desktop/Musica", lista_canciones);
+    leerArchivosMP3("/home/dell/Escritorio/Musica", lista_canciones);
 
     //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
     Data* temp = lista_canciones;
@@ -175,7 +175,7 @@ int main(int argc, char* argv[]) {
 
     // Establecer el archivo fuente
     g_object_set(source, "location",
-                 "/home/curso/Desktop/Who Can It Be Now.mp3", NULL);
+                 "/home/dell/Escritorio/Musica/Who Can It Be Now.mp3", NULL);
 
     // Añadir los elementos al pipeline
     gst_bin_add_many(GST_BIN(pipeline), source, decoder, sink, NULL);

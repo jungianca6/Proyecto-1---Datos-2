@@ -53,10 +53,10 @@ RM = /snap/clion/265/bin/cmake/linux/x64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/curso/Desktop/Proyecto-1-Datos-2
+CMAKE_SOURCE_DIR = /home/dell/Escritorio/Proyecto-1-Datos-2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug
+CMAKE_BINARY_DIR = /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Proyecto_1.dir/depend.make
@@ -70,46 +70,46 @@ include CMakeFiles/Proyecto_1.dir/progress.make
 include CMakeFiles/Proyecto_1.dir/flags.make
 
 CMakeFiles/Proyecto_1.dir/main.cpp.o: CMakeFiles/Proyecto_1.dir/flags.make
-CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/curso/Desktop/Proyecto-1-Datos-2/main.cpp
+CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/main.cpp
 CMakeFiles/Proyecto_1.dir/main.cpp.o: CMakeFiles/Proyecto_1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Proyecto_1.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto_1.dir/main.cpp.o -MF CMakeFiles/Proyecto_1.dir/main.cpp.o.d -o CMakeFiles/Proyecto_1.dir/main.cpp.o -c /home/curso/Desktop/Proyecto-1-Datos-2/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Proyecto_1.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto_1.dir/main.cpp.o -MF CMakeFiles/Proyecto_1.dir/main.cpp.o.d -o CMakeFiles/Proyecto_1.dir/main.cpp.o -c /home/dell/Escritorio/Proyecto-1-Datos-2/main.cpp
 
 CMakeFiles/Proyecto_1.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Proyecto_1.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/curso/Desktop/Proyecto-1-Datos-2/main.cpp > CMakeFiles/Proyecto_1.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dell/Escritorio/Proyecto-1-Datos-2/main.cpp > CMakeFiles/Proyecto_1.dir/main.cpp.i
 
 CMakeFiles/Proyecto_1.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proyecto_1.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/curso/Desktop/Proyecto-1-Datos-2/main.cpp -o CMakeFiles/Proyecto_1.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dell/Escritorio/Proyecto-1-Datos-2/main.cpp -o CMakeFiles/Proyecto_1.dir/main.cpp.s
 
 CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o: CMakeFiles/Proyecto_1.dir/flags.make
-CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o: /home/curso/Desktop/Proyecto-1-Datos-2/ServerSocket.cpp
+CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp
 CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o: CMakeFiles/Proyecto_1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o -MF CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o.d -o CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o -c /home/curso/Desktop/Proyecto-1-Datos-2/ServerSocket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o -MF CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o.d -o CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o -c /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp
 
 CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/curso/Desktop/Proyecto-1-Datos-2/ServerSocket.cpp > CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp > CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.i
 
 CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/curso/Desktop/Proyecto-1-Datos-2/ServerSocket.cpp -o CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp -o CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.s
 
 CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o: CMakeFiles/Proyecto_1.dir/flags.make
-CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o: /home/curso/Desktop/Proyecto-1-Datos-2/DoubleList.cpp
+CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/DoubleList.cpp
 CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o: CMakeFiles/Proyecto_1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o -MF CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o.d -o CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o -c /home/curso/Desktop/Proyecto-1-Datos-2/DoubleList.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o -MF CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o.d -o CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o -c /home/dell/Escritorio/Proyecto-1-Datos-2/DoubleList.cpp
 
 CMakeFiles/Proyecto_1.dir/DoubleList.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Proyecto_1.dir/DoubleList.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/curso/Desktop/Proyecto-1-Datos-2/DoubleList.cpp > CMakeFiles/Proyecto_1.dir/DoubleList.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dell/Escritorio/Proyecto-1-Datos-2/DoubleList.cpp > CMakeFiles/Proyecto_1.dir/DoubleList.cpp.i
 
 CMakeFiles/Proyecto_1.dir/DoubleList.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Proyecto_1.dir/DoubleList.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/curso/Desktop/Proyecto-1-Datos-2/DoubleList.cpp -o CMakeFiles/Proyecto_1.dir/DoubleList.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dell/Escritorio/Proyecto-1-Datos-2/DoubleList.cpp -o CMakeFiles/Proyecto_1.dir/DoubleList.cpp.s
 
 # Object files for target Proyecto_1
 Proyecto_1_OBJECTS = \
@@ -125,7 +125,7 @@ Proyecto_1: CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o
 Proyecto_1: CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o
 Proyecto_1: CMakeFiles/Proyecto_1.dir/build.make
 Proyecto_1: CMakeFiles/Proyecto_1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Proyecto_1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Proyecto_1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Proyecto_1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -137,6 +137,6 @@ CMakeFiles/Proyecto_1.dir/clean:
 .PHONY : CMakeFiles/Proyecto_1.dir/clean
 
 CMakeFiles/Proyecto_1.dir/depend:
-	cd /home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/curso/Desktop/Proyecto-1-Datos-2 /home/curso/Desktop/Proyecto-1-Datos-2 /home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug /home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug /home/curso/Desktop/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles/Proyecto_1.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dell/Escritorio/Proyecto-1-Datos-2 /home/dell/Escritorio/Proyecto-1-Datos-2 /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug /home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles/Proyecto_1.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/Proyecto_1.dir/depend
 
