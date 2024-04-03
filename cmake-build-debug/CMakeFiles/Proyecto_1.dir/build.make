@@ -124,6 +124,7 @@ Proyecto_1: CMakeFiles/Proyecto_1.dir/main.cpp.o
 Proyecto_1: CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o
 Proyecto_1: CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o
 Proyecto_1: CMakeFiles/Proyecto_1.dir/build.make
+Proyecto_1: /usr/lib/x86_64-linux-gnu/libopenal.so
 Proyecto_1: CMakeFiles/Proyecto_1.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Proyecto_1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Proyecto_1.dir/link.txt --verbose=$(VERBOSE)

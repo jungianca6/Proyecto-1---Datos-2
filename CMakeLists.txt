@@ -45,3 +45,10 @@ link_directories(${GSTREAMER_LIBRARY_DIRS})
 target_link_libraries(Proyecto_1 PRIVATE ${GSTREAMER_LIBRARIES})
 
 add_definitions(${GSTREAMER_CFLAGS_OTHER})
+
+# Encuentra e incluye las bibliotecas de OpenAL
+find_package(OpenAL REQUIRED)
+include_directories(${OPENAL_INCLUDE_DIR})
+
+# Enlaza el ejecutable con las bibliotecas de OpenAL
+target_link_libraries(Proyecto_1 PRIVATE ${OPENAL_LIBRARY})

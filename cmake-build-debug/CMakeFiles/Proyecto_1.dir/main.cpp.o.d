@@ -665,4 +665,5 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/gstreamer-1.0/gst/gsttypefindfactory.h \
  /usr/include/gstreamer-1.0/gst/gstutils.h \
  /usr/include/gstreamer-1.0/gst/gstparse.h \
- /usr/include/gstreamer-1.0/gst/gstcompat.h
+ /usr/include/gstreamer-1.0/gst/gstcompat.h /usr/include/AL/al.h \
+ /usr/include/AL/alc.h
