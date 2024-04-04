@@ -2,8 +2,14 @@
 #ifndef PROYECTO_1_CANCION_H
 #define PROYECTO_1_CANCION_H
 #include <cstring>
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>//sudo apt-get install libboost-all-dev
+
+using namespace boost::uuids;
 
 struct Cancion{
+    uuid id;
     char nombre[64];
     char artista[64];
     char album[64];
@@ -12,6 +18,7 @@ struct Cancion{
     int votes;
 
     Cancion(){
+        id = boost::uuids::random_generator()();
     }
 
     Cancion(const char* _nombre, const char* _artista, const char* _album, int _duracion_minutos, int _duracion_segundos, int _votes)

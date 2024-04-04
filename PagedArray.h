@@ -20,7 +20,7 @@ class PagedArray{
 public:
     string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
     int largo = cantidad_de_canciones("/home/spaceba/Music");
-    Cancion* canciones;
+    Cancion* canciones[10];
 
     Cancion operator[](int index){
         ifstream archivo(filename, ios::binary);

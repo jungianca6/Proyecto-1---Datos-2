@@ -110,7 +110,7 @@ void PagedArray::delete_song(int song_id){
     ofstream escritura(filename, ios::binary);
 
     for(int i = 0; i < number_of_songs; i++){
-        if (canciones[i].duracion_minutos != song_id){
+        if (canciones[i]->duracion_minutos != song_id){
             // Escribir los datos en el archivo binario
             escritura.write(reinterpret_cast<const char *>(&canciones[i]), sizeof(Cancion));
         }

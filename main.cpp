@@ -11,6 +11,7 @@
 #include <gst/gst.h>
 
 
+
 int portNumber = 12346;
 ServerSocket servidor = ServerSocket(portNumber);
 PagedArray array_de_canciones;
@@ -153,22 +154,22 @@ int main(int argc, char* argv[]) {
     servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);\
     servidor.create_list();
 
-    /*
-    Cancion *cancion1 = new Cancion("Nombre 1","Artista 1","Album 1",1,30,0);
-    Cancion *cancion2 = new Cancion("Nombre 2","Artista 2","Album 2",1,30,0);
-    Cancion *cancion3 = new Cancion("Nombre 3","Artista 3","Album 3",1,30,0);
 
-    array_de_canciones.add_to_end(*cancion1);
-    array_de_canciones.add_to_end(*cancion2);
-    array_de_canciones.add_to_end(*cancion3);
-     */
+    //Cancion *cancion1 = new Cancion("Nombre 1","Artista 1","Album 1",1,30,0);
+    //Cancion *cancion2 = new Cancion("Nombre 2","Artista 2","Album 2",1,30,0);
+    //Cancion *cancion3 = new Cancion("Nombre 3","Artista 3","Album 3",1,30,0);
+
+    //array_de_canciones.add_to_end(*cancion1);
+    //array_de_canciones.add_to_end(*cancion2);
+    //array_de_canciones.add_to_end(*cancion3);
 
     Cancion* canciones = new Cancion[array_de_canciones.largo];
 
     array_de_canciones.get_songs(canciones);
 
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < 2; ++i) {
         cout << "Canción #" << i+1 << ":" << endl;
+        cout << "ID: " << canciones[i].id << endl;
         cout << "Nombre: " << canciones[i].nombre << endl;
         cout << "Artista: " << canciones[i].artista << endl;
         cout << "Duración Minutos: " << canciones[i].duracion_minutos << " minutos" << endl;
@@ -177,9 +178,8 @@ int main(int argc, char* argv[]) {
         cout << endl;
     }
 
-    Cancion cancion_1 = array_de_canciones[2];
-    cout << cancion_1.nombre << endl;
-
+    //Cancion cancion_1 = array_de_canciones[2];
+    //cout << cancion_1.nombre << endl;
 
 
     wxApp::SetInstance(new MyApp());
