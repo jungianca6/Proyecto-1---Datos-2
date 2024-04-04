@@ -63,7 +63,6 @@ void ServerSocket::acceptConnections() {
             //Verifica que la paginacion este desactivada
             if (!paginacion){
                 json lista_json = lista_enlazada.toJson();
-                std::cout << lista_json.dump(4) << std::endl;
 
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket, to_string(lista_json));
@@ -109,6 +108,10 @@ void ServerSocket::acceptConnections() {
                 send_response(command, "OK", clientSocket);
                 close(clientSocket);
             }
+        }else{
+            //Envia la respuesta al cliente
+            send_response(command, "ERROR", clientSocket);
+            close(clientSocket);
         }
 
         cout << receivedJsonData << endl;

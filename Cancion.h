@@ -21,12 +21,14 @@ struct Cancion{
         id = boost::uuids::random_generator()();
     }
 
-    Cancion(const char* _nombre, const char* _artista, const char* _album, int _duracion_minutos, int _duracion_segundos, int _votes)
-            : duracion_minutos(_duracion_minutos), duracion_segundos(_duracion_segundos),votes(_votes) {
+    Cancion(uuid _id,const char* _nombre, const char* _artista, const char* _album, int _duracion_minutos, int _duracion_segundos, int _votes)
+            : id(_id), duracion_minutos(_duracion_minutos), duracion_segundos(_duracion_segundos),votes(_votes) {
         strncpy(nombre, _nombre, sizeof(nombre));
         strncpy(artista, _artista, sizeof(artista));
         strncpy(album, _album, sizeof(album));
     }
+
 };
+
 
 #endif //PROYECTO_1_DATA_H

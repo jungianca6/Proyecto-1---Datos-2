@@ -47,6 +47,8 @@ public:
     void leerArchivosMP3(const string& ruta_carpeta, Data*& lista);
 
     void obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista);
+
+    void List_to_Array();
 };
 
 

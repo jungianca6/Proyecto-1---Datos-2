@@ -132,3 +132,13 @@ Cancion PagedArray::search_by_index(int index){
     archivo.read(reinterpret_cast<char*>(&cancion), sizeof(cancion));
     return cancion;
 }
+
+void PagedArray::clear_file(){
+    ofstream archivo(filename, std::ofstream::trunc);
+    if (archivo.is_open()) {
+        archivo.close();
+        std::cout << "El archivo \"" << filename << "\" ha sido limpiado." << std::endl;
+    } else {
+        std::cerr << "No se pudo abrir el archivo \"" << filename << "\" para limpiar." << std::endl;
+    }
+}

@@ -47,6 +47,8 @@ public:
     static int cantidad_de_canciones(const string &ruta_carpeta);
 
     void get_songs(Cancion *&canciones);
+
+    void clear_file();
 };
 
 

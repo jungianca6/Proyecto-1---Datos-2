@@ -153,21 +153,13 @@ int main(int argc, char* argv[]) {
     //Lee las canciones de la carpeta y las guarda en la lista
     servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);\
     servidor.create_list();
-
-
-    //Cancion *cancion1 = new Cancion("Nombre 1","Artista 1","Album 1",1,30,0);
-    //Cancion *cancion2 = new Cancion("Nombre 2","Artista 2","Album 2",1,30,0);
-    //Cancion *cancion3 = new Cancion("Nombre 3","Artista 3","Album 3",1,30,0);
-
-    //array_de_canciones.add_to_end(*cancion1);
-    //array_de_canciones.add_to_end(*cancion2);
-    //array_de_canciones.add_to_end(*cancion3);
+    servidor.lista_enlazada.List_to_Array();
 
     Cancion* canciones = new Cancion[array_de_canciones.largo];
 
     array_de_canciones.get_songs(canciones);
 
-    for (int i = 0; i < 2; ++i) {
+    for (int i = 0; i < array_de_canciones.largo; ++i) {
         cout << "Canción #" << i+1 << ":" << endl;
         cout << "ID: " << canciones[i].id << endl;
         cout << "Nombre: " << canciones[i].nombre << endl;

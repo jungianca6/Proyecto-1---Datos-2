@@ -3,6 +3,7 @@
 //
 
 #include "DoubleList.h"
+#include "PagedArray.h"
 #include <taglib/taglib.h>
 #include <taglib/fileref.h>
 #include <taglib/tag.h>
@@ -243,5 +244,18 @@ void DoubleList::leerArchivosMP3(const string& ruta_carpeta, Data*& lista) {
                 obtenerMetadatosMP3(entry.path().string(), lista);
             }
         }
+    }
+}
+
+void DoubleList::List_to_Array() {
+    Node *actual = primerod;
+    PagedArray pagedArray;
+    pagedArray.clear_file();
+    while (actual != NULL) {
+        Cancion* cancion = new Cancion(actual->data.id,actual->data.nombre,actual->data.artista,actual->data.album,actual->data.duracion_minutos,
+                                      actual->data.duracion_segundos, actual->data.votes);
+
+        pagedArray.add_to_end(*cancion);
+        actual = actual->siguiente;
     }
 }
