@@ -102,40 +102,30 @@ private:
 
         // Crear los elementos necesarios
         GstElement *source = gst_element_factory_make("filesrc", "file-source");
-        GstElement *converter =gst_element_factory_make("audioconvert", "audio-converter");
+        GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
         GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
-        //GstElement *decoder = gst_element_factory_make("wavparse", "parser");
-        //GstElement *sink = gst_element_factory_make("alsasink", "audio-output");
-        GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
         GstElement *volume = gst_element_factory_make("volume", "volume-name");
+        GstElement *converter =gst_element_factory_make("audioconvert", "audio-converter");
+        GstElement *resample = gst_element_factory_make("audioresample", "audio-resampler");
+        GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
 
-        if (!pipeline || !source || !decoder || !sink) {
+        if (!pipeline || !source || !parse || !decoder || !volume || !converter || !resample || !sink) {
             std::cerr << "Error al crear los elementos." << std::endl;
         } else{
             // Establecer el archivo fuente
             g_object_set(G_OBJECT(source), "location",
-                         "/home/dell/Escritorio/Musica/spam.mp3", NULL);
+                         "/home/dell/Escritorio/Musica/Who Can It Be Now.mp3", NULL);
             cout<<"Musica encontrada"<<endl;
+
             // Añadir los elementos al pipeline
-            gst_bin_add_many(GST_BIN(pipeline), source, decoder,converter,volume, sink,NULL);
+            gst_bin_add_many(GST_BIN(pipeline), source, parse, decoder, converter, resample, sink,NULL);
+
             cout<<"Elementos añadidos"<<endl;
 
-            if(!gst_element_link_many (source, decoder, NULL)) {
-                g_printerr("ERROR: Failed to link file-source and audio-decoder !! \n");
-
+            if (!gst_element_link_many(source, parse, decoder, converter, resample, sink, NULL)) {
+                std::cerr << "Error al enlazar los elementos." << std::endl;
+                gst_object_unref(pipeline);
             }
-            if(!gst_element_link_many (decoder, volume, NULL)) {
-                g_printerr("ERROR: Failed to link audio-decoder and volume !! \n");
-            }
-
-
-            if(!gst_element_link_many (volume, converter, NULL)) {
-                g_printerr("ERROR: Failed to link audio-decoder and audio-converter !! \n");
-
-            }
-            if(!gst_element_link_many (converter, sink, NULL)) {
-                g_printerr("ERROR: Failed to link audio-converter and sink !! \n");
-            }else{ cout<<"elementos conectados"<<endl;}
 
             // Iniciar la reproducción
             GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
@@ -144,10 +134,6 @@ private:
             }else{
                 cout<<"Reproduccion"<<endl;
             }
-
-            //   Conectar los elementos
-            //    gst_element_link(source, decoder);
-            //    gst_element_link(decoder, sink);
 
             gst_element_set_state(pipeline, GST_STATE_PLAYING);
             cout<<"Playing"<<endl;
