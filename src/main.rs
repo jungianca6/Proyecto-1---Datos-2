@@ -16,6 +16,7 @@ use std::io::BufReader;
 // Definir la estructura de datos para cada canción
 #[derive(Debug, Serialize, Deserialize)]
 struct Song {
+    id: String,
     album: String,
     artista: String,
     duracion_minutos: u32,
