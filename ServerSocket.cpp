@@ -22,7 +22,8 @@ struct sockaddr_in serverAddress;
 DoubleList lista_enlazada;
 PagedArray pagedlist;
 bool paginacion;
-
+//Lista de canciones recogidas de los archivos
+Data* carpeta_de_canciones;
 
 void ServerSocket::List_to_Array(){
 
@@ -61,7 +62,7 @@ void ServerSocket::acceptConnections() {
 
             //Verifica que la paginacion este desactivada
             if (!paginacion){
-                json lista_json = lista_enlazada->toJson();
+                json lista_json = lista_enlazada.toJson();
 
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket, to_string(lista_json));
@@ -75,11 +76,11 @@ void ServerSocket::acceptConnections() {
 
             //Verifica si la paginacion esta desactivada
             if (!paginacion) {
-                lista_enlazada->printListadouble();
+                lista_enlazada.printListadouble();
                 cout << "Votar por una cancion +1" << "id:" << nombre << endl;
                 //Vota a la cancion
-                lista_enlazada->voteUp(nombre);
-                lista_enlazada->printListadouble();
+                lista_enlazada.voteUp(nombre);
+                lista_enlazada.printListadouble();
 
 
                 //Envia la respuesta al cliente
@@ -97,11 +98,11 @@ void ServerSocket::acceptConnections() {
 
             //Verifica si la paginacion esta desactivada
             if (!paginacion) {
-                lista_enlazada->printListadouble();
+                lista_enlazada.printListadouble();
                 cout << "Votar por una cancion -1" << "id:" << nombre << endl;
                 //Vota a la cancion
-                lista_enlazada->voteDown(nombre);
-                lista_enlazada->printListadouble();
+                lista_enlazada.voteDown(nombre);
+                lista_enlazada.printListadouble();
 
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket);
@@ -152,4 +153,13 @@ void ServerSocket::send_response(string command, string status, int clientsocket
     string jsonString = response.dump();
     // Enviar la cadena JSON al cliente
     send(clientsocket, jsonString.c_str(), jsonString.length(), 0);
+}
+
+void ServerSocket::create_list(){
+    //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
+    Data* temp = carpeta_de_canciones;
+    while (temp) {
+        lista_enlazada.insert_lastdouble(*temp);
+        temp = temp->siguiente;
+    }
 }

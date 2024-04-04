@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include <nlohmann/json.hpp>
 #include "DoubleList.h"
+#include "PagedArray.h"
 using namespace std;
 using namespace nlohmann;
 
@@ -19,11 +20,12 @@ public:
     int serverSocket;
     int port;
     struct sockaddr_in serverAddress;
-    DoubleList *lista_enlazada;
+    DoubleList lista_enlazada;
     bool paginacion;
-    Data * pagedlist;
+    PagedArray * pagedlist;
+    Data* carpeta_de_canciones;
 
-    ServerSocket(int portNumber, DoubleList *_lista) : port(portNumber), lista_enlazada(_lista){
+    ServerSocket(int portNumber) : port(portNumber){
         paginacion = false;
         // Crear un socket
         serverSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -59,6 +61,8 @@ public:
     void send_response(string command, string status, int clientsocket, string list);
 
     void List_to_Array();
+
+    void create_list();
 };
 
 

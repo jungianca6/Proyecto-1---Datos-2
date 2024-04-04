@@ -128,7 +128,7 @@ void DoubleList::voteDown(string cancionbuscada) {
 }
 
 
-void DoubleList::eliminarNododouble(Data nodoBuscado) {
+void DoubleList::eliminarNododouble(string nodoBuscado) {
     Node *actual = new Node();
     actual = primerod;
     Node *anterior = new Node();
@@ -138,8 +138,8 @@ void DoubleList::eliminarNododouble(Data nodoBuscado) {
 
     if (primerod != NULL) {
         do {
-            if (actual->data.nombre == nodoBuscado.nombre) {
-                cout << "Nodo con el dato ( " << nodoBuscado.nombre << " ) eliminado" << endl;
+            if (actual->data.nombre == nodoBuscado) {
+                cout << "Nodo con el dato ( " << nodoBuscado << " ) eliminado" << endl;
 
                 if (actual == primerod) {
                     primerod = primerod->siguiente;

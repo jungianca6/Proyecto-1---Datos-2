@@ -32,7 +32,7 @@ public:
     // Inserta un elemento al principio
     void insert_firstdouble(Data new_data);
     // Elimina un nodo
-    void eliminarNododouble(Data nodoBuscado);
+    void eliminarNododouble(string nodoBuscado);
     // Busca un nodo
     void buscarNododouble(string cancionbuscada);
     // Encuentra el largo de la lista

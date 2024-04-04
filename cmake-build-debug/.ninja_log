@@ -1,15 +1,10 @@
 # ninja log v5
-5	3574	1712164766602811702	CMakeFiles/Proyecto_1.dir/main.cpp.o	8030c4cb42473e0e
-4	3691	1712164384147705943	CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o	2f2048098a3edf4c
+5	3651	1712205423034361421	CMakeFiles/Proyecto_1.dir/main.cpp.o	8030c4cb42473e0e
+5	3338	1712205422718355952	CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o	2f2048098a3edf4c
 0	258	1712164811103960911	build.ninja	bb95fbf5c8c1fdf5
-3574	4009	1712164767034823289	Proyecto_1	c5304b759cfbaa17
-4	686	1712164381155655933	CMakeFiles/Proyecto_1.dir/PagedArray.cpp.o	facb003eb6d03681
+3651	4124	1712205423502369523	Proyecto_1	c5304b759cfbaa17
+5	1610	1712205420998326176	CMakeFiles/Proyecto_1.dir/PagedArray.cpp.o	facb003eb6d03681
 1555	1705	1710124078989291108	main.cpp	c9e51115dcc5a6d9
-4	2193	1712164382659681106	CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o	f1498587da33f900
-5	3792	1712169444014031255	CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o	2f2048098a3edf4c
-4	4222	1712169444446040111	CMakeFiles/Proyecto_1.dir/main.cpp.o	8030c4cb42473e0e
-5	2205	1712170146654485558	CMakeFiles/Proyecto_1.dir/PagedArray.cpp.o	facb003eb6d03681
-5	3020	1712170147466505458	CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o	f1498587da33f900
-4	4073	1712170148514531133	CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o	2f2048098a3edf4c
-4	4156	1712170148602533285	CMakeFiles/Proyecto_1.dir/main.cpp.o	8030c4cb42473e0e
-4156	4568	1712170149010543280	Proyecto_1	c5304b759cfbaa17
+8	3266	1712203018310795986	CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o	f1498587da33f900
+5	3854	1712205444706736319	CMakeFiles/Proyecto_1.dir/main.cpp.o	8030c4cb42473e0e
+3854	4301	1712205445150743995	Proyecto_1	c5304b759cfbaa17

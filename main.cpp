@@ -10,12 +10,9 @@
 #include <ogg/ogg.h>
 #include <gst/gst.h>
 
-//Lista de canciones recogidas de los archivos
-Data* carpeta_de_canciones;
-//Lista enlazada con los nodos
-DoubleList lista_de_canciones;
+
 int portNumber = 12346;
-ServerSocket servidor = ServerSocket(portNumber, &lista_de_canciones);
+ServerSocket servidor = ServerSocket(portNumber);
 PagedArray array_de_canciones;
 
 enum IDs{
@@ -153,16 +150,8 @@ public:
 int main(int argc, char* argv[]) {
 
     //Lee las canciones de la carpeta y las guarda en la lista
-    lista_de_canciones.leerArchivosMP3("/home/spaceba/Music", carpeta_de_canciones);
-
-    //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
-    Data* temp = carpeta_de_canciones;
-    while (temp) {
-        lista_de_canciones.insert_lastdouble(*temp);
-            temp = temp->siguiente;
-    }
-
-    //lista_de_canciones.printListadouble();
+    servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);\
+    servidor.create_list();
 
     /*
     Cancion *cancion1 = new Cancion("Nombre 1","Artista 1","Album 1",1,30,0);
@@ -172,10 +161,6 @@ int main(int argc, char* argv[]) {
     array_de_canciones.add_to_end(*cancion1);
     array_de_canciones.add_to_end(*cancion2);
     array_de_canciones.add_to_end(*cancion3);
-     */
-
-    /*
-
      */
 
     Cancion* canciones = new Cancion[array_de_canciones.largo];
@@ -191,6 +176,10 @@ int main(int argc, char* argv[]) {
         cout << "Votos: " << canciones[i].votes << endl;
         cout << endl;
     }
+
+    Cancion cancion_1 = array_de_canciones[2];
+    cout << cancion_1.nombre << endl;
+
 
 
     wxApp::SetInstance(new MyApp());
