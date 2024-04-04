@@ -151,10 +151,12 @@ public:
 int main(int argc, char* argv[]) {
 
     //Lee las canciones de la carpeta y las guarda en la lista
-    servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);\
-    servidor.create_list();
+    servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);
+    //Crea la lista con las canciones leidas del archivo
+    servidor.create_list_from_file();
+    //Escribe la lista en Disco
     servidor.lista_enlazada.List_to_Array();
-
+    //Crea un array de cnaciones del tamanno de la cantidad de canciones de la carpeta
     Cancion* canciones = new Cancion[array_de_canciones.largo];
 
     array_de_canciones.get_songs(canciones);

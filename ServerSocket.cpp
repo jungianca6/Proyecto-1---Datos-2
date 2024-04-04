@@ -151,7 +151,7 @@ void ServerSocket::send_response(string command, string status, int clientsocket
     send(clientsocket, jsonString.c_str(), jsonString.length(), 0);
 }
 
-void ServerSocket::create_list(){
+void ServerSocket::create_list_from_file(){
     //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
     Data* temp = carpeta_de_canciones;
     while (temp) {

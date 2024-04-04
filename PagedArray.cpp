@@ -44,7 +44,7 @@ void PagedArray::add_to_end(Cancion data){
 
 
 //Obtiene la cancion deseada por el ID
-Cancion PagedArray::search_id(int id){
+Cancion PagedArray::search_id(uuid id){
     ifstream archivo(filename, ios::binary);
 
     // Variable para almacenar el struct leído del archivo
@@ -52,8 +52,8 @@ Cancion PagedArray::search_id(int id){
 
     // Leer el archivo hasta el final
     while (archivo.read(reinterpret_cast<char*>(&cancion), sizeof(cancion))) {
-        // Verificar si el nombre coincide con el nombre buscado
-        if (cancion.duracion_minutos == id) {
+        // Verificar si el id coincide con el nombre buscado
+        if (cancion.id == id) {
             // Cerrar el archivo al finalizar
             archivo.close();
             return cancion;

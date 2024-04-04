@@ -22,10 +22,11 @@ struct Data{
     int votes;
     Data* siguiente;
 
+    //Constructor vacio
     Data(){
         id = boost::uuids::random_generator()();
     };
-
+    //Constructor con todos los atributos
     Data(const char* _nombre, const char* _artista, const char* _album, int _duracion_minutos, int _duracion_segundos, int _votes)
             : duracion_minutos(_duracion_minutos), duracion_segundos(_duracion_segundos), siguiente(nullptr), votes(_votes) {
         strncpy(nombre, _nombre, sizeof(nombre));
@@ -34,6 +35,13 @@ struct Data{
         id = boost::uuids::random_generator()();
     }
 
+
+    /*
+    Funciones que pueden llegar a desaparecer por estar obsoletas
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    */
+
+    //Imprime la lista
     void print_lista(Data *lista_canciones){
         cout << "\nLista de Canciones:\n";
         Data* temp = lista_canciones;
@@ -43,9 +51,7 @@ struct Data{
             temp = temp->siguiente;
         }
     }
-
-
-
+    //Busca un nodo
     Data* buscar_nodo(Data* lista_canciones, const string& nombreCancion) {
         Data* temp = lista_canciones;
         while (temp) {
