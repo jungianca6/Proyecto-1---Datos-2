@@ -43,11 +43,11 @@ public:
     void voteUp(string cancionbuscada);
     //Vota por una cancion a favor
     void voteDown(string cancionbuscada);
-
+    //Lee las canciones en la carpeta y crea un arreglo de Data
     void leerArchivosMP3(const string& ruta_carpeta, Data*& lista);
-
+    //Obtiene los metadatos de las canciones obtenidas
     void obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista);
-
+    //Agarra los nodos de la lista y los escribe en disco
     void List_to_Array();
 };
 

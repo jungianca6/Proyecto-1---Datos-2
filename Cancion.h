@@ -18,7 +18,6 @@ struct Cancion{
     int votes;
 
     Cancion(){
-        id = boost::uuids::random_generator()();
     }
 
     Cancion(uuid _id,const char* _nombre, const char* _artista, const char* _album, int _duracion_minutos, int _duracion_segundos, int _votes)

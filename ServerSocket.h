@@ -52,16 +52,15 @@ public:
         }
     }
 
+    //Recibe los datos y los convierte a formato json
     json receiveJsonData(int clientSocket);
-
+    //Envia la respuesta al cliente (exitoso o no)
     void send_response(string command, string status, int clientsocket);
-
+    //Pone al servidor en modo de escucha
     void acceptConnections();
-
+    //Envia la respuesta al cliente (lista de canciones)
     void send_response(string command, string status, int clientsocket, string list);
-
-    void List_to_Array();
-
+    //Construye una lista con las canciones de la carpeta de lectura
     void create_list();
 };
 

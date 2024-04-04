@@ -25,13 +25,6 @@ bool paginacion;
 //Lista de canciones recogidas de los archivos
 Data* carpeta_de_canciones;
 
-void ServerSocket::List_to_Array(){
-
-}
-
-void Array_to_list(){
-
-}
 
 void ServerSocket::acceptConnections() {
     while (true){
@@ -134,7 +127,7 @@ json ServerSocket::receiveJsonData(int clientSocket) {
     json jsonData = json::parse(jsonString);
     return jsonData;
 }
-//Envia la respuesta al cliente (exitoso o no)
+
 void ServerSocket::send_response(string command, string status, int clientsocket){
     json response = {
             {"command", command},
@@ -146,7 +139,6 @@ void ServerSocket::send_response(string command, string status, int clientsocket
     send(clientsocket, jsonString.c_str(), jsonString.length(), 0);
 }
 
-//Envia la respuesta al cliente (lista de canciones)
 void ServerSocket::send_response(string command, string status, int clientsocket, string list) {
     json response = {
             {"command", command},
