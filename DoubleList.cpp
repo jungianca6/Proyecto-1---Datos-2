@@ -19,6 +19,7 @@ void DoubleList::printListadouble() {
     actual = primerod;
     if (primerod != NULL) {
         do {
+            cout << "ID: " << actual->data.id << endl;
             cout << "Nombre: " << actual->data.nombre << endl;
             cout << "Artista: " << actual->data.artista << endl;
             cout << "Duracion_minutos: " << actual->data.duracion_minutos << endl;
@@ -179,12 +180,13 @@ json DoubleList::toJson(){
     Node *current = primerod;
     while (current != nullptr) {
         json dataJson;
-        dataJson["nombre"] = current->data.nombre;  // Suponiendo que Data tiene un miembro 'nombre'
-        dataJson["artista"] = current->data.artista;  // Suponiendo que Data tiene un miembro 'artista'
-        dataJson["album"] = current->data.album;  // Suponiendo que Data tiene un miembro 'artista'
-        dataJson["duracion_minutos"] = current->data.duracion_minutos;  // Suponiendo que Data tiene un miembro 'artista'
-        dataJson["duracion_segundos"] = current->data.duracion_segundos;  // Suponiendo que Data tiene un miembro 'artista'
-        dataJson["votes"] = current->data.votes;  // Suponiendo que Data tiene un miembro 'artista'
+        dataJson["id"] = to_string(current->data.id);
+        dataJson["nombre"] = current->data.nombre;
+        dataJson["artista"] = current->data.artista;
+        dataJson["album"] = current->data.album;
+        dataJson["duracion_minutos"] = current->data.duracion_minutos;
+        dataJson["duracion_segundos"] = current->data.duracion_segundos;
+        dataJson["votes"] = current->data.votes;
         j.push_back(dataJson);
         current = current->siguiente;
     }
