@@ -9,7 +9,14 @@
 #include <sndfile.h>
 #include <ogg/ogg.h>
 #include <gst/gst.h>
+#include <AL/al.h>
+#include <AL/alc.h>
 
+
+//Lista de canciones recogidas de los archivos
+Data* lista_canciones;
+//Lista enlazada con los nodos
+DoubleList lista_de_canciones;
 
 
 int portNumber = 12346;
@@ -21,6 +28,7 @@ enum IDs{
 };
 
 using namespace std;
+using namespace TagLib;
 namespace fs = std::filesystem;namespace fs = std::filesystem;
 
 //clase que crea la ventana
@@ -86,32 +94,58 @@ public:
 
         wxTextCtrl *buscar= new wxTextCtrl(panel, wxID_ANY, "",
                                            wxPoint(900, 60), wxSize(200, -1));
-
-        /*wxImage image("/home/dell/Escritorio/play.png",wxBITMAP_TYPE_PNG);
-        if (!image.IsOk()){
-            wxMessageBox("mamaste");
-            return;
-        }
-
-        wxBitmap bitmap(image);
-        image.Rescale(100, 50);
-        wxBitmapButton* boton = new wxBitmapButton(this,wxID_ANY,bitmap,wxPoint(150,750));*/
     }
 
 private:
     void PaginacionActionButton(wxCommandEvent &event) {
-        if (servidor.paginacion == true){
-            servidor.paginacion = false;
-            caja->SetValue("Paginacion desactivada");
+        caja->SetValue("Hola");
+        cout<<"Presionado"<<endl;
 
-        }else{
-            servidor.paginacion = true;
-            caja->SetValue("Paginacion Activada");
+        // Crear un nuevo pipeline
+        GstElement *pipeline = gst_pipeline_new("audio-player");
+
+        // Crear los elementos necesarios
+        GstElement *source = gst_element_factory_make("filesrc", "file-source");
+        GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
+        GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
+        GstElement *volume = gst_element_factory_make("volume", "volume-name");
+        GstElement *converter =gst_element_factory_make("audioconvert", "audio-converter");
+        GstElement *resample = gst_element_factory_make("audioresample", "audio-resampler");
+        GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
+
+        if (!pipeline || !source || !parse || !decoder || !volume || !converter || !resample || !sink) {
+            std::cerr << "Error al crear los elementos." << std::endl;
+        } else{
+            // Establecer el archivo fuente
+            g_object_set(G_OBJECT(source), "location",
+                         "/home/dell/Escritorio/Musica/Who Can It Be Now.mp3", NULL);
+            cout<<"Musica encontrada"<<endl;
+
+            // Añadir los elementos al pipeline
+            gst_bin_add_many(GST_BIN(pipeline), source, parse, decoder, converter, resample, sink,NULL);
+
+            cout<<"Elementos añadidos"<<endl;
+
+            if (!gst_element_link_many(source, parse, decoder, converter, resample, sink, NULL)) {
+                std::cerr << "Error al enlazar los elementos." << std::endl;
+                gst_object_unref(pipeline);
+            }
+
+            // Iniciar la reproducción
+            GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+            if (ret == GST_STATE_CHANGE_FAILURE) {
+                std::cerr << "Error al iniciar la reproducción." << std::endl;
+            }else{
+                cout<<"Reproduccion"<<endl;
+            }
+
+            gst_element_set_state(pipeline, GST_STATE_PLAYING);
+            cout<<"Playing"<<endl;
         }
+
     }
     void ComunitarioActionButton(wxCommandEvent &event) {
         if (!active_playlist){
-            caja->SetValue("PLaylist Activada");
             // Crear un hilo que ejecute la función en segundo plano
             thread ServerThread(&MainFrame::activeServer, this);
             // Hacer que el hilo sea independiente del hilo principal (no bloquear)
@@ -125,6 +159,8 @@ private:
     }
 
     void activeServer() {
+        int portNumber = 12346; // Puerto en el que escuchará el servidor
+        ServerSocket servidor = ServerSocket(portNumber);
         thread hilo(&ServerSocket::acceptConnections, &servidor);
         cout << "Servidor en escucha" << endl;
         hilo.join();
@@ -149,6 +185,8 @@ public:
 
 
 int main(int argc, char* argv[]) {
+    // Inicializar GStreamer
+    gst_init(&argc, &argv);
 
     //Lee las canciones de la carpeta y las guarda en la lista
     servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);
@@ -171,9 +209,7 @@ int main(int argc, char* argv[]) {
         cout << "Votos: " << canciones[i].votes << endl;
         cout << endl;
     }
-
-    //Cancion cancion_1 = array_de_canciones[2];
-    //cout << cancion_1.nombre << endl;
+    //lista_de_canciones.printListadouble();
 
 
     wxApp::SetInstance(new MyApp());
@@ -242,5 +278,4 @@ int main(int argc, char* argv[]) {
      */
 
     return 0;
-
 }
