@@ -9,8 +9,6 @@
 #include <sndfile.h>
 #include <ogg/ogg.h>
 #include <gst/gst.h>
-#include <AL/al.h>
-#include <AL/alc.h>
 
 
 //Lista de canciones recogidas de los archivos
@@ -28,8 +26,6 @@ enum IDs{
 };
 
 using namespace std;
-using namespace TagLib;
-namespace fs = std::filesystem;namespace fs = std::filesystem;
 
 //clase que crea la ventana
 class MainFrame : public wxFrame {
@@ -118,7 +114,7 @@ private:
         } else{
             // Establecer el archivo fuente
             g_object_set(G_OBJECT(source), "location",
-                         "/home/dell/Escritorio/Musica/Who Can It Be Now.mp3", NULL);
+                         "/home/spaceba/Music/Bad Bunny - Efecto.mp3", NULL);
             cout<<"Musica encontrada"<<endl;
 
             // Añadir los elementos al pipeline
@@ -159,8 +155,6 @@ private:
     }
 
     void activeServer() {
-        int portNumber = 12346; // Puerto en el que escuchará el servidor
-        ServerSocket servidor = ServerSocket(portNumber);
         thread hilo(&ServerSocket::acceptConnections, &servidor);
         cout << "Servidor en escucha" << endl;
         hilo.join();
@@ -193,7 +187,8 @@ int main(int argc, char* argv[]) {
     //Crea la lista con las canciones leidas del archivo
     servidor.create_list_from_file();
     //Escribe la lista en Disco
-    servidor.lista_enlazada.List_to_Array();
+    //servidor.lista_enlazada.List_to_Array();
+    /*
     //Crea un array de cnaciones del tamanno de la cantidad de canciones de la carpeta
     Cancion* canciones = new Cancion[array_de_canciones.largo];
 
@@ -201,6 +196,7 @@ int main(int argc, char* argv[]) {
 
     for (int i = 0; i < array_de_canciones.largo; ++i) {
         cout << "Canción #" << i+1 << ":" << endl;
+        cout << "Path: " << canciones[i].path << endl;
         cout << "ID: " << canciones[i].id << endl;
         cout << "Nombre: " << canciones[i].nombre << endl;
         cout << "Artista: " << canciones[i].artista << endl;
@@ -209,8 +205,8 @@ int main(int argc, char* argv[]) {
         cout << "Votos: " << canciones[i].votes << endl;
         cout << endl;
     }
-    //lista_de_canciones.printListadouble();
-
+     */
+    servidor.lista_enlazada.printListadouble();
 
     wxApp::SetInstance(new MyApp());
     wxEntryStart(argc, argv);

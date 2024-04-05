@@ -14,6 +14,7 @@ using namespace std;
 
 struct Data{
     uuid id;
+    char path[128];
     char nombre[64];
     char artista[64];
     char album[64];
@@ -27,8 +28,9 @@ struct Data{
         id = boost::uuids::random_generator()();
     };
     //Constructor con todos los atributos
-    Data(const char* _nombre, const char* _artista, const char* _album, int _duracion_minutos, int _duracion_segundos, int _votes)
+    Data(const char* _path, const char* _nombre, const char* _artista, const char* _album, int _duracion_minutos, int _duracion_segundos, int _votes)
             : duracion_minutos(_duracion_minutos), duracion_segundos(_duracion_segundos), siguiente(nullptr), votes(_votes) {
+        strncpy(path, _path, sizeof(path));
         strncpy(nombre, _nombre, sizeof(nombre));
         strncpy(artista, _artista, sizeof(artista));
         strncpy(album, _album, sizeof(album));

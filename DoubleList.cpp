@@ -20,6 +20,7 @@ void DoubleList::printListadouble() {
     actual = primerod;
     if (primerod != NULL) {
         do {
+            cout << "Path: " << actual->data.path << endl;
             cout << "ID: " << actual->data.id << endl;
             cout << "Nombre: " << actual->data.nombre << endl;
             cout << "Artista: " << actual->data.artista << endl;
@@ -203,10 +204,13 @@ void DoubleList::obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista) {
             char nombre[64];
             char artista[64];
             char album[64];
+            char path[128];
 
             strncpy(nombre, tag->title().toCString(true), sizeof(nombre));
             strncpy(artista, tag->artist().toCString(true), sizeof(artista));
             strncpy(album, tag->album().toCString(true), sizeof(album));
+            strncpy(path, ruta_archivo.c_str(), sizeof(album));
+
 
 
             TagLib::MPEG::File mpegFile(ruta_archivo.c_str());
@@ -214,13 +218,16 @@ void DoubleList::obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista) {
             int minutos = duracion_segundos / 60;
             int segundos = duracion_segundos % 60;
 
+            cout << "Path: " << ruta_archivo << endl;
             cout << "Nombre: " << nombre << endl;
             cout << "Artista: " << artista << endl;
             cout << "Álbum: " << album << endl;
             cout << "Duración: " << minutos << " minutos " << segundos << " segundos" << endl;
 
+
+
             // Crear un nuevo nodo para la canción
-            Data* nueva_cancion = new Data(nombre, artista, album, minutos, segundos, 0);
+            Data* nueva_cancion = new Data(path ,nombre, artista, album, minutos, segundos, 0);
             // Agregar el nodo a la lista
             if (!lista) {
                 lista = nueva_cancion;
@@ -252,7 +259,7 @@ void DoubleList::List_to_Array() {
     PagedArray pagedArray;
     pagedArray.clear_file();
     while (actual != NULL) {
-        Cancion* cancion = new Cancion(actual->data.id,actual->data.nombre,actual->data.artista,actual->data.album,actual->data.duracion_minutos,
+        Cancion* cancion = new Cancion(actual->data.path, actual->data.id,actual->data.nombre,actual->data.artista,actual->data.album,actual->data.duracion_minutos,
                                       actual->data.duracion_segundos, actual->data.votes);
 
         pagedArray.add_to_end(*cancion);
