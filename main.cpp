@@ -7,11 +7,9 @@
 #include "BinaryListOperations.cpp"
 #include "Metadata.cpp"
 #include "DoubleList.h"
-#include <sndfile.h>
 #include <ogg/ogg.h>
 #include <gst/gst.h>
-#include <AL/al.h>
-#include <AL/alc.h>
+
 
 
 //Lista de canciones recogidas de los archivos
@@ -41,7 +39,13 @@ public:
 
 
         wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,
-        *anterior,*siguiente,*eliminar;
+        *anterior,*siguiente,*eliminar, *pruebacancion;
+
+        wxString canciones[] ={"Cancion 1", "Cancion 2", "Cancion 3"};
+
+        listaCanciones = new wxComboBox(panel, wxID_ANY, canciones[0],
+                                                     wxPoint(450,250), wxSize(150,60), WXSIZEOF(canciones),
+                                                     canciones,wxCB_READONLY);
 
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
@@ -52,6 +56,9 @@ public:
                                    wxPoint(150, 250), wxSize(250, 60));
         comunitario->Bind(wxEVT_BUTTON, &MainFrame::ComunitarioActionButton, this);
 
+        pruebacancion = new wxButton(panel, botonID, "Prueba cancion",
+                                                  wxPoint(650, 250), wxSize(200, 35));
+        pruebacancion->Bind(wxEVT_BUTTON, &MainFrame::escogerCancion,this);
         buscarCancion = new wxButton(panel, botonID, "Buscar",
                                      wxPoint(950, 110), wxSize(125, 30));
 
@@ -87,6 +94,8 @@ public:
 
         caja = new wxTextCtrl(panel, textoID, "",
                               wxPoint(500, 60), wxSize(200, -1));
+        prueba = new wxTextCtrl(panel, wxID_ANY,"",
+                                wxPoint(450,350),wxSize(200,-1));
 
         wxTextCtrl *buscar= new wxTextCtrl(panel, wxID_ANY, "",
                                            wxPoint(900, 60), wxSize(200, -1));
@@ -154,6 +163,10 @@ private:
 
     }
 
+    void escogerCancion (wxCommandEvent &event){
+        prueba->SetValue(listaCanciones->GetStringSelection());
+    }
+
     void activeServer() {
         int portNumber = 12346; // Puerto en el que escuchará el servidor
         ServerSocket servidor = ServerSocket(portNumber, &lista_de_canciones);
@@ -163,6 +176,8 @@ private:
 
     }
     wxTextCtrl *caja;
+    wxTextCtrl *prueba;
+    wxComboBox * listaCanciones;
 
     //wxDECLARE_EVENT_TABLE();
 };

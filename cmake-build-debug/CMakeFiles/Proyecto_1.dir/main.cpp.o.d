@@ -495,11 +495,10 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/taglib/audioproperties.h /usr/include/taglib/tag.h \
  /usr/include/taglib/mpegfile.h /usr/include/taglib/mpegproperties.h \
  /usr/include/taglib/mpegheader.h /usr/include/taglib/mpegheader.h \
- /usr/include/sndfile.h /usr/include/ogg/ogg.h \
- /usr/include/ogg/os_types.h /usr/include/ogg/config_types.h \
- /usr/include/inttypes.h /usr/include/gstreamer-1.0/gst/gst.h \
- /usr/include/glib-2.0/glib.h /usr/include/glib-2.0/glib/galloca.h \
- /usr/include/glib-2.0/glib/gtypes.h \
+ /usr/include/ogg/ogg.h /usr/include/ogg/os_types.h \
+ /usr/include/ogg/config_types.h /usr/include/inttypes.h \
+ /usr/include/gstreamer-1.0/gst/gst.h /usr/include/glib-2.0/glib.h \
+ /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
@@ -665,5 +664,4 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/gstreamer-1.0/gst/gsttypefindfactory.h \
  /usr/include/gstreamer-1.0/gst/gstutils.h \
  /usr/include/gstreamer-1.0/gst/gstparse.h \
- /usr/include/gstreamer-1.0/gst/gstcompat.h /usr/include/AL/al.h \
- /usr/include/AL/alc.h
+ /usr/include/gstreamer-1.0/gst/gstcompat.h

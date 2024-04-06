@@ -726,8 +726,6 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o
  /home/dell/Escritorio/Proyecto-1-Datos-2/DoubleList.h
  /home/dell/Escritorio/Proyecto-1-Datos-2/Metadata.cpp
  /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.h
- /usr/include/AL/al.h
- /usr/include/AL/alc.h
  /usr/include/alloca.h
  /usr/include/asm-generic/bitsperlong.h
  /usr/include/asm-generic/errno-base.h
@@ -1176,7 +1174,6 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o
  /usr/include/pthread.h
  /usr/include/sched.h
  /usr/include/signal.h
- /usr/include/sndfile.h
  /usr/include/stdc-predef.h
  /usr/include/stdint.h
  /usr/include/stdio.h

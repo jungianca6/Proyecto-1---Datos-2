@@ -723,8 +723,6 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/m
   /home/dell/Escritorio/Proyecto-1-Datos-2/DoubleList.h \
   /home/dell/Escritorio/Proyecto-1-Datos-2/Metadata.cpp \
   /home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.h \
-  /usr/include/AL/al.h \
-  /usr/include/AL/alc.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -1173,7 +1171,6 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/m
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/signal.h \
-  /usr/include/sndfile.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
   /usr/include/stdio.h \
@@ -1778,8 +1775,6 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/m
 
 /usr/include/wx-3.0/wx/gtk/stattext.h:
 
-/usr/include/wx-3.0/wx/gtk/statbox.h:
-
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h:
@@ -2244,8 +2239,6 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/m
 
 /usr/include/wx-3.0/wx/imaggif.h:
 
-/usr/include/sndfile.h:
-
 /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
 /usr/include/stdlib.h:
@@ -2440,6 +2433,8 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/m
 
 /usr/include/glib-2.0/gobject/gparamspecs.h:
 
+/usr/include/wx-3.0/wx/gtk/statbox.h:
+
 /usr/include/c++/11/bits/stl_iterator.h:
 
 /usr/include/c++/11/bits/stl_pair.h:
@@ -2513,8 +2508,6 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/m
 /usr/include/gstreamer-1.0/gst/gsttagsetter.h:
 
 /usr/include/nlohmann/detail/meta/identity_tag.hpp:
-
-/usr/include/AL/al.h:
 
 /usr/include/c++/11/bits/valarray_array.tcc:
 
@@ -2764,10 +2757,6 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/m
 
 /usr/include/ogg/config_types.h:
 
-/usr/include/AL/alc.h:
-
-/usr/include/signal.h:
-
 /usr/include/c++/11/bits/locale_facets_nonio.tcc:
 
 /usr/include/asm-generic/types.h:
@@ -2929,10 +2918,6 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/m
 /usr/include/glib-2.0/glib/gthread.h:
 
 /usr/include/glib-2.0/glib/gthreadpool.h:
-
-/usr/include/wx-3.0/wx/gtk/statbmp.h:
-
-/usr/include/gstreamer-1.0/gst/gstminiobject.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h:
 
@@ -3152,6 +3137,8 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/m
 
 /usr/include/ogg/ogg.h:
 
+/usr/include/signal.h:
+
 /usr/include/taglib/mpegfile.h:
 
 /usr/include/taglib/mpegproperties.h:
@@ -3315,3 +3302,7 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: /home/dell/Escritorio/Proyecto-1-Datos-2/m
 /usr/include/wx-3.0/wx/gtk/pen.h:
 
 /usr/include/wx-3.0/wx/gtk/radiobut.h:
+
+/usr/include/gstreamer-1.0/gst/gstminiobject.h:
+
+/usr/include/wx-3.0/wx/gtk/statbmp.h:
