@@ -26,6 +26,7 @@ enum IDs{
 };
 
 using namespace std;
+namespace fs = std::filesystem;namespace fs = std::filesystem;
 
 //clase que crea la ventana
 class MainFrame : public wxFrame {
@@ -41,7 +42,13 @@ public:
 
 
         wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,
-        *anterior,*siguiente,*eliminar;
+        *anterior,*siguiente,*eliminar, *pruebacancion;
+
+        wxString canciones[] ={"Cancion 1", "Cancion 2", "Cancion 3"};
+
+        listaCanciones = new wxComboBox(panel, wxID_ANY, canciones[0],
+                                                     wxPoint(450,250), wxSize(150,60), WXSIZEOF(canciones),
+                                                     canciones,wxCB_READONLY);
 
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
@@ -52,6 +59,9 @@ public:
                                    wxPoint(150, 250), wxSize(250, 60));
         comunitario->Bind(wxEVT_BUTTON, &MainFrame::ComunitarioActionButton, this);
 
+        pruebacancion = new wxButton(panel, botonID, "Prueba cancion",
+                                                  wxPoint(650, 250), wxSize(200, 35));
+        pruebacancion->Bind(wxEVT_BUTTON, &MainFrame::escogerCancion,this);
         buscarCancion = new wxButton(panel, botonID, "Buscar",
                                      wxPoint(950, 110), wxSize(125, 30));
 
@@ -89,6 +99,8 @@ public:
 
         caja = new wxTextCtrl(panel, textoID, "",
                               wxPoint(500, 60), wxSize(200, -1));
+        prueba = new wxTextCtrl(panel, wxID_ANY,"",
+                                wxPoint(450,350),wxSize(200,-1));
 
         wxTextCtrl *buscar= new wxTextCtrl(panel, wxID_ANY, "",
                                            wxPoint(900, 60), wxSize(200, -1));
@@ -96,14 +108,8 @@ public:
 
 private:
     void PaginacionActionButton(wxCommandEvent &event) {
-        if (servidor.paginacion == true){
-            servidor.paginacion = false;
-            caja->SetValue("Paginacion desactivada");
 
-        }else{
-            servidor.paginacion = true;
-            caja->SetValue("Paginacion Activada");
-        }
+
     }
     void ComunitarioActionButton(wxCommandEvent &event) {
         if (!active_playlist){
@@ -121,6 +127,10 @@ private:
         servidor.lista_enlazada.play_song("Efecto");
     }
 
+    void escogerCancion (wxCommandEvent &event){
+        prueba->SetValue(listaCanciones->GetStringSelection());
+    }
+
     void activeServer() {
         thread hilo(&ServerSocket::acceptConnections, &servidor);
         cout << "Servidor en escucha" << endl;
@@ -128,6 +138,9 @@ private:
 
     }
     wxTextCtrl *caja;
+    wxTextCtrl *prueba;
+    wxComboBox * listaCanciones;
+
     //wxDECLARE_EVENT_TABLE();
 };
 
