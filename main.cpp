@@ -57,6 +57,8 @@ public:
 
         reproduccion = new wxButton(panel, botonID, "Reproducir",
                                     wxPoint(300, 500), wxSize(125, 40));
+        reproduccion->Bind(wxEVT_BUTTON, &MainFrame::ReproducirActionButton, this);
+
         pausa= new wxButton(panel, botonID, "Pausar",
                             wxPoint(450, 500), wxSize(125, 40));
         anterior = new wxButton(panel, botonID, "Anterior",
@@ -94,51 +96,14 @@ public:
 
 private:
     void PaginacionActionButton(wxCommandEvent &event) {
-        caja->SetValue("Hola");
-        cout<<"Presionado"<<endl;
+        if (servidor.paginacion == true){
+            servidor.paginacion = false;
+            caja->SetValue("Paginacion desactivada");
 
-        // Crear un nuevo pipeline
-        GstElement *pipeline = gst_pipeline_new("audio-player");
-
-        // Crear los elementos necesarios
-        GstElement *source = gst_element_factory_make("filesrc", "file-source");
-        GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
-        GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
-        GstElement *volume = gst_element_factory_make("volume", "volume-name");
-        GstElement *converter =gst_element_factory_make("audioconvert", "audio-converter");
-        GstElement *resample = gst_element_factory_make("audioresample", "audio-resampler");
-        GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
-
-        if (!pipeline || !source || !parse || !decoder || !volume || !converter || !resample || !sink) {
-            std::cerr << "Error al crear los elementos." << std::endl;
-        } else{
-            // Establecer el archivo fuente
-            g_object_set(G_OBJECT(source), "location",
-                         "/home/spaceba/Music/Bad Bunny - Efecto.mp3", NULL);
-            cout<<"Musica encontrada"<<endl;
-
-            // Añadir los elementos al pipeline
-            gst_bin_add_many(GST_BIN(pipeline), source, parse, decoder, converter, resample, sink,NULL);
-
-            cout<<"Elementos añadidos"<<endl;
-
-            if (!gst_element_link_many(source, parse, decoder, converter, resample, sink, NULL)) {
-                std::cerr << "Error al enlazar los elementos." << std::endl;
-                gst_object_unref(pipeline);
-            }
-
-            // Iniciar la reproducción
-            GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
-            if (ret == GST_STATE_CHANGE_FAILURE) {
-                std::cerr << "Error al iniciar la reproducción." << std::endl;
-            }else{
-                cout<<"Reproduccion"<<endl;
-            }
-
-            gst_element_set_state(pipeline, GST_STATE_PLAYING);
-            cout<<"Playing"<<endl;
+        }else{
+            servidor.paginacion = true;
+            caja->SetValue("Paginacion Activada");
         }
-
     }
     void ComunitarioActionButton(wxCommandEvent &event) {
         if (!active_playlist){
@@ -151,7 +116,9 @@ private:
         else {
             cout << "Servidor activo" << endl;
         }
-
+    }
+    void ReproducirActionButton(wxCommandEvent &event) {
+        servidor.lista_enlazada.play_song("Efecto");
     }
 
     void activeServer() {
@@ -214,40 +181,6 @@ int main(int argc, char* argv[]) {
     wxTheApp->OnRun();
     wxTheApp->OnExit();
     wxEntryCleanup();
-
-    // Inicializar GStreamer
-    gst_init(&argc, &argv);
-
-    // Crear un nuevo pipeline
-    GstElement *pipeline = gst_pipeline_new("audio-player");
-
-    // Crear los elementos necesarios
-    GstElement *source = gst_element_factory_make("filesrc", "file-source");
-    GstElement *decoder = gst_element_factory_make("decodebin", "decoder");
-    GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
-
-    if (!pipeline || !source || !decoder || !sink) {
-        std::cerr << "Error al crear los elementos." << std::endl;
-        return -1;
-    }
-
-    // Establecer el archivo fuente
-    g_object_set(source, "location",
-                 "/home/spaceba/Music/Bad Bunny - Moscow Mule.mp3", NULL);
-
-    // Añadir los elementos al pipeline
-    gst_bin_add_many(GST_BIN(pipeline), source, decoder, sink, NULL);
-
-    // Conectar los elementos
-    gst_element_link(source, decoder);
-    gst_element_link(decoder, sink);
-
-    // Iniciar la reproducción
-    GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
-    if (ret == GST_STATE_CHANGE_FAILURE) {
-        std::cerr << "Error al iniciar la reproducción." << std::endl;
-        return -1;
-    }
 
 
 

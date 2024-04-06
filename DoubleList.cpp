@@ -9,6 +9,9 @@
 #include <taglib/tag.h>
 #include <taglib/mpegfile.h>
 #include <taglib/mpegheader.h>
+#include <ogg/ogg.h>
+#include <gst/gst.h>
+
 
 namespace fs = std::filesystem;
 
@@ -119,6 +122,68 @@ void DoubleList::voteDown(string cancionbuscada) {
             if (actual->data.nombre == cancionbuscada) {
                 actual->data.votes = actual->data.votes - 1;
                 encontrado = true;
+            }
+            actual = actual->siguiente;
+        } while (actual != NULL && encontrado != true);
+        if (!encontrado) {
+            cout << "Nodo no encontrado";
+        }
+    } else {
+        cout << "nel";
+    }
+}
+
+void DoubleList::play_song(string cancionbuscada) {
+
+    Node *actual = primerod;
+    bool encontrado = false;
+    cout << "Dato buscado: " << cancionbuscada << endl;
+    if (primerod != NULL) {
+        do {
+            if (actual->data.nombre == cancionbuscada) {
+                // Crear un nuevo pipeline
+                GstElement *pipeline = gst_pipeline_new("audio-player");
+
+                // Crear los elementos necesarios
+                GstElement *source = gst_element_factory_make("filesrc", "file-source");
+                GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
+                GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
+                GstElement *volume = gst_element_factory_make("volume", "volume-name");
+                GstElement *converter =gst_element_factory_make("audioconvert", "audio-converter");
+                GstElement *resample = gst_element_factory_make("audioresample", "audio-resampler");
+                GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
+
+                if (!pipeline || !source || !parse || !decoder || !volume || !converter || !resample || !sink) {
+                    std::cerr << "Error al crear los elementos." << std::endl;
+                } else{
+                    // Establecer el archivo fuente
+                    string path = actual->data.path;
+                    g_object_set(G_OBJECT(source), "location",
+                                 path.c_str(), NULL);
+                    cout<<"Musica encontrada"<<endl;
+
+                    // Añadir los elementos al pipeline
+                    gst_bin_add_many(GST_BIN(pipeline), source, parse, decoder, converter, resample, sink,NULL);
+
+                    cout<<"Elementos añadidos"<<endl;
+
+                    if (!gst_element_link_many(source, parse, decoder, converter, resample, sink, NULL)) {
+                        std::cerr << "Error al enlazar los elementos." << std::endl;
+                        gst_object_unref(pipeline);
+                    }
+
+                    // Iniciar la reproducción
+                    GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+                    if (ret == GST_STATE_CHANGE_FAILURE) {
+                        std::cerr << "Error al iniciar la reproducción." << std::endl;
+                    }else{
+                        cout<<"Reproduccion"<<endl;
+                    }
+
+                    gst_element_set_state(pipeline, GST_STATE_PLAYING);
+                    cout<<"Playing"<<endl;
+                }
+
             }
             actual = actual->siguiente;
         } while (actual != NULL && encontrado != true);

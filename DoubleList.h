@@ -49,6 +49,8 @@ public:
     void obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista);
     //Agarra los nodos de la lista y los escribe en disco
     void List_to_Array();
+    //
+    void play_song(string cancionbuscada);
 };
 
 
