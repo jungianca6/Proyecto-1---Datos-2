@@ -331,3 +331,15 @@ void DoubleList::List_to_Array() {
         actual = actual->siguiente;
     }
 }
+
+string DoubleList::get_by_index(int index) {
+    Node *actual = primerod;
+    if (index == 0){
+        return actual->data.nombre;
+    }
+    else{
+        for (int i=0; i <= index; i++)
+            actual = actual->siguiente;
+        return actual->data.nombre;
+    }
+}

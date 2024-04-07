@@ -16,6 +16,10 @@ add_executable(Proyecto_1 main.cpp
         DoubleList.h
         PagedArray.cpp
         PagedArray.h
+        Pagina.cpp
+        Pagina.h
+        Admin_paginas.cpp
+        Admin_paginas.h
 )
 
 

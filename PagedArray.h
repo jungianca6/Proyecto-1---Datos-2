@@ -10,6 +10,7 @@
 #include "DoubleList.h"
 #include <filesystem>
 #include <fstream>
+#include "Admin_paginas.h"
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -17,24 +18,37 @@ using namespace std;
 
 
 class PagedArray{
+private:
+    int num_paginas;
+    int tamano_de_pagina;
+
 public:
+    PagedArray(){}
+
     string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
     int largo = cantidad_de_canciones("/home/spaceba/Music");
     Cancion* canciones[10];
 
-    Cancion operator[](int index){
-        ifstream archivo(filename, ios::binary);
+    Cancion operator[](int index) {
+        /*
+        int pagina_index = (index - 1) / admin.tamano_maximo; // Calcular el índice de la página
+        int cancion_index = (index - 1) % admin.tamano_maximo; // Calcular el índice de la canción dentro de la página
 
-        // Variable para almacenar el struct leído del archivo
-        Cancion cancion;
+        Pagina& pagina = admin.paginas[pagina_index]; // Obtener la página correspondiente
 
-        //Mover el puntero hasta la posision deseada
-        archivo.seekg((index-1)*sizeof(cancion));
+        // Verificar si la página está cargada en memoria
+        if (!pagina.cargada) {
+            // Si la página no está cargada, cargar su contenido desde el archivo
+            pagina.cargarContenidoDesdeArchivo();
+            pagina.cargada = true; // Marcar la página como cargada
+        }
 
-        // Leer el archivo hasta el final
-        archivo.read(reinterpret_cast<char*>(&cancion), sizeof(cancion));
-        return cancion;
-    };
+        // Retornar la canción correspondiente
+        return pagina.canciones[cancion_index];
+         */
+    }
+
+
     //Busca una cancion por el indice
     Cancion search_by_index(int index); //ELiminar porque realiza la misma funcion que la sobrecarga del metodo
     //Elimina una cancion

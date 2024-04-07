@@ -51,6 +51,8 @@ public:
     void List_to_Array();
     //
     void play_song(string cancionbuscada);
+
+    string get_by_index(int index);
 };
 
 

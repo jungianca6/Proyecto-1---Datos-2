@@ -10,6 +10,7 @@
 #include <nlohmann/json.hpp>
 #include "DoubleList.h"
 #include "PagedArray.h"
+#include "Admin_paginas.h"
 
 
 using namespace std;
@@ -20,10 +21,12 @@ int serverSocket;
 int port;
 struct sockaddr_in serverAddress;
 DoubleList lista_enlazada;
+Admin_paginas admin(2,1);
 PagedArray pagedlist;
 bool paginacion;
 //Lista de canciones recogidas de los archivos
 Data* carpeta_de_canciones;
+
 
 
 void ServerSocket::acceptConnections() {

@@ -9,7 +9,7 @@
 #include <sndfile.h>
 #include <ogg/ogg.h>
 #include <gst/gst.h>
-
+#include "Admin_paginas.h"
 
 //Lista de canciones recogidas de los archivos
 Data* lista_canciones;
@@ -45,6 +45,7 @@ public:
         *anterior,*siguiente,*eliminar, *pruebacancion;
 
         wxString canciones[] ={"Cancion 1", "Cancion 2", "Cancion 3"};
+
 
         listaCanciones = new wxComboBox(panel, wxID_ANY, canciones[0],
                                                      wxPoint(450,250), wxSize(150,60), WXSIZEOF(canciones),
@@ -108,7 +109,14 @@ public:
 
 private:
     void PaginacionActionButton(wxCommandEvent &event) {
+        if (servidor.paginacion == true){
+            servidor.paginacion = false;
+            caja->SetValue("Paginacion desactivada");
 
+        }else{
+            servidor.paginacion = true;
+            caja->SetValue("Paginacion Activada");
+        }
 
     }
     void ComunitarioActionButton(wxCommandEvent &event) {
@@ -159,6 +167,7 @@ public:
 
 
 int main(int argc, char* argv[]) {
+
     // Inicializar GStreamer
     gst_init(&argc, &argv);
 
@@ -167,7 +176,7 @@ int main(int argc, char* argv[]) {
     //Crea la lista con las canciones leidas del archivo
     servidor.create_list_from_file();
     //Escribe la lista en Disco
-    //servidor.lista_enlazada.List_to_Array();
+    servidor.lista_enlazada.List_to_Array();
     /*
     //Crea un array de cnaciones del tamanno de la cantidad de canciones de la carpeta
     Cancion* canciones = new Cancion[array_de_canciones.largo];
@@ -186,7 +195,20 @@ int main(int argc, char* argv[]) {
         cout << endl;
     }
      */
-    servidor.lista_enlazada.printListadouble();
+    //servidor.lista_enlazada.printListadouble();
+
+
+    // Instancia de Admin_paginas con tamaño máximo de página 4 y 1 páginas
+    Admin_paginas adminPaginas = Admin_paginas(4,2);
+
+    adminPaginas.paginas[1].cargarContenidoDesdeArchivo();
+    cout << adminPaginas.paginas[1].canciones->votes << endl;
+    adminPaginas.paginas[1].canciones->votes = adminPaginas.paginas[1].canciones->votes + 1;
+    adminPaginas.paginas[1].descargarContenidoDesdeArchivo();
+    adminPaginas.paginas[1].cargarContenidoDesdeArchivo();
+    cout << adminPaginas.paginas[1].canciones->votes << endl;
+
+
 
     wxApp::SetInstance(new MyApp());
     wxEntryStart(argc, argv);
