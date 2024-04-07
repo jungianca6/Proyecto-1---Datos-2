@@ -31,7 +31,9 @@ public:
                     admin->paginas[i].descargarContenidoDesdeArchivo();
                     admin->paginas[i].cargada = false;
                     pagina.cargarContenidoDesdeArchivo();
+                    pagina.cargada = true;
                     admin->paginas_cargadas[i] = pagina.id;
+                    break;
                 }
             }
 
