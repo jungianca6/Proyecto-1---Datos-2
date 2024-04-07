@@ -26,11 +26,10 @@ public:
         if(!pagina.cargada && admin->contador_de_paginas_cargadas == admin->total_de_paginas_cargadas) {
             int id_descarga = admin->paginas_cargadas[0];
 
-            for (int i=0; i < admin->total_de_paginas_cargadas; i++){
+            for (int i=0; i < admin->num_paginas; i++){
                 if(admin->paginas[i].id == id_descarga){
                     admin->paginas[i].descargarContenidoDesdeArchivo();
                     admin->paginas[i].cargada = false;
-
                     pagina.cargarContenidoDesdeArchivo();
                     admin->paginas_cargadas[i] = pagina.id;
                 }

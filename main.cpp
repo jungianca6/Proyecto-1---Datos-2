@@ -204,9 +204,12 @@ int main(int argc, char* argv[]) {
     Paged_Array arreglo_paginado(&adminPaginas);
     cout << adminPaginas.num_paginas << endl;
     cout << "guia del indice" << endl;
-    cout << "Cancion Obtenida: " << arreglo_paginado[0].nombre << endl;
-    cout << "Cancion Obtenida: " << arreglo_paginado[3].nombre << endl;
+    cout << "Cancion Obtenida: " << arreglo_paginado[7].nombre << endl;
+    cout << "Pagina Cargada: " << adminPaginas.paginas_cargadas[0] << endl;
 
+    cout << "Error: " << adminPaginas.paginas_cargadas[0] << endl;
+    cout << "Cancion Obtenida: " << arreglo_paginado[1].nombre << endl;
+    cout << "Cancion Obtenida: " << arreglo_paginado[4].nombre << endl;
 
 
 
