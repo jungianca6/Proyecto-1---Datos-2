@@ -20,6 +20,8 @@ add_executable(Proyecto_1 main.cpp
         Pagina.h
         Admin_paginas.cpp
         Admin_paginas.h
+        Paged_Array.cpp
+        Paged_Array.h
 )
 
 

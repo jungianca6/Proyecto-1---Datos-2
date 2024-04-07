@@ -27,8 +27,6 @@ bool paginacion;
 //Lista de canciones recogidas de los archivos
 Data* carpeta_de_canciones;
 
-
-
 void ServerSocket::acceptConnections() {
     while (true){
         struct sockaddr_in clientAddress;

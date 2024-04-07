@@ -18,10 +18,6 @@ using namespace std;
 
 
 class PagedArray{
-private:
-    int num_paginas;
-    int tamano_de_pagina;
-
 public:
     PagedArray(){}
 

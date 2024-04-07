@@ -10,6 +10,7 @@
 #include <ogg/ogg.h>
 #include <gst/gst.h>
 #include "Admin_paginas.h"
+#include "Paged_Array.h"
 
 //Lista de canciones recogidas de los archivos
 Data* lista_canciones;
@@ -198,16 +199,25 @@ int main(int argc, char* argv[]) {
     //servidor.lista_enlazada.printListadouble();
 
 
-    // Instancia de Admin_paginas con tamaño máximo de página 4 y 1 páginas
-    Admin_paginas adminPaginas = Admin_paginas(4,2);
+    // Instancia de Admin_paginas con tamaño máximo de página 2 y 2 páginas
+    Admin_paginas adminPaginas = Admin_paginas(2,1);
+    Paged_Array arreglo_paginado(&adminPaginas);
+    cout << adminPaginas.num_paginas << endl;
+    cout << "guia del indice" << endl;
+    cout << "Cancion Obtenida: " << arreglo_paginado[0].nombre << endl;
+    cout << "Cancion Obtenida: " << arreglo_paginado[3].nombre << endl;
 
-    adminPaginas.paginas[1].cargarContenidoDesdeArchivo();
-    cout << adminPaginas.paginas[1].canciones->votes << endl;
-    adminPaginas.paginas[1].canciones->votes = adminPaginas.paginas[1].canciones->votes + 1;
-    adminPaginas.paginas[1].descargarContenidoDesdeArchivo();
-    adminPaginas.paginas[1].cargarContenidoDesdeArchivo();
-    cout << adminPaginas.paginas[1].canciones->votes << endl;
 
+
+
+    /*
+    adminPaginas.paginas[0].cargarContenidoDesdeArchivo();
+    cout << adminPaginas.paginas[0].canciones->votes << endl;
+    adminPaginas.paginas[0].canciones->votes = adminPaginas.paginas[0].canciones->votes + 1;
+    adminPaginas.paginas[0].descargarContenidoDesdeArchivo();
+    adminPaginas.paginas[0].cargarContenidoDesdeArchivo();
+    cout << adminPaginas.paginas[0].canciones->votes << endl;
+    */
 
 
     wxApp::SetInstance(new MyApp());
