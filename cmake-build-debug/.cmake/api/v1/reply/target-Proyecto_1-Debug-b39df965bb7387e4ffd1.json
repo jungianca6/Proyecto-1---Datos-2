@@ -20,7 +20,7 @@
 		"files" : 
 		[
 			"CMakeLists.txt",
-			"/snap/clion/274/bin/cmake/linux/x64/share/cmake-3.28/Modules/UsewxWidgets.cmake"
+			"/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/UsewxWidgets.cmake"
 		],
 		"nodes" : 
 		[
@@ -117,7 +117,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -pthread -g -std=gnu++17 -fdiagnostics-color=always   -pthread"
+					"fragment" : " -pthread -g -fdiagnostics-color=always   -pthread"
 				}
 			],
 			"defines" : 
@@ -139,7 +139,7 @@
 			[
 				{
 					"backtrace" : 9,
-					"path" : "/home/curso/Desktop/Proyecto-1-Datos-2/include"
+					"path" : "/home/dell/Escritorio/Proyecto-1-Datos-2/include"
 				},
 				{
 					"backtrace" : 10,
@@ -147,11 +147,11 @@
 				},
 				{
 					"backtrace" : 11,
-					"path" : "/home/curso/Desktop/Proyecto-1-Datos-2/Proyecto_1"
+					"path" : "/home/dell/Escritorio/Proyecto-1-Datos-2/Proyecto_1"
 				},
 				{
 					"backtrace" : 11,
-					"path" : "/home/curso/Desktop/Proyecto-1-Datos-2/PRIVATE"
+					"path" : "/home/dell/Escritorio/Proyecto-1-Datos-2/PRIVATE"
 				},
 				{
 					"backtrace" : 12,
