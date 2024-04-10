@@ -34,7 +34,6 @@
 					<Add directory="/usr/include/gstreamer-1.0"/>
 					<Add directory="/usr/include/glib-2.0"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
-					<Add directory="/usr/include/AL"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>
@@ -69,7 +68,6 @@
 					<Add directory="/usr/include/gstreamer-1.0"/>
 					<Add directory="/usr/include/glib-2.0"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
-					<Add directory="/usr/include/AL"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>
@@ -108,6 +106,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Admin_paginas.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Admin_paginas.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
 		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Cancion.h">
 			<Option target="Proyecto_1"/>
 		</Unit>
@@ -118,6 +122,24 @@
 			<Option target="Proyecto_1"/>
 		</Unit>
 		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/DoubleList.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/PagedArray.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/PagedArray.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Paged_Array.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Paged_Array.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Pagina.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Pagina.h">
 			<Option target="Proyecto_1"/>
 		</Unit>
 		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp">
