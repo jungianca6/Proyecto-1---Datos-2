@@ -27,6 +27,8 @@ namespace fs = std::filesystem;namespace fs = std::filesystem;
 
 //clase que crea la ventana
 class MainFrame : public wxFrame {
+private:
+    GstElement *pipeline;
 public:
     bool active_playlist = false;
 
@@ -39,13 +41,13 @@ public:
 
 
         wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,
-        *anterior,*siguiente,*eliminar, *pruebacancion;
+                *anterior,*siguiente,*eliminar, *pruebacancion;
 
         wxString canciones[] ={"Cancion 1", "Cancion 2", "Cancion 3"};
 
         listaCanciones = new wxComboBox(panel, wxID_ANY, canciones[0],
-                                                     wxPoint(450,250), wxSize(150,60), WXSIZEOF(canciones),
-                                                     canciones,wxCB_READONLY);
+                                        wxPoint(450,250), wxSize(150,60), WXSIZEOF(canciones),
+                                        canciones,wxCB_READONLY);
 
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
@@ -57,7 +59,7 @@ public:
         comunitario->Bind(wxEVT_BUTTON, &MainFrame::ComunitarioActionButton, this);
 
         pruebacancion = new wxButton(panel, botonID, "Prueba cancion",
-                                                  wxPoint(650, 250), wxSize(200, 35));
+                                     wxPoint(650, 250), wxSize(200, 35));
         pruebacancion->Bind(wxEVT_BUTTON, &MainFrame::escogerCancion,this);
         buscarCancion = new wxButton(panel, botonID, "Buscar",
                                      wxPoint(950, 110), wxSize(125, 30));
@@ -66,10 +68,11 @@ public:
                                     wxPoint(300, 500), wxSize(125, 40));
         pausa= new wxButton(panel, botonID, "Pausar",
                             wxPoint(450, 500), wxSize(125, 40));
+        pausa->Bind(wxEVT_BUTTON, &MainFrame::Pausa, this);
         anterior = new wxButton(panel, botonID, "Anterior",
-                             wxPoint(300, 600), wxSize(125, 40));
+                                wxPoint(300, 600), wxSize(125, 40));
         siguiente= new wxButton(panel, botonID, "Siguiente",
-                               wxPoint(450, 600), wxSize(125, 40));
+                                wxPoint(450, 600), wxSize(125, 40));
         eliminar= new wxButton(panel, botonID, "Eliminar canciones",
                                wxPoint(600, 600), wxSize(125, 40));
 
@@ -104,50 +107,61 @@ public:
 private:
     void PaginacionActionButton(wxCommandEvent &event) {
         caja->SetValue("Hola");
-        cout<<"Presionado"<<endl;
+        cout << "Presionado" << endl;
 
-        // Crear un nuevo pipeline
-        GstElement *pipeline = gst_pipeline_new("audio-player");
+        // Crear un nuevo pipeline si es necesario
+        if (!pipeline) {
+            pipeline = gst_pipeline_new("audio-player");
 
-        // Crear los elementos necesarios
-        GstElement *source = gst_element_factory_make("filesrc", "file-source");
-        GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
-        GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
-        GstElement *volume = gst_element_factory_make("volume", "volume-name");
-        GstElement *converter =gst_element_factory_make("audioconvert", "audio-converter");
-        GstElement *resample = gst_element_factory_make("audioresample", "audio-resampler");
-        GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
+            // Crear los elementos necesarios
+            GstElement *source = gst_element_factory_make("filesrc", "file-source");
+            GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
+            GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
+            GstElement *volume = gst_element_factory_make("volume", "volume-name");
+            GstElement *converter = gst_element_factory_make("audioconvert", "audio-converter");
+            GstElement *resample = gst_element_factory_make("audioresample", "audio-resampler");
+            GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
 
-        if (!pipeline || !source || !parse || !decoder || !volume || !converter || !resample || !sink) {
-            std::cerr << "Error al crear los elementos." << std::endl;
-        } else{
-            // Establecer el archivo fuente
-            g_object_set(G_OBJECT(source), "location",
-                         "/home/dell/Escritorio/Musica/Who Can It Be Now.mp3", NULL);
-            cout<<"Musica encontrada"<<endl;
+            if (!pipeline || !source || !parse || !decoder || !volume || !converter || !resample || !sink) {
+                std::cerr << "Error al crear los elementos." << std::endl;
+            } else {
+                // Establecer el archivo fuente
+                g_object_set(G_OBJECT(source), "location",
+                             "/home/dell/Escritorio/Musica/Who Can It Be Now.mp3", NULL);
+                cout << "Musica encontrada" << endl;
 
-            // Añadir los elementos al pipeline
-            gst_bin_add_many(GST_BIN(pipeline), source, parse, decoder, converter, resample, sink,NULL);
+                // Añadir los elementos al pipeline
+                gst_bin_add_many(GST_BIN(pipeline), source, parse, decoder, converter, resample, sink, NULL);
 
-            cout<<"Elementos añadidos"<<endl;
+                cout << "Elementos añadidos" << endl;
 
-            if (!gst_element_link_many(source, parse, decoder, converter, resample, sink, NULL)) {
-                std::cerr << "Error al enlazar los elementos." << std::endl;
-                gst_object_unref(pipeline);
+                if (!gst_element_link_many(source, parse, decoder, converter, resample, sink, NULL)) {
+                    std::cerr << "Error al enlazar los elementos." << std::endl;
+                    gst_object_unref(pipeline);
+                    pipeline = nullptr;  // Establecer pipeline a nullptr si hay un error
+                } else {
+                    // Iniciar la reproducción
+                    GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+                    if (ret == GST_STATE_CHANGE_FAILURE) {
+                        std::cerr << "Error al iniciar la reproducción." << std::endl;
+                    } else {
+                        cout << "Reproduccion" << endl;
+                    }
+                }
             }
-
-            // Iniciar la reproducción
+        } else {
+            // El pipeline ya está creado, así que solo reinicia la reproducción
             GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
             if (ret == GST_STATE_CHANGE_FAILURE) {
-                std::cerr << "Error al iniciar la reproducción." << std::endl;
-            }else{
-                cout<<"Reproduccion"<<endl;
+                std::cerr << "Error al reiniciar la reproducción." << std::endl;
+            } else {
+                cout << "Reproduccion reiniciada" << endl;
             }
-
-            gst_element_set_state(pipeline, GST_STATE_PLAYING);
-            cout<<"Playing"<<endl;
         }
+    }
 
+    void Pausa (wxCommandEvent &event){
+        gst_element_set_state(pipeline, GST_STATE_PAUSED);
     }
     void ComunitarioActionButton(wxCommandEvent &event) {
         if (!active_playlist){
@@ -207,7 +221,7 @@ int main(int argc, char* argv[]) {
     Data* temp = lista_canciones;
     while (temp) {
         lista_de_canciones.insert_lastdouble(*temp);
-            temp = temp->siguiente;
+        temp = temp->siguiente;
     }
     //lista_de_canciones.printListadouble();
 
