@@ -21,8 +21,8 @@ class PagedArray{
 public:
     PagedArray(){}
 
-    string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
-    int largo = cantidad_de_canciones("/home/spaceba/Music");
+    string filename = "/home/dell/Escritorio/Proyecto-1-Datos-2/archivo.bin";
+    int largo = cantidad_de_canciones("/home/dell/Escritorio/Musica");
     Cancion* canciones[10];
 
     Cancion operator[](int index) {

@@ -17,7 +17,7 @@ namespace fs = filesystem;
 
 class Pagina {
 public:
-    string filename_admin = "/home/spaceba/CLionProjects/Server/archivo.bin";
+    string filename_admin = "/home/dell/Escritorio/Proeycto-1-Datos-2/archivo.bin";
     Cancion* canciones; // Arreglo dinámico de canciones
     int tamanoMaximo; // Tamaño máximo de la página
     int id; //Identidicador de la pagina

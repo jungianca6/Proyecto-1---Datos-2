@@ -12,7 +12,7 @@ using namespace std;
 
 class Admin_paginas {
 public:
-    int total_de_canciones = cantidad_de_canciones( "/home/spaceba/Music");
+    int total_de_canciones = cantidad_de_canciones( "/home/dell/Escritorio/Musica");
     int tamano_maximo_por_pagina; // Tamaño máximo de cada página en bytes
     Pagina* paginas; // Arreglo de páginas
     int* paginas_cargadas;

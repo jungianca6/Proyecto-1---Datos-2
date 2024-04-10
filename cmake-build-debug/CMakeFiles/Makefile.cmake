@@ -27,6 +27,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageMessage.cmake"
+  "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPkgConfig.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindwxWidgets.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake"
   "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake"
