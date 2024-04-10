@@ -21,7 +21,7 @@ int serverSocket;
 int port;
 struct sockaddr_in serverAddress;
 DoubleList lista_enlazada;
-Admin_paginas admin(2,1);
+Admin_paginas admin(1,1);
 Paged_Array arreglo_paginado(&admin);
 bool paginacion;
 //Lista de canciones recogidas de los archivos
@@ -68,26 +68,33 @@ void ServerSocket::acceptConnections() {
             }
             //Verifica que la paginacion este desactivada
             if (paginacion) {
-
-                for(int i = 0; i< admin.total_de_canciones; i++) {
-                    cout << "Cancion Obtenida: " << arreglo_paginado[i].nombre << endl;
-                    cout << "Votos: " << arreglo_paginado[i].votes << endl;
-                }
-
-
                 json lista_json;
-                for (int i = 0; i < admin.total_de_canciones; i++) {
-                    json dataJson;
-                    dataJson = arreglo_paginado[i].toJson();
-                    lista_json.push_back(dataJson);
+                for (int i= 0; i < admin.total_de_canciones; i++){
+                    json jsonData;
+                    jsonData = arreglo_paginado[i].toJson();
+                    lista_json.push_back(jsonData);
                 }
-                // Imprimir el JSON
-                cout << lista_json.dump(4) << endl;
 
+
+                cout << lista_json.dump(4) << endl;
 
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket, to_string(lista_json));
                 close(clientSocket);
+
+
+                /*
+                json lista_json;
+                for (int i = 0; i < admin.total_de_canciones; i++) {
+                    cout << "llego" << endl;
+                    json dataJson = arreglo_paginado[i].toJson();
+                    lista_json.push_back(dataJson);
+                    cout << dataJson.dump(4) << endl;
+                }
+                // Imprimir el JSON
+                cout << lista_json.dump(4) << endl;
+
+                 */
             }
         }
         if (command == "Vote-up") {
@@ -112,7 +119,6 @@ void ServerSocket::acceptConnections() {
                     if (arreglo_paginado[i].nombre == nombre) {
                         arreglo_paginado[i].Vote_Up();
                         break;
-                    } else {
                     }
                     //Envia la respuesta al cliente
                     send_response(command, "OK", clientSocket);
@@ -141,7 +147,6 @@ void ServerSocket::acceptConnections() {
                     if (arreglo_paginado[i].nombre == nombre) {
                         arreglo_paginado[i].Vote_Down();
                         break;
-                    } else {
                     }
                     //Envia la respuesta al cliente
                     send_response(command, "OK", clientSocket);

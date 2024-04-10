@@ -42,20 +42,18 @@ struct Cancion{
         votes = votes - 1;
     }
 
-    // Función para convertir la Cancion a formato JSON
-    json toJson() const {
-        json j;
-        j["id"] = to_string(id);
-        j["path"] = path;
-        j["nombre"] = nombre;
-        j["artista"] = artista;
-        j["album"] = album;
-        j["duracion_minutos"] = duracion_minutos;
-        j["duracion_segundos"] = duracion_segundos;
-        j["votes"] = votes;
-        return j;
+    json toJson(){
+        json dataJson;
+        dataJson["id"] = to_string(id);
+        dataJson["path"] = path;
+        dataJson["nombre"] = nombre;
+        dataJson["artista"] = artista;
+        dataJson["album"] = album;
+        dataJson["duracion_minutos"] = duracion_minutos;
+        dataJson["duracion_segundos"] = duracion_segundos;
+        dataJson["votes"] = votes;
+        return dataJson;
     }
-
 
 
 };

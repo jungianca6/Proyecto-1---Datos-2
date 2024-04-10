@@ -175,27 +175,10 @@ int main(int argc, char* argv[]) {
     servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);
     //Crea la lista con las canciones leidas del archivo
     servidor.create_list_from_file();
+
+    /*
     //Escribe la lista en Disco
     servidor.lista_enlazada.List_to_Array();
-    /*
-    //Crea un array de cnaciones del tamanno de la cantidad de canciones de la carpeta
-    Cancion* canciones = new Cancion[array_de_canciones.largo];
-
-    array_de_canciones.get_songs(canciones);
-
-    for (int i = 0; i < array_de_canciones.largo; ++i) {
-        cout << "Canción #" << i+1 << ":" << endl;
-        cout << "Path: " << canciones[i].path << endl;
-        cout << "ID: " << canciones[i].id << endl;
-        cout << "Nombre: " << canciones[i].nombre << endl;
-        cout << "Artista: " << canciones[i].artista << endl;
-        cout << "Duración Minutos: " << canciones[i].duracion_minutos << " minutos" << endl;
-        cout << "Duración Segundos: " << canciones[i].duracion_segundos << endl;
-        cout << "Votos: " << canciones[i].votes << endl;
-        cout << endl;
-    }
-     */
-    //servidor.lista_enlazada.printListadouble();
 
 
     // Instancia de Admin_paginas con tamaño máximo de página 2 y 2 páginas
@@ -214,6 +197,7 @@ int main(int argc, char* argv[]) {
             cout << "Pagina Cargada: " << adminPaginas.paginas_cargadas[j] << endl;
         }
     }
+    */
 
 
 
