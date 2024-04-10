@@ -31,6 +31,10 @@
 					<Add directory="/usr/include/taglib"/>
 					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/Proyecto_1"/>
 					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/PRIVATE"/>
+					<Add directory="/usr/include/gstreamer-1.0"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
+					<Add directory="/usr/include/AL"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>
@@ -62,6 +66,10 @@
 					<Add directory="/usr/include/taglib"/>
 					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/Proyecto_1"/>
 					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/PRIVATE"/>
+					<Add directory="/usr/include/gstreamer-1.0"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
+					<Add directory="/usr/include/AL"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>

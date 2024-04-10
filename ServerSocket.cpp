@@ -9,6 +9,9 @@
 #include <unistd.h>
 #include <nlohmann/json.hpp>
 #include "DoubleList.h"
+#include "PagedArray.h"
+#include "Admin_paginas.h"
+
 
 using namespace std;
 using namespace nlohmann;
@@ -17,7 +20,12 @@ using namespace nlohmann;
 int serverSocket;
 int port;
 struct sockaddr_in serverAddress;
-DoubleList lista;
+DoubleList lista_enlazada;
+Admin_paginas admin(2,1);
+PagedArray pagedlist;
+bool paginacion;
+//Lista de canciones recogidas de los archivos
+Data* carpeta_de_canciones;
 
 void ServerSocket::acceptConnections() {
     while (true){
@@ -46,42 +54,61 @@ void ServerSocket::acceptConnections() {
             //Insertar funcion para obtener los nodos de la lista y convertirlos en texto
             //
 
-            json lista_json = lista->toJson();
+            //Verifica que la paginacion este desactivada
+            if (!paginacion){
+                lista_enlazada.printListadouble();
 
-            //Envia la respuesta al cliente
-            send_response(command, "OK", clientSocket, to_string(lista_json));
-            close(clientSocket);
+                json lista_json = lista_enlazada.toJson();
+                // Imprimir el JSON
+                cout << lista_json.dump(4) << endl;
+
+                //Envia la respuesta al cliente
+                send_response(command, "OK", clientSocket, to_string(lista_json));
+                close(clientSocket);
+            }
 
         }
         if(command == "Vote-up"){
             //Obtiene el id de la cancion que se desea modificar
             string nombre = receivedJsonData["nombre"];
-            lista->printListadouble();
-            cout << "Votar por una cancion +1" << "id:" << nombre << endl;
-            lista->voteUp(nombre);
-            lista->printListadouble();
 
-            //
-            //Insertar funcion para actualizar los datos de la cancion
-            //
+            //Verifica si la paginacion esta desactivada
+            if (!paginacion) {
+                lista_enlazada.printListadouble();
+                cout << "Votar por una cancion +1" << "id:" << nombre << endl;
+                //Vota a la cancion
+                lista_enlazada.voteUp(nombre);
+                lista_enlazada.printListadouble();
 
-            //Envia la respuesta al cliente
-            send_response(command, "OK", clientSocket);
-            close(clientSocket);
+
+                //Envia la respuesta al cliente
+                send_response(command, "OK", clientSocket);
+                close(clientSocket);
+            }
+            if (paginacion){
+            }
+
         }
+
         if(command == "Vote-down"){
             //Obtiene el id de la cancion que se desea modificar
             string nombre = receivedJsonData["nombre"];
-            lista->printListadouble();
-            cout << "Votar por una cancion -1" << "nombre:" << nombre << endl;
-            lista->voteDown(nombre);
-            lista->printListadouble();
-            //
-            //Insertar funcion para actualizar los datos de la cancion
-            //
 
+            //Verifica si la paginacion esta desactivada
+            if (!paginacion) {
+                lista_enlazada.printListadouble();
+                cout << "Votar por una cancion -1" << "id:" << nombre << endl;
+                //Vota a la cancion
+                lista_enlazada.voteDown(nombre);
+                lista_enlazada.printListadouble();
+
+                //Envia la respuesta al cliente
+                send_response(command, "OK", clientSocket);
+                close(clientSocket);
+            }
+        }else{
             //Envia la respuesta al cliente
-            send_response(command, "OK", clientSocket);
+            send_response(command, "ERROR", clientSocket);
             close(clientSocket);
         }
 
@@ -105,7 +132,7 @@ json ServerSocket::receiveJsonData(int clientSocket) {
     json jsonData = json::parse(jsonString);
     return jsonData;
 }
-//Envia la respuesta al cliente (exitoso o no)
+
 void ServerSocket::send_response(string command, string status, int clientsocket){
     json response = {
             {"command", command},
@@ -117,7 +144,6 @@ void ServerSocket::send_response(string command, string status, int clientsocket
     send(clientsocket, jsonString.c_str(), jsonString.length(), 0);
 }
 
-//Envia la respuesta al cliente (lista de canciones)
 void ServerSocket::send_response(string command, string status, int clientsocket, string list) {
     json response = {
             {"command", command},
@@ -128,4 +154,13 @@ void ServerSocket::send_response(string command, string status, int clientsocket
     string jsonString = response.dump();
     // Enviar la cadena JSON al cliente
     send(clientsocket, jsonString.c_str(), jsonString.length(), 0);
+}
+
+void ServerSocket::create_list_from_file(){
+    //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
+    Data* temp = carpeta_de_canciones;
+    while (temp) {
+        lista_enlazada.insert_lastdouble(*temp);
+        temp = temp->siguiente;
+    }
 }

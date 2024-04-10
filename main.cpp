@@ -4,9 +4,13 @@
 #include "ServerSocket.h"
 #include "thread"
 #include "Circular List.cpp"
-#include "BinaryListOperations.cpp"
-#include "Metadata.cpp"
 #include "DoubleList.h"
+#include "PagedArray.h"
+#include <sndfile.h>
+#include <ogg/ogg.h>
+#include <gst/gst.h>
+#include "Admin_paginas.h"
+#include "Paged_Array.h"
 
 //Lista de canciones recogidas de los archivos
 Data* lista_canciones;
@@ -14,15 +18,18 @@ Data* lista_canciones;
 DoubleList lista_de_canciones;
 
 
+int portNumber = 12346;
+ServerSocket servidor = ServerSocket(portNumber);
+PagedArray array_de_canciones;
 
 enum IDs{
     botonID =2,textoID=3
 };
 
 using namespace std;
-using namespace TagLib;
 namespace fs = std::filesystem;namespace fs = std::filesystem;
 
+//clase que crea la ventana
 class MainFrame : public wxFrame {
 public:
     bool active_playlist = false;
@@ -36,7 +43,14 @@ public:
 
 
         wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,
-        *anterior,*siguiente,*eliminar;
+        *anterior,*siguiente,*eliminar, *pruebacancion;
+
+        wxString canciones[] ={"Cancion 1", "Cancion 2", "Cancion 3"};
+
+
+        listaCanciones = new wxComboBox(panel, wxID_ANY, canciones[0],
+                                                     wxPoint(450,250), wxSize(150,60), WXSIZEOF(canciones),
+                                                     canciones,wxCB_READONLY);
 
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
@@ -47,11 +61,16 @@ public:
                                    wxPoint(150, 250), wxSize(250, 60));
         comunitario->Bind(wxEVT_BUTTON, &MainFrame::ComunitarioActionButton, this);
 
+        pruebacancion = new wxButton(panel, botonID, "Prueba cancion",
+                                                  wxPoint(650, 250), wxSize(200, 35));
+        pruebacancion->Bind(wxEVT_BUTTON, &MainFrame::escogerCancion,this);
         buscarCancion = new wxButton(panel, botonID, "Buscar",
                                      wxPoint(950, 110), wxSize(125, 30));
 
         reproduccion = new wxButton(panel, botonID, "Reproducir",
                                     wxPoint(300, 500), wxSize(125, 40));
+        reproduccion->Bind(wxEVT_BUTTON, &MainFrame::ReproducirActionButton, this);
+
         pausa= new wxButton(panel, botonID, "Pausar",
                             wxPoint(450, 500), wxSize(125, 40));
         anterior = new wxButton(panel, botonID, "Anterior",
@@ -82,25 +101,24 @@ public:
 
         caja = new wxTextCtrl(panel, textoID, "",
                               wxPoint(500, 60), wxSize(200, -1));
+        prueba = new wxTextCtrl(panel, wxID_ANY,"",
+                                wxPoint(450,350),wxSize(200,-1));
 
         wxTextCtrl *buscar= new wxTextCtrl(panel, wxID_ANY, "",
                                            wxPoint(900, 60), wxSize(200, -1));
-
-        /*wxImage image("/home/dell/Escritorio/play.png",wxBITMAP_TYPE_PNG);
-        if (!image.IsOk()){
-            wxMessageBox("mamaste");
-            return;
-        }
-
-        wxBitmap bitmap(image);
-        image.Rescale(100, 50);
-        wxBitmapButton* boton = new wxBitmapButton(this,wxID_ANY,bitmap,wxPoint(150,750));*/
     }
 
 private:
     void PaginacionActionButton(wxCommandEvent &event) {
-        caja->SetValue("Hola");
-        cout<<"Presionado"<<endl;
+        if (servidor.paginacion == true){
+            servidor.paginacion = false;
+            caja->SetValue("Paginacion desactivada");
+
+        }else{
+            servidor.paginacion = true;
+            caja->SetValue("Paginacion Activada");
+        }
+
     }
     void ComunitarioActionButton(wxCommandEvent &event) {
         if (!active_playlist){
@@ -113,18 +131,25 @@ private:
         else {
             cout << "Servidor activo" << endl;
         }
+    }
+    void ReproducirActionButton(wxCommandEvent &event) {
+        servidor.lista_enlazada.play_song("Efecto");
+    }
 
+    void escogerCancion (wxCommandEvent &event){
+        prueba->SetValue(listaCanciones->GetStringSelection());
     }
 
     void activeServer() {
-        int portNumber = 12346; // Puerto en el que escuchará el servidor
-        ServerSocket servidor = ServerSocket(portNumber, &lista_de_canciones);
         thread hilo(&ServerSocket::acceptConnections, &servidor);
         cout << "Servidor en escucha" << endl;
         hilo.join();
 
     }
     wxTextCtrl *caja;
+    wxTextCtrl *prueba;
+    wxComboBox * listaCanciones;
+
     //wxDECLARE_EVENT_TABLE();
 };
 
@@ -143,16 +168,65 @@ public:
 
 
 int main(int argc, char* argv[]) {
-    //Lee las canciones de la carpeta y las guarda en la lista
-    leerArchivosMP3("/home/dell/Escritorio/Musica", lista_canciones);
 
-    //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
-    Data* temp = lista_canciones;
-    while (temp) {
-        lista_de_canciones.insert_lastdouble(*temp);
-            temp = temp->siguiente;
+    // Inicializar GStreamer
+    gst_init(&argc, &argv);
+
+    //Lee las canciones de la carpeta y las guarda en la lista
+    servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);
+    //Crea la lista con las canciones leidas del archivo
+    servidor.create_list_from_file();
+    //Escribe la lista en Disco
+    servidor.lista_enlazada.List_to_Array();
+    /*
+    //Crea un array de cnaciones del tamanno de la cantidad de canciones de la carpeta
+    Cancion* canciones = new Cancion[array_de_canciones.largo];
+
+    array_de_canciones.get_songs(canciones);
+
+    for (int i = 0; i < array_de_canciones.largo; ++i) {
+        cout << "Canción #" << i+1 << ":" << endl;
+        cout << "Path: " << canciones[i].path << endl;
+        cout << "ID: " << canciones[i].id << endl;
+        cout << "Nombre: " << canciones[i].nombre << endl;
+        cout << "Artista: " << canciones[i].artista << endl;
+        cout << "Duración Minutos: " << canciones[i].duracion_minutos << " minutos" << endl;
+        cout << "Duración Segundos: " << canciones[i].duracion_segundos << endl;
+        cout << "Votos: " << canciones[i].votes << endl;
+        cout << endl;
     }
-    //lista_de_canciones.printListadouble();
+     */
+    //servidor.lista_enlazada.printListadouble();
+
+
+    // Instancia de Admin_paginas con tamaño máximo de página 2 y 2 páginas
+    Admin_paginas adminPaginas = Admin_paginas(2,1);
+    Paged_Array arreglo_paginado(&adminPaginas);
+    cout << adminPaginas.num_paginas << endl;
+    cout << "guia del indice" << endl;
+
+    for(int j = 0; j < 2; j++){
+        cout << "Pagina Cargada: " << adminPaginas.paginas_cargadas[j] << endl;
+    }
+
+    for(int i = 0; i< adminPaginas.total_de_canciones; i++) {
+        cout << "Cancion Obtenida: " << arreglo_paginado[i].nombre << endl;
+        for(int j = 0; j < 4; j++){
+            cout << "Pagina Cargada: " << adminPaginas.paginas_cargadas[j] << endl;
+        }
+    }
+
+
+
+
+    /*
+    adminPaginas.paginas[0].cargarContenidoDesdeArchivo();
+    cout << adminPaginas.paginas[0].canciones->votes << endl;
+    adminPaginas.paginas[0].canciones->votes = adminPaginas.paginas[0].canciones->votes + 1;
+    adminPaginas.paginas[0].descargarContenidoDesdeArchivo();
+    adminPaginas.paginas[0].cargarContenidoDesdeArchivo();
+    cout << adminPaginas.paginas[0].canciones->votes << endl;
+    */
 
 
     wxApp::SetInstance(new MyApp());
@@ -161,6 +235,7 @@ int main(int argc, char* argv[]) {
     wxTheApp->OnRun();
     wxTheApp->OnExit();
     wxEntryCleanup();
+
 
 
     // Nombre del archivo binario en el que deseas escribir
@@ -186,5 +261,4 @@ int main(int argc, char* argv[]) {
      */
 
     return 0;
-
 }

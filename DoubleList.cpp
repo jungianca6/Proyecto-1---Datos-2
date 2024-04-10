@@ -3,6 +3,17 @@
 //
 
 #include "DoubleList.h"
+#include "PagedArray.h"
+#include <taglib/taglib.h>
+#include <taglib/fileref.h>
+#include <taglib/tag.h>
+#include <taglib/mpegfile.h>
+#include <taglib/mpegheader.h>
+#include <ogg/ogg.h>
+#include <gst/gst.h>
+
+
+namespace fs = std::filesystem;
 
 Node *primerod = nullptr;
 Node *ultimod = nullptr;
@@ -12,6 +23,8 @@ void DoubleList::printListadouble() {
     actual = primerod;
     if (primerod != NULL) {
         do {
+            cout << "Path: " << actual->data.path << endl;
+            cout << "ID: " << actual->data.id << endl;
             cout << "Nombre: " << actual->data.nombre << endl;
             cout << "Artista: " << actual->data.artista << endl;
             cout << "Duracion_minutos: " << actual->data.duracion_minutos << endl;
@@ -24,6 +37,7 @@ void DoubleList::printListadouble() {
     } else {
         cout << "Vacía" << endl;
     }
+
 }
 
 void DoubleList::insert_lastdouble(Data new_data) {
@@ -76,48 +90,7 @@ void DoubleList::buscarNododouble(string cancionbuscada) {
     } else {
         cout << "nel";
     }
-}
 
-
-void DoubleList::voteUp(string cancionbuscada) {
-    Node *actual = primerod;
-    bool encontrado = false;
-    cout << "Dato buscado: " << cancionbuscada << endl;
-    if (primerod != NULL) {
-        do {
-            if (actual->data.nombre == cancionbuscada) {
-                actual->data.votes = actual->data.votes + 1;
-                encontrado = true;
-            }
-            actual = actual->siguiente;
-        } while (actual != NULL && encontrado != true);
-        if (!encontrado) {
-            cout << "Nodo no encontrado";
-        }
-
-    } else {
-        cout << "nel";
-    }
-}
-
-void DoubleList::voteDown(string cancionbuscada) {
-    Node *actual = primerod;
-    bool encontrado = false;
-    cout << "Dato buscado: " << cancionbuscada << endl;
-    if (primerod != NULL) {
-        do {
-            if (actual->data.nombre == cancionbuscada) {
-                actual->data.votes = actual->data.votes - 1;
-                encontrado = true;
-            }
-            actual = actual->siguiente;
-        } while (actual != NULL && encontrado != true);
-        if (!encontrado) {
-            cout << "Nodo no encontrado";
-        }
-    } else {
-        cout << "nel";
-    }
 }
 
 void DoubleList::voteUp(string cancionbuscada) {
@@ -160,20 +133,82 @@ void DoubleList::voteDown(string cancionbuscada) {
     }
 }
 
+void DoubleList::play_song(string cancionbuscada) {
+
+    Node *actual = primerod;
+    bool encontrado = false;
+    cout << "Dato buscado: " << cancionbuscada << endl;
+    if (primerod != NULL) {
+        do {
+            if (actual->data.nombre == cancionbuscada) {
+                // Crear un nuevo pipeline
+                GstElement *pipeline = gst_pipeline_new("audio-player");
+
+                // Crear los elementos necesarios
+                GstElement *source = gst_element_factory_make("filesrc", "file-source");
+                GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
+                GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
+                GstElement *volume = gst_element_factory_make("volume", "volume-name");
+                GstElement *converter =gst_element_factory_make("audioconvert", "audio-converter");
+                GstElement *resample = gst_element_factory_make("audioresample", "audio-resampler");
+                GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
+
+                if (!pipeline || !source || !parse || !decoder || !volume || !converter || !resample || !sink) {
+                    std::cerr << "Error al crear los elementos." << std::endl;
+                } else{
+                    // Establecer el archivo fuente
+                    string path = actual->data.path;
+                    g_object_set(G_OBJECT(source), "location",
+                                 path.c_str(), NULL);
+                    cout<<"Musica encontrada"<<endl;
+
+                    // Añadir los elementos al pipeline
+                    gst_bin_add_many(GST_BIN(pipeline), source, parse, decoder, converter, resample, sink,NULL);
+
+                    cout<<"Elementos añadidos"<<endl;
+
+                    if (!gst_element_link_many(source, parse, decoder, converter, resample, sink, NULL)) {
+                        std::cerr << "Error al enlazar los elementos." << std::endl;
+                        gst_object_unref(pipeline);
+                    }
+
+                    // Iniciar la reproducción
+                    GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+                    if (ret == GST_STATE_CHANGE_FAILURE) {
+                        std::cerr << "Error al iniciar la reproducción." << std::endl;
+                    }else{
+                        cout<<"Reproduccion"<<endl;
+                    }
+
+                    gst_element_set_state(pipeline, GST_STATE_PLAYING);
+                    cout<<"Playing"<<endl;
+                }
+
+            }
+            actual = actual->siguiente;
+        } while (actual != NULL && encontrado != true);
+        if (!encontrado) {
+            cout << "Nodo no encontrado";
+        }
+    } else {
+        cout << "nel";
+    }
+}
 
 
-
-void DoubleList::eliminarNododouble(Data nodoBuscado) {
+void DoubleList::eliminarNododouble(string nodoBuscado) {
     Node *actual = new Node();
     actual = primerod;
     Node *anterior = new Node();
     anterior = NULL;
     bool encontrado = false;
     cout << "Dato eliminado: " << endl;
+
     if (primerod != NULL) {
         do {
-            if (actual->data.nombre == nodoBuscado.nombre) {
-                cout << "Nodo con el dato ( " << nodoBuscado.nombre << " ) eliminado" << endl;
+            if (actual->data.nombre == nodoBuscado) {
+                cout << "Nodo con el dato ( " << nodoBuscado << " ) eliminado" << endl;
+
                 if (actual == primerod) {
                     primerod = primerod->siguiente;
                 } else if (actual == ultimod) {
@@ -190,6 +225,7 @@ void DoubleList::eliminarNododouble(Data nodoBuscado) {
         if (!encontrado) {
             cout << "Nodo encontrado";
         }
+
     } else {
         cout << "nel";
     }
@@ -205,34 +241,105 @@ int DoubleList::findlengthdouble() {
     return cnt;
 }
 
-void DoubleList::convertArraydouble() {
-    int len = findlengthdouble();
-    string arr[len];
-    int index = 0;
-    Node *actual = primerod;
 
-    while (actual != NULL) {
-        arr[index++] = actual->data.nombre;
-        actual = actual->siguiente;
-    }
-    // print array
-    for (int i = 0; i < len; i++) {
-        cout << arr[i] << " ";
-    }
-}
 json DoubleList::toJson(){
     json j;
     Node *current = primerod;
     while (current != nullptr) {
         json dataJson;
-        dataJson["nombre"] = current->data.nombre;  // Suponiendo que Data tiene un miembro 'nombre'
-        dataJson["artista"] = current->data.artista;  // Suponiendo que Data tiene un miembro 'artista'
-        dataJson["album"] = current->data.album;  // Suponiendo que Data tiene un miembro 'artista'
-        dataJson["duracion_minutos"] = current->data.duracion_minutos;  // Suponiendo que Data tiene un miembro 'artista'
-        dataJson["duracion_segundos"] = current->data.duracion_segundos;  // Suponiendo que Data tiene un miembro 'artista'
-        dataJson["votes"] = current->data.votes;  // Suponiendo que Data tiene un miembro 'artista'
+        dataJson["id"] = to_string(current->data.id);
+        dataJson["nombre"] = current->data.nombre;
+        dataJson["artista"] = current->data.artista;
+        dataJson["album"] = current->data.album;
+        dataJson["duracion_minutos"] = current->data.duracion_minutos;
+        dataJson["duracion_segundos"] = current->data.duracion_segundos;
+        dataJson["votes"] = current->data.votes;
         j.push_back(dataJson);
         current = current->siguiente;
     }
     return j;
+}
+
+void DoubleList::obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista) {
+    TagLib::FileRef archivo(ruta_archivo.c_str());
+    if (!archivo.isNull() && archivo.tag()) {
+        TagLib::Tag* tag = archivo.tag();
+        if (tag) {
+
+            char nombre[64];
+            char artista[64];
+            char album[64];
+            char path[128];
+
+            strncpy(nombre, tag->title().toCString(true), sizeof(nombre));
+            strncpy(artista, tag->artist().toCString(true), sizeof(artista));
+            strncpy(album, tag->album().toCString(true), sizeof(album));
+            strncpy(path, ruta_archivo.c_str(), sizeof(album));
+
+
+
+            TagLib::MPEG::File mpegFile(ruta_archivo.c_str());
+            int duracion_segundos = mpegFile.audioProperties()->length();
+            int minutos = duracion_segundos / 60;
+            int segundos = duracion_segundos % 60;
+
+            cout << "Path: " << ruta_archivo << endl;
+            cout << "Nombre: " << nombre << endl;
+            cout << "Artista: " << artista << endl;
+            cout << "Álbum: " << album << endl;
+            cout << "Duración: " << minutos << " minutos " << segundos << " segundos" << endl;
+
+
+
+            // Crear un nuevo nodo para la canción
+            Data* nueva_cancion = new Data(path ,nombre, artista, album, minutos, segundos, 0);
+            // Agregar el nodo a la lista
+            if (!lista) {
+                lista = nueva_cancion;
+            } else {
+                Data* temp = lista;
+                while (temp->siguiente) {
+                    temp = temp->siguiente;
+                }
+                temp->siguiente = nueva_cancion;
+            }
+        }
+    }
+}
+
+void DoubleList::leerArchivosMP3(const string& ruta_carpeta, Data*& lista) {
+    for (const auto& entry : fs::directory_iterator(ruta_carpeta)) {
+        if (entry.is_regular_file()) {
+            string extension = entry.path().extension();
+            if (extension == ".mp3" || extension == ".MP3") {
+                cout << "\nArchivo: " << entry.path().filename() << endl;
+                obtenerMetadatosMP3(entry.path().string(), lista);
+            }
+        }
+    }
+}
+
+void DoubleList::List_to_Array() {
+    Node *actual = primerod;
+    PagedArray pagedArray;
+    pagedArray.clear_file();
+    while (actual != NULL) {
+        Cancion* cancion = new Cancion(actual->data.path, actual->data.id,actual->data.nombre,actual->data.artista,actual->data.album,actual->data.duracion_minutos,
+                                      actual->data.duracion_segundos, actual->data.votes);
+
+        pagedArray.add_to_end(*cancion);
+        actual = actual->siguiente;
+    }
+}
+
+string DoubleList::get_by_index(int index) {
+    Node *actual = primerod;
+    if (index == 0){
+        return actual->data.nombre;
+    }
+    else{
+        for (int i=0; i <= index; i++)
+            actual = actual->siguiente;
+        return actual->data.nombre;
+    }
 }
