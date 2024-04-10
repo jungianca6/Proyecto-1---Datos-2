@@ -67,6 +67,7 @@ public:
 
         pausa= new wxButton(panel, botonID, "Pausar",
                             wxPoint(450, 500), wxSize(125, 40));
+        pausa->Bind(wxEVT_BUTTON, &MainFrame::PausarActionButton, this);
         anterior = new wxButton(panel, botonID, "Anterior",
                              wxPoint(300, 600), wxSize(125, 40));
         siguiente= new wxButton(panel, botonID, "Siguiente",
@@ -143,6 +144,9 @@ private:
         cout << "Servidor en escucha" << endl;
         hilo.join();
 
+    }
+    void PausarActionButton(wxCommandEvent &event){
+        servidor.lista_enlazada.Pausa();
     }
 
 

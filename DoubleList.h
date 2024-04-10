@@ -57,6 +57,8 @@ public:
     void clear();
 
     void create_list_from_file();
+
+    void Pausa();
 };
 
 
