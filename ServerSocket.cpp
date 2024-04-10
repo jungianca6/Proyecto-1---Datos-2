@@ -105,7 +105,11 @@ void ServerSocket::acceptConnections() {
             if (paginacion) {
                 for (int i = 0; i < admin.total_de_canciones; i++) {
                     if (arreglo_paginado[i].nombre == nombre) {
-                        arreglo_paginado[i].Vote_Up();
+                        cout << arreglo_paginado[i].nombre << endl;
+                        cout << arreglo_paginado[i].votes << endl;
+                        cout << "Votando..."<< endl;
+                        arreglo_paginado.vote_up(i);
+                        cout << arreglo_paginado[i].votes << endl;
                         break;
                     }
                     //Envia la respuesta al cliente
@@ -133,13 +137,18 @@ void ServerSocket::acceptConnections() {
             if (paginacion) {
                 for (int i = 0; i < admin.total_de_canciones; i++) {
                     if (arreglo_paginado[i].nombre == nombre) {
-                        arreglo_paginado[i].Vote_Down();
+                        cout << arreglo_paginado[i].nombre << endl;
+                        cout << arreglo_paginado[i].votes << endl;
+                        cout << "Votando..."<< endl;
+                        arreglo_paginado.vote_down(i);
+                        cout << arreglo_paginado[i].votes << endl;
                         break;
                     }
                     //Envia la respuesta al cliente
                     send_response(command, "OK", clientSocket);
                     close(clientSocket);
                 }
+
             } else {
                 //Envia la respuesta al cliente
                 send_response(command, "ERROR", clientSocket);

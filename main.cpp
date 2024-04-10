@@ -168,49 +168,16 @@ public:
 
 
 int main(int argc, char* argv[]) {
-
-    // Inicializar GStreamer
-    gst_init(&argc, &argv);
-
     //Lee las canciones de la carpeta y las guarda en la lista
     servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);
     //Crea la lista con las canciones leidas del archivo
     servidor.create_list_from_file();
 
-    /*
-    //Escribe la lista en Disco
-    servidor.lista_enlazada.List_to_Array();
-
-
-    // Instancia de Admin_paginas con tamaño máximo de página 2 y 2 páginas
-    Admin_paginas adminPaginas = Admin_paginas(2,1);
-    Paged_Array arreglo_paginado(&adminPaginas);
-    cout << adminPaginas.num_paginas << endl;
-    cout << "guia del indice" << endl;
-
-    for(int j = 0; j < 2; j++){
-        cout << "Pagina Cargada: " << adminPaginas.paginas_cargadas[j] << endl;
-    }
-
-    for(int i = 0; i< adminPaginas.total_de_canciones; i++) {
-        cout << "Cancion Obtenida: " << arreglo_paginado[i].nombre << endl;
-        for(int j = 0; j < 4; j++){
-            cout << "Pagina Cargada: " << adminPaginas.paginas_cargadas[j] << endl;
-        }
-    }
-    */
+    // Inicializar GStreamer
+    gst_init(&argc, &argv);
 
 
 
-
-    /*
-    adminPaginas.paginas[0].cargarContenidoDesdeArchivo();
-    cout << adminPaginas.paginas[0].canciones->votes << endl;
-    adminPaginas.paginas[0].canciones->votes = adminPaginas.paginas[0].canciones->votes + 1;
-    adminPaginas.paginas[0].descargarContenidoDesdeArchivo();
-    adminPaginas.paginas[0].cargarContenidoDesdeArchivo();
-    cout << adminPaginas.paginas[0].canciones->votes << endl;
-    */
 
 
     wxApp::SetInstance(new MyApp());

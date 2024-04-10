@@ -258,6 +258,7 @@ json DoubleList::toJson(){
         j.push_back(dataJson);
         current = current->siguiente;
     }
+    delete current;
     return j;
 }
 
@@ -357,9 +358,7 @@ void DoubleList::clear() {
 }
 
 void DoubleList::create_list_from_file(){
-
     ifstream archivo(filename_double_list, ios::binary);
-
     cout << "llego" << endl;
     Cancion cancion_leida;
 
@@ -373,6 +372,7 @@ void DoubleList::create_list_from_file(){
                                  cancion_leida.duracion_segundos, cancion_leida.votes);
             insert_lastdouble(*data);
             i++;
+            delete data;
         }
         else{
             break;

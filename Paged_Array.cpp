@@ -123,3 +123,4 @@ void Paged_Array::clear_file(){
         std::cerr << "No se pudo abrir el archivo \"" << filename << "\" para limpiar." << std::endl;
     }
 }
+

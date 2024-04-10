@@ -1,6 +1,7 @@
 
 #ifndef PROYECTO_1_CANCION_H
 #define PROYECTO_1_CANCION_H
+#include "iostream"
 #include <cstring>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
@@ -9,6 +10,7 @@
 #include <nlohmann/json.hpp>
 #include <cstring>
 
+using namespace  std;
 using json = nlohmann::json;
 using namespace boost::uuids;
 
@@ -35,11 +37,11 @@ struct Cancion{
     }
 
     void Vote_Up(){
-        votes = votes + 1;
+        this->votes = votes + 1;
     }
 
     void Vote_Down(){
-        votes = votes - 1;
+        this->votes = votes - 1;
     }
 
     json toJson(){

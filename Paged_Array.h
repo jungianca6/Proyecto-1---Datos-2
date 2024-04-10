@@ -60,6 +60,50 @@ public:
         return pagina.canciones[cancion_index];
     }
 
+    // Método para votar hacia arriba en una canción dada su posición en el array
+    void vote_up(int index) {
+        int pagina_index = index / admin->tamano_maximo_por_pagina; // Calcular el índice de la página
+        int cancion_index = index % admin->tamano_maximo_por_pagina; // Calcular el índice de la canción dentro de la página
+
+        Pagina& pagina = admin->paginas[pagina_index]; // Obtener la página correspondiente
+
+        if (!pagina.cargada) {
+            // Si la página no está cargada, cargar su contenido desde el archivo
+            pagina.cargarContenidoDesdeArchivo();
+            pagina.cargada = true; // Marcar la página como cargada
+            admin->contador_de_paginas_cargadas++;
+        }
+
+        // Votar hacia arriba en la canción
+        pagina.canciones[cancion_index].Vote_Up();
+
+        // Guardar los cambios en el almacenamiento persistente
+        pagina.descargarContenidoDesdeArchivo();
+    }
+
+// Método para votar hacia abajo en una canción dada su posición en el array
+    void vote_down(int index) {
+        int pagina_index = index / admin->tamano_maximo_por_pagina; // Calcular el índice de la página
+        int cancion_index = index % admin->tamano_maximo_por_pagina; // Calcular el índice de la canción dentro de la página
+
+        Pagina& pagina = admin->paginas[pagina_index]; // Obtener la página correspondiente
+
+        if (!pagina.cargada) {
+            // Si la página no está cargada, cargar su contenido desde el archivo
+            pagina.cargarContenidoDesdeArchivo();
+            pagina.cargada = true; // Marcar la página como cargada
+            admin->contador_de_paginas_cargadas++;
+        }
+
+        // Votar hacia abajo en la canción
+        pagina.canciones[cancion_index].Vote_Down();
+
+        // Guardar los cambios en el almacenamiento persistente
+        pagina.descargarContenidoDesdeArchivo();
+    }
+
+
+
 
     //Busca una cancion por el indice
     Cancion search_by_index(int index); //ELiminar porque realiza la misma funcion que la sobrecarga del metodo
