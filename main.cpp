@@ -147,7 +147,6 @@ private:
         thread hilo(&ServerSocket::acceptConnections, &servidor);
         cout << "Servidor en escucha" << endl;
         hilo.join();
-
     }
     wxTextCtrl *caja;
     wxTextCtrl *prueba;
