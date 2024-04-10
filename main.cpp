@@ -127,7 +127,7 @@ private:
             } else {
                 // Establecer el archivo fuente
                 g_object_set(G_OBJECT(source), "location",
-                             "/home/dell/Escritorio/Musica/Who Can It Be Now.mp3", NULL);
+                             "/home/curso/Desktop/Musica/Who Can It Be Now.mp3", NULL);
                 cout << "Musica encontrada" << endl;
 
                 // Añadir los elementos al pipeline
@@ -215,7 +215,7 @@ int main(int argc, char* argv[]) {
     gst_init(&argc, &argv);
 
     //Lee las canciones de la carpeta y las guarda en la lista
-    leerArchivosMP3("/home/dell/Escritorio/Musica", lista_canciones);
+    leerArchivosMP3("/home/curso/Desktop/Musica", lista_canciones);
 
     //Recorre los datos obtenidos de la carpeta y crea una lista enlazada
     Data* temp = lista_canciones;
