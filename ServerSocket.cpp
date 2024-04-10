@@ -81,6 +81,8 @@ void ServerSocket::acceptConnections() {
                     dataJson = arreglo_paginado[i].toJson();
                     lista_json.push_back(dataJson);
                 }
+                // Imprimir el JSON
+                cout << lista_json.dump(4) << endl;
 
 
                 //Envia la respuesta al cliente

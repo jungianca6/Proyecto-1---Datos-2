@@ -45,7 +45,7 @@ struct Cancion{
     // Función para convertir la Cancion a formato JSON
     json toJson() const {
         json j;
-        j["id"] = id;
+        j["id"] = to_string(id);
         j["path"] = path;
         j["nombre"] = nombre;
         j["artista"] = artista;
