@@ -343,3 +343,14 @@ string DoubleList::get_by_index(int index) {
         return actual->data.nombre;
     }
 }
+
+// Función para eliminar el contenido de la lista y liberar memoria
+void DoubleList::clear() {
+    Node* current = primerod;
+    while (current) {
+        Node* next = current->siguiente;
+        delete current;
+        current = next;
+    }
+    primerod = ultimod = nullptr;
+}

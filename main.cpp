@@ -5,7 +5,6 @@
 #include "thread"
 #include "Circular List.cpp"
 #include "DoubleList.h"
-#include "PagedArray.h"
 #include <sndfile.h>
 #include <ogg/ogg.h>
 #include <gst/gst.h>
@@ -17,10 +16,8 @@ Data* lista_canciones;
 //Lista enlazada con los nodos
 DoubleList lista_de_canciones;
 
-
 int portNumber = 12346;
 ServerSocket servidor = ServerSocket(portNumber);
-PagedArray array_de_canciones;
 
 enum IDs{
     botonID =2,textoID=3
@@ -116,6 +113,8 @@ private:
 
         }else{
             servidor.paginacion = true;
+            servidor.lista_enlazada.List_to_Array();
+            servidor.lista_enlazada.clear();
             caja->SetValue("Paginacion Activada");
         }
 

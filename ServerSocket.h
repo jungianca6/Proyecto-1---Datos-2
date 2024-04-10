@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <nlohmann/json.hpp>
 #include "DoubleList.h"
-#include "PagedArray.h"
+#include "Paged_Array.h"
 using namespace std;
 using namespace nlohmann;
 
@@ -22,7 +22,6 @@ public:
     struct sockaddr_in serverAddress;
     DoubleList lista_enlazada;
     bool paginacion;
-    PagedArray * pagedlist;
     Data* carpeta_de_canciones;
 
 

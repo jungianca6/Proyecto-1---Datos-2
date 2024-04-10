@@ -6,6 +6,10 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>//sudo apt-get install libboost-all-dev
 
+#include <nlohmann/json.hpp>
+#include <cstring>
+
+using json = nlohmann::json;
 using namespace boost::uuids;
 
 struct Cancion{
@@ -29,6 +33,30 @@ struct Cancion{
         strncpy(artista, _artista, sizeof(artista));
         strncpy(album, _album, sizeof(album));
     }
+
+    void Vote_Up(){
+        votes = votes + 1;
+    }
+
+    void Vote_Down(){
+        votes = votes - 1;
+    }
+
+    // Función para convertir la Cancion a formato JSON
+    json toJson() const {
+        json j;
+        j["id"] = id;
+        j["path"] = path;
+        j["nombre"] = nombre;
+        j["artista"] = artista;
+        j["album"] = album;
+        j["duracion_minutos"] = duracion_minutos;
+        j["duracion_segundos"] = duracion_segundos;
+        j["votes"] = votes;
+        return j;
+    }
+
+
 
 };
 

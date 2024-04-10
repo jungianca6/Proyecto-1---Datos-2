@@ -9,8 +9,8 @@
 #include <unistd.h>
 #include <nlohmann/json.hpp>
 #include "DoubleList.h"
-#include "PagedArray.h"
 #include "Admin_paginas.h"
+#include "Paged_Array.h"
 
 
 using namespace std;
@@ -22,18 +22,18 @@ int port;
 struct sockaddr_in serverAddress;
 DoubleList lista_enlazada;
 Admin_paginas admin(2,1);
-PagedArray pagedlist;
+Paged_Array arreglo_paginado(&admin);
 bool paginacion;
 //Lista de canciones recogidas de los archivos
 Data* carpeta_de_canciones;
 
 void ServerSocket::acceptConnections() {
-    while (true){
+    while (true) {
         struct sockaddr_in clientAddress;
         socklen_t clientAddrSize = sizeof(clientAddress);
 
         // Aceptar conexiones entrantes
-        int clientSocket = accept(serverSocket, (struct sockaddr *)&clientAddress, &clientAddrSize);
+        int clientSocket = accept(serverSocket, (struct sockaddr *) &clientAddress, &clientAddrSize);
         if (clientSocket == -1) {
             cerr << "Error al aceptar la conexión entrante" << endl;
             exit(1);
@@ -48,14 +48,14 @@ void ServerSocket::acceptConnections() {
 
 
         // Acciones del servidor segun el comando que ingrese
-        if(command == "Get-Playlist"){
+        if (command == "Get-Playlist") {
             cout << "Obtener el playlist" << endl;
             //
             //Insertar funcion para obtener los nodos de la lista y convertirlos en texto
             //
 
             //Verifica que la paginacion este desactivada
-            if (!paginacion){
+            if (!paginacion) {
                 lista_enlazada.printListadouble();
 
                 json lista_json = lista_enlazada.toJson();
@@ -66,9 +66,29 @@ void ServerSocket::acceptConnections() {
                 send_response(command, "OK", clientSocket, to_string(lista_json));
                 close(clientSocket);
             }
+            //Verifica que la paginacion este desactivada
+            if (paginacion) {
 
+                for(int i = 0; i< admin.total_de_canciones; i++) {
+                    cout << "Cancion Obtenida: " << arreglo_paginado[i].nombre << endl;
+                    cout << "Votos: " << arreglo_paginado[i].votes << endl;
+                }
+
+
+                json lista_json;
+                for (int i = 0; i < admin.total_de_canciones; i++) {
+                    json dataJson;
+                    dataJson = arreglo_paginado[i].toJson();
+                    lista_json.push_back(dataJson);
+                }
+
+
+                //Envia la respuesta al cliente
+                send_response(command, "OK", clientSocket, to_string(lista_json));
+                close(clientSocket);
+            }
         }
-        if(command == "Vote-up"){
+        if (command == "Vote-up") {
             //Obtiene el id de la cancion que se desea modificar
             string nombre = receivedJsonData["nombre"];
 
@@ -85,12 +105,20 @@ void ServerSocket::acceptConnections() {
                 send_response(command, "OK", clientSocket);
                 close(clientSocket);
             }
-            if (paginacion){
+            if (paginacion) {
+                for (int i = 0; i < admin.total_de_canciones; i++) {
+                    if (arreglo_paginado[i].nombre == nombre) {
+                        arreglo_paginado[i].Vote_Up();
+                        break;
+                    } else {
+                    }
+                    //Envia la respuesta al cliente
+                    send_response(command, "OK", clientSocket);
+                    close(clientSocket);
+                }
             }
-
         }
-
-        if(command == "Vote-down"){
+        if (command == "Vote-down") {
             //Obtiene el id de la cancion que se desea modificar
             string nombre = receivedJsonData["nombre"];
 
@@ -106,15 +134,27 @@ void ServerSocket::acceptConnections() {
                 send_response(command, "OK", clientSocket);
                 close(clientSocket);
             }
-        }else{
-            //Envia la respuesta al cliente
-            send_response(command, "ERROR", clientSocket);
+            if (paginacion) {
+                for (int i = 0; i < admin.total_de_canciones; i++) {
+                    if (arreglo_paginado[i].nombre == nombre) {
+                        arreglo_paginado[i].Vote_Down();
+                        break;
+                    } else {
+                    }
+                    //Envia la respuesta al cliente
+                    send_response(command, "OK", clientSocket);
+                    close(clientSocket);
+                }
+            } else {
+                //Envia la respuesta al cliente
+                send_response(command, "ERROR", clientSocket);
+                close(clientSocket);
+            }
+
+            cout << receivedJsonData << endl;
+            // Cerrar el socket del cliente
             close(clientSocket);
         }
-
-        cout << receivedJsonData << endl;
-        // Cerrar el socket del cliente
-        close(clientSocket);
     }
 }
 
