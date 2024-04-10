@@ -17,8 +17,8 @@ using namespace std;
 namespace fs = std::filesystem;
 
 
-int largo = Paged_Array::cantidad_de_canciones("/home/spaceba/Music");
-string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
+int largo = Paged_Array::cantidad_de_canciones("/home/dell/Escritorio/Musica");
+string filename = "/home/dell/Escritorio/Proyecto-1-Datos-2/archivo.bin";
 
 
 int Paged_Array::cantidad_de_canciones(const string& ruta_carpeta) {

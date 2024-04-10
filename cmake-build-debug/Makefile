@@ -129,6 +129,30 @@ Proyecto_1/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/build
 .PHONY : Proyecto_1/fast
 
+Admin_paginas.o: Admin_paginas.cpp.o
+.PHONY : Admin_paginas.o
+
+# target to build an object file
+Admin_paginas.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Admin_paginas.cpp.o
+.PHONY : Admin_paginas.cpp.o
+
+Admin_paginas.i: Admin_paginas.cpp.i
+.PHONY : Admin_paginas.i
+
+# target to preprocess a source file
+Admin_paginas.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Admin_paginas.cpp.i
+.PHONY : Admin_paginas.cpp.i
+
+Admin_paginas.s: Admin_paginas.cpp.s
+.PHONY : Admin_paginas.s
+
+# target to generate assembly for a file
+Admin_paginas.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Admin_paginas.cpp.s
+.PHONY : Admin_paginas.cpp.s
+
 DoubleList.o: DoubleList.cpp.o
 .PHONY : DoubleList.o
 
@@ -152,6 +176,54 @@ DoubleList.s: DoubleList.cpp.s
 DoubleList.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/DoubleList.cpp.s
 .PHONY : DoubleList.cpp.s
+
+Paged_Array.o: Paged_Array.cpp.o
+.PHONY : Paged_Array.o
+
+# target to build an object file
+Paged_Array.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Paged_Array.cpp.o
+.PHONY : Paged_Array.cpp.o
+
+Paged_Array.i: Paged_Array.cpp.i
+.PHONY : Paged_Array.i
+
+# target to preprocess a source file
+Paged_Array.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Paged_Array.cpp.i
+.PHONY : Paged_Array.cpp.i
+
+Paged_Array.s: Paged_Array.cpp.s
+.PHONY : Paged_Array.s
+
+# target to generate assembly for a file
+Paged_Array.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Paged_Array.cpp.s
+.PHONY : Paged_Array.cpp.s
+
+Pagina.o: Pagina.cpp.o
+.PHONY : Pagina.o
+
+# target to build an object file
+Pagina.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Pagina.cpp.o
+.PHONY : Pagina.cpp.o
+
+Pagina.i: Pagina.cpp.i
+.PHONY : Pagina.i
+
+# target to preprocess a source file
+Pagina.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Pagina.cpp.i
+.PHONY : Pagina.cpp.i
+
+Pagina.s: Pagina.cpp.s
+.PHONY : Pagina.s
+
+# target to generate assembly for a file
+Pagina.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto_1.dir/build.make CMakeFiles/Proyecto_1.dir/Pagina.cpp.s
+.PHONY : Pagina.cpp.s
 
 ServerSocket.o: ServerSocket.cpp.o
 .PHONY : ServerSocket.o
@@ -210,9 +282,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Proyecto_1"
+	@echo "... Admin_paginas.o"
+	@echo "... Admin_paginas.i"
+	@echo "... Admin_paginas.s"
 	@echo "... DoubleList.o"
 	@echo "... DoubleList.i"
 	@echo "... DoubleList.s"
+	@echo "... Paged_Array.o"
+	@echo "... Paged_Array.i"
+	@echo "... Paged_Array.s"
+	@echo "... Pagina.o"
+	@echo "... Pagina.i"
+	@echo "... Pagina.s"
 	@echo "... ServerSocket.o"
 	@echo "... ServerSocket.i"
 	@echo "... ServerSocket.s"

@@ -70,6 +70,7 @@ public:
 
         pausa= new wxButton(panel, botonID, "Pausar",
                             wxPoint(450, 500), wxSize(125, 40));
+        pausa->Bind(wxEVT_BUTTON, &MainFrame::PausarActionButton, this);
         anterior = new wxButton(panel, botonID, "Anterior",
                              wxPoint(300, 600), wxSize(125, 40));
         siguiente= new wxButton(panel, botonID, "Siguiente",
@@ -133,7 +134,10 @@ private:
         }
     }
     void ReproducirActionButton(wxCommandEvent &event) {
-        servidor.lista_enlazada.play_song("Efecto");
+        servidor.lista_enlazada.play_song("Fluffing a Duck");
+    }
+    void PausarActionButton (wxCommandEvent &event){
+        servidor.lista_enlazada.pauseSong();
     }
 
     void escogerCancion (wxCommandEvent &event){
@@ -173,7 +177,7 @@ int main(int argc, char* argv[]) {
     gst_init(&argc, &argv);
 
     //Lee las canciones de la carpeta y las guarda en la lista
-    servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);
+    servidor.lista_enlazada.leerArchivosMP3("/home/dell/Escritorio/Musica", servidor.carpeta_de_canciones);
     //Crea la lista con las canciones leidas del archivo
     servidor.create_list_from_file();
 
