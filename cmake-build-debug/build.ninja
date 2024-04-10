@@ -73,14 +73,6 @@ build CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o: CXX_COMPILER__Proyecto_1_unsca
   OBJECT_DIR = CMakeFiles/Proyecto_1.dir
   OBJECT_FILE_DIR = CMakeFiles/Proyecto_1.dir
 
-build CMakeFiles/Proyecto_1.dir/PagedArray.cpp.o: CXX_COMPILER__Proyecto_1_unscanned_Debug /home/spaceba/CLionProjects/Server/PagedArray.cpp || cmake_object_order_depends_target_Proyecto_1
-  DEFINES = -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__
-  DEP_FILE = CMakeFiles/Proyecto_1.dir/PagedArray.cpp.o.d
-  FLAGS = -pthread -g -fdiagnostics-color=always   -pthread
-  INCLUDES = -I/home/spaceba/CLionProjects/Server/include -I/usr/include/taglib -I/home/spaceba/CLionProjects/Server/Proyecto_1 -I/home/spaceba/CLionProjects/Server/PRIVATE -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/local/lib/wx/include/gtk3-unicode-3.2 -isystem /usr/local/include/wx-3.2
-  OBJECT_DIR = CMakeFiles/Proyecto_1.dir
-  OBJECT_FILE_DIR = CMakeFiles/Proyecto_1.dir
-
 build CMakeFiles/Proyecto_1.dir/Pagina.cpp.o: CXX_COMPILER__Proyecto_1_unscanned_Debug /home/spaceba/CLionProjects/Server/Pagina.cpp || cmake_object_order_depends_target_Proyecto_1
   DEFINES = -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__
   DEP_FILE = CMakeFiles/Proyecto_1.dir/Pagina.cpp.o.d
@@ -113,7 +105,7 @@ build CMakeFiles/Proyecto_1.dir/Paged_Array.cpp.o: CXX_COMPILER__Proyecto_1_unsc
 #############################################
 # Link the executable Proyecto_1
 
-build Proyecto_1: CXX_EXECUTABLE_LINKER__Proyecto_1_Debug CMakeFiles/Proyecto_1.dir/main.cpp.o CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o CMakeFiles/Proyecto_1.dir/PagedArray.cpp.o CMakeFiles/Proyecto_1.dir/Pagina.cpp.o CMakeFiles/Proyecto_1.dir/Admin_paginas.cpp.o CMakeFiles/Proyecto_1.dir/Paged_Array.cpp.o
+build Proyecto_1: CXX_EXECUTABLE_LINKER__Proyecto_1_Debug CMakeFiles/Proyecto_1.dir/main.cpp.o CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o CMakeFiles/Proyecto_1.dir/Pagina.cpp.o CMakeFiles/Proyecto_1.dir/Admin_paginas.cpp.o CMakeFiles/Proyecto_1.dir/Paged_Array.cpp.o
   FLAGS = -pthread -g
   LINK_LIBRARIES = -L/usr/local/lib  -pthread  -lwx_gtk3u_core-3.2  -lwx_baseu-3.2  -ltag  -lgstreamer-1.0  -lgobject-2.0  -lglib-2.0
   OBJECT_DIR = CMakeFiles/Proyecto_1.dir

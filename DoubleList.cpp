@@ -3,7 +3,7 @@
 //
 
 #include "DoubleList.h"
-#include "PagedArray.h"
+#include "Paged_Array.h"
 #include <taglib/taglib.h>
 #include <taglib/fileref.h>
 #include <taglib/tag.h>
@@ -322,7 +322,7 @@ void DoubleList::leerArchivosMP3(const string& ruta_carpeta, Data*& lista) {
 
 void DoubleList::List_to_Array() {
     Node *actual = primerod;
-    PagedArray pagedArray;
+    Paged_Array pagedArray;
     pagedArray.clear_file();
     while (actual != NULL) {
         Cancion* cancion = new Cancion(actual->data.path, actual->data.id,actual->data.nombre,actual->data.artista,actual->data.album,actual->data.duracion_minutos,

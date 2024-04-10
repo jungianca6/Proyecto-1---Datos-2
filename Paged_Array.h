@@ -12,6 +12,7 @@ public:
     Admin_paginas *admin;
 
     Paged_Array(Admin_paginas* admin) : admin(admin) {}
+    Paged_Array() {}
 
     Cancion operator[](int index) {
         int pagina_index = index / admin->tamano_maximo_por_pagina; // Calcular el índice de la página
@@ -58,6 +59,22 @@ public:
         // Retornar la canción correspondiente
         return pagina.canciones[cancion_index];
     }
+
+
+    //Busca una cancion por el indice
+    Cancion search_by_index(int index); //ELiminar porque realiza la misma funcion que la sobrecarga del metodo
+    //Elimina una cancion
+    void delete_song(int song_id);
+    //Obtiene la cancion deseada por el ID
+    Cancion search_id(uuid id);
+    //Annade una cancion al final
+    void add_to_end(Cancion data);
+    //Obtiene la cantidad de canciones que hay en la carpeta
+    static int cantidad_de_canciones(const string &ruta_carpeta);
+    //Obtiene la lista de las canciones
+    void get_songs(Cancion *&canciones);
+    //Limpia el archivo binario
+    void clear_file();
 
 
 
