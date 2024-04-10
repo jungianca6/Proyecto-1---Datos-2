@@ -52,24 +52,56 @@ build cmake_object_order_depends_target_Proyecto_1: phony || CMakeFiles/Proyecto
 build CMakeFiles/Proyecto_1.dir/main.cpp.o: CXX_COMPILER__Proyecto_1_unscanned_Debug /home/spaceba/CLionProjects/Server/main.cpp || cmake_object_order_depends_target_Proyecto_1
   DEFINES = -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__
   DEP_FILE = CMakeFiles/Proyecto_1.dir/main.cpp.o.d
-  FLAGS = -pthread -g -fdiagnostics-color=always
-  INCLUDES = -I/home/spaceba/CLionProjects/Server/include -I/usr/include/taglib -I/home/spaceba/CLionProjects/Server/Proyecto_1 -I/home/spaceba/CLionProjects/Server/PRIVATE -isystem /usr/local/lib/wx/include/gtk3-unicode-3.2 -isystem /usr/local/include/wx-3.2
+  FLAGS = -pthread -g -fdiagnostics-color=always   -pthread
+  INCLUDES = -I/home/spaceba/CLionProjects/Server/include -I/usr/include/taglib -I/home/spaceba/CLionProjects/Server/Proyecto_1 -I/home/spaceba/CLionProjects/Server/PRIVATE -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/local/lib/wx/include/gtk3-unicode-3.2 -isystem /usr/local/include/wx-3.2
   OBJECT_DIR = CMakeFiles/Proyecto_1.dir
   OBJECT_FILE_DIR = CMakeFiles/Proyecto_1.dir
 
 build CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o: CXX_COMPILER__Proyecto_1_unscanned_Debug /home/spaceba/CLionProjects/Server/ServerSocket.cpp || cmake_object_order_depends_target_Proyecto_1
   DEFINES = -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__
   DEP_FILE = CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o.d
-  FLAGS = -pthread -g -fdiagnostics-color=always
-  INCLUDES = -I/home/spaceba/CLionProjects/Server/include -I/usr/include/taglib -I/home/spaceba/CLionProjects/Server/Proyecto_1 -I/home/spaceba/CLionProjects/Server/PRIVATE -isystem /usr/local/lib/wx/include/gtk3-unicode-3.2 -isystem /usr/local/include/wx-3.2
+  FLAGS = -pthread -g -fdiagnostics-color=always   -pthread
+  INCLUDES = -I/home/spaceba/CLionProjects/Server/include -I/usr/include/taglib -I/home/spaceba/CLionProjects/Server/Proyecto_1 -I/home/spaceba/CLionProjects/Server/PRIVATE -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/local/lib/wx/include/gtk3-unicode-3.2 -isystem /usr/local/include/wx-3.2
   OBJECT_DIR = CMakeFiles/Proyecto_1.dir
   OBJECT_FILE_DIR = CMakeFiles/Proyecto_1.dir
 
 build CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o: CXX_COMPILER__Proyecto_1_unscanned_Debug /home/spaceba/CLionProjects/Server/DoubleList.cpp || cmake_object_order_depends_target_Proyecto_1
   DEFINES = -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__
   DEP_FILE = CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o.d
-  FLAGS = -pthread -g -fdiagnostics-color=always
-  INCLUDES = -I/home/spaceba/CLionProjects/Server/include -I/usr/include/taglib -I/home/spaceba/CLionProjects/Server/Proyecto_1 -I/home/spaceba/CLionProjects/Server/PRIVATE -isystem /usr/local/lib/wx/include/gtk3-unicode-3.2 -isystem /usr/local/include/wx-3.2
+  FLAGS = -pthread -g -fdiagnostics-color=always   -pthread
+  INCLUDES = -I/home/spaceba/CLionProjects/Server/include -I/usr/include/taglib -I/home/spaceba/CLionProjects/Server/Proyecto_1 -I/home/spaceba/CLionProjects/Server/PRIVATE -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/local/lib/wx/include/gtk3-unicode-3.2 -isystem /usr/local/include/wx-3.2
+  OBJECT_DIR = CMakeFiles/Proyecto_1.dir
+  OBJECT_FILE_DIR = CMakeFiles/Proyecto_1.dir
+
+build CMakeFiles/Proyecto_1.dir/PagedArray.cpp.o: CXX_COMPILER__Proyecto_1_unscanned_Debug /home/spaceba/CLionProjects/Server/PagedArray.cpp || cmake_object_order_depends_target_Proyecto_1
+  DEFINES = -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__
+  DEP_FILE = CMakeFiles/Proyecto_1.dir/PagedArray.cpp.o.d
+  FLAGS = -pthread -g -fdiagnostics-color=always   -pthread
+  INCLUDES = -I/home/spaceba/CLionProjects/Server/include -I/usr/include/taglib -I/home/spaceba/CLionProjects/Server/Proyecto_1 -I/home/spaceba/CLionProjects/Server/PRIVATE -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/local/lib/wx/include/gtk3-unicode-3.2 -isystem /usr/local/include/wx-3.2
+  OBJECT_DIR = CMakeFiles/Proyecto_1.dir
+  OBJECT_FILE_DIR = CMakeFiles/Proyecto_1.dir
+
+build CMakeFiles/Proyecto_1.dir/Pagina.cpp.o: CXX_COMPILER__Proyecto_1_unscanned_Debug /home/spaceba/CLionProjects/Server/Pagina.cpp || cmake_object_order_depends_target_Proyecto_1
+  DEFINES = -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__
+  DEP_FILE = CMakeFiles/Proyecto_1.dir/Pagina.cpp.o.d
+  FLAGS = -pthread -g -fdiagnostics-color=always   -pthread
+  INCLUDES = -I/home/spaceba/CLionProjects/Server/include -I/usr/include/taglib -I/home/spaceba/CLionProjects/Server/Proyecto_1 -I/home/spaceba/CLionProjects/Server/PRIVATE -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/local/lib/wx/include/gtk3-unicode-3.2 -isystem /usr/local/include/wx-3.2
+  OBJECT_DIR = CMakeFiles/Proyecto_1.dir
+  OBJECT_FILE_DIR = CMakeFiles/Proyecto_1.dir
+
+build CMakeFiles/Proyecto_1.dir/Admin_paginas.cpp.o: CXX_COMPILER__Proyecto_1_unscanned_Debug /home/spaceba/CLionProjects/Server/Admin_paginas.cpp || cmake_object_order_depends_target_Proyecto_1
+  DEFINES = -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__
+  DEP_FILE = CMakeFiles/Proyecto_1.dir/Admin_paginas.cpp.o.d
+  FLAGS = -pthread -g -fdiagnostics-color=always   -pthread
+  INCLUDES = -I/home/spaceba/CLionProjects/Server/include -I/usr/include/taglib -I/home/spaceba/CLionProjects/Server/Proyecto_1 -I/home/spaceba/CLionProjects/Server/PRIVATE -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/local/lib/wx/include/gtk3-unicode-3.2 -isystem /usr/local/include/wx-3.2
+  OBJECT_DIR = CMakeFiles/Proyecto_1.dir
+  OBJECT_FILE_DIR = CMakeFiles/Proyecto_1.dir
+
+build CMakeFiles/Proyecto_1.dir/Paged_Array.cpp.o: CXX_COMPILER__Proyecto_1_unscanned_Debug /home/spaceba/CLionProjects/Server/Paged_Array.cpp || cmake_object_order_depends_target_Proyecto_1
+  DEFINES = -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__
+  DEP_FILE = CMakeFiles/Proyecto_1.dir/Paged_Array.cpp.o.d
+  FLAGS = -pthread -g -fdiagnostics-color=always   -pthread
+  INCLUDES = -I/home/spaceba/CLionProjects/Server/include -I/usr/include/taglib -I/home/spaceba/CLionProjects/Server/Proyecto_1 -I/home/spaceba/CLionProjects/Server/PRIVATE -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -isystem /usr/local/lib/wx/include/gtk3-unicode-3.2 -isystem /usr/local/include/wx-3.2
   OBJECT_DIR = CMakeFiles/Proyecto_1.dir
   OBJECT_FILE_DIR = CMakeFiles/Proyecto_1.dir
 
@@ -81,9 +113,9 @@ build CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o: CXX_COMPILER__Proyecto_1_unsca
 #############################################
 # Link the executable Proyecto_1
 
-build Proyecto_1: CXX_EXECUTABLE_LINKER__Proyecto_1_Debug CMakeFiles/Proyecto_1.dir/main.cpp.o CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o
+build Proyecto_1: CXX_EXECUTABLE_LINKER__Proyecto_1_Debug CMakeFiles/Proyecto_1.dir/main.cpp.o CMakeFiles/Proyecto_1.dir/ServerSocket.cpp.o CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o CMakeFiles/Proyecto_1.dir/PagedArray.cpp.o CMakeFiles/Proyecto_1.dir/Pagina.cpp.o CMakeFiles/Proyecto_1.dir/Admin_paginas.cpp.o CMakeFiles/Proyecto_1.dir/Paged_Array.cpp.o
   FLAGS = -pthread -g
-  LINK_LIBRARIES = -L/usr/local/lib  -pthread  -lwx_gtk3u_core-3.2  -lwx_baseu-3.2  -ltag
+  LINK_LIBRARIES = -L/usr/local/lib  -pthread  -lwx_gtk3u_core-3.2  -lwx_baseu-3.2  -ltag  -lgstreamer-1.0  -lgobject-2.0  -lglib-2.0
   OBJECT_DIR = CMakeFiles/Proyecto_1.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -133,14 +165,14 @@ build all: phony Proyecto_1
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/spaceba/CLionProjects/Server/CMakeLists.txt /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageMessage.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindwxWidgets.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/UsewxWidgets.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/spaceba/CLionProjects/Server/CMakeLists.txt /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageMessage.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPkgConfig.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindwxWidgets.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/UsewxWidgets.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/spaceba/CLionProjects/Server/CMakeLists.txt /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageMessage.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindwxWidgets.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/UsewxWidgets.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake: phony
+build /home/spaceba/CLionProjects/Server/CMakeLists.txt /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageMessage.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPkgConfig.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindwxWidgets.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27/Modules/UsewxWidgets.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake: phony
 
 
 #############################################
