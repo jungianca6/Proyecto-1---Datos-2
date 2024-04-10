@@ -205,7 +205,7 @@ void DoubleList::play_song(string cancionbuscada) {
 
 void DoubleList::Pausa(){
     gst_element_set_state(pipeline, GST_STATE_PAUSED);
-};
+}
 
 
 

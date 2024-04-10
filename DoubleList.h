@@ -52,6 +52,8 @@ public:
     //
     void play_song(string cancionbuscada);
     void Pausa();
+    void Siguiente();
+    void Anterior();
 
     string get_by_index(int index);
 
