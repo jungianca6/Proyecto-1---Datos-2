@@ -17,6 +17,7 @@ namespace fs = std::filesystem;
 
 Node *primerod = nullptr;
 Node *ultimod = nullptr;
+GstElement *pipeline;
 
 void DoubleList::printListadouble() {
     Node *actual = new Node();
@@ -141,49 +142,56 @@ void DoubleList::play_song(string cancionbuscada) {
     if (primerod != NULL) {
         do {
             if (actual->data.nombre == cancionbuscada) {
-                // Crear un nuevo pipeline
-                GstElement *pipeline = gst_pipeline_new("audio-player");
 
-                // Crear los elementos necesarios
-                GstElement *source = gst_element_factory_make("filesrc", "file-source");
-                GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
-                GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
-                GstElement *volume = gst_element_factory_make("volume", "volume-name");
-                GstElement *converter =gst_element_factory_make("audioconvert", "audio-converter");
-                GstElement *resample = gst_element_factory_make("audioresample", "audio-resampler");
-                GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
+                if (!pipeline) {
+                    // Crear un nuevo pipeline
+                    pipeline = gst_pipeline_new("audio-player");
 
-                if (!pipeline || !source || !parse || !decoder || !volume || !converter || !resample || !sink) {
-                    std::cerr << "Error al crear los elementos." << std::endl;
-                } else{
-                    // Establecer el archivo fuente
-                    string path = actual->data.path;
-                    g_object_set(G_OBJECT(source), "location",
-                                 path.c_str(), NULL);
-                    cout<<"Musica encontrada"<<endl;
+                    // Crear los elementos necesarios
+                    GstElement *source = gst_element_factory_make("filesrc", "file-source");
+                    GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
+                    GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
+                    GstElement *volume = gst_element_factory_make("volume", "volume-name");
+                    GstElement *converter = gst_element_factory_make("audioconvert", "audio-converter");
+                    GstElement *resample = gst_element_factory_make("audioresample", "audio-resampler");
+                    GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
 
-                    // Añadir los elementos al pipeline
-                    gst_bin_add_many(GST_BIN(pipeline), source, parse, decoder, converter, resample, sink,NULL);
+                    if (!pipeline || !source || !parse || !decoder || !volume || !converter || !resample || !sink) {
+                        std::cerr << "Error al crear los elementos." << std::endl;
+                    } else {
+                        // Establecer el archivo fuente
+                        string path = actual->data.path;
+                        g_object_set(G_OBJECT(source), "location",
+                                     path.c_str(), NULL);
+                        cout << "Musica encontrada" << endl;
 
-                    cout<<"Elementos añadidos"<<endl;
+                        // Añadir los elementos al pipeline
+                        gst_bin_add_many(GST_BIN(pipeline), source, parse, decoder, converter, resample, sink, NULL);
 
-                    if (!gst_element_link_many(source, parse, decoder, converter, resample, sink, NULL)) {
-                        std::cerr << "Error al enlazar los elementos." << std::endl;
-                        gst_object_unref(pipeline);
+                        cout << "Elementos añadidos" << endl;
+
+                        if (!gst_element_link_many(source, parse, decoder, converter, resample, sink, NULL)) {
+                            std::cerr << "Error al enlazar los elementos." << std::endl;
+                            gst_object_unref(pipeline);
+                            pipeline = nullptr; // Establecer pipeline a nullptr si hay un error
+                        } else {
+                            // Iniciar la reproducción
+                            GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+                            if (ret == GST_STATE_CHANGE_FAILURE) {
+                                std::cerr << "Error al iniciar la reproducción." << std::endl;
+                            } else {
+                                cout << "Reproduccion" << endl;
+                            }
+                        }
                     }
-
-                    // Iniciar la reproducción
+                }else{
                     GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
                     if (ret == GST_STATE_CHANGE_FAILURE) {
-                        std::cerr << "Error al iniciar la reproducción." << std::endl;
-                    }else{
-                        cout<<"Reproduccion"<<endl;
+                        std::cerr << "Error al reiniciar la reproducción." << std::endl;
+                    } else {
+                        cout << "Reproduccion reiniciada" << endl;
                     }
-
-                    gst_element_set_state(pipeline, GST_STATE_PLAYING);
-                    cout<<"Playing"<<endl;
                 }
-
             }
             actual = actual->siguiente;
         } while (actual != NULL && encontrado != true);
@@ -194,6 +202,11 @@ void DoubleList::play_song(string cancionbuscada) {
         cout << "nel";
     }
 }
+
+void DoubleList::Pausa(){
+    gst_element_set_state(pipeline, GST_STATE_PAUSED);
+};
+
 
 
 void DoubleList::eliminarNododouble(string nodoBuscado) {
@@ -354,3 +367,5 @@ void DoubleList::clear() {
     }
     primerod = ultimod = nullptr;
 }
+
+

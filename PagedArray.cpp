@@ -13,7 +13,7 @@ using namespace std;
 namespace fs = std::filesystem;
 
 
-int largo = PagedArray::cantidad_de_canciones("/home/spaceba/Music");
+int largo = PagedArray::cantidad_de_canciones("/home/dell/Escritorio/Musica");
 string filename;
 
 
