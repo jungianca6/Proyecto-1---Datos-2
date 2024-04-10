@@ -735,26 +735,6 @@ CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o: \
  /usr/include/nlohmann/ordered_map.hpp \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
- /home/dell/Escritorio/Proyecto-1-Datos-2/Paged_Array.h \
- /home/dell/Escritorio/Proyecto-1-Datos-2/Admin_paginas.h \
- /home/dell/Escritorio/Proyecto-1-Datos-2/Pagina.h \
- /home/dell/Escritorio/Proyecto-1-Datos-2/Cancion.h \
- /usr/include/c++/11/fstream \
- /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
- /usr/include/c++/11/bits/fstream.tcc /usr/include/taglib/taglib.h \
- /usr/include/taglib/taglib_config.h /usr/include/taglib/fileref.h \
- /usr/include/taglib/tfile.h /usr/include/taglib/taglib_export.h \
- /usr/include/taglib/taglib.h /usr/include/taglib/tag.h \
- /usr/include/taglib/tstring.h /usr/include/taglib/tbytevector.h \
- /usr/include/taglib/tiostream.h /usr/include/taglib/tstringlist.h \
- /usr/include/taglib/tlist.h /usr/include/c++/11/list \
- /usr/include/c++/11/bits/stl_list.h /usr/include/c++/11/bits/list.tcc \
- /usr/include/taglib/tlist.tcc /usr/include/taglib/trefcounter.h \
- /usr/include/taglib/tbytevectorlist.h \
- /usr/include/taglib/audioproperties.h /usr/include/taglib/tag.h \
- /usr/include/taglib/mpegfile.h /usr/include/taglib/mpegproperties.h \
- /usr/include/taglib/mpegheader.h /usr/include/taglib/mpegheader.h \
  /usr/include/ogg/ogg.h /usr/include/ogg/os_types.h \
  /usr/include/ogg/config_types.h /usr/include/inttypes.h \
  /usr/include/gstreamer-1.0/gst/gst.h /usr/include/glib-2.0/glib.h \
@@ -948,4 +928,24 @@ CMakeFiles/Proyecto_1.dir/DoubleList.cpp.o: \
  /usr/include/gstreamer-1.0/gst/gsttypefindfactory.h \
  /usr/include/gstreamer-1.0/gst/gstutils.h \
  /usr/include/gstreamer-1.0/gst/gstparse.h \
- /usr/include/gstreamer-1.0/gst/gstcompat.h
+ /usr/include/gstreamer-1.0/gst/gstcompat.h \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/Paged_Array.h \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/Admin_paginas.h \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/Pagina.h \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/Cancion.h \
+ /usr/include/c++/11/fstream \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc /usr/include/taglib/taglib.h \
+ /usr/include/taglib/taglib_config.h /usr/include/taglib/fileref.h \
+ /usr/include/taglib/tfile.h /usr/include/taglib/taglib_export.h \
+ /usr/include/taglib/taglib.h /usr/include/taglib/tag.h \
+ /usr/include/taglib/tstring.h /usr/include/taglib/tbytevector.h \
+ /usr/include/taglib/tiostream.h /usr/include/taglib/tstringlist.h \
+ /usr/include/taglib/tlist.h /usr/include/c++/11/list \
+ /usr/include/c++/11/bits/stl_list.h /usr/include/c++/11/bits/list.tcc \
+ /usr/include/taglib/tlist.tcc /usr/include/taglib/trefcounter.h \
+ /usr/include/taglib/tbytevectorlist.h \
+ /usr/include/taglib/audioproperties.h /usr/include/taglib/tag.h \
+ /usr/include/taglib/mpegfile.h /usr/include/taglib/mpegproperties.h \
+ /usr/include/taglib/mpegheader.h /usr/include/taglib/mpegheader.h

@@ -8,6 +8,8 @@
 #include <nlohmann/json.hpp>
 #ifndef PROYECTO_1_DOUBLELIST_H
 #define PROYECTO_1_DOUBLELIST_H
+#include <ogg/ogg.h>
+#include <gst/gst.h>
 
 using namespace std;
 using namespace nlohmann;
@@ -52,6 +54,8 @@ public:
     //
     void play_song(string cancionbuscada);
     void pauseSong();
+    void nextSong(GstElement *source);
+    void prevSong(GstElement *source);
 
     string get_by_index(int index);
 

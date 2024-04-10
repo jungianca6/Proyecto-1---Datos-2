@@ -18,6 +18,8 @@ namespace fs = std::filesystem;
 Node *primerod = nullptr;
 Node *ultimod = nullptr;
 GstElement *pipeline;
+GstElement *source;
+
 string filename_double_list = "/home/dell/Escritorio/Proyecto-1-Datos-2/archivo.bin";
 
 void DoubleList::printListadouble() {
@@ -148,7 +150,7 @@ void DoubleList::play_song(string cancionbuscada) {
                     pipeline = gst_pipeline_new("audio-player");
 
                     // Crear los elementos necesarios
-                    GstElement *source = gst_element_factory_make("filesrc", "file-source");
+                    source = gst_element_factory_make("filesrc", "file-source");
                     GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
                     GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
                     GstElement *volume = gst_element_factory_make("volume", "volume-name");
@@ -205,6 +207,43 @@ void DoubleList::play_song(string cancionbuscada) {
 
 void DoubleList::pauseSong() {
     gst_element_set_state(pipeline, GST_STATE_PAUSED);
+}
+
+void DoubleList::nextSong(GstElement *source){
+    if (!primerod) {
+        cout << "La lista de reproducción está vacía." <<endl;
+        return;
+    }
+
+    Node *actual = primerod->siguiente; // Obtener el siguiente nodo
+    if (!actual) {
+        cout << "No hay más canciones en la lista." << endl;
+        return;
+    }
+
+    gst_element_set_state(pipeline, GST_STATE_NULL);
+    sleep(1);
+    string path = actual->data.path;
+    g_object_set(G_OBJECT(source), "location", path.c_str(), NULL);
+    gst_element_set_state(pipeline, GST_STATE_PLAYING);
+}
+
+void DoubleList::prevSong(GstElement *source){
+    if (!primerod) {
+        cout << "La lista de reproducción está vacía." <<endl;
+        return;
+    }
+    Node *actual = primerod->atras; // Obtener el anterior nodo
+    if (!actual) {
+        cout << "No hay más canciones en la lista." << endl;
+        return;
+    }
+
+    gst_element_set_state(pipeline, GST_STATE_NULL);
+    sleep(1);
+    string path = actual->data.path;
+    g_object_set(G_OBJECT(source), "location", path.c_str(), NULL);
+    gst_element_set_state(pipeline, GST_STATE_PLAYING);
 }
 
 void DoubleList::eliminarNododouble(string nodoBuscado) {

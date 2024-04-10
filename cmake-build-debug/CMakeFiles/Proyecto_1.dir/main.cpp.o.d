@@ -913,19 +913,7 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/boost/uuid/detail/random_provider_getrandom.ipp \
  /usr/include/x86_64-linux-gnu/sys/random.h \
  /usr/include/boost/uuid/uuid_io.hpp /usr/include/boost/io/ios_state.hpp \
- /usr/include/boost/io_fwd.hpp \
- /home/dell/Escritorio/Proyecto-1-Datos-2/Paged_Array.h \
- /home/dell/Escritorio/Proyecto-1-Datos-2/Admin_paginas.h \
- /home/dell/Escritorio/Proyecto-1-Datos-2/Pagina.h \
- /home/dell/Escritorio/Proyecto-1-Datos-2/Cancion.h \
- /usr/include/c++/11/fstream \
- /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
- /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/thread \
- /usr/include/c++/11/bits/std_thread.h \
- /usr/include/c++/11/bits/this_thread_sleep.h \
- /home/dell/Escritorio/Proyecto-1-Datos-2/Circular\ List.cpp \
- /usr/include/sndfile.h /usr/include/ogg/ogg.h \
+ /usr/include/boost/io_fwd.hpp /usr/include/ogg/ogg.h \
  /usr/include/ogg/os_types.h /usr/include/ogg/config_types.h \
  /usr/include/inttypes.h /usr/include/gstreamer-1.0/gst/gst.h \
  /usr/include/glib-2.0/glib.h /usr/include/glib-2.0/glib/galloca.h \
@@ -1095,4 +1083,16 @@ CMakeFiles/Proyecto_1.dir/main.cpp.o: \
  /usr/include/gstreamer-1.0/gst/gsttypefindfactory.h \
  /usr/include/gstreamer-1.0/gst/gstutils.h \
  /usr/include/gstreamer-1.0/gst/gstparse.h \
- /usr/include/gstreamer-1.0/gst/gstcompat.h
+ /usr/include/gstreamer-1.0/gst/gstcompat.h \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/Paged_Array.h \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/Admin_paginas.h \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/Pagina.h \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/Cancion.h \
+ /usr/include/c++/11/fstream \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/thread \
+ /usr/include/c++/11/bits/std_thread.h \
+ /usr/include/c++/11/bits/this_thread_sleep.h \
+ /home/dell/Escritorio/Proyecto-1-Datos-2/Circular\ List.cpp \
+ /usr/include/sndfile.h

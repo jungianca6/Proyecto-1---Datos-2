@@ -28,12 +28,15 @@ namespace fs = std::filesystem;namespace fs = std::filesystem;
 
 //clase que crea la ventana
 class MainFrame : public wxFrame {
+private:
+    GstElement *source;
 public:
     bool active_playlist = false;
 
     MainFrame(const wxString &title)
             : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition,
                       wxSize(1200, 900)) {
+        this->source = gst_element_factory_make("filesrc", "file-source");
 
         wxPanel *panel = new wxPanel(this, wxID_ANY);
         panel->SetBackgroundColour(wxColour(9,129, 53));
@@ -73,14 +76,15 @@ public:
         pausa->Bind(wxEVT_BUTTON, &MainFrame::PausarActionButton, this);
         anterior = new wxButton(panel, botonID, "Anterior",
                              wxPoint(300, 600), wxSize(125, 40));
+        anterior->Bind(wxEVT_BUTTON, &MainFrame::anteriorCancion, this);
         siguiente= new wxButton(panel, botonID, "Siguiente",
                                wxPoint(450, 600), wxSize(125, 40));
+        siguiente->Bind(wxEVT_BUTTON, &MainFrame::siguienteCancion, this);
         eliminar= new wxButton(panel, botonID, "Eliminar canciones",
                                wxPoint(600, 600), wxSize(125, 40));
 
         wxSlider *volumen = new wxSlider(panel,wxID_ANY,50,0,100,
                                          wxPoint(650,500),wxSize(200,-1));
-
 
 
         wxStaticText *cancion, *busqueda, *volumencancion;
@@ -138,6 +142,14 @@ private:
     }
     void PausarActionButton (wxCommandEvent &event){
         servidor.lista_enlazada.pauseSong();
+    }
+
+    void siguienteCancion (wxCommandEvent &event){
+        servidor.lista_enlazada.nextSong(this->source);
+    }
+
+    void anteriorCancion (wxCommandEvent &event){
+        servidor.lista_enlazada.prevSong(this->source);
     }
 
     void escogerCancion (wxCommandEvent &event){
