@@ -5,16 +5,11 @@
 #include "thread"
 #include "Circular List.cpp"
 #include "DoubleList.h"
-#include <sndfile.h>
-#include <ogg/ogg.h>
 #include <gst/gst.h>
 #include "Admin_paginas.h"
 #include "Paged_Array.h"
+#include <unistd.h> // Para sleep()
 
-//Lista de canciones recogidas de los archivos
-Data* lista_canciones;
-//Lista enlazada con los nodos
-DoubleList lista_de_canciones;
 
 int portNumber = 12346;
 ServerSocket servidor = ServerSocket(portNumber);
@@ -25,6 +20,9 @@ enum IDs{
 
 using namespace std;
 namespace fs = std::filesystem;namespace fs = std::filesystem;
+
+
+
 
 //clase que crea la ventana
 class MainFrame : public wxFrame {
@@ -37,7 +35,6 @@ public:
 
         wxPanel *panel = new wxPanel(this, wxID_ANY);
         panel->SetBackgroundColour(wxColour(9,129, 53));
-
 
         wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,
         *anterior,*siguiente,*eliminar, *pruebacancion;
@@ -96,6 +93,7 @@ public:
         busqueda->SetFont(GetFont().Scale(1.5));
         busqueda->SetBackgroundColour(wxColour(0,0,0));
 
+
         caja = new wxTextCtrl(panel, textoID, "",
                               wxPoint(500, 60), wxSize(200, -1));
         prueba = new wxTextCtrl(panel, wxID_ANY,"",
@@ -113,9 +111,9 @@ private:
             caja->SetValue("Paginacion desactivada");
 
         }else{
-            servidor.paginacion = true;
             servidor.lista_enlazada.List_to_Array();
             servidor.lista_enlazada.clear();
+            servidor.paginacion = true;
             caja->SetValue("Paginacion Activada");
         }
 
@@ -146,6 +144,9 @@ private:
         hilo.join();
 
     }
+
+
+
     wxTextCtrl *caja;
     wxTextCtrl *prueba;
     wxComboBox * listaCanciones;
@@ -167,7 +168,35 @@ public:
 };
 
 
+// Función para obtener el consumo de memoria en tiempo real
+size_t getMemoryUsage() {
+    std::ifstream stat_stream("/proc/self/statm");
+    size_t mem_usage = 0;
+    if (stat_stream.is_open()) {
+        stat_stream >> mem_usage;
+        stat_stream.close();
+    }
+    return mem_usage * getpagesize();
+}
+
+// Función que se ejecutará en el hilo
+void consumo() {
+    while (true) {
+        size_t memoria = getMemoryUsage();
+        cout << "Consumo de memoria: " << memoria << " bytes" << endl;
+        this_thread::sleep_for(chrono::seconds(1)); // Esperar 1 segundo
+    }
+}
+
+
+
+
 int main(int argc, char* argv[]) {
+
+
+    // Crear un hilo que ejecute la función 'consumo'
+    std::thread consumoThread(consumo);
+
     //Lee las canciones de la carpeta y las guarda en la lista
     servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);
     //Crea la lista con las canciones leidas del archivo
@@ -176,16 +205,16 @@ int main(int argc, char* argv[]) {
     // Inicializar GStreamer
     gst_init(&argc, &argv);
 
-
-
-
-
     wxApp::SetInstance(new MyApp());
     wxEntryStart(argc, argv);
     wxTheApp->OnInit();
     wxTheApp->OnRun();
     wxTheApp->OnExit();
     wxEntryCleanup();
+
+
+    // Esperar a que el hilo termine (esto nunca sucederá porque el hilo se ejecuta en bucle infinito)
+    consumoThread.join();
 
 
 
@@ -210,6 +239,9 @@ int main(int argc, char* argv[]) {
         cout << endl;
     }
      */
+
+
+
 
     return 0;
 }
