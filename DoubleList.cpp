@@ -17,6 +17,7 @@ namespace fs = std::filesystem;
 
 Node *primerod = nullptr;
 Node *ultimod = nullptr;
+string filename_double_list = "/home/spaceba/CLionProjects/Server/archivo.bin";
 
 void DoubleList::printListadouble() {
     Node *actual = new Node();
@@ -353,4 +354,34 @@ void DoubleList::clear() {
         current = next;
     }
     primerod = ultimod = nullptr;
+}
+
+void DoubleList::create_list_from_file(){
+
+    ifstream archivo(filename_double_list, ios::binary);
+
+    cout << "llego" << endl;
+    Cancion cancion_leida;
+
+    int i = 0;
+
+    while(archivo.read(reinterpret_cast<char *>(&cancion_leida), sizeof(Cancion))){
+        if (cancion_leida.nombre[0] != '\0'){
+            cout << cancion_leida.nombre << endl;
+
+            Data* data = new Data(cancion_leida.path, cancion_leida.nombre, cancion_leida.artista, cancion_leida.album, cancion_leida.duracion_minutos,
+                                 cancion_leida.duracion_segundos, cancion_leida.votes);
+            insert_lastdouble(*data);
+            i++;
+        }
+        else{
+            break;
+        }
+
+    }
+    printListadouble();
+    // Cerrar el archivo al finalizar la lectura
+    archivo.close();
+
+
 }

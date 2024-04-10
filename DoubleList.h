@@ -55,6 +55,8 @@ public:
     string get_by_index(int index);
 
     void clear();
+
+    void create_list_from_file();
 };
 
 

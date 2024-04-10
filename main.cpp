@@ -109,6 +109,7 @@ private:
     void PaginacionActionButton(wxCommandEvent &event) {
         if (servidor.paginacion == true){
             servidor.paginacion = false;
+            servidor.lista_enlazada.create_list_from_file();
             caja->SetValue("Paginacion desactivada");
 
         }else{

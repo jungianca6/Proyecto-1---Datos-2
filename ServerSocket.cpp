@@ -68,13 +68,14 @@ void ServerSocket::acceptConnections() {
             }
             //Verifica que la paginacion este desactivada
             if (paginacion) {
+                //crea un json donde se va a almacenar la lista
                 json lista_json;
+                //itera sobre el array para obtener todas las canciones
                 for (int i= 0; i < admin.total_de_canciones; i++){
                     json jsonData;
                     jsonData = arreglo_paginado[i].toJson();
                     lista_json.push_back(jsonData);
                 }
-
 
                 cout << lista_json.dump(4) << endl;
 
@@ -82,19 +83,6 @@ void ServerSocket::acceptConnections() {
                 send_response(command, "OK", clientSocket, to_string(lista_json));
                 close(clientSocket);
 
-
-                /*
-                json lista_json;
-                for (int i = 0; i < admin.total_de_canciones; i++) {
-                    cout << "llego" << endl;
-                    json dataJson = arreglo_paginado[i].toJson();
-                    lista_json.push_back(dataJson);
-                    cout << dataJson.dump(4) << endl;
-                }
-                // Imprimir el JSON
-                cout << lista_json.dump(4) << endl;
-
-                 */
             }
         }
         if (command == "Vote-up") {
