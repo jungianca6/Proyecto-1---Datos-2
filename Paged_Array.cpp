@@ -17,8 +17,8 @@ using namespace std;
 namespace fs = std::filesystem;
 
 // Cargar el archivo INI
-INIReader ini_reader = INIReader("/home/spaceba/CLionProjects/Server/config.ini");
-string filename = ini_reader.GetString("BIN", "directorio", "/home/spaceba/CLionProjects/Server/archivo.bin");
+INIReader ini_reader = INIReader("/home/dell/Escritorio/Proyecto-1-Datos-2/config.ini");
+string filename = ini_reader.GetString("BIN", "directorio", "/home/dell/Escritorio/Proyecto-1-Datos-2/archivo.bin");
 
 
 int Paged_Array::cantidad_de_canciones(const string& ruta_carpeta) {
