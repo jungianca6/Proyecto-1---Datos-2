@@ -11,17 +11,18 @@
 #include "DoubleList.h"
 #include "Admin_paginas.h"
 #include "Paged_Array.h"
+#include "INIReader.h"
 
 
 using namespace std;
 using namespace nlohmann;
 
-
-int serverSocket;
-int port;
-struct sockaddr_in serverAddress;
+// Cargar el archivo INI
+INIReader reader("/home/spaceba/CLionProjects/Server/config.ini");
 DoubleList lista_enlazada;
-Admin_paginas admin(1,1);
+int tamano_maximo_de_pagina = reader.GetInteger("Pagina", "tamano_maximo_de_pagina", 1);
+int cantidad_de_paginas_cargadas = reader.GetInteger("Pagina", "cantidad_de_paginas_cargadas", 1);
+Admin_paginas admin(tamano_maximo_de_pagina,cantidad_de_paginas_cargadas);
 Paged_Array arreglo_paginado(&admin);
 bool paginacion;
 //Lista de canciones recogidas de los archivos

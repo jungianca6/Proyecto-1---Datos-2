@@ -12,13 +12,15 @@
 #include <ogg/ogg.h>
 #include <gst/gst.h>
 
-
 namespace fs = std::filesystem;
 
+// Cargar el archivo INI
+INIReader ini = INIReader("/home/spaceba/CLionProjects/Server/config.ini");
+string filename_double_list = ini.GetString("BIN", "directorio", "/home/spaceba/CLionProjects/Server/archivo.bin");
 GstElement *pipeline;
 Node *primerod = nullptr;
 Node *ultimod = nullptr;
-string filename_double_list = "/home/spaceba/CLionProjects/Server/archivo.bin";
+
 
 void DoubleList::printListadouble() {
     Node *actual = new Node();

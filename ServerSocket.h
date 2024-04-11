@@ -11,6 +11,8 @@
 #include <nlohmann/json.hpp>
 #include "DoubleList.h"
 #include "Paged_Array.h"
+#include <arpa/inet.h> // Agregar esta línea
+#include "INIReader.h"
 using namespace std;
 using namespace nlohmann;
 
@@ -20,13 +22,22 @@ public:
     int serverSocket;
     int port;
     struct sockaddr_in serverAddress;
+    string ipAddress; // Nueva variable para almacenar la IP
     DoubleList lista_enlazada;
     bool paginacion;
     Data* carpeta_de_canciones;
 
 
     //Constructor con el puerto
-    ServerSocket(int portNumber) : port(portNumber){
+    ServerSocket(){
+        // Cargar el archivo INI
+        INIReader reader("/home/spaceba/CLionProjects/Server/config.ini");
+        if (reader.ParseError() < 0) {
+            std::cout << "Error al cargar el archivo INI" << std::endl;
+        }
+        // Leer valores del archivo INI y asignarlos a variables
+        port = reader.GetInteger("Servidor", "portNumber", 123456);
+        ipAddress = reader.Get("Servidor", "IP", "127.0.0.1");
         paginacion = false;
         // Crear un socket
         serverSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -37,7 +48,7 @@ public:
 
         // Configurar la dirección del servidor
         serverAddress.sin_family = AF_INET;
-        serverAddress.sin_addr.s_addr = INADDR_ANY;
+        serverAddress.sin_addr.s_addr = inet_addr(ipAddress.c_str()); // Utilizar la IP proporcionada
         serverAddress.sin_port = htons(port);
 
         // Vincular el socket a la dirección y puerto
@@ -51,6 +62,15 @@ public:
             cerr << "Error al escuchar por conexiones entrantes" << endl;
             exit(1);
         }
+    }
+
+
+    void setPort(int _port){
+        port = _port;
+    }
+
+    void setIP(string IP){
+        ipAddress = IP;
     }
 
     //Recibe los datos y los convierte a formato json

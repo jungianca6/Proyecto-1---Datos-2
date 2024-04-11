@@ -9,6 +9,7 @@
 #include <filesystem>
 #include <fstream>
 #include "iostream"
+#include "INIReader.h"
 
 using namespace std;
 namespace fs = filesystem;
@@ -17,7 +18,9 @@ namespace fs = filesystem;
 
 class Pagina {
 public:
-    string filename_admin = "/home/spaceba/CLionProjects/Server/archivo.bin";
+    // Cargar el archivo INI
+    INIReader ini_reader = INIReader("/home/spaceba/CLionProjects/Server/config.ini");
+    string filename_admin = ini_reader.GetString("BIN", "directorio", "/home/spaceba/CLionProjects/Server/archivo.bin");
     Cancion* canciones; // Arreglo dinámico de canciones
     int tamanoMaximo; // Tamaño máximo de la página
     int id; //Identidicador de la pagina

@@ -9,10 +9,9 @@
 #include "Admin_paginas.h"
 #include "Paged_Array.h"
 #include <unistd.h> // Para sleep()
+#include "INIReader.h"
 
-
-int portNumber = 12346;
-ServerSocket servidor = ServerSocket(portNumber);
+ServerSocket servidor = ServerSocket();
 
 enum IDs{
     botonID =2,textoID=3
@@ -34,7 +33,7 @@ public:
                       wxSize(1200, 900)) {
 
         wxPanel *panel = new wxPanel(this, wxID_ANY);
-        panel->SetBackgroundColour(wxColour(9,129, 53));
+        panel->SetBackgroundColour(wxColour(100,100, 100));
 
         wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,
         *anterior,*siguiente,*eliminar, *pruebacancion;
@@ -196,6 +195,7 @@ void consumo() {
 
 
 int main(int argc, char* argv[]) {
+
 
 
     // Crear un hilo que ejecute la función 'consumo'

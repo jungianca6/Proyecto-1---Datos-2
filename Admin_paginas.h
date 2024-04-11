@@ -7,12 +7,15 @@
 #include "Pagina.h"
 #include <iostream>
 #include "Cancion.h"
-
+#include "INIReader.h"
 using namespace std;
 
 class Admin_paginas {
 public:
-    int total_de_canciones = cantidad_de_canciones( "/home/spaceba/Music");
+    // Cargar el archivo INI
+    INIReader ini = INIReader("/home/spaceba/CLionProjects/Server/config.ini");
+    string ini_total_de_canciones = ini.GetString("Cancion", "directorio", "/home/spaceba/Music");
+    int total_de_canciones = cantidad_de_canciones(ini_total_de_canciones);
     int tamano_maximo_por_pagina; // Tamaño máximo de cada página en bytes
     Pagina* paginas; // Arreglo de páginas
     int* paginas_cargadas;
