@@ -5,13 +5,20 @@ use std::net::{TcpStream, Shutdown};
 use std::io::{Read, Write};
 use std::thread::sleep;
 use serde_json::{json, Value};
-use std::{mem, time};
+use std::{fs, mem, time};
 use std::thread;
 use std::time::Duration;
 use serde::{Deserialize, Serialize};
 use std::fmt;
 use std::fs::File;
 use std::io::BufReader;
+use std::sync::mpsc;
+use std::sync::mpsc::Sender;
+use tokio::time::{sleep as tokio_sleep, interval};
+
+extern crate ini;
+use config::Config;
+use tokio::runtime::Runtime;
 
 // Definir la estructura de datos para cada canción
 #[derive(Debug, Serialize, Deserialize)]
@@ -22,7 +29,7 @@ struct Song {
     duracion_minutos: u32,
     duracion_segundos: u32,
     nombre: String,
-    votes: u32,
+    votes: i32,
 }
 
 // Definir la estructura del nodo de la lista enlazada
@@ -86,7 +93,15 @@ impl ClientSocket{
 
 //Funcion que pide al servidor la lista de canciones
 fn request_song_list() -> Vec<Song>{
-        let mut client = ClientSocket::new("127.0.0.1:12346");
+        let mut settings = Config::default();
+        settings.merge(config::File::with_name("/home/spaceba/CLionProjects/Client/src/config.ini")).unwrap();
+
+        let ip = settings.get::<String>("Servidor.IP").unwrap();
+        let puerto = settings.get::<i32>("Servidor.Puerto").unwrap();
+        // Crea la dirección de conexión combinando la IP y el Puerto
+        let direccion = format!("{}:{}", ip, puerto);
+
+        let mut client = ClientSocket::new(&direccion);
         //Crea objeto JSON
         let data = json!({"command": "Get-Playlist"});
         //Envia JSON al servidor
@@ -109,7 +124,16 @@ fn request_song_list() -> Vec<Song>{
 
 //Funcion que envia la votacion al servidor
 fn vote_song(nombre: &str, command: &str){
-        let mut client = ClientSocket::new("127.0.0.1:12346");
+
+        let mut settings = Config::default();
+        settings.merge(config::File::with_name("/home/spaceba/CLionProjects/Client/src/config.ini")).unwrap();
+
+        let ip = settings.get::<String>("Servidor.IP").unwrap();
+        let puerto = settings.get::<i32>("Servidor.Puerto").unwrap();
+        // Crea la dirección de conexión combinando la IP y el Puerto
+        let direccion = format!("{}:{}", ip, puerto);
+
+        let mut client = ClientSocket::new(&direccion);
         let data = json!({"command": command, "nombre": nombre});
         //Envia JSON al servidor
         client.send_json(data).expect("Error al enviar JSON");
@@ -138,22 +162,31 @@ fn vote_down(){
     vote_down_thread.join();
 }
 
+async fn periodic_task(interval_seconds: u64, sender: mpsc::Sender<Vec<Song>>) {
+    let mut interval = interval(Duration::from_secs(interval_seconds));
+    loop {
+        interval.tick().await;
+        println!("Realizando Polling....");
+        // Simulación de obtención de la lista de canciones
+        let songs_list = request_songs();
+        // Enviar el resultado a través del canal
+        sender.send(songs_list).unwrap();
+    }
+}
 
-fn main() {
-    let mut lista: Vec<Song> = Vec::new();
 
+#[tokio::main]
+async fn main() {
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
     let theme = ColorTheme::new(color_themes::BLACK_THEME);
     theme.apply();
     let mut win = window::Window::default().with_size(600, 400)
         .with_label("prueba");
-    let mut request_songs_button = button::Button::new(120, 200, 80, 40, "Canciones");
     let mut vote_up_button = button::Button::new(210, 200, 80, 40, "Vote-up");
     let mut vote_down_button = button::Button::new(310, 200, 80, 40, "Vote-down");
     let mut text = input::Input::new(160, 100, 200, 50, "");
-    request_songs_button.set_color(request_songs_button.color().lighter());
-    vote_up_button.set_color(request_songs_button.color().lighter());
-    vote_down_button.set_color(request_songs_button.color().lighter());
+    vote_up_button.set_color(vote_up_button.color().lighter());
+    vote_down_button.set_color(vote_up_button.color().lighter());
 
     win.end();
     win.show();
@@ -166,12 +199,26 @@ fn main() {
         vote_up();
     });
 
-    request_songs_button.set_callback(move |_| {
-        lista = request_songs();
+
+
+    let mut settings = Config::default();
+    settings.merge(config::File::with_name("/home/spaceba/CLionProjects/Client/src/config.ini")).unwrap();
+    let cooldown = settings.get::<u64>("Servidor.Cooldown").unwrap();
+
+    // Crear un canal para comunicarse entre los hilos
+    let (sender, receiver) = mpsc::channel::<Vec<Song>>();
+
+    // Clonar el sender para moverlo al contexto del hilo
+    let sender_clone = sender.clone();
+
+    // Ejecutar la tarea periódicamente en un hilo secundario
+    tokio::spawn(async move {
+        periodic_task(cooldown, sender_clone).await;
+        text.set_label("Conectado");
     });
 
-
-
+    // Esperar a que se reciba el resultado del canal
+    let songs_list = receiver.recv().unwrap();
 
 
 
