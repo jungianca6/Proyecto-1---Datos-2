@@ -15,8 +15,8 @@
 namespace fs = std::filesystem;
 
 // Cargar el archivo INI
-INIReader ini = INIReader("/home/spaceba/CLionProjects/Server/config.ini");
-string filename_double_list = ini.GetString("BIN", "directorio", "/home/spaceba/CLionProjects/Server/archivo.bin");
+INIReader ini = INIReader("/home/dell/Escritorio/Proyecto-1-Datos-2/config.ini");
+string filename_double_list = ini.GetString("BIN", "directorio", "/home/dell/Escritorio/Proyecto-1-Datos-2/archivo.bin");
 GstElement *pipeline;
 Node *primerod = nullptr;
 Node *ultimod = nullptr;

@@ -19,8 +19,8 @@ namespace fs = filesystem;
 class Pagina {
 public:
     // Cargar el archivo INI
-    INIReader ini_reader = INIReader("/home/spaceba/CLionProjects/Server/config.ini");
-    string filename_admin = ini_reader.GetString("BIN", "directorio", "/home/spaceba/CLionProjects/Server/archivo.bin");
+    INIReader ini_reader = INIReader("/home/dell/Escritorio/Proyecto-1-Datos-2/config.ini");
+    string filename_admin = ini_reader.GetString("BIN", "directorio", "/home/dell/Escritorio/Proyecto-1-Datos-2/archivo.bin");
     Cancion* canciones; // Arreglo dinámico de canciones
     int tamanoMaximo; // Tamaño máximo de la página
     int id; //Identidicador de la pagina
