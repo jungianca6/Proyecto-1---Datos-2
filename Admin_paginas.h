@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Cancion.h"
 #include "INIReader.h"
+#include <glog/logging.h>
 using namespace std;
 
 class Admin_paginas {
@@ -27,6 +28,7 @@ public:
     Admin_paginas(int tamano_maximo, int cantidad_de_paginas) : tamano_maximo_por_pagina(tamano_maximo), total_de_paginas_cargadas(cantidad_de_paginas){
         paginas_cargadas = new int[total_de_paginas_cargadas]; // Inicializa el arreglo de páginas con el número total de páginas
         paginas = new Pagina[num_paginas];
+
         // Inicia en ceros el array de paginas cargadas
         for (int i = 0; i < total_de_paginas_cargadas; ++i) {
             paginas_cargadas[i] = 0;
@@ -37,6 +39,7 @@ public:
             paginas[i].tamanoMaximo = tamano_maximo; // Asignar tamaño máximo de página
             paginas[i].cargada = false;
         }
+        LOG(INFO) << "Paginas creadas";
     }
     // Destructor
     ~Admin_paginas() {

@@ -36,8 +36,6 @@ void Pagina::descargarContenidoDesdeArchivo() {
         archivo.write(reinterpret_cast<const char *>(&canciones[i]), sizeof(Cancion));
         i++;
     }
-
-
     // Cerrar el archivo al finalizar
     archivo.close();
 

@@ -9,7 +9,7 @@
 #include "Admin_paginas.h"
 #include "Paged_Array.h"
 #include <unistd.h> // Para sleep()
-#include "INIReader.h"
+#include <glog/logging.h> //sudo apt-get install libgoogle-glog-dev
 
 ServerSocket servidor = ServerSocket();
 
@@ -109,29 +109,35 @@ private:
             servidor.paginacion = false;
             servidor.lista_enlazada.create_list_from_file();
             caja->SetValue("Paginacion desactivada");
+            LOG(INFO) << "Paginacion Desactivada";
 
         }else{
             servidor.lista_enlazada.List_to_Array();
             servidor.lista_enlazada.clear();
             servidor.paginacion = true;
             caja->SetValue("Paginacion Activada");
+            LOG(INFO) << "Paginacion Activada";
         }
 
     }
     void ComunitarioActionButton(wxCommandEvent &event) {
-        if (!active_playlist){
+        if (!servidor.active_playlist){
             // Crear un hilo que ejecute la función en segundo plano
             thread ServerThread(&MainFrame::activeServer, this);
             // Hacer que el hilo sea independiente del hilo principal (no bloquear)
             ServerThread.detach();
-            active_playlist = true;
+            servidor.active_playlist = true;
+            LOG(INFO) << "Playlist comunitario activado";
         }
         else {
+            servidor.active_playlist = false;
+            LOG(INFO) << "Playlist comunitario desactivado";
             cout << "Servidor activo" << endl;
         }
     }
     void ReproducirActionButton(wxCommandEvent &event) {
         servidor.lista_enlazada.play_song("Efecto");
+        LOG(INFO) << "Reproduciendo cancion";
     }
 
     void escogerCancion (wxCommandEvent &event){
@@ -140,6 +146,7 @@ private:
 
     void activeServer() {
         thread hilo(&ServerSocket::acceptConnections, &servidor);
+        LOG(INFO) << "Servidor en escucha.";
         cout << "Servidor en escucha" << endl;
         hilo.join();
 
@@ -196,6 +203,12 @@ void consumo() {
 
 int main(int argc, char* argv[]) {
 
+    google::InitGoogleLogging(argv[0]);
+
+    // Ejemplos de logging
+    LOG(INFO) << "Este es un mensaje de información.";
+    LOG(WARNING) << "Este es un mensaje de advertencia.";
+    LOG(ERROR) << "Este es un mensaje de error.";
 
 
     // Crear un hilo que ejecute la función 'consumo'
@@ -203,8 +216,10 @@ int main(int argc, char* argv[]) {
 
     //Lee las canciones de la carpeta y las guarda en la lista
     servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);
+    LOG(INFO) << "Carpeta de canciones leida";
     //Crea la lista con las canciones leidas del archivo
     servidor.create_list_from_file();
+    LOG(INFO) << "Lista creada.";
 
     // Inicializar GStreamer
     gst_init(&argc, &argv);
@@ -219,30 +234,6 @@ int main(int argc, char* argv[]) {
 
     // Esperar a que el hilo termine (esto nunca sucederá porque el hilo se ejecuta en bucle infinito)
     consumoThread.join();
-
-
-
-    // Nombre del archivo binario en el que deseas escribir
-    string filename = "/home/spaceba/CLionProjects/Server/archivo.bin";
-
-    //add_to_end(cancion1, filename);
-    //add_to_end(cancion2, filename);
-    //add_to_end(cancion3, filename);
-
-    //Cancion busqueda = search_by_index(3, filename);
-    /*
-    Cancion canciones[10];
-    Cancion* lista = get_songs(filename, canciones);
-
-    for (int i = 0; i < 3; ++i) {
-        cout << "Canción #" << i+1 << ":" << endl;
-        cout << "Nombre: " << lista[i].nombre << endl;
-        cout << "Artista: " << lista[i].artista << endl;
-        cout << "Duración Minutos: " << lista[i].duracion_minutos << " minutos" << endl;
-        cout << "Duración Segundos: " << lista[i].duracion_segundos << endl;
-        cout << endl;
-    }
-     */
 
 
 

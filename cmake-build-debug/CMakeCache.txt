@@ -230,6 +230,18 @@ Proyecto_1_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Proyecto_1_SOURCE_DIR:STATIC=/home/spaceba/CLionProjects/Server
 
+//unwind include directory
+Unwind_INCLUDE_DIR:PATH=/usr/include/x86_64-linux-gnu
+
+//unwind library
+Unwind_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libunwind.so
+
+//The directory containing a CMake configuration file for gflags.
+gflags_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/gflags
+
+//The directory containing a CMake configuration file for glog.
+glog_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/glog
+
 //Path to a library.
 pkgcfg_lib_GSTREAMER_glib-2.0:FILEPATH=/usr/lib/x86_64-linux-gnu/libglib-2.0.so
 
@@ -396,6 +408,8 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v1.8.1()]
+//Details about finding Unwind
+FIND_PACKAGE_MESSAGE_DETAILS_Unwind:INTERNAL=[/usr/include/x86_64-linux-gnu][/usr/lib/x86_64-linux-gnu/libunwind.so][v1.6.2(1.6.2)]
 //Details about finding wxWidgets
 FIND_PACKAGE_MESSAGE_DETAILS_wxWidgets:INTERNAL=[-L/usr/local/lib;-pthread;;;-lwx_gtk3u_core-3.2;-lwx_baseu-3.2][/usr/local/lib/wx/include/gtk3-unicode-3.2;/usr/local/include/wx-3.2][v3.2.4()]
 GSTREAMER_CFLAGS:INTERNAL=-I/usr/include/gstreamer-1.0;-I/usr/include/glib-2.0;-I/usr/lib/x86_64-linux-gnu/glib-2.0/include;-I/usr/include;-pthread;-I/usr/include/x86_64-linux-gnu
@@ -437,6 +451,10 @@ GSTREAMER_gstreamer-1.0_VERSION:INTERNAL=
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Unwind_INCLUDE_DIR
+Unwind_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Unwind_LIBRARY
+Unwind_LIBRARY-ADVANCED:INTERNAL=1
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 __pkg_config_arguments_GSTREAMER:INTERNAL=REQUIRED;gstreamer-1.0

@@ -1154,6 +1154,18 @@
 			"value" : "[/usr/bin/pkg-config][v1.8.1()]"
 		},
 		{
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_Unwind",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Details about finding Unwind"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "[/usr/include/x86_64-linux-gnu][/usr/lib/x86_64-linux-gnu/libunwind.so][v1.6.2(1.6.2)]"
+		},
+		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_wxWidgets",
 			"properties" : 
 			[
@@ -1654,6 +1666,38 @@
 			"value" : "/home/spaceba/CLionProjects/Server"
 		},
 		{
+			"name" : "Unwind_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "unwind include directory"
+				}
+			],
+			"type" : "PATH",
+			"value" : "/usr/include/x86_64-linux-gnu"
+		},
+		{
+			"name" : "Unwind_LIBRARY",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "unwind library"
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/usr/lib/x86_64-linux-gnu/libunwind.so"
+		},
+		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
 			"properties" : 
 			[
@@ -1688,6 +1732,30 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "1"
+		},
+		{
+			"name" : "gflags_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for gflags."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/usr/lib/x86_64-linux-gnu/cmake/gflags"
+		},
+		{
+			"name" : "glog_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for glog."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/usr/lib/x86_64-linux-gnu/cmake/glog"
 		},
 		{
 			"name" : "pkgcfg_lib_GSTREAMER_glib-2.0",

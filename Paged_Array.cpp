@@ -118,9 +118,9 @@ void Paged_Array::clear_file(){
     ofstream archivo(filename, std::ofstream::trunc);
     if (archivo.is_open()) {
         archivo.close();
-        std::cout << "El archivo \"" << filename << "\" ha sido limpiado." << std::endl;
+        LOG(WARNING) << "El archivo ha sido limpiado.";
     } else {
-        std::cerr << "No se pudo abrir el archivo \"" << filename << "\" para limpiar." << std::endl;
+        LOG(ERROR) << "No se pudo abrir el archivo.";
     }
 }
 

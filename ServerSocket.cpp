@@ -36,7 +36,7 @@ void ServerSocket::acceptConnections() {
         // Aceptar conexiones entrantes
         int clientSocket = accept(serverSocket, (struct sockaddr *) &clientAddress, &clientAddrSize);
         if (clientSocket == -1) {
-            cerr << "Error al aceptar la conexión entrante" << endl;
+            LOG(ERROR) << "Error al aceptar la conexión entrante";
             exit(1);
         }
         // Mensaje de conexión
@@ -153,6 +153,7 @@ void ServerSocket::acceptConnections() {
             } else {
                 //Envia la respuesta al cliente
                 send_response(command, "ERROR", clientSocket);
+                LOG(ERROR) << "Error al enviar la respuesta al cliente";
                 close(clientSocket);
             }
 
@@ -167,7 +168,7 @@ json ServerSocket::receiveJsonData(int clientSocket) {
     char buffer[4096]; // Buffer para almacenar los datos recibidos
     int bytesRead = recv(clientSocket, buffer, sizeof(buffer), 0);
     if (bytesRead == -1) {
-        cerr << "Error al recibir datos del cliente" << endl;
+        LOG(ERROR) << "Error al recibir datos del cliente";
         exit(1);
     }
     // Convertir los datos recibidos en una cadena de texto JSON

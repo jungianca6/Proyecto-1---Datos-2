@@ -13,6 +13,7 @@
 #include "Paged_Array.h"
 #include <arpa/inet.h> // Agregar esta línea
 #include "INIReader.h"
+#include <glog/logging.h> //sudo apt-get install libgoogle-glog-dev
 using namespace std;
 using namespace nlohmann;
 
@@ -26,6 +27,7 @@ public:
     DoubleList lista_enlazada;
     bool paginacion;
     Data* carpeta_de_canciones;
+    bool active_playlist;
 
 
     //Constructor con el puerto
@@ -35,6 +37,7 @@ public:
         if (reader.ParseError() < 0) {
             std::cout << "Error al cargar el archivo INI" << std::endl;
         }
+        active_playlist = false;
         // Leer valores del archivo INI y asignarlos a variables
         port = reader.GetInteger("Servidor", "portNumber", 123456);
         ipAddress = reader.Get("Servidor", "IP", "127.0.0.1");
@@ -42,7 +45,7 @@ public:
         // Crear un socket
         serverSocket = socket(AF_INET, SOCK_STREAM, 0);
         if (serverSocket == -1) {
-            cerr << "Error al crear el socket" << endl;
+            LOG(ERROR) << "Error al crear el socket";
             exit(1);
         }
 
@@ -53,24 +56,15 @@ public:
 
         // Vincular el socket a la dirección y puerto
         if (bind(serverSocket, (struct sockaddr *)&serverAddress, sizeof(serverAddress)) == -1) {
-            std::cerr << "Error al vincular el socket" << std::endl;
+            LOG(ERROR) << "Error al vincular el socket";
             exit(1);
         }
 
         // Escuchar por conexiones entrantes
         if (listen(serverSocket, 5) == -1) {
-            cerr << "Error al escuchar por conexiones entrantes" << endl;
+            LOG(ERROR) << "Error al escuchar por conexiones entrantes";
             exit(1);
         }
-    }
-
-
-    void setPort(int _port){
-        port = _port;
-    }
-
-    void setIP(string IP){
-        ipAddress = IP;
     }
 
     //Recibe los datos y los convierte a formato json

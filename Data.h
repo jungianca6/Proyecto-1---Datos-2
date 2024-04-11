@@ -8,6 +8,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>//sudo apt-get install libboost-all-dev
+#include <glog/logging.h>
 
 using namespace boost::uuids;
 using namespace std;
@@ -26,6 +27,7 @@ struct Data{
     //Constructor vacio
     Data(){
         id = boost::uuids::random_generator()();
+        LOG(INFO) << "ID asignada";
     };
     //Constructor con todos los atributos
     Data(const char* _path, const char* _nombre, const char* _artista, const char* _album, int _duracion_minutos, int _duracion_segundos, int _votes)
@@ -35,6 +37,7 @@ struct Data{
         strncpy(artista, _artista, sizeof(artista));
         strncpy(album, _album, sizeof(album));
         id = boost::uuids::random_generator()();
+        LOG(INFO) << "ID asignada";
     }
 
 
@@ -45,6 +48,7 @@ struct Data{
 
     //Imprime la lista
     void print_lista(Data *lista_canciones){
+        LOG(INFO) << "Imprimiendo lista";
         cout << "\nLista de Canciones:\n";
         Data* temp = lista_canciones;
         while (temp) {

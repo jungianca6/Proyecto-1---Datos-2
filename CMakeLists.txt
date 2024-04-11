@@ -57,3 +57,6 @@ link_directories(${GSTREAMER_LIBRARY_DIRS})
 target_link_libraries(Proyecto_1 PRIVATE ${GSTREAMER_LIBRARIES})
 
 add_definitions(${GSTREAMER_CFLAGS_OTHER})
+
+find_package(glog REQUIRED)
+target_link_libraries(Proyecto_1 PRIVATE glog::glog)

@@ -25,13 +25,15 @@ public:
             return pagina.canciones[cancion_index];
         }
         if(!pagina.cargada && admin->contador_de_paginas_cargadas == admin->total_de_paginas_cargadas) {
+            LOG(WARNING) << "Pagina no cargada y el numero de paginas totales ha sido superado";
             int id_descarga = admin->paginas_cargadas[0];
-
             for (int i=0; i < admin->num_paginas; i++){
                 if(admin->paginas[i].id == id_descarga){
                     admin->paginas[i].descargarContenidoDesdeArchivo();
+                    LOG(INFO) << "Pagina descargada";
                     admin->paginas[i].cargada = false;
                     pagina.cargarContenidoDesdeArchivo();
+                    LOG(INFO) << "Pagina cargada";
                     pagina.cargada = true;
                     admin->paginas_cargadas[i] = pagina.id;
                     break;
@@ -44,9 +46,11 @@ public:
 
         // Verificar si la página está cargada en memoria
         if (!pagina.cargada && admin->contador_de_paginas_cargadas < admin->total_de_paginas_cargadas) {
+            LOG(WARNING) << "Pagina no cargada y el numero de paginas no totales ha sido superado";
             // Si la página no está cargada, cargar su contenido desde el archivo
             pagina.cargarContenidoDesdeArchivo();
             pagina.cargada = true; // Marcar la página como cargada
+            LOG(INFO) << "Pagina cargada";
             admin->contador_de_paginas_cargadas++;
             for(int i=0 ; i < admin->total_de_paginas_cargadas; i++){
                 if (admin->paginas_cargadas[i] == 0){
@@ -68,6 +72,7 @@ public:
         Pagina& pagina = admin->paginas[pagina_index]; // Obtener la página correspondiente
 
         if (!pagina.cargada) {
+            LOG(WARNING) << "Pagina no cargada";
             // Si la página no está cargada, cargar su contenido desde el archivo
             pagina.cargarContenidoDesdeArchivo();
             pagina.cargada = true; // Marcar la página como cargada
@@ -89,6 +94,7 @@ public:
         Pagina& pagina = admin->paginas[pagina_index]; // Obtener la página correspondiente
 
         if (!pagina.cargada) {
+            LOG(WARNING) << "Pagina no cargada";
             // Si la página no está cargada, cargar su contenido desde el archivo
             pagina.cargarContenidoDesdeArchivo();
             pagina.cargada = true; // Marcar la página como cargada

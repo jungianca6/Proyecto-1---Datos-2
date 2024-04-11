@@ -6,7 +6,7 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>//sudo apt-get install libboost-all-dev
-
+#include <glog/logging.h>
 #include <nlohmann/json.hpp>
 #include <cstring>
 
@@ -38,10 +38,12 @@ struct Cancion{
 
     void Vote_Up(){
         this->votes = votes + 1;
+        LOG(INFO) << "Votacion concluida";
     }
 
     void Vote_Down(){
         this->votes = votes - 1;
+        LOG(INFO) << "Votacion concluida";
     }
 
     json toJson(){

@@ -11,7 +11,7 @@
 #include <taglib/mpegheader.h>
 #include <ogg/ogg.h>
 #include <gst/gst.h>
-
+#include <glog/logging.h>
 namespace fs = std::filesystem;
 
 // Cargar el archivo INI
@@ -88,10 +88,12 @@ void DoubleList::buscarNododouble(string cancionbuscada) {
             actual = actual->siguiente;
         } while (actual != NULL && encontrado != true);
         if (!encontrado) {
+            LOG(WARNING) << "Nodo no encontrado.";
             cout << "Nodo no encontrado";
         }
 
     } else {
+        LOG(WARNING) << "Lista vacia";
         cout << "nel";
     }
 
@@ -110,9 +112,11 @@ void DoubleList::voteUp(string cancionbuscada) {
             actual = actual->siguiente;
         } while (actual != NULL && encontrado != true);
         if (!encontrado) {
+            LOG(WARNING) << "Nodo no encontrado";
             cout << "Nodo no encontrado";
         }
     } else {
+        LOG(WARNING) << "Lista vacia";
         cout << "nel";
     }
 }
@@ -130,9 +134,11 @@ void DoubleList::voteDown(string cancionbuscada) {
             actual = actual->siguiente;
         } while (actual != NULL && encontrado != true);
         if (!encontrado) {
+            LOG(WARNING) << "Nodo no encontrado";
             cout << "Nodo no encontrado";
         }
     } else {
+        LOG(WARNING) << "Lista vacia";
         cout << "nel";
     }
 }
@@ -199,14 +205,17 @@ void DoubleList::play_song(string cancionbuscada) {
             actual = actual->siguiente;
         } while (actual != NULL && encontrado != true);
         if (!encontrado) {
+            LOG(WARNING) << "Nodo no encontrado";
             cout << "Nodo no encontrado";
         }
     } else {
+        LOG(WARNING) << "Lista vacia";
         cout << "nel";
     }
 }
 
 void DoubleList::Pausa(){
+    LOG(INFO) << "Cancion pausada";
     gst_element_set_state(pipeline, GST_STATE_PAUSED);
 }
 
@@ -240,10 +249,12 @@ void DoubleList::eliminarNododouble(string nodoBuscado) {
             actual = actual->siguiente;
         } while (actual != NULL && encontrado != true);
         if (!encontrado) {
+            LOG(WARNING) << "Nodo no encontrado";
             cout << "Nodo encontrado";
         }
 
     } else {
+        LOG(WARNING) << "Lista vacia";
         cout << "nel";
     }
 }
