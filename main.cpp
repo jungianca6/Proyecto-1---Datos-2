@@ -205,12 +205,6 @@ int main(int argc, char* argv[]) {
 
     google::InitGoogleLogging(argv[0]);
 
-    // Ejemplos de logging
-    LOG(INFO) << "Este es un mensaje de información.";
-    LOG(WARNING) << "Este es un mensaje de advertencia.";
-    LOG(ERROR) << "Este es un mensaje de error.";
-
-
     // Crear un hilo que ejecute la función 'consumo'
     std::thread consumoThread(consumo);
 
