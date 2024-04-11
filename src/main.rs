@@ -182,8 +182,8 @@ async fn main() {
     theme.apply();
     let mut win = window::Window::default().with_size(600, 400)
         .with_label("prueba");
-    let mut vote_up_button = button::Button::new(210, 200, 80, 40, "Vote-up");
-    let mut vote_down_button = button::Button::new(310, 200, 80, 40, "Vote-down");
+    let mut vote_up_button = button::Button::new(170, 200, 80, 40, "Vote-up");
+    let mut vote_down_button = button::Button::new(270, 200, 80, 40, "Vote-down");
     let mut text = input::Input::new(160, 100, 200, 50, "");
     vote_up_button.set_color(vote_up_button.color().lighter());
     vote_down_button.set_color(vote_up_button.color().lighter());
@@ -214,7 +214,7 @@ async fn main() {
     // Ejecutar la tarea periódicamente en un hilo secundario
     tokio::spawn(async move {
         periodic_task(cooldown, sender_clone).await;
-        text.set_label("Conectado");
+
     });
 
     // Esperar a que se reciba el resultado del canal
