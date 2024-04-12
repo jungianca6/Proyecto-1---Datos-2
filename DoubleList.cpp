@@ -12,6 +12,7 @@
 #include <ogg/ogg.h>
 #include <gst/gst.h>
 #include <glog/logging.h>
+#include "Queue.h"
 namespace fs = std::filesystem;
 
 // Cargar el archivo INI
@@ -75,7 +76,7 @@ void DoubleList::insert_firstdouble(Data new_data) {
     }
 }
 
-void DoubleList::buscarNododouble(string cancionbuscada) {
+Data DoubleList::buscarNododouble(string cancionbuscada) {
     Node *actual = primerod;
     bool encontrado = false;
     cout << "Dato buscado: " << cancionbuscada << endl;
@@ -84,6 +85,7 @@ void DoubleList::buscarNododouble(string cancionbuscada) {
             if (actual->data.nombre == cancionbuscada) {
                 cout << "Nodo con el dato ( " << cancionbuscada << " ) Encontrado" << endl;
                 encontrado = true;
+                return actual->data;
             }
             actual = actual->siguiente;
         } while (actual != NULL && encontrado != true);
@@ -410,5 +412,11 @@ void DoubleList::create_list_from_file(){
     // Cerrar el archivo al finalizar la lectura
     archivo.close();
 
-
+}
+void DoubleList::create_queue(PriorQueue &queue){
+    Node *actual = primerod;
+    while (actual != NULL) {
+        queue.insertar_nodo(actual->data);
+        actual = actual->siguiente;
+    }
 }

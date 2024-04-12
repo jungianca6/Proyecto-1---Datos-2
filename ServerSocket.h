@@ -77,6 +77,8 @@ public:
     void send_response(string command, string status, int clientsocket, string list);
     //Construye una lista con las canciones de la carpeta de lectura
     void create_list_from_file();
+    //
+    void create_queue();
 
 };
 

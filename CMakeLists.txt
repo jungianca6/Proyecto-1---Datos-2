@@ -24,6 +24,8 @@ add_executable(Proyecto_1 main.cpp
         INIReader.h
         ini.h
         ini.c
+        Queue.cpp
+        Queue.h
 )
 
 # Incluye la carpeta de encabezados

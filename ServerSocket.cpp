@@ -12,6 +12,7 @@
 #include "Admin_paginas.h"
 #include "Paged_Array.h"
 #include "INIReader.h"
+#include "Queue.h"
 
 
 using namespace std;
@@ -27,6 +28,8 @@ Paged_Array arreglo_paginado(&admin);
 bool paginacion;
 //Lista de canciones recogidas de los archivos
 Data* carpeta_de_canciones;
+PriorQueue queue;
+
 
 void ServerSocket::acceptConnections() {
     while (true) {
@@ -57,11 +60,8 @@ void ServerSocket::acceptConnections() {
 
             //Verifica que la paginacion este desactivada
             if (!paginacion) {
-                lista_enlazada.printListadouble();
 
                 json lista_json = lista_enlazada.toJson();
-                // Imprimir el JSON
-                cout << lista_json.dump(4) << endl;
 
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket, to_string(lista_json));
@@ -83,7 +83,6 @@ void ServerSocket::acceptConnections() {
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket, to_string(lista_json));
                 close(clientSocket);
-
             }
         }
         if (command == "Vote-up") {
@@ -96,8 +95,10 @@ void ServerSocket::acceptConnections() {
                 cout << "Votar por una cancion +1" << "id:" << nombre << endl;
                 //Vota a la cancion
                 lista_enlazada.voteUp(nombre);
-                lista_enlazada.printListadouble();
-
+                Data cancion = lista_enlazada.buscarNododouble(nombre);
+                queue.imprimir_datos();
+                queue.actualizar_nodo(cancion);
+                queue.imprimir_datos();
 
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket);
@@ -117,6 +118,9 @@ void ServerSocket::acceptConnections() {
                     send_response(command, "OK", clientSocket);
                     close(clientSocket);
                 }
+                //Envia la respuesta al cliente
+                send_response(command, "OK", clientSocket);
+                close(clientSocket);
             }
         }
         if (command == "Vote-down") {
@@ -129,7 +133,10 @@ void ServerSocket::acceptConnections() {
                 cout << "Votar por una cancion -1" << "id:" << nombre << endl;
                 //Vota a la cancion
                 lista_enlazada.voteDown(nombre);
-                lista_enlazada.printListadouble();
+                Data cancion = lista_enlazada.buscarNododouble(nombre);
+                queue.imprimir_datos();
+                queue.actualizar_nodo(cancion);
+                queue.imprimir_datos();
 
                 //Envia la respuesta al cliente
                 send_response(command, "OK", clientSocket);
@@ -149,6 +156,9 @@ void ServerSocket::acceptConnections() {
                     send_response(command, "OK", clientSocket);
                     close(clientSocket);
                 }
+                //Envia la respuesta al cliente
+                send_response(command, "OK", clientSocket);
+                close(clientSocket);
 
             } else {
                 //Envia la respuesta al cliente
@@ -208,5 +218,15 @@ void ServerSocket::create_list_from_file(){
     while (temp) {
         lista_enlazada.insert_lastdouble(*temp);
         temp = temp->siguiente;
+    }
+}
+
+void ServerSocket::create_queue(){
+    if (paginacion){
+
+    }
+    else{
+        lista_enlazada.create_queue(queue);
+        queue.imprimir_datos();
     }
 }

@@ -127,6 +127,7 @@ private:
             // Hacer que el hilo sea independiente del hilo principal (no bloquear)
             ServerThread.detach();
             servidor.active_playlist = true;
+            servidor.create_queue();
             LOG(INFO) << "Playlist comunitario activado";
         }
         else {
@@ -193,7 +194,7 @@ size_t getMemoryUsage() {
 void consumo() {
     while (true) {
         size_t memoria = getMemoryUsage();
-        cout << "Consumo de memoria: " << memoria << " bytes" << endl;
+        //cout << "Consumo de memoria: " << memoria << " bytes" << endl;
         this_thread::sleep_for(chrono::seconds(1)); // Esperar 1 segundo
     }
 }

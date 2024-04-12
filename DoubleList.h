@@ -6,6 +6,7 @@
 #include <string>
 #include "Data.h"
 #include <nlohmann/json.hpp>
+#include "Queue.h"
 #ifndef PROYECTO_1_DOUBLELIST_H
 #define PROYECTO_1_DOUBLELIST_H
 
@@ -34,7 +35,7 @@ public:
     // Elimina un nodo
     void eliminarNododouble(string nodoBuscado);
     // Busca un nodo
-    void buscarNododouble(string cancionbuscada);
+    Data buscarNododouble(string cancionbuscada);
     // Encuentra el largo de la lista
     int findlengthdouble();
     // Método para convertir el objeto en formato JSON
@@ -59,6 +60,8 @@ public:
     void create_list_from_file();
 
     void Pausa();
+
+    void create_queue(PriorQueue &queue);
 };
 
 
