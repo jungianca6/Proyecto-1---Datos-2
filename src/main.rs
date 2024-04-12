@@ -217,19 +217,12 @@ async fn main() {
 
     // Esperar a que se reciba el resultado del canal
     let songs_list = receiver.recv().unwrap();
-    // Imprimir el contenido de songs_list
-    println!("Lista de canciones recibida:");
-
-
     // Recibir actualizaciones de la lista de canciones y actualizar el menú desplegable
     for song in &songs_list {
         menu_button.add_choice(&song.nombre);
 
     }
-
-
-
-
+    
     let menu_button_clone = menu_button.clone();
     vote_down_button.set_callback(move |_| {
         // Obtener el texto del elemento seleccionado utilizando el índice
