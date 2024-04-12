@@ -237,6 +237,7 @@ void DoubleList::Anterior() {
     string path = actual->data.path;
     g_object_set(G_OBJECT(source), "location", path.c_str(), NULL);
     gst_element_set_state(pipeline, GST_STATE_PLAYING);
+    ultimod = actual;
     cout<<"anterior"<<endl;
 
 }
