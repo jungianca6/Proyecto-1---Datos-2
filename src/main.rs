@@ -1,5 +1,5 @@
-use fltk::{app, button, input, prelude::{WidgetBase, WidgetExt, GroupExt}, window};
-use fltk::prelude::InputExt;
+use fltk::{app, button, input, menu, prelude::{WidgetBase, WidgetExt, GroupExt}, window};
+use fltk::prelude::{InputExt, MenuExt};
 use fltk_theme::{ColorTheme, color_themes};
 use std::net::{TcpStream, Shutdown};
 use std::io::{Read, Write};
@@ -94,7 +94,7 @@ impl ClientSocket{
 //Funcion que pide al servidor la lista de canciones
 fn request_song_list() -> Vec<Song>{
         let mut settings = Config::default();
-        settings.merge(config::File::with_name("/home/spaceba/CLionProjects/Client/src/config.ini")).unwrap();
+        settings.merge(config::File::with_name("/home/dell/Escritorio/Playlist_comunitario/src/config.ini")).unwrap();
 
         let ip = settings.get::<String>("Servidor.IP").unwrap();
         let puerto = settings.get::<i32>("Servidor.Puerto").unwrap();
@@ -126,7 +126,7 @@ fn request_song_list() -> Vec<Song>{
 fn vote_song(nombre: &str, command: &str){
 
         let mut settings = Config::default();
-        settings.merge(config::File::with_name("/home/spaceba/CLionProjects/Client/src/config.ini")).unwrap();
+        settings.merge(config::File::with_name("/home/dell/Escritorio/Playlist_comunitario/src/config.ini")).unwrap();
 
         let ip = settings.get::<String>("Servidor.IP").unwrap();
         let puerto = settings.get::<i32>("Servidor.Puerto").unwrap();
@@ -153,12 +153,12 @@ fn request_songs() -> Vec<Song>{
 }
 
 fn vote_up(){
-    let vote_up_thread = thread::spawn(move || vote_song("Efecto","Vote-up"));
+    let vote_up_thread = thread::spawn(move || vote_song("Fluffing a Duck","Vote-up"));
     vote_up_thread.join();
 }
 
 fn vote_down(){
-    let vote_down_thread = thread::spawn(move || vote_song("Efecto","Vote-down"));
+    let vote_down_thread = thread::spawn(move || vote_song("Fluffing a Duck","Vote-down"));
     vote_down_thread.join();
 }
 
@@ -184,6 +184,13 @@ async fn main() {
         .with_label("prueba");
     let mut vote_up_button = button::Button::new(170, 200, 80, 40, "Vote-up");
     let mut vote_down_button = button::Button::new(270, 200, 80, 40, "Vote-down");
+
+    let mut choice = menu::Choice::new(80, 30, 50, 50,"Select item");
+    choice.add_choice("Cancion 1");
+    choice.add_choice("Cancion 2");
+    choice.add_choice("Cancion 3");
+
+
     let mut text = input::Input::new(160, 100, 200, 50, "");
     vote_up_button.set_color(vote_up_button.color().lighter());
     vote_down_button.set_color(vote_up_button.color().lighter());
@@ -202,7 +209,7 @@ async fn main() {
 
 
     let mut settings = Config::default();
-    settings.merge(config::File::with_name("/home/spaceba/CLionProjects/Client/src/config.ini")).unwrap();
+    settings.merge(config::File::with_name("/home/dell/Escritorio/Playlist_comunitario/src/config.ini")).unwrap();
     let cooldown = settings.get::<u64>("Servidor.Cooldown").unwrap();
 
     // Crear un canal para comunicarse entre los hilos
