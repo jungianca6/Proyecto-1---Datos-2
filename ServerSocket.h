@@ -33,7 +33,7 @@ public:
     //Constructor con el puerto
     ServerSocket(){
         // Cargar el archivo INI
-        INIReader reader("/home/spaceba/CLionProjects/Server/config.ini");
+        INIReader reader("/home/spaceba/CLionProjects/Proyecto_1/config.ini");
         if (reader.ParseError() < 0) {
             std::cout << "Error al cargar el archivo INI" << std::endl;
         }

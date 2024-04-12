@@ -17,6 +17,10 @@ namespace fs = std::filesystem;
 
 // Cargar el archivo INI
 INIReader ini = INIReader("/home/spaceba/CLionProjects/Proyecto_1/config.ini");
+int tamano_maximo_de_pagina_2 = ini.GetInteger("Pagina", "tamano_maximo_de_pagina", 1);
+int cantidad_de_paginas_cargadas_2 = ini.GetInteger("Pagina", "cantidad_de_paginas_cargadas", 1);
+Admin_paginas admin2(tamano_maximo_de_pagina_2,cantidad_de_paginas_cargadas_2);
+Paged_Array arreglo_paginado2(&admin2);
 string filename_double_list = ini.GetString("BIN", "directorio", "/home/spaceba/CLionProjects/Proyecto_1/archivo.bin");
 GstElement *pipeline;
 GstElement *source;
@@ -148,9 +152,10 @@ void DoubleList::voteDown(string cancionbuscada) {
 
 void DoubleList::play_song(bool paginada) {
     Node *actual = primerod;
-    if (primerod != NULL) {
-        do {
-            if (paginada!=true) {
+    Cancion *cancion = nullptr;
+    if (paginada != true) {
+        if (primerod != NULL) {
+            do {
                 if (!pipeline) {
                     // Crear un nuevo pipeline
                     pipeline = gst_pipeline_new("audio-player");
@@ -192,7 +197,7 @@ void DoubleList::play_song(bool paginada) {
                             }
                         }
                     }
-                }else{
+                } else {
                     GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
                     if (ret == GST_STATE_CHANGE_FAILURE) {
                         std::cerr << "Error al reiniciar la reproducción." << std::endl;
@@ -200,17 +205,65 @@ void DoubleList::play_song(bool paginada) {
                         cout << "Reproduccion reiniciada" << endl;
                     }
                 }
-                actual = actual->siguiente;  //PARA QUE SE REPRODUZCA LA SIGUIENTE
-            } else {
-
-            }
-
-        } while (actual != NULL);
+                actual = actual->siguiente;
+            } while (actual != NULL);
+        } else {
+            LOG(WARNING) << "Lista vacia";
+            cout << "nel";
+        }
     } else {
-        LOG(WARNING) << "Lista vacia";
-        cout << "nel";
+        if (!pipeline) {
+            // Crear un nuevo pipeline
+            pipeline = gst_pipeline_new("audio-player");
+
+            // Crear los elementos necesarios
+            source = gst_element_factory_make("filesrc", "file-source");
+            GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
+            GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
+            volume = gst_element_factory_make("volume", "volume-name");
+            GstElement *converter = gst_element_factory_make("audioconvert", "audio-converter");
+            GstElement *resample = gst_element_factory_make("audioresample", "audio-resampler");
+            GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
+
+            if (!pipeline || !source || !parse || !decoder || !volume || !converter || !resample || !sink) {
+                std::cerr << "Error al crear los elementos." << std::endl;
+            } else {
+                // Establecer el archivo fuente
+                string path = arreglo_paginado2[0].path;
+                g_object_set(G_OBJECT(source), "location",
+                             path.c_str(), NULL);
+                cout << "Musica encontrada" << endl;
+
+                // Añadir los elementos al pipeline
+                gst_bin_add_many(GST_BIN(pipeline), source, parse, decoder, converter, resample, sink, NULL);
+
+                cout << "Elementos añadidos" << endl;
+
+                if (!gst_element_link_many(source, parse, decoder, converter, resample, sink, NULL)) {
+                    std::cerr << "Error al enlazar los elementos." << std::endl;
+                    gst_object_unref(pipeline);
+                    pipeline = nullptr; // Establecer pipeline a nullptr si hay un error
+                } else {
+                    // Iniciar la reproducción
+                    GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+                    if (ret == GST_STATE_CHANGE_FAILURE) {
+                        std::cerr << "Error al iniciar la reproducción." << std::endl;
+                    } else {
+                        cout << "Reproduccion" << endl;
+                    }
+                }
+            }
+        }else{
+            GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+            if (ret == GST_STATE_CHANGE_FAILURE) {
+                std::cerr << "Error al reiniciar la reproducción." << std::endl;
+            } else {
+                cout << "Reproduccion reiniciada" << endl;
+            }
+        } arreglo_paginado2[0+1].path;
     }
 }
+
 
 void DoubleList::Pausa(){
     LOG(INFO) << "Cancion pausada";
