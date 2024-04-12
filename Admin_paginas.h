@@ -14,8 +14,8 @@ using namespace std;
 class Admin_paginas {
 public:
     // Cargar el archivo INI
-    INIReader ini = INIReader("/home/spaceba/CLionProjects/Server/config.ini");
-    string ini_total_de_canciones = ini.GetString("Cancion", "directorio", "/home/spaceba/Music");
+    INIReader ini = INIReader("/home/dell/Escritorio/Proyecto-1-Datos-2/config.ini");
+    string ini_total_de_canciones = ini.GetString("Cancion", "directorio", "/home/dell/Escritorio/Musica");
     int total_de_canciones = cantidad_de_canciones(ini_total_de_canciones);
     int tamano_maximo_por_pagina; // Tamaño máximo de cada página en bytes
     Pagina* paginas; // Arreglo de páginas
