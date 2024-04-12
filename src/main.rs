@@ -185,11 +185,12 @@ async fn main() {
     let mut vote_up_button = button::Button::new(170, 200, 80, 40, "Vote-up");
     let mut vote_down_button = button::Button::new(270, 200, 80, 40, "Vote-down");
 
+    let canciones = vec!["Cancion 1", "Cancion 2", "Cancion 3"];
     let mut choice = menu::Choice::new(80, 30, 50, 50,"Select item");
-    choice.add_choice("Cancion 1");
-    choice.add_choice("Cancion 2");
-    choice.add_choice("Cancion 3");
 
+    for cancion in canciones {
+        choice.add_choice(cancion);
+    }
 
     let mut text = input::Input::new(160, 100, 200, 50, "");
     vote_up_button.set_color(vote_up_button.color().lighter());
