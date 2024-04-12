@@ -27,7 +27,7 @@ use fltk::window::Window;
 use tokio::runtime::Runtime;
 
 // Definir la estructura de datos para cada canción
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize)]
 struct Song {
     id: String,
     album: String,
@@ -116,7 +116,8 @@ fn request_song_list() -> Vec<Song>{
         let received_message = client.receive_message().expect("Error al recibir mensaje");
         //Obtiene el mensaje contenido en la etiqueta lista
         let songs_list_str = received_message["list"].as_str().unwrap_or("Mensaje no encontrado");
-
+        //Imprime el mensaje recibido
+        println!("lista de canciones: {}", songs_list_str);
         // Analizar el JSON recibido
         let songs: Vec<Song> = serde_json::from_str(&songs_list_str).unwrap();
         //Cerrar la conexión
@@ -251,7 +252,4 @@ async fn main() {
     win.end();
     win.show();
     a.run().unwrap();
-
-
-
 }
