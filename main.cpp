@@ -28,6 +28,7 @@ class MainFrame : public wxFrame {
 public:
     bool active_playlist = false;
 
+
     MainFrame(const wxString &title)
             : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition,
                       wxSize(1200, 900)) {
@@ -38,12 +39,12 @@ public:
         wxButton *paginacion, *comunitario, *buscarCancion,*reproduccion,*pausa,
         *anterior,*siguiente,*eliminar, *pruebacancion;
 
-        wxString canciones[] ={"Cancion 1", "Cancion 2", "Cancion 3"};
+        // Declaración del ComboBox sin elementos
+        listaCanciones = new wxComboBox(panel, wxID_ANY, wxEmptyString, wxPoint(450, 250), wxSize(150, 60), 0, nullptr, wxCB_READONLY);
 
+        void AddSong(const wxString& song);
+        void RemoveSong(const wxString& song);
 
-        listaCanciones = new wxComboBox(panel, wxID_ANY, canciones[0],
-                                                     wxPoint(450,250), wxSize(150,60), WXSIZEOF(canciones),
-                                                     canciones,wxCB_READONLY);
 
 
         paginacion = new wxButton(panel, botonID, "Paginacion",
@@ -68,9 +69,12 @@ public:
                             wxPoint(450, 500), wxSize(125, 40));
         pausa->Bind(wxEVT_BUTTON, &MainFrame::PausarActionButton, this);
         anterior = new wxButton(panel, botonID, "Anterior",
-                             wxPoint(300, 600), wxSize(125, 40));
+                                wxPoint(300, 600), wxSize(125, 40));
+        anterior->Bind(wxEVT_BUTTON, &MainFrame::anteriorButton, this);
         siguiente= new wxButton(panel, botonID, "Siguiente",
-                               wxPoint(450, 600), wxSize(125, 40));
+                                wxPoint(450, 600), wxSize(125, 40));
+        siguiente->Bind(wxEVT_BUTTON, &MainFrame::siguienteButton, this);
+                               wxPoint(450, 600), wxSize(125, 40);
         eliminar= new wxButton(panel, botonID, "Eliminar canciones",
                                wxPoint(600, 600), wxSize(125, 40));
 
@@ -137,8 +141,15 @@ private:
         }
     }
     void ReproducirActionButton(wxCommandEvent &event) {
-        servidor.lista_enlazada.play_song("Efecto");
-        LOG(INFO) << "Reproduciendo cancion";
+        if (servidor.paginacion == true){
+            servidor.lista_enlazada.play_song(true);
+            prueba->SetValue(servidor.carpeta_de_canciones->artista);
+            LOG(INFO) << "Reproduciendo cancion";
+
+        }else{
+            servidor.lista_enlazada.play_song(false);
+            LOG(INFO) << "Reproduciendo cancion";
+        }
     }
 
     void escogerCancion (wxCommandEvent &event){
@@ -156,6 +167,15 @@ private:
         servidor.lista_enlazada.Pausa();
     }
 
+    void anteriorButton(wxCommandEvent &event){
+        servidor.lista_enlazada.Anterior();
+    }
+    void siguienteButton(wxCommandEvent &event){
+        servidor.lista_enlazada.Siguiente();
+    }
+
+    void OnAddSong(wxCommandEvent& event);
+    void OnRemoveSong(wxCommandEvent& event);
 
 
     wxTextCtrl *caja;

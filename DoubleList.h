@@ -50,18 +50,22 @@ public:
     void obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista);
     //Agarra los nodos de la lista y los escribe en disco
     void List_to_Array();
-    //
-    void play_song(string cancionbuscada);
-
     string get_by_index(int index);
 
     void clear();
 
     void create_list_from_file();
 
+    void create_queue(PriorQueue &queue);
+
+    void play_song(bool paginada);
+
     void Pausa();
 
-    void create_queue(PriorQueue &queue);
+    void Siguiente();
+
+    void Anterior();
+
 };
 
 
