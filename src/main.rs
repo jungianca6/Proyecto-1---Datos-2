@@ -1,5 +1,5 @@
 use fltk::{app, button, input, prelude::{WidgetBase, WidgetExt, GroupExt}, window};
-use fltk::prelude::InputExt;
+use fltk::prelude::{InputExt, MenuExt};
 use fltk_theme::{ColorTheme, color_themes};
 use std::net::{TcpStream, Shutdown};
 use std::io::{Read, Write};
@@ -12,16 +12,22 @@ use serde::{Deserialize, Serialize};
 use std::fmt;
 use std::fs::File;
 use std::io::BufReader;
-use std::sync::mpsc;
+use std::sync::{Arc, mpsc};
 use std::sync::mpsc::Sender;
 use tokio::time::{sleep as tokio_sleep, interval};
+use log::{info, warn, error};
 
 extern crate ini;
 use config::Config;
+use fltk::button::Button;
+use fltk::enums::Color;
+use fltk::group::Pack;
+use fltk::menu::Choice;
+use fltk::window::Window;
 use tokio::runtime::Runtime;
 
 // Definir la estructura de datos para cada canción
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 struct Song {
     id: String,
     album: String,
@@ -110,8 +116,7 @@ fn request_song_list() -> Vec<Song>{
         let received_message = client.receive_message().expect("Error al recibir mensaje");
         //Obtiene el mensaje contenido en la etiqueta lista
         let songs_list_str = received_message["list"].as_str().unwrap_or("Mensaje no encontrado");
-        //Imprime el mensaje recibido
-        println!("lista de canciones: {}", songs_list_str);
+
         // Analizar el JSON recibido
         let songs: Vec<Song> = serde_json::from_str(&songs_list_str).unwrap();
         //Cerrar la conexión
@@ -152,14 +157,16 @@ fn request_songs() -> Vec<Song>{
     return canciones;
 }
 
-fn vote_up(){
-    let vote_up_thread = thread::spawn(move || vote_song("Efecto","Vote-up"));
-    vote_up_thread.join();
+fn vote_up(variable: &str) {
+    let variable_ref = variable.to_owned(); // Clonar el valor al que variable hace referencia
+    let vote_up_thread = thread::spawn(move || vote_song(&variable_ref, "Vote-up"));
+    vote_up_thread.join().unwrap();
 }
 
-fn vote_down(){
-    let vote_down_thread = thread::spawn(move || vote_song("Efecto","Vote-down"));
-    vote_down_thread.join();
+fn vote_down(variable: &str) {
+    let variable_ref = variable.to_owned(); // Clonar el valor al que variable hace referencia
+    let vote_down_thread = thread::spawn(move || vote_song(&variable_ref, "Vote-down"));
+    vote_down_thread.join().unwrap();
 }
 
 async fn periodic_task(interval_seconds: u64, sender: mpsc::Sender<Vec<Song>>) {
@@ -178,28 +185,18 @@ async fn periodic_task(interval_seconds: u64, sender: mpsc::Sender<Vec<Song>>) {
 #[tokio::main]
 async fn main() {
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
+    // Crear un Pack para organizar los elementos
     let theme = ColorTheme::new(color_themes::BLACK_THEME);
     theme.apply();
-    let mut win = window::Window::default().with_size(600, 400)
-        .with_label("prueba");
-    let mut vote_up_button = button::Button::new(170, 200, 80, 40, "Vote-up");
-    let mut vote_down_button = button::Button::new(270, 200, 80, 40, "Vote-down");
-    let mut text = input::Input::new(160, 100, 200, 50, "");
+    let mut win = window::Window::default().with_size(400, 300)
+        .with_label("Community Music Player :v");
+    let mut vote_up_button = button::Button::new(50, 50, 120, 60, "Vote-up");
+    let mut vote_down_button = button::Button::new(220, 50, 120, 60, "Vote-down");
     vote_up_button.set_color(vote_up_button.color().lighter());
     vote_down_button.set_color(vote_up_button.color().lighter());
 
-    win.end();
-    win.show();
-
-    vote_down_button.set_callback(move |_| {
-        vote_down();
-    });
-
-    vote_up_button.set_callback(move |_| {
-        vote_up();
-    });
-
-
+    // Crear un menú desplegable
+    let mut menu_button = Choice::new(150, 150, 200, 30, "Seleccionar opción");
 
     let mut settings = Config::default();
     settings.merge(config::File::with_name("/home/spaceba/CLionProjects/Client/src/config.ini")).unwrap();
@@ -219,8 +216,42 @@ async fn main() {
 
     // Esperar a que se reciba el resultado del canal
     let songs_list = receiver.recv().unwrap();
+    // Imprimir el contenido de songs_list
+    println!("Lista de canciones recibida:");
+
+
+    // Recibir actualizaciones de la lista de canciones y actualizar el menú desplegable
+    for song in &songs_list {
+        menu_button.add_choice(&song.nombre);
+
+    }
 
 
 
+
+    let menu_button_clone = menu_button.clone();
+    vote_down_button.set_callback(move |_| {
+        // Obtener el texto del elemento seleccionado utilizando el índice
+        let selected_index = menu_button_clone.value();
+        let selected_text = menu_button_clone.text(selected_index).unwrap_or_default();
+        let variable = selected_text.as_str();
+        vote_down(variable);
+    });
+
+    let menu_button_clone = menu_button.clone();
+    vote_up_button.set_callback(move |_| {
+        // Obtener el texto del elemento seleccionado utilizando el índice
+        let selected_index = menu_button_clone.value();
+        let selected_text = menu_button_clone.text(selected_index).unwrap_or_default();
+        let variable = selected_text.as_str();
+        vote_up(variable);
+    });
+
+
+    win.end();
+    win.show();
     a.run().unwrap();
+
+
+
 }
