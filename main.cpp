@@ -136,8 +136,14 @@ private:
         }
     }
     void ReproducirActionButton(wxCommandEvent &event) {
-        servidor.lista_enlazada.play_song("Efecto");
-        LOG(INFO) << "Reproduciendo cancion";
+        if (servidor.paginacion == true){
+            servidor.lista_enlazada.play_song(true);
+            LOG(INFO) << "Reproduciendo cancion";
+
+        }else{
+            servidor.lista_enlazada.play_song(false);
+            LOG(INFO) << "Reproduciendo cancion";
+        }
     }
 
     void escogerCancion (wxCommandEvent &event){

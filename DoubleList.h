@@ -50,7 +50,7 @@ public:
     //Agarra los nodos de la lista y los escribe en disco
     void List_to_Array();
     //
-    void play_song(string cancionbuscada);
+    void play_song(bool paginada);
 
     string get_by_index(int index);
 

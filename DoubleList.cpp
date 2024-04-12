@@ -12,6 +12,9 @@
 #include <ogg/ogg.h>
 #include <gst/gst.h>
 #include <glog/logging.h>
+#include "ServerSocket.h"
+
+
 namespace fs = std::filesystem;
 
 // Cargar el archivo INI
@@ -20,6 +23,7 @@ string filename_double_list = ini.GetString("BIN", "directorio", "/home/dell/Esc
 GstElement *pipeline;
 Node *primerod = nullptr;
 Node *ultimod = nullptr;
+
 
 
 void DoubleList::printListadouble() {
@@ -143,15 +147,11 @@ void DoubleList::voteDown(string cancionbuscada) {
     }
 }
 
-void DoubleList::play_song(string cancionbuscada) {
-
+void DoubleList::play_song(bool paginada) {
     Node *actual = primerod;
-    bool encontrado = false;
-    cout << "Dato buscado: " << cancionbuscada << endl;
     if (primerod != NULL) {
         do {
-            if (actual->data.nombre == cancionbuscada) {
-
+            if (paginada!=true) {
                 if (!pipeline) {
                     // Crear un nuevo pipeline
                     pipeline = gst_pipeline_new("audio-player");
@@ -201,13 +201,10 @@ void DoubleList::play_song(string cancionbuscada) {
                         cout << "Reproduccion reiniciada" << endl;
                     }
                 }
+                actual = actual->siguiente;  //PARA QUE SE REPRODUZCA LA SIGUIENTE
             }
-            actual = actual->siguiente;
-        } while (actual != NULL && encontrado != true);
-        if (!encontrado) {
-            LOG(WARNING) << "Nodo no encontrado";
-            cout << "Nodo no encontrado";
-        }
+
+        } while (actual != NULL);
     } else {
         LOG(WARNING) << "Lista vacia";
         cout << "nel";
@@ -409,6 +406,4 @@ void DoubleList::create_list_from_file(){
     printListadouble();
     // Cerrar el archivo al finalizar la lectura
     archivo.close();
-
-
 }
