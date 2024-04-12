@@ -6,6 +6,7 @@
 #include <string>
 #include "Data.h"
 #include <nlohmann/json.hpp>
+#include "Paged_Array.h"
 #ifndef PROYECTO_1_DOUBLELIST_H
 #define PROYECTO_1_DOUBLELIST_H
 
