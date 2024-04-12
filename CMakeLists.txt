@@ -54,11 +54,11 @@ pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0)
 
 include_directories(${GSTREAMER_INCLUDE_DIRS})
 link_directories(${GSTREAMER_LIBRARY_DIRS})
+add_definitions(${GSTREAMER_CFLAGS_OTHER})
 
 # Enlaza el ejecutable con las bibliotecas de GStreamer
 target_link_libraries(Proyecto_1 PRIVATE ${GSTREAMER_LIBRARIES})
 
-add_definitions(${GSTREAMER_CFLAGS_OTHER})
 
 find_package(glog REQUIRED)
 target_link_libraries(Proyecto_1 PRIVATE glog::glog)

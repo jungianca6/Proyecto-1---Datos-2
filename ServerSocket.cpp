@@ -19,7 +19,7 @@ using namespace std;
 using namespace nlohmann;
 
 // Cargar el archivo INI
-INIReader reader("/home/spaceba/CLionProjects/Server/config.ini");
+INIReader reader("/home/spaceba/CLionProjects/Proyecto_1/config.ini");
 DoubleList lista_enlazada;
 int tamano_maximo_de_pagina = reader.GetInteger("Pagina", "tamano_maximo_de_pagina", 1);
 int cantidad_de_paginas_cargadas = reader.GetInteger("Pagina", "cantidad_de_paginas_cargadas", 1);

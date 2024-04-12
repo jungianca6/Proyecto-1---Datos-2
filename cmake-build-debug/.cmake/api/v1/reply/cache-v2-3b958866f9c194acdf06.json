@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/spaceba/CLionProjects/Server/cmake-build-debug"
+			"value" : "/home/spaceba/CLionProjects/Proyecto_1/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "28"
+			"value" : "27"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1"
+			"value" : "8"
 		},
 		{
 			"name" : "CMAKE_COLOR_DIAGNOSTICS",
@@ -115,7 +115,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/274/bin/cmake/linux/x64/bin/cmake"
+			"value" : "/snap/clion/265/bin/cmake/linux/x64/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -127,7 +127,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/274/bin/cmake/linux/x64/bin/cpack"
+			"value" : "/snap/clion/265/bin/cmake/linux/x64/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -139,7 +139,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/274/bin/cmake/linux/x64/bin/ctest"
+			"value" : "/snap/clion/265/bin/cmake/linux/x64/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -171,7 +171,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ar-13"
+			"value" : "/usr/bin/gcc-ar-11"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_RANLIB",
@@ -187,7 +187,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ranlib-13"
+			"value" : "/usr/bin/gcc-ranlib-11"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -299,7 +299,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ar-13"
+			"value" : "/usr/bin/gcc-ar-11"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -315,7 +315,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ranlib-13"
+			"value" : "/usr/bin/gcc-ranlib-11"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -543,7 +543,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/spaceba/CLionProjects/Server/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/spaceba/CLionProjects/Proyecto_1/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -603,7 +603,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/spaceba/CLionProjects/Server"
+			"value" : "/home/spaceba/CLionProjects/Proyecto_1"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -655,7 +655,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/snap/clion/274/bin/ninja/linux/x64/ninja"
+			"value" : "/snap/clion/265/bin/ninja/linux/x64/ninja"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -887,7 +887,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/274/bin/cmake/linux/x64/share/cmake-3.28"
+			"value" : "/snap/clion/265/bin/cmake/linux/x64/share/cmake-3.27"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1151,19 +1151,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "[/usr/bin/pkg-config][v1.8.1()]"
-		},
-		{
-			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_Unwind",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Details about finding Unwind"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "[/usr/include/x86_64-linux-gnu][/usr/lib/x86_64-linux-gnu/libunwind.so][v1.6.2(1.6.2)]"
+			"value" : "[/usr/bin/pkg-config][v0.29.2()]"
 		},
 		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_wxWidgets",
@@ -1175,7 +1163,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "[-L/usr/local/lib;-pthread;;;-lwx_gtk3u_core-3.2;-lwx_baseu-3.2][/usr/local/lib/wx/include/gtk3-unicode-3.2;/usr/local/include/wx-3.2][v3.2.4()]"
+			"value" : "[-L/usr/lib/x86_64-linux-gnu;-pthread;;;-lwx_gtk3u_core-3.0;-lwx_baseu-3.0][/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0;/usr/include/wx-3.0][v3.0.5()]"
 		},
 		{
 			"name" : "GSTREAMER_CFLAGS",
@@ -1187,7 +1175,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "-I/usr/include/gstreamer-1.0;-I/usr/include/glib-2.0;-I/usr/lib/x86_64-linux-gnu/glib-2.0/include;-I/usr/include;-pthread;-I/usr/include/x86_64-linux-gnu"
+			"value" : "-pthread;-I/usr/include/gstreamer-1.0;-I/usr/include/x86_64-linux-gnu;-I/usr/include/glib-2.0;-I/usr/lib/x86_64-linux-gnu/glib-2.0/include"
 		},
 		{
 			"name" : "GSTREAMER_CFLAGS_I",
@@ -1247,7 +1235,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/include/gstreamer-1.0;/usr/include/glib-2.0;/usr/lib/x86_64-linux-gnu/glib-2.0/include;/usr/include;/usr/include/x86_64-linux-gnu"
+			"value" : "/usr/include/gstreamer-1.0;/usr/include/x86_64-linux-gnu;/usr/include/glib-2.0;/usr/lib/x86_64-linux-gnu/glib-2.0/include"
 		},
 		{
 			"name" : "GSTREAMER_LDFLAGS",
@@ -1391,7 +1379,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "-I/usr/include/gstreamer-1.0;-I/usr/include/glib-2.0;-I/usr/lib/x86_64-linux-gnu/glib-2.0/include;-I/usr/include;-pthread;-I/usr/include/x86_64-linux-gnu"
+			"value" : "-pthread;-I/usr/include/gstreamer-1.0;-I/usr/include/x86_64-linux-gnu;-I/usr/include/glib-2.0;-I/usr/lib/x86_64-linux-gnu/glib-2.0/include"
 		},
 		{
 			"name" : "GSTREAMER_STATIC_CFLAGS_I",
@@ -1427,7 +1415,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/include/gstreamer-1.0;/usr/include/glib-2.0;/usr/lib/x86_64-linux-gnu/glib-2.0/include;/usr/include;/usr/include/x86_64-linux-gnu"
+			"value" : "/usr/include/gstreamer-1.0;/usr/include/x86_64-linux-gnu;/usr/include/glib-2.0;/usr/lib/x86_64-linux-gnu/glib-2.0/include"
 		},
 		{
 			"name" : "GSTREAMER_STATIC_LDFLAGS",
@@ -1439,7 +1427,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "-L/usr/lib/x86_64-linux-gnu;-lgstreamer-1.0;-lm;-ldl;-lm;-pthread;-L/usr/lib/x86_64-linux-gnu;-lpcre2-8;-lgobject-2.0;-lglib-2.0;-lm;-pthread;-L/usr/lib/x86_64-linux-gnu;-lpcre2-8;-lffi;-L/usr/lib/x86_64-linux-gnu;-lgmodule-2.0;-pthread;-L/usr/lib/x86_64-linux-gnu;-lglib-2.0;-lm;-pthread;-L/usr/lib/x86_64-linux-gnu;-lpcre2-8;-lunwind;-ldw;-lbz2;-lelf;-L/usr/lib/x86_64-linux-gnu;-L/usr/lib/x86_64-linux-gnu;-lz;-L/usr/lib;-pthread;-L/usr/lib/x86_64-linux-gnu;-L/usr/lib/x86_64-linux-gnu;-lz;-llzma;-pthread;-lpthread;-lzstd;-pthread"
+			"value" : "-L/usr/lib/x86_64-linux-gnu;-lgstreamer-1.0;-lm;-ldl;-Wl,--export-dynamic;-lgmodule-2.0;-pthread;-lunwind;-llzma;-ldw;-lbz2;-llzma;-pthread;-lpthread;-lelf;-lz;-lgobject-2.0;-lffi;-lglib-2.0;-pthread;-lm;-lpcre"
 		},
 		{
 			"name" : "GSTREAMER_STATIC_LDFLAGS_OTHER",
@@ -1451,7 +1439,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "-pthread;-pthread;-pthread;-pthread;-pthread;-pthread;-pthread"
+			"value" : "-Wl,--export-dynamic;-pthread"
 		},
 		{
 			"name" : "GSTREAMER_STATIC_LIBDIR",
@@ -1475,7 +1463,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "gstreamer-1.0;m;dl;m;pcre2-8;gobject-2.0;glib-2.0;m;pcre2-8;ffi;gmodule-2.0;glib-2.0;m;pcre2-8;unwind;dw;bz2;elf;z;z;lzma;pthread;zstd"
+			"value" : "gstreamer-1.0;m;dl;gmodule-2.0;unwind;lzma;dw;bz2;lzma;pthread;elf;z;gobject-2.0;ffi;glib-2.0;m;pcre"
 		},
 		{
 			"name" : "GSTREAMER_STATIC_LIBRARY_DIRS",
@@ -1487,7 +1475,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu"
+			"value" : "/usr/lib/x86_64-linux-gnu"
 		},
 		{
 			"name" : "GSTREAMER_STATIC_LIBS",
@@ -1547,7 +1535,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1.22.5"
+			"value" : "1.20.3"
 		},
 		{
 			"name" : "GSTREAMER_gstreamer-1.0_INCLUDEDIR",
@@ -1639,7 +1627,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/spaceba/CLionProjects/Server/cmake-build-debug"
+			"value" : "/home/spaceba/CLionProjects/Proyecto_1/cmake-build-debug"
 		},
 		{
 			"name" : "Proyecto_1_IS_TOP_LEVEL",
@@ -1663,39 +1651,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/spaceba/CLionProjects/Server"
-		},
-		{
-			"name" : "Unwind_INCLUDE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "unwind include directory"
-				}
-			],
-			"type" : "PATH",
-			"value" : "/usr/include/x86_64-linux-gnu"
-		},
-		{
-			"name" : "Unwind_LIBRARY",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "unwind library"
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/usr/lib/x86_64-linux-gnu/libunwind.so"
+			"value" : "/home/spaceba/CLionProjects/Proyecto_1"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
@@ -1827,7 +1783,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/local/bin/wx-config"
+			"value" : "/usr/bin/wx-config"
 		},
 		{
 			"name" : "wxWidgets_USE_DEBUG",
@@ -1851,7 +1807,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/local/bin/wxrc"
+			"value" : "/usr/bin/wxrc"
 		}
 	],
 	"kind" : "cache",
