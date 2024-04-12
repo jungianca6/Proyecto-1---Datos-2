@@ -257,10 +257,10 @@ void DoubleList::Siguiente(){
     string path = actual->data.path;
     g_object_set(G_OBJECT(source), "location", path.c_str(), NULL);
     gst_element_set_state(pipeline, GST_STATE_PLAYING);
+    primerod = actual;
 }
 
 void DoubleList::Volumen(){
-    g_object_set(G_OBJECT(volume), "volume", volumen_gstreamer, NULL);
 }
 
 void DoubleList::eliminarNododouble(string nodoBuscado) {

@@ -249,8 +249,5 @@ int main(int argc, char* argv[]) {
     // Esperar a que el hilo termine (esto nunca sucederá porque el hilo se ejecuta en bucle infinito)
     consumoThread.join();
 
-
-
-
     return 0;
 }
