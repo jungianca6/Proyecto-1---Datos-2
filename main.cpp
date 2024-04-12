@@ -8,6 +8,7 @@
 #include <gst/gst.h>
 #include "Admin_paginas.h"
 #include "Paged_Array.h"
+#include "Pagina.h"
 #include <unistd.h> // Para sleep()
 #include <glog/logging.h> //sudo apt-get install libgoogle-glog-dev
 
@@ -45,7 +46,6 @@ public:
                                                      wxPoint(450,250), wxSize(150,60), WXSIZEOF(canciones),
                                                      canciones,wxCB_READONLY);
 
-
         paginacion = new wxButton(panel, botonID, "Paginacion",
                                   wxPoint(150, 50), wxSize(150, 60));
         paginacion->Bind(wxEVT_BUTTON, &MainFrame::PaginacionActionButton, this);
@@ -69,8 +69,10 @@ public:
         pausa->Bind(wxEVT_BUTTON, &MainFrame::PausarActionButton, this);
         anterior = new wxButton(panel, botonID, "Anterior",
                              wxPoint(300, 600), wxSize(125, 40));
+        anterior->Bind(wxEVT_BUTTON, &MainFrame::anteriorButton, this);
         siguiente= new wxButton(panel, botonID, "Siguiente",
                                wxPoint(450, 600), wxSize(125, 40));
+        siguiente->Bind(wxEVT_BUTTON, &MainFrame::siguienteButton, this);
         eliminar= new wxButton(panel, botonID, "Eliminar canciones",
                                wxPoint(600, 600), wxSize(125, 40));
 
@@ -86,6 +88,7 @@ public:
         cancion->SetForegroundColour(wxColour(255,255,255));
         cancion->SetFont(GetFont().Scale(1.5));
         cancion->SetBackgroundColour(wxColour(0,0,0));
+
 
         busqueda = new wxStaticText(panel, wxID_ANY, "Busqueda",
                                     wxPoint(950, 20),wxSize(105,35),wxALIGN_CENTER);
@@ -138,6 +141,7 @@ private:
     void ReproducirActionButton(wxCommandEvent &event) {
         if (servidor.paginacion == true){
             servidor.lista_enlazada.play_song(true);
+            prueba->SetValue(servidor.carpeta_de_canciones->artista);
             LOG(INFO) << "Reproduciendo cancion";
 
         }else{
@@ -148,6 +152,10 @@ private:
 
     void escogerCancion (wxCommandEvent &event){
         prueba->SetValue(listaCanciones->GetStringSelection());
+    }
+
+    void cambioVolumen (){
+
     }
 
     void activeServer() {
@@ -161,6 +169,12 @@ private:
         servidor.lista_enlazada.Pausa();
     }
 
+    void anteriorButton(wxCommandEvent &event){
+        servidor.lista_enlazada.Anterior();
+    }
+    void siguienteButton(wxCommandEvent &event){
+        servidor.lista_enlazada.Siguiente();
+    }
 
 
     wxTextCtrl *caja;

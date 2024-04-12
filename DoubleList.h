@@ -51,6 +51,11 @@ public:
     void List_to_Array();
     //
     void play_song(bool paginada);
+    void Pausa();
+
+    void Siguiente();
+    void Anterior();
+    void Volumen();
 
     string get_by_index(int index);
 
@@ -58,7 +63,7 @@ public:
 
     void create_list_from_file();
 
-    void Pausa();
+
 };
 
 

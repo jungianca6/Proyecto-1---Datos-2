@@ -13,6 +13,7 @@
 #include <gst/gst.h>
 #include <glog/logging.h>
 #include "ServerSocket.h"
+#include "Data.h"
 
 
 namespace fs = std::filesystem;
@@ -21,6 +22,8 @@ namespace fs = std::filesystem;
 INIReader ini = INIReader("/home/dell/Escritorio/Proyecto-1-Datos-2/config.ini");
 string filename_double_list = ini.GetString("BIN", "directorio", "/home/dell/Escritorio/Proyecto-1-Datos-2/archivo.bin");
 GstElement *pipeline;
+GstElement *source;
+GstElement *volume;
 Node *primerod = nullptr;
 Node *ultimod = nullptr;
 
@@ -157,10 +160,10 @@ void DoubleList::play_song(bool paginada) {
                     pipeline = gst_pipeline_new("audio-player");
 
                     // Crear los elementos necesarios
-                    GstElement *source = gst_element_factory_make("filesrc", "file-source");
+                    source = gst_element_factory_make("filesrc", "file-source");
                     GstElement *parse = gst_element_factory_make("mpegaudioparse", "mp3-parser");
                     GstElement *decoder = gst_element_factory_make("mpg123audiodec", "mp3-decoder");
-                    GstElement *volume = gst_element_factory_make("volume", "volume-name");
+                    volume = gst_element_factory_make("volume", "volume-name");
                     GstElement *converter = gst_element_factory_make("audioconvert", "audio-converter");
                     GstElement *resample = gst_element_factory_make("audioresample", "audio-resampler");
                     GstElement *sink = gst_element_factory_make("autoaudiosink", "audio-output");
@@ -202,6 +205,8 @@ void DoubleList::play_song(bool paginada) {
                     }
                 }
                 actual = actual->siguiente;  //PARA QUE SE REPRODUZCA LA SIGUIENTE
+            } else {
+
             }
 
         } while (actual != NULL);
@@ -215,9 +220,48 @@ void DoubleList::Pausa(){
     LOG(INFO) << "Cancion pausada";
     gst_element_set_state(pipeline, GST_STATE_PAUSED);
 }
+void DoubleList::Anterior() {
+    LOG(INFO) << "Canción anterior";
+
+    if (!primerod) {
+        cout << "La lista de reproducción está vacía." <<endl;
+        return;
+    }
 
 
+    Node *actual = ultimod->atras; // Obtener el anterior nodo
 
+    gst_element_set_state(pipeline, GST_STATE_PAUSED);
+    sleep(1);
+    gst_element_set_state(pipeline, GST_STATE_READY);
+    string path = actual->data.path;
+    g_object_set(G_OBJECT(source), "location", path.c_str(), NULL);
+    gst_element_set_state(pipeline, GST_STATE_PLAYING);
+    cout<<"anterior"<<endl;
+
+}
+void DoubleList::Siguiente(){
+    LOG(INFO) << "Siguiente Canción";
+    gst_element_set_state(pipeline, GST_STATE_PAUSED);
+
+    if (!primerod) {
+        cout << "La lista de reproducción está vacía." <<endl;
+        return;
+    }
+
+    Node *actual = primerod->siguiente; // Obtener el siguiente nodo
+
+    gst_element_set_state(pipeline, GST_STATE_NULL);
+    sleep(1);
+    gst_element_set_state(pipeline, GST_STATE_READY);
+    string path = actual->data.path;
+    g_object_set(G_OBJECT(source), "location", path.c_str(), NULL);
+    gst_element_set_state(pipeline, GST_STATE_PLAYING);
+}
+
+void DoubleList::Volumen(){
+    g_object_set(G_OBJECT(volume), "volume", volumen_gstreamer, NULL);
+}
 
 void DoubleList::eliminarNododouble(string nodoBuscado) {
     Node *actual = new Node();
