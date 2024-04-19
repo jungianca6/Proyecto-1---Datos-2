@@ -16,12 +16,12 @@
 namespace fs = std::filesystem;
 
 // Cargar el archivo INI
-INIReader ini = INIReader("/home/spaceba/CLionProjects/Proyecto_1/config.ini");
+INIReader ini = INIReader("/home/dell/Escritorio/Proyecto-1-Datos-2/config.ini");
 int tamano_maximo_de_pagina_2 = ini.GetInteger("Pagina", "tamano_maximo_de_pagina", 1);
 int cantidad_de_paginas_cargadas_2 = ini.GetInteger("Pagina", "cantidad_de_paginas_cargadas", 1);
 Admin_paginas admin2(tamano_maximo_de_pagina_2,cantidad_de_paginas_cargadas_2);
 Paged_Array arreglo_paginado2(&admin2);
-string filename_double_list = ini.GetString("BIN", "directorio", "/home/spaceba/CLionProjects/Proyecto_1/archivo.bin");
+string filename_double_list = ini.GetString("BIN", "directorio", "/home/dell/Escritorio/Proyecto-1-Datos-2/archivo.bin");
 GstElement *pipeline;
 GstElement *source;
 GstElement *volume;

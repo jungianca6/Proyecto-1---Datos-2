@@ -230,7 +230,7 @@ int main(int argc, char* argv[]) {
     std::thread consumoThread(consumo);
 
     //Lee las canciones de la carpeta y las guarda en la lista
-    servidor.lista_enlazada.leerArchivosMP3("/home/spaceba/Music", servidor.carpeta_de_canciones);
+    servidor.lista_enlazada.leerArchivosMP3("/home/dell/Escritorio/Musica", servidor.carpeta_de_canciones);
     LOG(INFO) << "Carpeta de canciones leida";
     //Crea la lista con las canciones leidas del archivo
     servidor.create_list_from_file();
