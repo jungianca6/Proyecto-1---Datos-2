@@ -384,32 +384,18 @@ void DoubleList::obtenerMetadatosMP3(const string& ruta_archivo, Data*& lista) {
     if (!archivo.isNull() && archivo.tag()) {
         TagLib::Tag* tag = archivo.tag();
         if (tag) {
-
             char nombre[64];
             char artista[64];
             char album[64];
             char path[128];
-
             strncpy(nombre, tag->title().toCString(true), sizeof(nombre));
             strncpy(artista, tag->artist().toCString(true), sizeof(artista));
             strncpy(album, tag->album().toCString(true), sizeof(album));
             strncpy(path, ruta_archivo.c_str(), sizeof(album));
-
-
-
             TagLib::MPEG::File mpegFile(ruta_archivo.c_str());
             int duracion_segundos = mpegFile.audioProperties()->length();
             int minutos = duracion_segundos / 60;
             int segundos = duracion_segundos % 60;
-
-            cout << "Path: " << ruta_archivo << endl;
-            cout << "Nombre: " << nombre << endl;
-            cout << "Artista: " << artista << endl;
-            cout << "Álbum: " << album << endl;
-            cout << "Duración: " << minutos << " minutos " << segundos << " segundos" << endl;
-
-
-
             // Crear un nuevo nodo para la canción
             Data* nueva_cancion = new Data(path ,nombre, artista, album, minutos, segundos, 0);
             // Agregar el nodo a la lista
