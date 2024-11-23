@@ -5,7 +5,7 @@
 		<Option title="Proyecto_1"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glog\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/dell/Escritorio/Proyecto-1-Datos-2/cmake-build-debug"/>
@@ -27,6 +27,18 @@
 					<Add option="-D_FILE_OFFSET_BITS=64"/>
 					<Add option="-DWXUSINGDLL"/>
 					<Add option="-D__WXGTK__"/>
+					<Add option="-DGOOGLE_GLOG_DLL_DECL="/>
+					<Add option="-DGOOGLE_GLOG_DLL_DECL_FOR_UNITTESTS="/>
+					<Add option="-DGFLAGS_IS_A_DLL=0"/>
+					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/include"/>
+					<Add directory="/usr/include/unicode"/>
+					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/libs"/>
+					<Add directory="/usr/include/taglib"/>
+					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/Proyecto_1"/>
+					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/PRIVATE"/>
+					<Add directory="/usr/include/gstreamer-1.0"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>
@@ -54,6 +66,18 @@
 					<Add option="-D_FILE_OFFSET_BITS=64"/>
 					<Add option="-DWXUSINGDLL"/>
 					<Add option="-D__WXGTK__"/>
+					<Add option="-DGOOGLE_GLOG_DLL_DECL="/>
+					<Add option="-DGOOGLE_GLOG_DLL_DECL_FOR_UNITTESTS="/>
+					<Add option="-DGFLAGS_IS_A_DLL=0"/>
+					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/include"/>
+					<Add directory="/usr/include/unicode"/>
+					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/libs"/>
+					<Add directory="/usr/include/taglib"/>
+					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/Proyecto_1"/>
+					<Add directory="/home/dell/Escritorio/Proyecto-1-Datos-2/PRIVATE"/>
+					<Add directory="/usr/include/gstreamer-1.0"/>
+					<Add directory="/usr/include/glib-2.0"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
 					<Add directory="/usr/lib/x86_64-linux-gnu/wx/include/gtk3-unicode-3.0"/>
 					<Add directory="/usr/include/wx-3.0"/>
 					<Add directory="/usr/include/c++/11"/>
@@ -92,11 +116,89 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Admin_paginas.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Admin_paginas.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Cancion.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Data.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/DoubleList.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/DoubleList.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/INIReader.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/INIReader.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Paged_Array.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Paged_Array.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Pagina.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Pagina.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Queue.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/Queue.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.cpp">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/ServerSocket.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/ini.c">
+			<Option target="Proyecto_1"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/ini.h">
+			<Option target="Proyecto_1"/>
+		</Unit>
 		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/main.cpp">
 			<Option target="Proyecto_1"/>
 		</Unit>
 		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/../../../../usr/lib/x86_64-linux-gnu/cmake/glog/glog-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glog\"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/../../../../usr/lib/x86_64-linux-gnu/cmake/glog/glog-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glog\"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/../../../../usr/lib/x86_64-linux-gnu/cmake/glog/glog-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glog\"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/../../../../usr/lib/x86_64-linux-gnu/cmake/glog/glog-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glog\"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/../../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/../../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/../../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-nonamespace-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
+		</Unit>
+		<Unit filename="/home/dell/Escritorio/Proyecto-1-Datos-2/../../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-nonamespace-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
